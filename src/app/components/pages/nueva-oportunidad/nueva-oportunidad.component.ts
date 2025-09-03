@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
@@ -1192,7 +1192,7 @@ interface WizardStep {
     }
   `]
 })
-export class NuevaOportunidadComponent implements OnInit {
+export class NuevaOportunidadComponent implements OnInit, OnDestroy {
   opportunityForm!: FormGroup;
   opportunityType: 'COTIZACION' | 'SIMULACION' | null = null;
   opportunityTypeError = false;
