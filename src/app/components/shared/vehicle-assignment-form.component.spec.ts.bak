@@ -109,12 +109,12 @@ describe('VehicleAssignmentFormComponent', () => {
     mockVehicleService.assignVehicleToClient.and.returnValue(of(mockResponse));
     mockImportTracker.updateVehicleAssignment.and.returnValue(of({ success: true }));
 
-    spyOn(component.assignmentComplete, 'emit');
+    spyOn(component.assignmentCompleted, 'emit');
 
     component.onSubmit();
 
     expect(mockVehicleService.assignVehicleToClient).toHaveBeenCalled();
-    expect(component.assignmentComplete.emit).toHaveBeenCalledWith({
+    expect(component.assignmentCompleted.emit).toHaveBeenCalledWith({
       success: true,
       vehicleData: jasmine.any(Object)
     });
@@ -137,13 +137,13 @@ describe('VehicleAssignmentFormComponent', () => {
 
     mockVehicleService.assignVehicleToClient.and.returnValue(of(mockError));
 
-    spyOn(component.assignmentComplete, 'emit');
+    spyOn(component.assignmentCompleted, 'emit');
     spyOn(window, 'alert');
 
     component.onSubmit();
 
     expect(window.alert).toHaveBeenCalledWith('Error: VIN already assigned');
-    expect(component.assignmentComplete.emit).not.toHaveBeenCalled();
+    expect(component.assignmentCompleted.emit).not.toHaveBeenCalled();
   });
 
   it('should prevent submission with invalid form', () => {
