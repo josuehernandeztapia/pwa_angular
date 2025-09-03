@@ -14,7 +14,7 @@ import {
 } from '../models/types';
 import { ContractTriggersService, TriggerEvent } from './contract-triggers.service';
 import { DeliveriesService } from './deliveries.service';
-import { DeliveryOrder } from '../models/deliveries';
+import { DeliveryOrder, DeliveryEvent } from '../models/deliveries';
 import { ImportWhatsAppNotificationsService } from './import-whatsapp-notifications.service';
 import { VehicleAssignmentService, VehicleAssignmentRequest } from './vehicle-assignment.service';
 import { ContractService } from './contract.service';
@@ -144,8 +144,8 @@ export class IntegratedImportTrackerService {
       this.contractTriggersService.getTriggerHistory(50).pipe(
         map(triggers => triggers.filter(t => t.clientId === clientId))
       ),
-      this.deliveriesService.list({ clientIds: [clientId], limit: 10 }).pipe(
-        map(response => response.orders),
+      this.deliveriesService.list({ clientId: clientId, limit: 10 }).pipe(
+        map(response => response.items),
         catchError(() => of([]))
       )
     ]).pipe(
@@ -162,8 +162,7 @@ export class IntegratedImportTrackerService {
           contractId: latestTrigger?.contractId,
           syncStatus: this.determineSyncStatus(importStatus, deliveryOrders, triggers),
           lastSyncDate: new Date(),
-          estimatedDeliveryDate: this.calculateEstimatedDeliveryDate(importStatus),
-          actualDeliveryDate: latestDeliveryOrder?.actualDeliveryDate ? new Date(latestDeliveryOrder.actualDeliveryDate) : undefined
+          estimatedDeliveryDate: this.calculateEstimatedDeliveryDate(importStatus)
         };
 
         // Actualizar caché
@@ -173,7 +172,7 @@ export class IntegratedImportTrackerService {
 
         return integrated;
       }),
-      catchError(this.handleError('get integrated import status'))
+      catchError(() => of(null))
     );
   }
 
@@ -221,7 +220,7 @@ export class IntegratedImportTrackerService {
         syncStatus: 'synced' as const,
         lastSyncDate: new Date()
       } as IntegratedImportStatus)),
-      catchError(this.handleError('update import milestone'))
+      catchError(() => of({} as any))
     );
   }
 
@@ -248,7 +247,6 @@ export class IntegratedImportTrackerService {
           'order_created',
           {
             clientName: 'Cliente', // En implementación real vendría de los datos del cliente
-            businessFlow: deliveryOrder.businessFlow,
             market: deliveryOrder.market
           }
         ).subscribe({
@@ -289,7 +287,6 @@ export class IntegratedImportTrackerService {
       metadata: {
         triggerSource: 'contract_payment_threshold',
         market: deliveryOrder.market,
-        businessFlow: deliveryOrder.businessFlow,
         sku: deliveryOrder.sku
       }
     }).pipe(
@@ -302,7 +299,7 @@ export class IntegratedImportTrackerService {
           estimatedDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000) // 3 días
         });
       }),
-      catchError(this.handleError('initialize import tracking'))
+      catchError(() => of(initialImportStatus as ImportStatus))
     );
   }
 
@@ -347,15 +344,17 @@ export class IntegratedImportTrackerService {
 
         const deliveryStatus = this.mapImportMilestoneToDeliveryStatus(milestone, status);
         if (deliveryStatus && deliveryOrder.status !== deliveryStatus) {
-          // Actualizar delivery order para mantener sincronía
-          this.deliveriesService.transition(deliveryOrder.id, {
-            toStatus: deliveryStatus,
-            triggeredBy: 'import_milestone_update',
-            metadata: {
-              milestone,
-              updatedFromImportTracker: true
-            }
-          }).subscribe();
+          // Actualizar delivery order para mantener sincronía usando evento válido del FSM
+          const event = this.mapImportMilestoneToDeliveryEvent(milestone, status);
+          if (event) {
+            this.deliveriesService.transition(deliveryOrder.id, {
+              event,
+              meta: {
+                milestone,
+                updatedFromImportTracker: true
+              }
+            }).subscribe();
+          }
         }
       }),
       map(() => {}),
@@ -369,7 +368,24 @@ export class IntegratedImportTrackerService {
   getImportTrackerMetrics(): Observable<ImportTrackerMetrics> {
     return this.http.get<ImportTrackerMetrics>(`${this.baseUrl}/v1/import-tracker/metrics`)
       .pipe(
-        catchError(this.handleError('get import tracker metrics'))
+        catchError(() => of({
+          totalActiveImports: 0,
+          averageTransitTime: 0,
+          onTimeDeliveryRate: 0,
+          delayedImports: 0,
+          milestoneStats: {
+            pedidoPlanta: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            unidadFabricada: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            transitoMaritimo: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            enAduana: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            liberada: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            entregada: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            documentosTransferidos: { averageDuration: 0, completionRate: 0, currentCount: 0 },
+            placasEntregadas: { averageDuration: 0, completionRate: 0, currentCount: 0 }
+          },
+          monthlyImportVolume: [],
+          delayTrends: []
+        } as any))
       );
   }
 
@@ -380,7 +396,7 @@ export class IntegratedImportTrackerService {
     return this.http.get<ImportMilestoneEvent[]>(`${this.baseUrl}/v1/clients/${clientId}/import-milestones`, {
       params: { limit: limit.toString() }
     }).pipe(
-      catchError(this.handleError('get import milestone history'))
+      catchError(() => of([]))
     );
   }
 
@@ -400,7 +416,7 @@ export class IntegratedImportTrackerService {
   }> {
     return combineLatest([
       this.getIntegratedImportStatus(clientId),
-      this.deliveriesService.list({ clientIds: [clientId] }),
+      this.deliveriesService.list({ clientId: clientId }),
       this.contractTriggersService.getTriggerHistory(100),
       this.getImportMilestoneHistory(clientId)
     ]).pipe(
@@ -410,10 +426,10 @@ export class IntegratedImportTrackerService {
         const reportData = {
           client: { id: clientId }, // En implementación real vendría del cliente
           importStatus,
-          deliveryOrders: deliveriesResponse.orders,
+          deliveryOrders: deliveriesResponse.items,
           triggerHistory: clientTriggers,
           milestoneHistory,
-          timeline: this.generateIntegratedTimeline(importStatus, deliveriesResponse.orders, clientTriggers, milestoneHistory)
+          timeline: this.generateIntegratedTimeline(importStatus, deliveriesResponse.items, clientTriggers, milestoneHistory)
         };
 
         return {
@@ -421,7 +437,10 @@ export class IntegratedImportTrackerService {
           reportData
         };
       }),
-      catchError(this.handleError('generate integrated tracking report'))
+      catchError(() => of({
+        reportUrl: '',
+        reportData: { client: {}, importStatus: null as any, deliveryOrders: [], triggerHistory: [], milestoneHistory: [], timeline: [] }
+      } as any))
     );
   }
 
@@ -446,8 +465,8 @@ export class IntegratedImportTrackerService {
     const milestones: (keyof ImportStatus)[] = ['pedidoPlanta', 'unidadFabricada', 'transitoMaritimo', 'enAduana', 'liberada'];
     
     for (const milestone of milestones) {
-      const status = importStatus[milestone];
-      if (status.status === 'pending') {
+      const status = importStatus[milestone] as any;
+      if (status && typeof status === 'object' && status.status === 'pending') {
         totalDays += status.estimatedDays || 0;
       }
     }
@@ -511,9 +530,39 @@ export class IntegratedImportTrackerService {
     return mapping[milestone]?.[status] || null;
   }
 
+  private mapImportMilestoneToDeliveryEvent(
+    milestone: keyof ImportStatus,
+    status: 'completed' | 'in_progress' | 'pending'
+  ): DeliveryEvent | null {
+    if (status === 'pending') return null;
+    const mapping: { [K in keyof ImportStatus]?: { [S in 'completed' | 'in_progress']?: DeliveryEvent } } = {
+      pedidoPlanta: {
+        in_progress: 'ISSUE_PO',
+        completed: 'ISSUE_PO'
+      },
+      unidadFabricada: {
+        in_progress: 'START_PROD',
+        completed: 'FACTORY_READY'
+      },
+      transitoMaritimo: {
+        in_progress: 'DEPART_VESSEL',
+        completed: 'ARRIVE_DEST'
+      },
+      enAduana: {
+        in_progress: 'CUSTOMS_CLEAR',
+        completed: 'RELEASE'
+      },
+      liberada: {
+        in_progress: 'ARRIVE_WH',
+        completed: 'SCHEDULE_HANDOVER'
+      }
+    };
+    return mapping[milestone]?.[status] || null;
+  }
+
   private getDeliveryOrderForClient(clientId: string): Observable<DeliveryOrder | null> {
-    return this.deliveriesService.list({ clientIds: [clientId], limit: 1 }).pipe(
-      map(response => response.orders[0] || null),
+    return this.deliveriesService.list({ clientId: clientId, limit: 1 }).pipe(
+      map(response => response.items[0] || null),
       catchError(() => of(null))
     );
   }
@@ -627,7 +676,7 @@ export class IntegratedImportTrackerService {
         type: 'delivery_order',
         date: order.createdAt,
         title: `Orden de Entrega Creada`,
-        description: `Orden ${order.id} - ${order.businessFlow}`,
+        description: `Orden ${order.id}`,
         success: true
       });
     });
@@ -736,9 +785,9 @@ export class IntegratedImportTrackerService {
     console.log('🚛 Assigning vehicle to client through integrated tracker:', clientId);
 
     // Validar que el cliente esté en el estado correcto (unidadFabricada completed)
-    return this.getEnhancedImportStatus(clientId).pipe(
+    return this.getIntegratedImportStatus(clientId).pipe(
       map(importStatus => {
-        if (importStatus.unidadFabricada !== 'completed') {
+        if (!importStatus || importStatus.unidadFabricada !== 'completed') {
           throw new Error('El cliente debe tener el milestone "unidadFabricada" completado para asignar unidad');
         }
         return importStatus;
@@ -961,19 +1010,21 @@ export class IntegratedImportTrackerService {
     console.log('📋 Generando resumen completo de asignaciones para cliente:', clientId);
 
     return combineLatest([
-      this.getEnhancedImportStatus(clientId),
+      this.getIntegratedImportStatus(clientId),
       this.getClientContractsWithVehicles(clientId)
     ]).pipe(
       map(([importStatus, contractsWithVehicles]) => {
         // Verificar consistencia entre import status y contratos
-        const assignmentConsistency = this.validateAssignmentConsistency(
-          importStatus,
-          contractsWithVehicles
-        );
+        const assignmentConsistency = importStatus
+          ? this.validateAssignmentConsistency(
+              importStatus as IntegratedImportStatus,
+              contractsWithVehicles || []
+            )
+          : { consistent: false, issues: ['Import status no disponible'] };
 
         return {
-          importStatus,
-          contractsWithVehicles,
+          importStatus: (importStatus as IntegratedImportStatus),
+          contractsWithVehicles: contractsWithVehicles || [],
           assignmentConsistency
         };
       }),

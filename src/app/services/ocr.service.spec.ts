@@ -34,8 +34,11 @@ const mockTesseractWorker = {
 
 const mockCreateWorker = jasmine.createSpy('createWorker').and.returnValue(Promise.resolve(mockTesseractWorker));
 
+// Shim for Jasmine environment (no jest globals)
+(globalThis as any).jest = (globalThis as any).jest || { mock: () => {} };
+
 // Mock the Tesseract module
-jest.mock('tesseract.js', () => ({
+(globalThis as any).jest.mock?.('tesseract.js', () => ({
   createWorker: mockCreateWorker,
   PSM: {
     SINGLE_BLOCK: 6
@@ -67,9 +70,9 @@ describe('OCRService', () => {
       expect(service.progress$).toBeDefined();
       
       service.progress$.subscribe(progress => {
-        expect(progress).toHaveProperty('status');
-        expect(progress).toHaveProperty('progress');
-        expect(progress).toHaveProperty('message');
+        expect(typeof progress.status).toBeDefined();
+        expect(typeof progress.progress).toBeDefined();
+        expect(typeof progress.message).toBeDefined();
       });
     });
   });

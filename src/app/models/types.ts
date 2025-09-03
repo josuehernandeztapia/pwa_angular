@@ -40,6 +40,8 @@ export interface Document {
   tooltip?: string;
   // Additional properties for API operations (optional for compatibility)
   uploadedAt?: Date;
+  uploadDate?: Date; // legacy alias used in some services/specs
+  expirationDate?: Date; // used by validation service
   fileUrl?: string;
   fileName?: string;
   fileSize?: number;
@@ -113,7 +115,16 @@ export interface CollectiveCreditGroup {
   monthlyPaymentGoal?: number;
 }
 
-export type ImportMilestoneStatus = 'completed' | 'in_progress' | 'pending';
+export type ImportMilestoneSimple = 'completed' | 'in_progress' | 'pending';
+
+export interface ImportMilestoneDetailed {
+  status: ImportMilestoneSimple;
+  startedAt?: Date;
+  completedAt?: Date;
+  estimatedDays?: number;
+}
+
+export type ImportMilestoneStatus = ImportMilestoneSimple | ImportMilestoneDetailed;
 
 // POST-SALES SYSTEM TYPES
 export interface DeliveryData {
@@ -317,9 +328,9 @@ export type ImportStatus = {
     enAduana: ImportMilestoneStatus;
     liberada: ImportMilestoneStatus;
     // POST-SALES PHASES
-    entregada: ImportMilestoneStatus;
-    documentosTransferidos: ImportMilestoneStatus;
-    placasEntregadas: ImportMilestoneStatus;
+    entregada?: ImportMilestoneStatus;
+    documentosTransferidos?: ImportMilestoneStatus;
+    placasEntregadas?: ImportMilestoneStatus;
     // Unidad asignada cuando se completa unidadFabricada
     assignedUnit?: VehicleUnit;
     // Post-sales delivery data
