@@ -233,6 +233,9 @@ export class VehicleAssignmentService {
           transitoMaritimo: 'pending',
           enAduana: 'pending',
           liberada: 'pending',
+          entregada: 'pending',
+          documentosTransferidos: 'pending',
+          placasEntregadas: 'pending',
           assignedUnit: unit
         }
       };

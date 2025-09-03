@@ -73,7 +73,7 @@ export class HttpClientService {
     const fullUrl = this.buildUrl(url);
     const httpOptions = this.buildHttpOptions(options);
 
-    return this.http.get<ApiResponse<T>>(fullUrl, httpOptions).pipe(
+    return this.http.get<ApiResponse<T>>(fullUrl, { ...httpOptions, observe: 'body' as const }).pipe(
       retry(this.maxRetries),
       tap(response => this.handleSuccess(response)),
       catchError(error => this.handleError(error, showError)),
@@ -103,7 +103,7 @@ export class HttpClientService {
     const fullUrl = this.buildUrl(url);
     const httpOptions = this.buildHttpOptions(options);
 
-    return this.http.post<ApiResponse<T>>(fullUrl, body, httpOptions).pipe(
+    return this.http.post<ApiResponse<T>>(fullUrl, body, { ...httpOptions, observe: 'body' as const }).pipe(
       retry(1), // POST requests typically shouldn't be retried as aggressively
       tap(response => {
         this.handleSuccess(response);
@@ -138,7 +138,7 @@ export class HttpClientService {
     const fullUrl = this.buildUrl(url);
     const httpOptions = this.buildHttpOptions(options);
 
-    return this.http.put<ApiResponse<T>>(fullUrl, body, httpOptions).pipe(
+    return this.http.put<ApiResponse<T>>(fullUrl, body, { ...httpOptions, observe: 'body' as const }).pipe(
       tap(response => {
         this.handleSuccess(response);
         if (successMessage) {
@@ -172,7 +172,7 @@ export class HttpClientService {
     const fullUrl = this.buildUrl(url);
     const httpOptions = this.buildHttpOptions(options);
 
-    return this.http.delete<ApiResponse<T>>(fullUrl, httpOptions).pipe(
+    return this.http.delete<ApiResponse<T>>(fullUrl, { ...httpOptions, observe: 'body' as const }).pipe(
       tap(response => {
         this.handleSuccess(response);
         if (successMessage) {
