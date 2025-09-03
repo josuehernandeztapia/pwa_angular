@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import Tesseract, { Worker, createWorker } from 'tesseract.js';
 
@@ -38,8 +38,17 @@ export class OCRService {
   private isInitialized = false;
   private progressSubject = new BehaviorSubject<OCRProgress>({ status: 'idle', progress: 0, message: '' });
   
+  // Injection token for tesseract.js createWorker
+  static readonly CREATE_WORKER_TOKEN: InjectionToken<typeof createWorker> =
+    new InjectionToken<typeof createWorker>('TESSERACT_CREATE_WORKER', {
+      providedIn: 'root',
+      factory: () => createWorker
+    });
+
   // Allow injecting createWorker for easier testing/mocking
-  constructor(private createWorkerFn: typeof createWorker = createWorker) {}
+  constructor(
+    @Inject(OCRService.CREATE_WORKER_TOKEN) private createWorkerFn: typeof createWorker
+  ) {}
   
   public progress$ = this.progressSubject.asObservable();
 
