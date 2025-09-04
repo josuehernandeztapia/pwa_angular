@@ -176,9 +176,8 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/orders`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders`);
       expect(req.request.method).toBe('POST');
-      expect(req.request.headers.get('Authorization')).toContain('Basic');
       expect(req.request.body).toEqual({
         currency: 'MXN',
         customer_info: {
@@ -218,7 +217,7 @@ describe('ConektaPaymentService', () => {
         }
       });
 
-      const req = httpMock.expectOne(`https://api.conekta.io/orders`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders`);
       req.flush(errorResponse.error, { 
         status: 400, 
         statusText: 'Bad Request'
@@ -267,7 +266,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/checkouts`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/checkouts`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body.allowed_payment_methods).toContain('cash');
       expect(req.request.body.orders_template.customer_info.name).toBe('Maria Garcia');
@@ -283,7 +282,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/checkouts`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/checkouts`);
       expect(req.request.body.expires_at).toBeGreaterThan(Date.now());
       
       req.flush(mockPaymentLinkResponse);
@@ -312,7 +311,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body).toEqual(mockCustomerData);
 
@@ -327,7 +326,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers/cus_test_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers/cus_test_123`);
       expect(req.request.method).toBe('PUT');
       expect(req.request.body).toEqual(updates);
 
@@ -340,7 +339,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers/cus_test_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers/cus_test_123`);
       expect(req.request.method).toBe('GET');
 
       req.flush(mockCustomerResponse);
@@ -384,7 +383,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/plans`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/plans`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body).toEqual(mockPlanData);
 
@@ -398,7 +397,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers/cus_test_123/subscriptions`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers/cus_test_123/subscriptions`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body.plan).toBe('plan_test_123');
 
@@ -411,7 +410,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers/cus_test_123/subscriptions/sub_test_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers/cus_test_123/subscriptions/sub_test_123`);
       expect(req.request.method).toBe('GET');
 
       req.flush(mockSubscriptionResponse);
@@ -423,7 +422,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers/cus_test_123/subscriptions/sub_test_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers/cus_test_123/subscriptions/sub_test_123`);
       expect(req.request.method).toBe('PUT');
       expect(req.request.body.status).toBe('paused');
 
@@ -436,7 +435,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/customers/cus_test_123/subscriptions/sub_test_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/customers/cus_test_123/subscriptions/sub_test_123`);
       expect(req.request.method).toBe('PUT');
       expect(req.request.body.status).toBe('canceled');
 
@@ -479,7 +478,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/orders?limit=50`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders?limit=50`);
       expect(req.request.method).toBe('GET');
 
       req.flush(mockPaymentHistory);
@@ -491,7 +490,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/orders?limit=10&customer_info.customer_id=cus_test_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders?limit=10&customer_info.customer_id=cus_test_123`);
       expect(req.request.method).toBe('GET');
 
       req.flush(mockPaymentHistory);
@@ -506,7 +505,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/orders/ord_123`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders/ord_123`);
       expect(req.request.method).toBe('GET');
 
       req.flush(mockPayment);
@@ -583,7 +582,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/checkouts`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/checkouts`);
       expect(req.request.body.orders_template.line_items[0].unit_price).toBe(7500000); // amount * 100
       expect(req.request.body.orders_template.metadata.payment_type).toBe('down_payment');
       expect(req.request.body.expires_at).toBeLessThan(Date.now() + (4 * 24 * 60 * 60 * 1000)); // Less than 4 days
@@ -615,7 +614,7 @@ describe('ConektaPaymentService', () => {
         }
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/plans`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/plans`);
       req.error(new ErrorEvent('Plan creation failed'), { status: 400, statusText: 'Bad Request' });
     });
   });
@@ -628,7 +627,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/orders`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders`);
       expect(req.request.body.line_items[0].unit_price).toBe(10000);
       expect(req.request.body.charges[0].payment_method.token).toBe('tok_test_visa_4242');
       expect(req.request.body.metadata.test).toBe('true');
@@ -652,7 +651,7 @@ describe('ConektaPaymentService', () => {
         done();
       });
 
-      const req = httpMock.expectOne(`${mockEnvironment.services.conekta.baseUrl}/orders`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders`);
       expect(req.request.body.line_items[0].unit_price).toBe(25000);
 
       req.flush({
@@ -687,7 +686,7 @@ describe('ConektaPaymentService', () => {
         }
       });
 
-      const req = httpMock.expectOne(`https://api.conekta.io/orders`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders`);
       req.flush({ message: 'Simple error message' }, {
         status: 400,
         statusText: 'Bad Request'
@@ -711,7 +710,7 @@ describe('ConektaPaymentService', () => {
         }
       });
 
-      const req = httpMock.expectOne(`https://api.conekta.io/orders`);
+      const req = httpMock.expectOne(`${environment.apiUrl}/payments/orders`);
       req.flush('Network error occurred', {
         status: 500,
         statusText: 'Internal Server Error'
