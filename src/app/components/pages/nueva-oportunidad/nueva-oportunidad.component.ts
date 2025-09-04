@@ -24,73 +24,53 @@ interface WizardStep {
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   template: `
-    <div class="nueva-oportunidad-container">
-      <div class="header-section">
+    <div class="nueva-oportunidad-container premium-container">
+      <div class="premium-card" style="margin-bottom: 16px;">
         <div class="breadcrumb">
-          <button class="back-btn" (click)="goBack()">
+          <button class="premium-button outline" (click)="goBack()">
             ⬅️ Regresar
           </button>
-          <h1>➕ Nueva Oportunidad</h1>
-          <div class="smart-context" *ngIf="smartContext.market || smartContext.suggestedFlow">
-            <span class="context-tag" *ngIf="smartContext.market">
-              📍 {{ getMarketName(smartContext.market) }}
-            </span>
-            <span class="context-tag" *ngIf="smartContext.suggestedFlow">
-              🎯 {{ smartContext.suggestedFlow === 'COTIZACION' ? 'Sugerido: Cotizador' : 'Sugerido: Simulador' }}
-            </span>
-          </div>
         </div>
-        <p class="subtitle">
+        <h1 class="command-title">💎 Generador de Oportunidades Inteligente</h1>
+        <p class="intelligence-subtitle">
           {{ smartContext.market 
             ? ('Creando oportunidad para ' + getMarketName(smartContext.market) + ' con contexto inteligente del Dashboard')
             : 'El primer paso para ayudar a un transportista a obtener su unidad' }}
         </p>
-        
-        <!-- Progress Indicator -->
-        <div class="progress-indicator">
-          <div class="progress-bar">
-            <div class="progress-fill" [style.width.%]="getProgressPercentage()"></div>
-          </div>
-          <div class="progress-steps">
-            <span 
-              *ngFor="let step of visibleSteps; let i = index" 
-              class="step"
-              [class.active]="getStepStatus(i) === 'current'"
-              [class.completed]="getStepStatus(i) === 'completed'"
-              [class.pending]="getStepStatus(i) === 'pending'"
-            >
-              <span class="step-icon">{{ getStepIcon(i) }}</span>
-              <span class="step-label">{{ step.label }}</span>
-              <span class="step-progress" *ngIf="getStepStatus(i) === 'current' && currentStepProgress > 0">
-                ({{ (currentStepProgress * 100) | number:'1.0-0' }}%)
-              </span>
-            </span>
-          </div>
+        <div class="smart-context" *ngIf="smartContext.market || smartContext.suggestedFlow">
+          <span class="premium-badge" *ngIf="smartContext.market">
+            📍 {{ getMarketName(smartContext.market) }}
+          </span>
+          <span class="premium-badge success" *ngIf="smartContext.suggestedFlow">
+            🎯 {{ smartContext.suggestedFlow === 'COTIZACION' ? 'Sugerido: Cotizador' : 'Sugerido: Simulador' }}
+          </span>
         </div>
-        
-        <!-- Draft Recovery Banner -->
-        <div class="draft-banner" *ngIf="hasDraftAvailable && !draftRecovered">
-          <div class="banner-content">
-            <span class="banner-icon">💾</span>
-            <div class="banner-text">
-              <strong>Borrador encontrado</strong>
-              <p>Tienes una oportunidad sin terminar del {{ formatDraftDate(draftData.timestamp) }}</p>
-            </div>
-            <div class="banner-actions">
-              <button class="btn-link" (click)="recoverDraft()">Continuar</button>
-              <button class="btn-link secondary" (click)="discardDraft()">Descartar</button>
-            </div>
-          </div>
+
+        <!-- Premium Progress Indicator -->
+        <div class="intelligent-progress" style="margin-top: 16px;">
+          <div class="progress-fill" [style.width.%]="getProgressPercentage()"></div>
+        </div>
+        <div class="progress-steps" style="display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;">
+          <span 
+            *ngFor="let step of visibleSteps; let i = index" 
+            class="premium-badge"
+            [class.success]="getStepStatus(i) === 'completed'"
+            [class.warning]="getStepStatus(i) === 'current'"
+          >
+            <span class="step-icon">{{ getStepIcon(i) }}</span>
+            <span class="step-label">{{ step.label }}</span>
+            <span class="step-progress" *ngIf="getStepStatus(i) === 'current' && currentStepProgress > 0">
+              ({{ (currentStepProgress * 100) | number:'1.0-0' }}%)
+            </span>
+          </span>
         </div>
       </div>
 
       <div class="form-container">
         <form [formGroup]="opportunityForm" (ngSubmit)="onSubmit()" class="opportunity-form">
-          
           <!-- Step 1: Client Information -->
-          <div class="form-section">
-            <h2>👤 Información del Cliente</h2>
-            
+          <div class="form-section premium-card">
+            <h2 class="section-title">👤 Información del Cliente</h2>
             <div class="form-group">
               <label for="clientName">Nombre Completo *</label>
               <div class="smart-input-container">
@@ -98,7 +78,7 @@ interface WizardStep {
                   id="clientName"
                   type="text"
                   formControlName="clientName"
-                  class="form-input"
+                  class="form-input premium-input"
                   [class.error]="isFieldInvalid('clientName')"
                   [class.checking]="isCheckingDuplicates"
                   [class.has-suggestions]="clientSuggestions.length > 0"
@@ -111,7 +91,6 @@ interface WizardStep {
                 <div class="input-status" *ngIf="isCheckingDuplicates">
                   <span class="checking-icon">🔍</span>
                 </div>
-                
                 <!-- Intelligent Autocomplete Dropdown -->
                 <div class="autocomplete-dropdown" *ngIf="showSuggestions && clientSuggestions.length > 0">
                   <div class="suggestion-header">
@@ -142,34 +121,6 @@ interface WizardStep {
                   </div>
                 </div>
               </div>
-              
-              <!-- Similar Clients Warning -->
-              <div class="similar-clients-warning" *ngIf="similarClients.length > 0">
-                <div class="warning-header">
-                  <span class="warning-icon">⚠️</span>
-                  <strong>Clientes similares encontrados</strong>
-                </div>
-                <div class="similar-clients-list">
-                  <div 
-                    *ngFor="let client of similarClients" 
-                    class="similar-client-item"
-                    (click)="selectSimilarClient(client)"
-                  >
-                    <div class="client-avatar">{{ getClientInitials(client.name) }}</div>
-                    <div class="client-info">
-                      <div class="client-name">{{ client.name }}</div>
-                      <div class="client-details">{{ client.phone || 'Sin teléfono' }} • {{ client.market || 'Sin mercado' }}</div>
-                    </div>
-                    <button type="button" class="btn-use-client">Usar este cliente</button>
-                  </div>
-                </div>
-                <div class="continue-anyway">
-                  <button type="button" class="btn-link" (click)="clearSimilarClients()">
-                    Continuar con cliente nuevo
-                  </button>
-                </div>
-              </div>
-              
               <div *ngIf="isFieldInvalid('clientName')" class="error-message">
                 <span *ngIf="opportunityForm.get('clientName')?.errors?.['required']">
                   El nombre del cliente es requerido
@@ -179,334 +130,8 @@ interface WizardStep {
                 </span>
               </div>
             </div>
-
-            <div class="form-row priority-contact">
-              <div class="form-group primary-contact">
-                <label for="phone" class="primary-label">
-                  📱 WhatsApp *
-                  <span class="contact-priority">Principal vía de contacto</span>
-                </label>
-                <div class="whatsapp-input">
-                  <span class="country-prefix">🇲🇽 +52</span>
-                  <input
-                    id="phone"
-                    type="tel"
-                    formControlName="phone"
-                    class="form-input whatsapp-field"
-                    [class.error]="isFieldInvalid('phone')"
-                    placeholder="55 1234 5678"
-                    maxlength="12"
-                  >
-                  <span class="whatsapp-icon">💬</span>
-                </div>
-                <div *ngIf="isFieldInvalid('phone')" class="error-message">
-                  <span *ngIf="opportunityForm.get('phone')?.errors?.['required']">
-                    El número de WhatsApp es requerido para contacto
-                  </span>
-                  <span *ngIf="opportunityForm.get('phone')?.errors?.['mexicanPhone']">
-                    Formato inválido. Ej: 55 1234 5678
-                  </span>
-                </div>
-              </div>
-
-              <div class="form-group secondary-contact">
-                <label for="email" class="secondary-label">
-                  📧 Email
-                  <span class="contact-optional">Opcional</span>
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  formControlName="email"
-                  class="form-input email-field"
-                  [class.error]="isFieldInvalid('email')"
-                  placeholder="cliente@correo.com"
-                >
-                <div *ngIf="isFieldInvalid('email')" class="error-message">
-                  <span *ngIf="opportunityForm.get('email')?.errors?.['email']">
-                    Formato de email inválido
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2: Opportunity Type Selection -->
-          <div class="form-section">
-            <h2>🎯 ¿Qué quieres modelar para {{ clientNameValue || 'este cliente' }}?</h2>
-            <p class="section-description">
-              Selecciona el tipo de oportunidad que mejor se adapte a las necesidades del cliente
-            </p>
-
-            <div class="opportunity-cards">
-              <div 
-                class="opportunity-card"
-                [class.selected]="opportunityType === 'COTIZACION'"
-                [class.suggested]="smartContext.suggestedFlow === 'COTIZACION'"
-                (click)="selectOpportunityType('COTIZACION')"
-              >
-                <div class="card-icon">💰</div>
-                <div class="card-content">
-                  <h3>Adquisición de Unidad</h3>
-                  <p>Cliente listo para comprar. Generar cotización rápida y transparente.</p>
-                  <div class="card-tag">Modo Cotizador</div>
-                </div>
-              </div>
-
-              <div 
-                class="opportunity-card"
-                [class.selected]="opportunityType === 'SIMULACION'"
-                [class.suggested]="smartContext.suggestedFlow === 'SIMULACION'"
-                (click)="selectOpportunityType('SIMULACION')"
-              >
-                <div class="card-icon">🎯</div>
-                <div class="card-content">
-                  <h3>Plan de Ahorro</h3>
-                  <p>Modelar capacidad de ahorro y proyecciones financieras.</p>
-                  <div class="card-tag">Modo Simulador</div>
-                </div>
-              </div>
-            </div>
-
-            <div *ngIf="opportunityTypeError" class="error-message">
-              Debe seleccionar un tipo de oportunidad
-            </div>
-          </div>
-
-          <!-- Step 3: Dynamic Market Configuration -->
-          <div class="form-section" *ngIf="opportunityType && shouldShowStep('market')">
-            <h2>{{ getMarketStepTitle() }}</h2>
-            <p class="section-description">{{ getMarketStepDescription() }}</p>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="market">Mercado *</label>
-                <select
-                  id="market"
-                  formControlName="market"
-                  class="form-select"
-                  [class.error]="isFieldInvalid('market')"
-                  (change)="onMarketChange()"
-                >
-                  <option value="">Seleccionar mercado...</option>
-                  <option value="aguascalientes">🌵 Aguascalientes</option>
-                  <option value="edomex">🏔️ Estado de México</option>
-                </select>
-                <div *ngIf="isFieldInvalid('market')" class="error-message">
-                  <span *ngIf="opportunityForm.get('market')?.errors?.['required']">
-                    El mercado es requerido
-                  </span>
-                </div>
-              </div>
-
-              <!-- Municipality selector (only for EdoMex) -->
-              <div class="form-group" *ngIf="marketValue === 'edomex'">
-                <label for="municipality">Municipio *</label>
-                <select
-                  id="municipality"
-                  formControlName="municipality"
-                  class="form-select"
-                  [class.error]="isFieldInvalid('municipality')"
-                >
-                  <option value="">Seleccionar municipio...</option>
-                  
-                  <!-- ZMVM Municipalities -->
-                  <optgroup label="Zona Metropolitana">
-                    <option value="ecatepec">Ecatepec de Morelos</option>
-                    <option value="nezahualcoyotl">Ciudad Nezahualcóyotl</option>
-                    <option value="naucalpan">Naucalpan de Juárez</option>
-                    <option value="tlalnepantla">Tlalnepantla de Baz</option>
-                    <option value="chimalhuacan">Chimalhuacán</option>
-                    <option value="valle_chalco">Valle de Chalco Solidaridad</option>
-                    <option value="la_paz">La Paz</option>
-                    <option value="ixtapaluca">Ixtapaluca</option>
-                    <option value="coacalco">Coacalco de Berriozábal</option>
-                    <option value="tultitlan">Tultitlán</option>
-                    <option value="cuautitlan_izcalli">Cuautitlán Izcalli</option>
-                    <option value="atizapan">Atizapán de Zaragoza</option>
-                  </optgroup>
-                  
-                  <!-- Central Zone -->
-                  <optgroup label="Zona Central">
-                    <option value="toluca">Toluca de Lerdo</option>
-                    <option value="metepec">Metepec</option>
-                    <option value="lerma">Lerma</option>
-                    <option value="zinacantepec">Zinacantepec</option>
-                    <option value="almoloya_juarez">Almoloya de Juárez</option>
-                  </optgroup>
-                  
-                  <!-- Eastern Zone -->
-                  <optgroup label="Zona Oriente">
-                    <option value="texcoco">Texcoco</option>
-                    <option value="chalco">Chalco</option>
-                    <option value="chicoloapan">Chicoloapan</option>
-                  </optgroup>
-                  
-                  <!-- Northern Zone -->
-                  <optgroup label="Zona Norte">
-                    <option value="tepotzotlan">Tepotzotlán</option>
-                    <option value="villa_nicolas_romero">Villa Nicolás Romero</option>
-                    <option value="isidro_fabela">Isidro Fabela</option>
-                  </optgroup>
-                  
-                  <!-- Southern Zone -->
-                  <optgroup label="Zona Sur">
-                    <option value="valle_bravo">Valle de Bravo</option>
-                    <option value="temascaltepec">Temascaltepec</option>
-                    <option value="tejupilco">Tejupilco</option>
-                  </optgroup>
-                </select>
-                <div *ngIf="isFieldInvalid('municipality')" class="error-message">
-                  <span *ngIf="opportunityForm.get('municipality')?.errors?.['required']">
-                    El municipio es requerido para Estado de México
-                  </span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="clientType">Tipo de Cliente *</label>
-                <select
-                  id="clientType"
-                  formControlName="clientType"
-                  class="form-select"
-                  [class.error]="isFieldInvalid('clientType')"
-                >
-                  <option value="">Seleccionar tipo...</option>
-                  <option value="Individual">👤 Individual</option>
-                  <option value="Colectivo">👥 Colectivo (Tanda)</option>
-                </select>
-                <div *ngIf="isFieldInvalid('clientType')" class="error-message">
-                  <span *ngIf="opportunityForm.get('clientType')?.errors?.['required']">
-                    El tipo de cliente es requerido
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Business Flow (determined automatically) -->
-            <div class="info-card" *ngIf="marketValue && clientTypeValue">
-              <div class="info-icon">ℹ️</div>
-              <div class="info-content">
-                <h4>Flujo de Negocio Sugerido</h4>
-                <p>
-                  <strong>{{ getBusinessFlowLabel() }}</strong> - 
-                  {{ getBusinessFlowDescription() }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 4: Ecosystem Selection (EdoMex Only) -->
-          <div class="form-section" *ngIf="shouldShowStep('ecosystem')">
-            <h2>🏪 Selección de Ecosistema</h2>
-            <p class="section-description">
-              En Estado de México, los clientes se organizan por ecosistemas territoriales
-            </p>
-
-            <div class="ecosystem-cards">
-              <div 
-                *ngFor="let ecosystem of getAvailableEcosystems()" 
-                class="ecosystem-card"
-                [class.selected]="selectedEcosystem === ecosystem.id"
-                (click)="selectEcosystem(ecosystem.id)"
-              >
-                <div class="ecosystem-icon">{{ ecosystem.icon }}</div>
-                <div class="ecosystem-content">
-                  <h3>{{ ecosystem.name }}</h3>
-                  <p>{{ ecosystem.description }}</p>
-                  <div class="ecosystem-stats">
-                    <span class="stat">{{ ecosystem.activeClients }} activos</span>
-                    <span class="stat">{{ ecosystem.avgSavings }}% ahorro promedio</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Step 4: Additional Notes -->
-          <div class="form-section" *ngIf="opportunityType && marketValue">
-            <h2>📝 Notas Adicionales</h2>
-            
-            <div class="form-group">
-              <label for="notes">Observaciones</label>
-              <textarea
-                id="notes"
-                formControlName="notes"
-                class="form-textarea"
-                rows="4"
-                placeholder="Información adicional sobre el cliente o la oportunidad..."
-              ></textarea>
-            </div>
-          </div>
-
-          <!-- Form Actions -->
-          <div class="form-actions" *ngIf="opportunityType">
-            <button 
-              type="button" 
-              class="btn-secondary"
-              (click)="saveDraft()"
-              [disabled]="isLoading"
-            >
-              📄 Guardar Borrador
-            </button>
-            
-            <button 
-              type="submit" 
-              class="btn-primary"
-              [disabled]="opportunityForm.invalid || isLoading"
-            >
-              <span *ngIf="!isLoading">
-                {{ opportunityType === 'COTIZACION' ? '💰 Continuar a Cotizador' : '🎯 Continuar a Simulador' }}
-              </span>
-              <span *ngIf="isLoading" class="loading">
-                ⏳ Procesando...
-              </span>
-            </button>
           </div>
         </form>
-
-        <!-- Helper Sidebar -->
-        <div class="helper-sidebar">
-          <div class="helper-card">
-            <h3>💡 Guía Rápida</h3>
-            
-            <div class="helper-section">
-              <h4>🎯 ¿Cuándo usar Cotizador?</h4>
-              <ul>
-                <li>Cliente con decisión de compra</li>
-                <li>Tiene claridad sobre enganche</li>
-                <li>Necesita información de pagos</li>
-              </ul>
-            </div>
-
-            <div class="helper-section">
-              <h4>📊 ¿Cuándo usar Simulador?</h4>
-              <ul>
-                <li>Cliente explora opciones</li>
-                <li>Necesita planear ahorro</li>
-                <li>Quiere ver proyecciones</li>
-              </ul>
-            </div>
-
-            <div class="helper-section">
-              <h4>🏪 Diferencias por Mercado</h4>
-              <div class="market-comparison">
-                <div class="market-item">
-                  <strong>Aguascalientes:</strong>
-                  <span>Plazos: 12-24 meses</span>
-                  <span>Enganche: 20% mín.</span>
-                </div>
-                <div class="market-item">
-                  <strong>Estado de México:</strong>
-                  <span>Plazos: 48-60 meses</span>
-                  <span>Individual: 25% mín.</span>
-                  <span>Colectivo: 15% mín.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   `,
