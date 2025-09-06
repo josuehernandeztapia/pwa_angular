@@ -1,0 +1,150 @@
+# State machine specification for both plazas: Nacional y Importacion
+version: 1.0.0
+metadata:
+  name: core_business_flow
+  description: Flujo E2E desde inicio a postventa para todos los productos
+  owners:
+    - area: Comercial
+    - area: Operaciones
+    - area: Legal
+    - area: Logistica
+  last_updated: 2025-09-06
+roles:
+  - AsesorComercial
+  - BackOffice
+  - LegalCompliance
+  - Logistica
+  - PostVenta
+  - Finanzas
+  - Admin
+
+guards:
+  documentosMinimosCompletos: "documentChecklist.complete == true"
+  aprobacionesSinPendientes: "approvals.pendingCount == 0"
+  kycAprobado: "onboarding.kyc.status == 'aprobado'"
+  amlSinAlertas: "onboarding.aml.alertasCriticas == 0"
+  margenDentroUmbral: "pricing.margen >= rules.minMargen"
+  descuentoAutorizado: "pricing.descuentoTotal <= rules.descuentoMax && approvals.descuentosAutorizados == true"
+  contratoFirmado: "contract.status == 'firmado' && contract.firmantesCompletos == true"
+  aviVigente: "avi.required == true ? avi.status == 'vigente' : true"
+  hitosLogisticosCompletos: "logistica.hitos.estadoFinal == 'entregado'"
+  entregaActivada: "operacion.entrega.estado == 'aceptada' || operacion.activacion.estado == 'activa'"
+  checkSinTareasPendientes: "tasks.openCount == 0"
+  escenarioAprobado: "simulation.selected.status == 'aprobado'"
+  monedaYTcValidados: "importacion ? pricing.moneda != null && pricing.tipoCambioValido == true : true"
+  incotermValido: "importacion ? pricing.incoterm in ['EXW','FOB','CIF','DAP','DDP'] : true"
+  datosMinimosOportunidad: "opportunity.nombre && opportunity.clienteId && opportunity.cierreEstimado"
+
+supported_events:
+  next: Avanzar a la siguiente etapa
+  back: Volver a la etapa anterior
+  reopen: Reabrir etapa previa por corrección
+  cancel: Cancelar y archivar la oportunidad
+
+common_states: &common
+  inicio:
+    allowed_roles: [AsesorComercial, BackOffice, Admin]
+    entry_requirements: []
+    exit_requirements: []
+  mercado:
+    allowed_roles: [AsesorComercial, BackOffice]
+    entry_requirements: []
+    exit_requirements: ["segmentoSeleccionado", "plazaSeleccionada"]
+  producto:
+    allowed_roles: [AsesorComercial]
+    entry_requirements: ["segmentoSeleccionado"]
+    exit_requirements: ["productoSeleccionado"]
+  cotizador:
+    allowed_roles: [AsesorComercial, BackOffice]
+    entry_requirements: ["productoSeleccionado"]
+    exit_requirements: [margenDentroUmbral, descuentoAutorizado]
+  simulador:
+    allowed_roles: [AsesorComercial]
+    entry_requirements: []
+    exit_requirements: [escenarioAprobado]
+  onboarding:
+    allowed_roles: [BackOffice, LegalCompliance]
+    entry_requirements: []
+    exit_requirements: [kycAprobado, amlSinAlertas]
+  oportunidad:
+    allowed_roles: [AsesorComercial]
+    entry_requirements: [datosMinimosOportunidad]
+    exit_requirements: []
+  documentos:
+    allowed_roles: [BackOffice, LegalCompliance]
+    entry_requirements: []
+    exit_requirements: [documentosMinimosCompletos]
+  contratos:
+    allowed_roles: [AsesorComercial, LegalCompliance]
+    entry_requirements: []
+    exit_requirements: [contratoFirmado]
+  entrega_activacion:
+    allowed_roles: [BackOffice]
+    entry_requirements: [contratoFirmado]
+    exit_requirements: [entregaActivada]
+  postventa:
+    allowed_roles: [PostVenta]
+    entry_requirements: []
+    exit_requirements: []
+  cerrada:
+    allowed_roles: [Admin, BackOffice]
+    entry_requirements: []
+    exit_requirements: []
+
+plazas:
+  nacional:
+    description: Flujo para ventas/entregas nacionales
+    importacion: false
+    states:
+      <<: *common
+    transitions:
+      - { from: inicio, to: mercado, event: next, roles: [AsesorComercial, BackOffice] }
+      - { from: mercado, to: producto, event: next, roles: [AsesorComercial], guards: ["segmentoSeleccionado == true"] }
+      - { from: producto, to: cotizador, event: next, roles: [AsesorComercial] }
+      - { from: cotizador, to: simulador, event: next, roles: [AsesorComercial], guards: [margenDentroUmbral, descuentoAutorizado] }
+      - { from: simulador, to: onboarding, event: next, roles: [AsesorComercial, BackOffice], guards: [escenarioAprobado] }
+      - { from: onboarding, to: oportunidad, event: next, roles: [BackOffice], guards: [kycAprobado, amlSinAlertas] }
+      - { from: oportunidad, to: documentos, event: next, roles: [BackOffice], guards: [datosMinimosOportunidad] }
+      - { from: documentos, to: contratos, event: next, roles: [LegalCompliance], guards: [documentosMinimosCompletos, aprobacionesSinPendientes] }
+      - { from: contratos, to: entrega_activacion, event: next, roles: [AsesorComercial, BackOffice], guards: [contratoFirmado] }
+      - { from: entrega_activacion, to: postventa, event: next, roles: [BackOffice], guards: [entregaActivada, checkSinTareasPendientes] }
+      - { from: postventa, to: cerrada, event: next, roles: [PostVenta, BackOffice], guards: [checkSinTareasPendientes] }
+      - { from: producto, to: mercado, event: back, roles: [AsesorComercial] }
+      - { from: cotizador, to: producto, event: back, roles: [AsesorComercial] }
+      - { from: simulador, to: cotizador, event: back, roles: [AsesorComercial] }
+      - { from: onboarding, to: simulador, event: back, roles: [BackOffice] }
+      - { from: documentos, to: onboarding, event: reopen, roles: [LegalCompliance] }
+      - { from: contratos, to: documentos, event: reopen, roles: [LegalCompliance] }
+
+  importacion:
+    description: Flujo con AVI y seguimiento logístico de importación
+    importacion: true
+    states:
+      <<: *common
+      avi:
+        allowed_roles: [LegalCompliance, BackOffice]
+        entry_requirements: []
+        exit_requirements: [aviVigente]
+      seguimiento_importacion:
+        allowed_roles: [Logistica]
+        entry_requirements: [contratoFirmado]
+        exit_requirements: [hitosLogisticosCompletos]
+    transitions:
+      - { from: inicio, to: mercado, event: next, roles: [AsesorComercial, BackOffice] }
+      - { from: mercado, to: producto, event: next, roles: [AsesorComercial], guards: ["segmentoSeleccionado == true"] }
+      - { from: producto, to: cotizador, event: next, roles: [AsesorComercial] }
+      - { from: cotizador, to: simulador, event: next, roles: [AsesorComercial], guards: [margenDentroUmbral, descuentoAutorizado, monedaYTcValidados, incotermValido] }
+      - { from: simulador, to: onboarding, event: next, roles: [AsesorComercial, BackOffice], guards: [escenarioAprobado] }
+      - { from: onboarding, to: oportunidad, event: next, roles: [BackOffice], guards: [kycAprobado, amlSinAlertas] }
+      - { from: oportunidad, to: documentos, event: next, roles: [BackOffice], guards: [datosMinimosOportunidad] }
+      - { from: documentos, to: avi, event: next, roles: [LegalCompliance], guards: [documentosMinimosCompletos] }
+      - { from: avi, to: contratos, event: next, roles: [LegalCompliance], guards: [aviVigente] }
+      - { from: contratos, to: seguimiento_importacion, event: next, roles: [BackOffice, Logistica], guards: [contratoFirmado] }
+      - { from: seguimiento_importacion, to: postventa, event: next, roles: [Logistica], guards: [hitosLogisticosCompletos, checkSinTareasPendientes] }
+      - { from: postventa, to: cerrada, event: next, roles: [PostVenta, BackOffice], guards: [checkSinTareasPendientes] }
+      - { from: cotizador, to: producto, event: back, roles: [AsesorComercial] }
+      - { from: simulador, to: cotizador, event: back, roles: [AsesorComercial] }
+      - { from: onboarding, to: simulador, event: back, roles: [BackOffice] }
+      - { from: documentos, to: onboarding, event: reopen, roles: [LegalCompliance] }
+      - { from: avi, to: documentos, event: reopen, roles: [LegalCompliance] }
+      - { from: contratos, to: avi, event: reopen, roles: [LegalCompliance] }

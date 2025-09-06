@@ -1,0 +1,48 @@
+# AVI process specification
+version: 1.0.0
+metadata:
+  name: avi_process
+  last_updated: 2025-09-06
+
+applicability:
+  required_when: "plaza == 'importacion'"
+
+inputs:
+  producto: { required: true }
+  proveedor: { required: true }
+  pais_origen: { required: true }
+  fraccion_arancelaria: { required: true }
+  valor_aduana: { required: true }
+  incoterm: { required: true }
+
+validations:
+  - rule: fraccion_arancelaria formato valido
+  - rule: pais_origen permitido para producto
+  - rule: valor_aduana > 0
+  - rule: incoterm en [EXW, FOB, CIF, DAP, DDP]
+
+outputs:
+  numero_avi: string
+  vigencia_meses: 12
+  estado:
+    - borrador
+    - enviado
+    - aprobado
+    - rechazado
+    - vencido
+
+workflow:
+  - id: preparar_expediente
+    by: BackOffice
+  - id: revision_compliance
+    by: LegalCompliance
+  - id: emision_avi
+    by: LegalCompliance
+  - id: control_vigencia
+    by: BackOffice
+
+sla_days:
+  preparar_expediente: 2
+  revision_compliance: 2
+  emision_avi: 3
+  control_vigencia: 0

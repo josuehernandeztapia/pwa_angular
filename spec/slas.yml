@@ -1,0 +1,31 @@
+# SLAs, alerts, and escalation policies
+version: 1.0.0
+metadata:
+  name: slas_alerts
+  last_updated: 2025-09-06
+
+slas:
+  nacional:
+    entrega_activacion: { target_days: 7 }
+    respuesta_postventa: { target_hours: 24 }
+  importacion:
+    emision_avi: { target_days: 3 }
+    despacho: { target_days: 5 }
+    entrega_final: { target_days: 3 }
+
+alerts:
+  - id: avi_vencimiento
+    when: "avi.fecha_vencimiento - today <= 30d"
+    severity: warning
+    notify: [BackOffice, LegalCompliance]
+  - id: hito_retrasado
+    when: "logistica.hitos.actual.dias_transcurridos > sla_days[hito]"
+    severity: critical
+    notify: [Logistica, BackOffice]
+
+escalation:
+  levels:
+    - after: 24h
+      to: [Manager_Operaciones]
+    - after: 48h
+      to: [Director_Operaciones]

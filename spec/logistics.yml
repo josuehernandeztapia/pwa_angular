@@ -1,0 +1,46 @@
+# Import logistics milestones and data
+version: 1.0.0
+metadata:
+  name: import_logistics
+  last_updated: 2025-09-06
+
+milestones:
+  - id: orden_compra
+    description: Confirmacion de orden de compra
+  - id: booking
+    description: Reserva con naviera/aerolinea
+  - id: embarque
+    description: Salida del origen
+  - id: arribo
+    description: Arribo al puerto/aeropuerto destino
+  - id: despacho
+    description: Desaduanizacion
+  - id: liberacion
+    description: Liberacion por aduana
+  - id: entrega_final
+    description: Entrega en destino final
+
+documents_required:
+  factura_comercial: true
+  packing_list: true
+  bl_awb: true
+  certificados_origen: conditional
+  avi: true
+
+milestone_requirements:
+  orden_compra: [factura_comercial]
+  booking: [factura_comercial, packing_list]
+  embarque: [factura_comercial, packing_list, bl_awb]
+  arribo: [bl_awb]
+  despacho: [factura_comercial, packing_list, certificados_origen, avi]
+  liberacion: []
+  entrega_final: []
+
+sla_days:
+  orden_compra: 5
+  booking: 3
+  embarque: 10
+  arribo: 2
+  despacho: 5
+  liberacion: 2
+  entrega_final: 3

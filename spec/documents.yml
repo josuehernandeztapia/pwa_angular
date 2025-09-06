@@ -1,0 +1,92 @@
+# Document taxonomy and per plaza/product requirements
+version: 1.0.0
+metadata:
+  name: documents_requirements
+  last_updated: 2025-09-06
+
+# Taxonomy of document types
+taxonomy:
+  identidad_legales:
+    - id_representante
+    - acta_constitutiva
+    - poderes_representante
+  fiscales:
+    - constancia_fiscal
+    - comprobante_domicilio
+  bancarios:
+    - estado_cuenta
+    - carta_banco
+  comerciales_tecnicos:
+    - especificaciones_tecnicas
+    - orden_compra
+  regulatorios:
+    - avi
+    - licencias_permisos
+  contratos:
+    - contrato_marco
+    - anexos
+
+# Requirements matrix; default per plaza, overridable per producto
+requirements:
+  default:
+    nacional:
+      identidad_legales: [id_representante, acta_constitutiva, poderes_representante]
+      fiscales: [constancia_fiscal, comprobante_domicilio]
+      bancarios: [estado_cuenta]
+      comerciales_tecnicos: [especificaciones_tecnicas]
+      regulatorios: []
+      contratos: [contrato_marco]
+    importacion:
+      identidad_legales: [id_representante, acta_constitutiva, poderes_representante]
+      fiscales: [constancia_fiscal, comprobante_domicilio]
+      bancarios: [estado_cuenta]
+      comerciales_tecnicos: [especificaciones_tecnicas, orden_compra]
+      regulatorios: [avi]
+      contratos: [contrato_marco]
+
+  productos:
+    equipo_industrial:
+      nacional:
+        comerciales_tecnicos: [especificaciones_tecnicas, orden_compra]
+      importacion:
+        regulatorios: [avi, licencias_permisos]
+    software_saas:
+      nacional:
+        bancarios: []
+        comerciales_tecnicos: []
+      importacion:
+        regulatorios: []
+
+# Validation rules for documents
+validations:
+  expiracion_meses:
+    id_representante: 120
+    acta_constitutiva: 0
+    poderes_representante: 60
+    constancia_fiscal: 12
+    comprobante_domicilio: 3
+    estado_cuenta: 3
+    carta_banco: 6
+    especificaciones_tecnicas: 0
+    orden_compra: 6
+    avi: 12
+    licencias_permisos: 12
+    contrato_marco: 0
+    anexos: 0
+  formatos:
+    id_representante: [pdf, jpg, png]
+    acta_constitutiva: [pdf]
+    poderes_representante: [pdf]
+    constancia_fiscal: [pdf]
+    comprobante_domicilio: [pdf]
+    estado_cuenta: [pdf]
+    carta_banco: [pdf]
+    especificaciones_tecnicas: [pdf]
+    orden_compra: [pdf]
+    avi: [pdf]
+    licencias_permisos: [pdf]
+    contrato_marco: [pdf]
+    anexos: [pdf]
+  cross_field:
+    - rule: "RFC/Tax ID en constancia_fiscal debe coincidir con onboarding.fiscal.rfc"
+    - rule: "Nombre en contrato_marco debe coincidir con razon_social de onboarding"
