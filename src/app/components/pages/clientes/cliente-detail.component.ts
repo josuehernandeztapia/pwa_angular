@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Client, EventLog, ImportStatus } from '../../../models/types';
 import { AviVerificationModalComponent } from '../../shared/avi-verification-modal/avi-verification-modal.component';
-import { ProgressBarComponent } from '../../shared/progress-bar.component';
 import { EventLogComponent } from '../../shared/event-log.component';
 import { ImportTrackerComponent } from '../../shared/import-tracker.component';
+import { ProgressBarComponent } from '../../shared/progress-bar.component';
 import { ProtectionRealComponent } from '../protection-real/protection-real.component';
-import { Client, EventLog, ImportStatus } from '../../../models/types';
 
 @Component({
   selector: 'app-cliente-detail',
