@@ -1,6 +1,7 @@
 {
   "name": "Conductores del Mundo PWA",
   "short_name": "Conductores PWA",
+  "id": "/",
   "theme_color": "#06b6d4",
   "background_color": "#1f2937",
   "display": "standalone",
@@ -68,8 +69,14 @@
       "url": "/onboarding",
       "icons": [
         {
-          "src": "assets/icons/shortcut-new.png",
-          "sizes": "96x96"
+          "src": "assets/icons/shortcuts/shortcut-new.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "assets/brand/shortcuts/shortcut-new.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
         }
       ]
     },
@@ -80,8 +87,14 @@
       "url": "/cotizador",
       "icons": [
         {
-          "src": "assets/icons/shortcut-quote.png",
-          "sizes": "96x96"
+          "src": "assets/icons/shortcuts/shortcut-quote.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "assets/brand/shortcuts/shortcut-quote.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
         }
       ]
     },
@@ -92,8 +105,14 @@
       "url": "/clients",
       "icons": [
         {
-          "src": "assets/icons/shortcut-clients.png",
-          "sizes": "96x96"
+          "src": "assets/icons/shortcuts/shortcut-clients.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        },
+        {
+          "src": "assets/brand/shortcuts/shortcut-clients.svg",
+          "sizes": "96x96",
+          "type": "image/svg+xml"
         }
       ]
     }

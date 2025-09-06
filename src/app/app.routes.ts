@@ -162,6 +162,11 @@ export const routes: Routes = [
         title: 'Detalle de Entrega - Operaciones'
       },
       {
+        path: 'import-tracker',
+        loadComponent: () => import('./components/pages/ops/ops-import-tracker.component').then(c => c.OpsImportTrackerComponent),
+        title: 'Import Tracker - Operaciones'
+      },
+      {
         path: 'triggers',
         loadComponent: () => import('./components/pages/ops/triggers-monitor.component').then(c => c.TriggersMonitorComponent),
         title: 'Monitor de Triggers Automáticos - Operaciones'

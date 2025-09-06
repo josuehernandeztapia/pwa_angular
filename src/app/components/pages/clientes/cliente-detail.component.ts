@@ -6,7 +6,7 @@ import { ProgressBarComponent } from '../../shared/progress-bar.component';
 import { EventLogComponent } from '../../shared/event-log.component';
 import { ImportTrackerComponent } from '../../shared/import-tracker.component';
 import { ProtectionRealComponent } from '../protection-real/protection-real.component';
-import { Client, EventLog, ImportStatus } from '../../../models/types';
+import { Client, EventLog, ImportStatus, Document, DocumentStatus, BusinessFlow } from '../../../models/types';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -114,6 +114,54 @@ import { Client, EventLog, ImportStatus } from '../../../models/types';
                 <span class="btn-subtitle">Crear documentos legales</span>
               </div>
             </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ecosistema de Ruta (EdoMex) -->
+      <div class="detail-card" *ngIf="client?.market === 'edomex'">
+        <h3>Ecosistema de Ruta (EdoMex)</h3>
+        <p [class.text-green-700]="isEdomexEcosystemComplete($any(client))" [class.text-amber-700]="!isEdomexEcosystemComplete($any(client))" class="mb-2">
+          Validación de Ecosistema: {{ isEdomexEcosystemComplete($any(client)) ? 'Completa' : 'Pendiente' }}
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <div class="font-medium mb-1">Ecosistema / Ruta</div>
+            <div class="space-y-2">
+              <div *ngFor="let name of ecosystemDocNames" class="doc-row">
+                <span class="doc-name">{{ name }}</span>
+                <span class="badge badge-muted">Obligatorio</span>
+                <span [ngClass]="getDocBadgeClass($any(client), name)" class="ml-auto">{{ getDocStatus($any(client), name) }}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="font-medium mb-1">Agremiado (Críticos)</div>
+            <div class="space-y-2">
+              <div *ngFor="let item of memberCriticalDocs" class="doc-row">
+                <span class="doc-name">{{ item.name }}</span>
+                <span class="badge badge-critical" [title]="item.tooltip">Crítico</span>
+                <span *ngIf="getRecency($any(client), item.name) as rec" [ngClass]="rec.class" class="badge">{{ rec.text }}</span>
+                <span [ngClass]="getDocBadgeClass($any(client), item.name)" class="ml-auto">{{ getDocStatus($any(client), item.name) }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3" *ngIf="$any(client)?.flow === BusinessFlow.CreditoColectivo">
+          <div class="doc-row">
+            <span class="doc-name">Padrón de Socios Actualizado</span>
+            <span class="badge badge-muted">Obligatorio</span>
+            <span [ngClass]="getDocBadgeClass($any(client), 'Padrón de Socios Actualizado')" class="ml-auto">{{ getDocStatus($any(client), 'Padrón de Socios Actualizado') }}</span>
+          </div>
+        </div>
+        <div class="mt-3" *ngIf="edomexRemindersForClient($any(client)).length">
+          <div class="font-medium mb-1">Recordatorios sugeridos</div>
+          <ul class="list-disc pl-6 text-sm space-y-1">
+            <li *ngFor="let r of edomexRemindersForClient($any(client))">{{ r }}</li>
+          </ul>
+          <div class="mt-2 flex gap-2">
+            <a class="btn-small btn-primary" [href]="whatsAppReminderLinkForClient($any(client))" target="_blank">Enviar por WhatsApp</a>
+            <button class="btn-small btn-muted" (click)="copyReminderMessageForClient($any(client))">Copiar mensaje</button>
           </div>
         </div>
       </div>
@@ -744,6 +792,19 @@ import { Client, EventLog, ImportStatus } from '../../../models/types';
         margin-bottom: 24px;
       }
     }
+    .detail-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .doc-row { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border: 1px solid #e5e7eb; border-radius: 8px; }
+    .doc-name { color: #111827; }
+    .badge { font-size: 11px; padding: 2px 8px; border-radius: 9999px; border: 1px solid transparent; }
+    .badge-muted { background: #f3f4f6; color: #374151; border-color: #e5e7eb; }
+    .badge-critical { background: #fee2e2; color: #b91c1c; border-color: #fecaca; }
+    .badge-success { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+    .badge-warning { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+    .badge-danger { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+    .badge-info { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
+    .btn-small { font-size: 12px; padding: 4px 10px; border-radius: 8px; }
+    .btn-primary { background: #16a34a; color: #fff; }
+    .btn-muted { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
   `]
 })
 export class ClienteDetailComponent implements OnInit {
@@ -831,6 +892,110 @@ export class ClienteDetailComponent implements OnInit {
         details: {}
       }
     ];
+  }
+
+  // === Ecosistema EdoMex helpers (detalle cliente) ===
+  protected readonly BusinessFlow = BusinessFlow;
+  protected readonly ecosystemDocNames: string[] = [
+    'Acta Constitutiva de la Ruta',
+    'Poderes',
+    'INE Representante Legal',
+    'Constancia Situación Fiscal Ruta'
+  ];
+  protected readonly memberCriticalDocs: { name: string; tooltip: string; days: number }[] = [
+    { name: 'Carta Aval de Ruta', tooltip: 'Validación de agremiado: requisito crítico de ecosistema', days: 180 },
+    { name: 'Carta de Antigüedad de la Ruta', tooltip: 'Valida antigüedad en la ruta (EdoMex)', days: 90 }
+  ];
+
+  private findDoc(client: Client, name: string): Document | undefined {
+    const lower = name.toLowerCase();
+    return (client.documents || []).find(d => (d.name || '').toLowerCase() === lower)
+        || (client.documents || []).find(d => (d.name || '').toLowerCase().includes(lower));
+  }
+
+  getDocStatus(client: Client, name: string): string {
+    const d = this.findDoc(client, name);
+    if (!d) return 'Pendiente';
+    switch (d.status) {
+      case DocumentStatus.Aprobado: return 'Aprobado';
+      case DocumentStatus.EnRevision: return 'Procesando...';
+      case DocumentStatus.Rechazado: return 'Rechazado - Revisar';
+      default: return 'Pendiente';
+    }
+  }
+
+  getDocBadgeClass(client: Client, name: string): string {
+    const d = this.findDoc(client, name);
+    switch (d?.status) {
+      case DocumentStatus.Aprobado: return 'badge badge-success';
+      case DocumentStatus.EnRevision: return 'badge badge-info';
+      case DocumentStatus.Rechazado: return 'badge badge-danger';
+      default: return 'badge badge-muted';
+    }
+  }
+
+  isEdomexEcosystemComplete(client: Client): boolean {
+    const allEco = this.ecosystemDocNames.every(n => this.findDoc(client, n)?.status === DocumentStatus.Aprobado);
+    const allCritical = this.memberCriticalDocs.every(c => this.findDoc(client, c.name)?.status === DocumentStatus.Aprobado);
+    return allEco && allCritical;
+  }
+
+  getRecency(client: Client, name: string): { text: string; class: string } | null {
+    const d: any = this.findDoc(client, name);
+    // Priorizar expirationDate si existe
+    if (d?.expirationDate) {
+      const exp = new Date(d.expirationDate);
+      const remaining = Math.floor((exp.getTime() - Date.now()) / (1000*60*60*24));
+      if (remaining <= 0) return { text: 'Vencido', class: 'badge badge-danger' };
+      if (remaining <= 14) return { text: `Por expirar (${remaining} días)`, class: 'badge badge-warning' };
+      return { text: `Vigente (${remaining} días)`, class: 'badge badge-success' };
+    }
+    if (!d?.uploadedAt) return null;
+    const daysWindow = this.memberCriticalDocs.find(c => c.name === name)?.days || 0;
+    if (!daysWindow) return null;
+    const uploaded = new Date(d.uploadedAt);
+    const elapsed = Math.floor((Date.now() - uploaded.getTime()) / (1000*60*60*24));
+    const remaining = daysWindow - elapsed;
+    if (remaining <= 0) return { text: 'Vencido', class: 'badge badge-danger' };
+    if (remaining <= 14) return { text: `Por expirar (${remaining} días)`, class: 'badge badge-warning' };
+    return { text: `Vigente (${remaining} días)`, class: 'badge badge-success' };
+  }
+
+  edomexRemindersForClient(client: Client): string[] {
+    if (client.market !== 'edomex') return [];
+    const msgs: string[] = [];
+    this.memberCriticalDocs.forEach(c => {
+      const d = this.findDoc(client, c.name);
+      if (!d || d.status !== DocumentStatus.Aprobado) msgs.push(`Falta documento crítico: ${c.name}.`);
+      else {
+        const rec = this.getRecency(client, c.name);
+        if (rec?.text.startsWith('Por expirar')) msgs.push(`${c.name} ${rec.text}.`);
+        if (rec?.text === 'Vencido') msgs.push(`${c.name} vencido: subir actualizado.`);
+      }
+    });
+    if (client.flow === BusinessFlow.CreditoColectivo) {
+      const p = this.findDoc(client, 'Padrón de Socios Actualizado');
+      if (!p || p.status !== DocumentStatus.Aprobado) msgs.push('Falta Padrón de Socios Actualizado.');
+    }
+    return msgs;
+  }
+
+  whatsAppReminderLinkForClient(client: Client): string {
+    const lines = this.edomexRemindersForClient(client);
+    const text = `Hola, te comparto los pendientes de documentación para continuar tu proceso:\n- ${lines.join('\n- ')}\nGracias.`;
+    return 'https://wa.me/?text=' + encodeURIComponent(text);
+  }
+
+  async copyReminderMessageForClient(client: Client) {
+    const lines = this.edomexRemindersForClient(client);
+    const text = `Hola, te comparto los pendientes de documentación para continuar tu proceso:\n- ${lines.join('\n- ')}\nGracias.`;
+    try {
+      if (navigator?.clipboard?.writeText) await navigator.clipboard.writeText(text);
+      else {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+      }
+    } catch {}
   }
   
   // AVI Methods

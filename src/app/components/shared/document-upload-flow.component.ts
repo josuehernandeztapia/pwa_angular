@@ -73,11 +73,18 @@ interface FlowContext {
                 
                 <div class="flex items-center justify-between">
                   <div class="flex-1">
-                    <div class="flex items-center">
+                    <div class="flex items-center flex-wrap gap-2">
                       <span class="font-medium text-gray-800">{{ doc.name }}</span>
                       <span *ngIf="getDocumentTooltip(doc.name)" 
-                            class="ml-2 text-gray-400 cursor-help"
+                            class="text-gray-400 cursor-help"
                             [title]="getDocumentTooltip(doc.name)">ℹ️</span>
+                      <span *ngIf="isCritical(doc)"
+                            class="ml-2 inline-block px-2 py-0.5 text-[11px] rounded-full bg-red-100 text-red-700 border border-red-200 cursor-help"
+                            [title]="getCriticalTooltip(doc)">Crítico</span>
+                      <span *ngIf="!isCritical(doc) && !isOptional(doc)"
+                            class="ml-1 inline-block px-2 py-0.5 text-[11px] rounded-full bg-gray-100 text-gray-700 border border-gray-200">Obligatorio</span>
+                      <span *ngIf="isOptional(doc)"
+                            class="ml-1 inline-block px-2 py-0.5 text-[11px] rounded-full bg-blue-50 text-blue-700 border border-blue-200">Opcional</span>
                     </div>
                     <div class="text-sm text-gray-600 mt-1">
                       {{ getStatusText(doc.status) }}
@@ -184,6 +191,80 @@ interface FlowContext {
                   <div class="animate-spin rounded-full h-4 w-4 border-b-2 border-indigo-600 mr-2"></div>
                   <span class="text-indigo-600">Analizando patrones de voz...</span>
                 </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ecosistema EdoMex Panel -->
+          <div class="bg-white rounded-xl shadow-lg p-6" *ngIf="flowContext.market === 'edomex'">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Ecosistema de Ruta (EdoMex)</h2>
+            <p class="text-sm mb-4" [class.text-green-700]="isEcosystemComplete()" [class.text-yellow-700]="!isEcosystemComplete()">
+              Validación de Ecosistema: {{ isEcosystemComplete() ? 'Completa' : 'Pendiente' }}
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Documentos de Ecosistema/Ruta -->
+              <div>
+                <h3 class="font-medium text-gray-700 mb-2">Ecosistema / Ruta</h3>
+                <div class="space-y-2">
+                  <div *ngFor="let name of ecosystemDocNames" class="flex items-center justify-between border rounded-lg p-3">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="text-gray-800">{{ name }}</span>
+                      <span class="inline-block px-2 py-0.5 text-[11px] rounded-full bg-gray-100 text-gray-700 border border-gray-200">Obligatorio</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span [ngClass]="getDocStatusBadgeClass(name)">{{ getDocStatusText(name) }}</span>
+                      <button class="text-xs px-2 py-1 rounded bg-blue-600 text-white" (click)="uploadEcosystemDoc(name)">Subir</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Agremiado (Críticos) -->
+              <div>
+                <h3 class="font-medium text-gray-700 mb-2">Agremiado (Críticos)</h3>
+                <div class="space-y-2">
+                  <div *ngFor="let item of memberCriticalDocs" class="flex items-center justify-between border rounded-lg p-3">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="text-gray-800">{{ item.name }}</span>
+                      <span class="inline-block px-2 py-0.5 text-[11px] rounded-full bg-red-100 text-red-700 border border-red-200" [title]="item.tooltip">Crítico</span>
+                      <span *ngIf="getRecencyLabel(item.name) as rec"
+                            class="inline-block px-2 py-0.5 text-[11px] rounded-full border"
+                            [ngClass]="rec.level === 'expired' ? 'bg-red-50 text-red-700 border-red-200' : (rec.level === 'warning' ? 'bg-yellow-50 text-yellow-700 border-yellow-200' : 'bg-green-50 text-green-700 border-green-200')"
+                      >{{ rec.text }}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span [ngClass]="getDocStatusBadgeClass(item.name)">{{ getDocStatusText(item.name) }}</span>
+                      <button class="text-xs px-2 py-1 rounded bg-blue-600 text-white" (click)="uploadEcosystemDoc(item.name)">Subir</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Colectivo: Padrón de Socios -->
+            <div class="mt-4" *ngIf="flowContext.businessFlow === BusinessFlow.CreditoColectivo">
+              <div class="flex items-center justify-between border rounded-lg p-3">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-gray-800">Padrón de Socios Actualizado</span>
+                  <span class="inline-block px-2 py-0.5 text-[11px] rounded-full bg-gray-100 text-gray-700 border border-gray-200">Obligatorio</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span [ngClass]="getDocStatusBadgeClass('Padrón de Socios Actualizado')">{{ getDocStatusText('Padrón de Socios Actualizado') }}</span>
+                  <button class="text-xs px-2 py-1 rounded bg-blue-600 text-white" (click)="uploadEcosystemDoc('Padrón de Socios Actualizado')">Subir</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recordatorios sugeridos -->
+            <div class="mt-4" *ngIf="edomexReminders().length">
+              <h3 class="font-medium text-gray-700 mb-2">Recordatorios sugeridos</h3>
+              <ul class="list-disc pl-6 text-sm space-y-1">
+                <li *ngFor="let r of edomexReminders()">{{ r }}</li>
+              </ul>
+              <div class="mt-3 flex gap-2">
+                <a class="text-xs inline-block px-3 py-1 rounded bg-green-600 text-white" [href]="whatsAppReminderLink()" target="_blank">Enviar por WhatsApp</a>
+                <button class="text-xs inline-block px-3 py-1 rounded bg-gray-200 text-gray-800 border border-gray-300" (click)="copyReminderMessage()">Copiar mensaje</button>
               </div>
             </div>
           </div>
@@ -647,6 +728,7 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
 
   // Expose enums to template
   protected readonly DocumentStatus = DocumentStatus;
+  protected readonly BusinessFlow = BusinessFlow;
 
   ngOnInit() {
     this.initializeFlow();
@@ -831,6 +913,9 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
       document.status = DocumentStatus.Aprobado;
     }
 
+    // Mark timestamps for recency/expiry checks
+    (document as any).uploadedAt = new Date();
+
     this.updateCompletionStatus();
     
     // Check if all core documents are complete to enable voice verification
@@ -993,6 +1078,115 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     return this.documentRequirements.getDocumentTooltip(documentName);
   }
 
+  // === Label helpers (Obligatorio / Crítico / Opcional) ===
+  isOptional(doc: Document): boolean {
+    return (doc.name || '').toLowerCase().includes('opcional');
+  }
+
+  isCritical(doc: Document): boolean {
+    const name = (doc.name || '').toLowerCase();
+    const market = this.flowContext?.market;
+    const flow = this.flowContext?.businessFlow;
+
+    // Flujos con financiamiento requieren KYC
+    const kycRequired = flow !== BusinessFlow.VentaDirecta;
+
+    // Desbloqueo de KYC
+    if (kycRequired && (name === 'ine vigente' || name === 'comprobante de domicilio')) return true;
+
+    // KYC en sí mismo
+    if (kycRequired && name.includes('verificación biométrica')) return true;
+
+    // EdoMex agremiado: críticos
+    if (market === 'edomex' && (name.includes('carta aval de ruta') || name.includes('carta de antigüedad'))) return true;
+
+    return false;
+  }
+
+  getCriticalTooltip(doc: Document): string {
+    const name = (doc.name || '').toLowerCase();
+    const market = this.flowContext?.market;
+    const flow = this.flowContext?.businessFlow;
+    const kycRequired = flow !== BusinessFlow.VentaDirecta;
+
+    if (kycRequired && (name === 'ine vigente' || name === 'comprobante de domicilio')) {
+      return 'Desbloquea KYC biométrico';
+    }
+    if (kycRequired && name.includes('verificación biométrica')) {
+      return 'Desbloquea scoring y contrato';
+    }
+    if (market === 'edomex' && name.includes('carta aval de ruta')) {
+      return 'Validación de agremiado: requisito crítico de ecosistema';
+    }
+    if (market === 'edomex' && name.includes('carta de antigüedad')) {
+      return 'Valida antigüedad en la ruta (EdoMex)';
+    }
+    return 'Requisito crítico para avanzar en el flujo';
+  }
+
+  // === Ecosistema EdoMex Helpers ===
+  protected readonly ecosystemDocNames: string[] = [
+    'Acta Constitutiva de la Ruta',
+    'Poderes',
+    'INE Representante Legal',
+    'Constancia Situación Fiscal Ruta'
+  ];
+
+  protected readonly memberCriticalDocs: { name: string; tooltip: string; windowDays: number }[] = [
+    { name: 'Carta Aval de Ruta', tooltip: 'Validación de agremiado: requisito crítico de ecosistema', windowDays: 180 },
+    { name: 'Carta de Antigüedad de la Ruta', tooltip: 'Valida antigüedad en la ruta (EdoMex)', windowDays: 90 }
+  ];
+
+  private findDocByName(name: string): Document | undefined {
+    const lower = name.toLowerCase();
+    return this.requiredDocuments.find(d => (d.name || '').toLowerCase() === lower)
+        || this.requiredDocuments.find(d => (d.name || '').toLowerCase().includes(lower));
+  }
+
+  getDocStatusText(name: string): string {
+    const doc = this.findDocByName(name);
+    if (!doc) return 'Pendiente';
+    return this.getStatusText(doc.status as any);
+  }
+
+  getDocStatusBadgeClass(name: string): string {
+    const doc = this.findDocByName(name);
+    const status = doc?.status;
+    if (status === DocumentStatus.Aprobado) return 'text-xs px-2 py-1 rounded bg-green-100 text-green-800 border border-green-200';
+    if (status === DocumentStatus.EnRevision) return 'text-xs px-2 py-1 rounded bg-blue-50 text-blue-700 border border-blue-200';
+    if (status === DocumentStatus.Rechazado) return 'text-xs px-2 py-1 rounded bg-red-100 text-red-800 border border-red-200';
+    return 'text-xs px-2 py-1 rounded bg-gray-100 text-gray-700 border border-gray-200';
+  }
+
+  isEcosystemComplete(): boolean {
+    const allEco = this.ecosystemDocNames.every(n => this.findDocByName(n)?.status === DocumentStatus.Aprobado);
+    const allCritical = this.memberCriticalDocs.every(c => this.findDocByName(c.name)?.status === DocumentStatus.Aprobado);
+    return allEco && allCritical;
+  }
+
+  getRecencyLabel(name: string): { level: 'ok'|'warning'|'expired'; text: string } | null {
+    const doc = this.findDocByName(name) as any;
+    if (!doc) return null;
+    const windowDays = this.memberCriticalDocs.find(c => c.name === name)?.windowDays || 0;
+    const now = new Date();
+    // Priorizar expirationDate si existe
+    if (doc?.expirationDate) {
+      const exp = new Date(doc.expirationDate);
+      const diffDays = Math.floor((exp.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+      if (diffDays <= 0) return { level: 'expired', text: 'Vencido' };
+      if (diffDays <= 14) return { level: 'warning', text: `Por expirar (${diffDays} días)` };
+      return { level: 'ok', text: `Vigente (${diffDays} días)` };
+    }
+    if (!windowDays) return null;
+    const uploadedAt = doc?.uploadedAt ? new Date(doc.uploadedAt) : null;
+    if (!uploadedAt) return null;
+    const elapsedDays = Math.floor((now.getTime() - uploadedAt.getTime()) / (1000 * 60 * 60 * 24));
+    const remaining = windowDays - elapsedDays;
+    if (remaining <= 0) return { level: 'expired', text: 'Vencido' };
+    if (remaining <= 14) return { level: 'warning', text: `Por expirar (${remaining} días)` };
+    return { level: 'ok', text: `Vigente (${remaining} días)` };
+  }
+
   // OCR Helper methods
   getConfidenceLevel(confidence: number): string {
     if (confidence >= 0.8) return 'high';
@@ -1024,5 +1218,75 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     };
     
     return fieldNames[key] || key.charAt(0).toUpperCase() + key.slice(1);
+  }
+
+  // === Upload helpers for Ecosystem panel ===
+  private ensureDoc(name: string): Document {
+    const existing = this.findDocByName(name);
+    if (existing) return existing;
+    const doc: Document = {
+      id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
+      name,
+      status: DocumentStatus.Pendiente
+    } as any;
+    this.requiredDocuments = [...this.requiredDocuments, doc];
+    this.updateCompletionStatus();
+    return doc;
+  }
+
+  uploadEcosystemDoc(name: string) {
+    const doc = this.ensureDoc(name);
+    this.uploadDocument(doc);
+  }
+
+  // === Reminders for EdoMex criticals ===
+  edomexReminders(): string[] {
+    if (this.flowContext.market !== 'edomex') return [];
+    const msgs: string[] = [];
+    // Missing criticals
+    this.memberCriticalDocs.forEach(c => {
+      const d = this.findDocByName(c.name);
+      if (!d || d.status !== DocumentStatus.Aprobado) {
+        msgs.push(`Falta documento crítico: ${c.name}.`);
+      } else {
+        const rec = this.getRecencyLabel(c.name);
+        if (rec?.level === 'warning') msgs.push(`${c.name} por expirar: ${rec.text}.`);
+        if (rec?.level === 'expired') msgs.push(`${c.name} vencido: subir documento actualizado.`);
+      }
+    });
+    // Colectivo: padrón
+    if (this.flowContext.businessFlow === BusinessFlow.CreditoColectivo) {
+      const padron = this.findDocByName('Padrón de Socios Actualizado');
+      if (!padron || padron.status !== DocumentStatus.Aprobado) msgs.push('Falta Padrón de Socios Actualizado.');
+    }
+    return msgs;
+  }
+
+  whatsAppReminderLink(): string {
+    const client = this.flowContext.clientId || '';
+    const lines = this.edomexReminders();
+    const base = `Hola, te comparto los pendientes de documentación para continuar tu proceso:\n- ${lines.join('\n- ')}\nGracias.`;
+    const url = 'https://wa.me/?text=' + encodeURIComponent(base);
+    return url;
+  }
+
+  async copyReminderMessage() {
+    const lines = this.edomexReminders();
+    const text = `Hola, te comparto los pendientes de documentación para continuar tu proceso:\n- ${lines.join('\n- ')}\nGracias.`;
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      console.log('Mensaje copiado');
+    } catch (e) {
+      console.warn('No se pudo copiar al portapapeles');
+    }
   }
 }

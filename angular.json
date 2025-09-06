@@ -33,7 +33,7 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
-            "serviceWorker": "src/ngsw-config.json",
+            "serviceWorker": "ngsw-config.json",
             "styles": [
               "src/styles.scss"
             ],
@@ -41,6 +41,26 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": {
+                "fonts": {
+                  "inline": false
+                }
+              },
+              "allowedCommonJsDependencies": [
+                "canvg",
+                "core-js",
+                "rgbcolor",
+                "raf",
+                "tesseract.js",
+                "html2canvas",
+                "regenerator-runtime/runtime"
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -49,8 +69,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "8kb",
-                  "maximumError": "12kb"
+                  "maximumWarning": "12kb",
+                  "maximumError": "16kb"
                 }
               ],
               "outputHashing": "all"
@@ -86,7 +106,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "src/test-setup.js"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",

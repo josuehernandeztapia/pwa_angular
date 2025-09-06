@@ -527,3 +527,32 @@ Para soporte técnico o preguntas:
 **🚛 Conductores PWA - Desarrollado con ❤️ y las mejores prácticas de la industria**
 
 </div>
+
+---
+
+## 📱 PWA Assets & Audits
+
+Esta sección documenta cómo generar los iconos de la app y de los shortcuts, así como cómo correr las validaciones PWA y Lighthouse. No reemplaza configuraciones existentes, solo añade utilidades.
+
+- Generar App Icons (usa tu logo tal cual, sin modificar diseño):
+  - Fondo teal por defecto, padding 12%: `npm run assets:app-icons:teal`
+  - Alternativa fondo dark: `npm run assets:app-icons:dark`
+  - Personalizar fuente o color: `npm run assets:app-icons:src -- --src=URL_O_RUTA --bg=#06b6d4 --pad=12`
+  - Salidas: `src/assets/icons/icon-72x72.png`, `...96x96.png`, `...128x128.png`, `...144x144.png`, `...152x152.png`, `...192x192.png`, `...384x384.png`, `...512x512.png`
+
+- Generar Shortcuts PNG (desde SVG formales ya incluidos):
+  - `npm run assets:shortcuts`
+  - Salidas: `src/assets/icons/shortcuts/shortcut-new.png`, `shortcut-quote.png`, `shortcut-clients.png`
+
+- Build y Checklist PWA (rápido):
+  - `npm run build:prod && npm run pwa:checklist`
+  - Reporte: `reports/pwa/checklist.md` y `reports/pwa/checklist.json`
+
+- Lighthouse CI End‑to‑End (automático):
+  - `npm run test:perf:lighthouse:auto`
+  - Construye, sirve en `http://localhost:4200` y corre LHCI usando `.lighthouserc.js`
+
+Notas:
+- Manifest ya apunta a `icon-192x192.png` e `icon-512x512.png`; asegúrate de generarlos para instalabilidad.
+- Los shortcuts usan PNG (96x96) y también SVG como soporte adicional.
+- Service Worker activo en producción (`provideServiceWorker` con `environment.production`).
