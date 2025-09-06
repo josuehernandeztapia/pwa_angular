@@ -76,6 +76,8 @@
     "quality:report": "node scripts/quality-report.js",
     "quality:badge": "node scripts/quality-badge.js",
     "mock:api": "json-server --watch db.json --port 3000",
+    "pwa:checklist": "node src/app/scripts/pwa-checklist.js",
+    "reminder:weekly": "node src/app/scripts/weekly-reminder.js --market=edomex"
     "test:all": "npm run test:unit && npm run test:integration && npm run test:accessibility && npm run test:visual && npm run test:e2e:chrome && npm run test:mutation:quick && npm run coverage:generate",
 
     "test:config:settings:persistence": "ng test --watch=false --browsers=ChromeHeadless --ts-config=tsconfig.spec.configuracion.json",

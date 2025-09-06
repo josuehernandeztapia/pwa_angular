@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Client, Document, DocumentStatus, EventLog, ImportStatus } from '../../../models/types';
+import { DocumentHint, TooltipService } from '../../../services/tooltip.service';
 import { AviVerificationModalComponent } from '../../shared/avi-verification-modal/avi-verification-modal.component';
-import { ProgressBarComponent } from '../../shared/progress-bar.component';
 import { EventLogComponent } from '../../shared/event-log.component';
 import { ImportTrackerComponent } from '../../shared/import-tracker.component';
+import { ProgressBarComponent } from '../../shared/progress-bar.component';
 import { ProtectionRealComponent } from '../protection-real/protection-real.component';
-import { Client, EventLog, ImportStatus } from '../../../models/types';
 
 @Component({
   selector: 'app-cliente-detail',
@@ -169,6 +170,38 @@ import { Client, EventLog, ImportStatus } from '../../../models/types';
                 <span class="detail-label">Ecosistema:</span>
                 <span class="detail-value">{{ client.ecosystemId || 'No asignado' }}</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documents Panel with Hints -->
+      <div class="client-details mt-6" *ngIf="client?.documents?.length">
+        <h3 class="mb-4">📄 Documentos del Expediente</h3>
+        <div class="space-y-3">
+          <div *ngFor="let doc of client?.documents"
+               class="flex items-start justify-between p-3 border rounded-lg"
+               [class.border-green-300]="doc.status === DocumentStatus.Aprobado"
+               [class.bg-green-50]="doc.status === DocumentStatus.Aprobado"
+               [class.border-yellow-300]="doc.status === DocumentStatus.EnRevision"
+               [class.bg-yellow-50]="doc.status === DocumentStatus.EnRevision"
+               [class.border-gray-200]="doc.status === DocumentStatus.Pendiente">
+            <div class="flex-1">
+              <div class="flex items-center">
+                <span class="font-medium text-gray-800">{{ doc.name }}</span>
+                <span *ngIf="getHint(doc)?.text" class="ml-2 text-gray-400 cursor-help" [title]="getHint(doc)?.text">ℹ️</span>
+              </div>
+              <div class="mt-1 text-sm text-gray-600">{{ doc.status }}</div>
+              <div class="mt-2 flex items-center gap-2 text-xs">
+                <span class="px-2 py-0.5 rounded-full font-medium" [ngClass]="getCriticalBadgeClass(getHint(doc))">{{ getCriticalBadgeText(getHint(doc)) }}</span>
+                <span *ngIf="getHint(doc)?.unlocks" class="px-2 py-0.5 rounded-full font-medium bg-indigo-100 text-indigo-700">Desbloquea: {{ getHint(doc)?.unlocks }}</span>
+                <span *ngIf="getHint(doc)?.expiry" class="px-2 py-0.5 rounded-full font-medium" [ngClass]="getExpiryBadgeClass(getHint(doc))">{{ getHint(doc)?.expiry?.text }}</span>
+              </div>
+            </div>
+            <div class="ml-3">
+              <span *ngIf="doc.status === DocumentStatus.Aprobado" class="text-green-500">✅</span>
+              <span *ngIf="doc.status === DocumentStatus.Pendiente" class="text-gray-400">⏳</span>
+              <span *ngIf="doc.status === DocumentStatus.Rechazado" class="text-red-500">❌</span>
             </div>
           </div>
         </div>
@@ -751,13 +784,14 @@ export class ClienteDetailComponent implements OnInit {
   showAviModal = false;
   clientEvents: EventLog[] = [];
   isGeneratingPDF = false;
+  protected readonly DocumentStatus = DocumentStatus;
   
   openPaymentModal = () => {
     console.log('Opening payment modal');
     this.generatePaymentLink('spei');
   };
   
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private tooltipService: TooltipService) {}
   
   ngOnInit(): void {
     // Mock client data - replace with actual service call
@@ -801,6 +835,40 @@ export class ClienteDetailComponent implements OnInit {
     };
     
     this.loadClientEvents();
+  }
+
+  // Document hints and badges
+  getHint(doc: Document): DocumentHint {
+    if (!this.client) {
+      return { text: '', isCritical: false, isOptional: false, expiry: null } as any;
+    }
+    return this.tooltipService.getDocumentHint({
+      market: this.client.market === 'edomex' ? 'edomex' : 'aguascalientes',
+      flow: this.client.flow,
+      doc
+    });
+  }
+
+  getCriticalBadgeText(hint?: DocumentHint): string {
+    if (!hint) return '';
+    if (hint.isCritical) return 'Crítico';
+    if (hint.isOptional) return 'Opcional';
+    return 'Obligatorio';
+  }
+
+  getCriticalBadgeClass(hint?: DocumentHint): any {
+    if (!hint) return {};
+    if (hint.isCritical) return { 'bg-red-100': true, 'text-red-700': true };
+    if (hint.isOptional) return { 'bg-gray-100': true, 'text-gray-700': true };
+    return { 'bg-emerald-100': true, 'text-emerald-700': true };
+  }
+
+  getExpiryBadgeClass(hint?: DocumentHint): any {
+    const level = hint?.expiry?.level;
+    if (level === 'expired') return { 'bg-red-100': true, 'text-red-700': true };
+    if (level === 'warning') return { 'bg-amber-100': true, 'text-amber-700': true };
+    if (level === 'ok') return { 'bg-emerald-100': true, 'text-emerald-700': true };
+    return {};
   }
   
   private loadClientEvents(): void {

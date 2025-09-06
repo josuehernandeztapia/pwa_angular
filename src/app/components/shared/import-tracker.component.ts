@@ -1,8 +1,9 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, computed, inject, signal } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Client, ImportStatus } from '../../models/types';
-import { IntegratedImportTrackerService, IntegratedImportStatus } from '../../services/integrated-import-tracker.service';
+import { AuditService } from '../../services/audit.service';
+import { IntegratedImportStatus, IntegratedImportTrackerService } from '../../services/integrated-import-tracker.service';
 
 interface ImportMilestone {
   key: keyof ImportStatus;
@@ -100,7 +101,7 @@ interface ImportMilestone {
                   </div>
                 </div>
                 
-                <p class="text-sm text-gray-400 mb-3">{{ milestone.description }}</p>
+                <p class="text-sm text-gray-400 mb-3" [title]="getSlaTooltip(milestone)">{{ milestone.description }}</p>
                 
                 <!-- Estimated Timeline -->
                 <div class="timeline-estimate flex items-center gap-4">
@@ -357,6 +358,7 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
   
   private destroy$ = new Subject<void>();
   private integratedTrackerService = inject(IntegratedImportTrackerService);
+  private auditService = inject(AuditService);
   
   selectedMilestone?: keyof ImportStatus;
   
@@ -419,6 +421,24 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
     }
   ];
 
+  getSlaTooltip(m: ImportMilestone): string {
+    // Basic SLA guidance per milestone
+    switch (m.key) {
+      case 'pedidoPlanta':
+        return 'SLA: 3 días para confirmar pedido y fecha de fabricación';
+      case 'unidadFabricada':
+        return 'SLA: 30 días típicos de fabricación desde confirmación de pedido';
+      case 'transitoMaritimo':
+        return 'SLA: 21 días en tránsito marítimo. Escalar si excede 28 días';
+      case 'enAduana':
+        return 'SLA: 7 días en aduana con documentación completa';
+      case 'liberada':
+        return 'SLA: 2 días para coordinar entrega después de liberación';
+      default:
+        return '';
+    }
+  }
+
   ngOnInit() {
     if (this.client?.id) {
       this.loadIntegratedStatus();
@@ -437,11 +457,11 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
     this.integratedTrackerService.getIntegratedImportStatus(this.client.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (status) => {
+        next: (status: IntegratedImportStatus) => {
           this.integratedStatus.set(status);
           this.loading.set(false);
         },
-        error: (error) => {
+        error: (error: unknown) => {
           console.error('Error loading integrated import status:', error);
           this.loading.set(false);
         }
@@ -555,12 +575,18 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
       }
     ).pipe(takeUntil(this.destroy$))
     .subscribe({
-      next: (updatedStatus) => {
+      next: (updatedStatus: IntegratedImportStatus) => {
         this.integratedStatus.set(updatedStatus);
         this.onUpdateMilestone.emit(key);
         this.loading.set(false);
+        this.auditService.logEvent('import_milestone_updated', {
+          clientId: this.client?.id,
+          milestone: key,
+          status: 'in_progress',
+          timestamp: new Date().toISOString()
+        });
       },
-      error: (error) => {
+      error: (error: unknown) => {
         console.error('Error updating milestone:', error);
         this.loading.set(false);
       }
@@ -581,12 +607,18 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
       }
     ).pipe(takeUntil(this.destroy$))
     .subscribe({
-      next: (updatedStatus) => {
+      next: (updatedStatus: IntegratedImportStatus) => {
         this.integratedStatus.set(updatedStatus);
         this.onUpdateMilestone.emit(key);
         this.loading.set(false);
+        this.auditService.logEvent('import_milestone_updated', {
+          clientId: this.client?.id,
+          milestone: key,
+          status: 'completed',
+          timestamp: new Date().toISOString()
+        });
       },
-      error: (error) => {
+      error: (error: unknown) => {
         console.error('Error completing milestone:', error);
         this.loading.set(false);
       }
@@ -666,13 +698,13 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
     this.integratedTrackerService.generateIntegratedTrackingReport(this.client.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (report) => {
+        next: (report: any) => {
           console.log('📄 Reporte de seguimiento integrado generado:', report);
           // En implementación real, abriría el reporte o descargaría el PDF
           window.open(report.reportUrl, '_blank');
           this.loading.set(false);
         },
-        error: (error) => {
+        error: (error: unknown) => {
           console.error('Error generating integrated tracking report:', error);
           this.loading.set(false);
         }

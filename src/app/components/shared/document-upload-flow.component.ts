@@ -1,14 +1,16 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, takeUntil, forkJoin } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
+import { BusinessFlow, Document, DocumentStatus } from '../../models/types';
+import { AuditService } from '../../services/audit.service';
+import { AviSimpleConfigService } from '../../services/avi-simple-config.service';
 import { DocumentRequirementsService } from '../../services/document-requirements.service';
 import { DocumentValidationService } from '../../services/document-validation.service';
+import { OCRProgress, OCRResult, OCRService } from '../../services/ocr.service';
+import { DocumentHint, TooltipService } from '../../services/tooltip.service';
 import { VoiceValidationService } from '../../services/voice-validation.service';
-import { AviSimpleConfigService } from '../../services/avi-simple-config.service';
-import { OCRService, OCRResult, OCRProgress } from '../../services/ocr.service';
-import { Document, DocumentStatus, BusinessFlow, Client } from '../../models/types';
 
 interface FlowContext {
   clientId?: string;
@@ -75,12 +77,26 @@ interface FlowContext {
                   <div class="flex-1">
                     <div class="flex items-center">
                       <span class="font-medium text-gray-800">{{ doc.name }}</span>
-                      <span *ngIf="getDocumentTooltip(doc.name)" 
+                      <span *ngIf="getHint(doc)?.text" 
                             class="ml-2 text-gray-400 cursor-help"
-                            [title]="getDocumentTooltip(doc.name)">ℹ️</span>
+                            [title]="getHint(doc)?.text">ℹ️</span>
                     </div>
                     <div class="text-sm text-gray-600 mt-1">
                       {{ getStatusText(doc.status) }}
+                    </div>
+                    <div class="mt-2 flex items-center gap-2 text-xs">
+                      <span class="px-2 py-0.5 rounded-full font-medium"
+                            [ngClass]="getCriticalBadgeClass(getHint(doc))">
+                        {{ getCriticalBadgeText(getHint(doc)) }}
+                      </span>
+                      <span *ngIf="getHint(doc)?.unlocks" class="px-2 py-0.5 rounded-full font-medium bg-indigo-100 text-indigo-700">
+                        Desbloquea: {{ getHint(doc)?.unlocks }}
+                      </span>
+                      <span *ngIf="getHint(doc)?.expiry"
+                            class="px-2 py-0.5 rounded-full font-medium"
+                            [ngClass]="getExpiryBadgeClass(getHint(doc))">
+                        {{ getHint(doc)?.expiry?.text }}
+                      </span>
                     </div>
                   </div>
                   
@@ -642,7 +658,9 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     private documentValidation: DocumentValidationService,
     private voiceValidation: VoiceValidationService,
     private aviConfig: AviSimpleConfigService,
-    private ocrService: OCRService
+    private ocrService: OCRService,
+    private tooltipService: TooltipService,
+    private auditService: AuditService
   ) {}
 
   // Expose enums to template
@@ -669,7 +687,7 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
       saleType: 'financiero', // Default for most flows
       businessFlow: this.flowContext.businessFlow,
       clientType: this.flowContext.clientType
-    }).pipe(takeUntil(this.destroy$)).subscribe(docs => {
+    }).pipe(takeUntil(this.destroy$)).subscribe((docs: Document[]) => {
       this.requiredDocuments = docs;
       this.updateCompletionStatus();
     });
@@ -764,7 +782,7 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
 
       // Subscribe to OCR progress
       this.ocrService.progress$.pipe(takeUntil(this.destroy$)).subscribe(
-        progress => this.ocrProgress = progress
+        (progress: OCRProgress) => this.ocrProgress = progress
       );
 
       // Extract text with OCR
@@ -832,6 +850,13 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     }
 
     this.updateCompletionStatus();
+    this.auditService.logEvent('document_uploaded', {
+      clientId: this.flowContext?.clientId,
+      documentId: document.id,
+      documentName: document.name,
+      status: document.status,
+      uploadedAt: new Date().toISOString()
+    });
     
     // Check if all core documents are complete to enable voice verification
     if (this.completionStatus.allComplete && this.showVoicePattern && !this.voiceVerified) {
@@ -989,8 +1014,38 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     }
   }
 
-  getDocumentTooltip(documentName: string): string | undefined {
-    return this.documentRequirements.getDocumentTooltip(documentName);
+  // Unified tooltip/hints
+  getHint(doc: Document): DocumentHint {
+    if (!this.flowContext) {
+      return { text: '', isCritical: false, isOptional: false, expiry: null } as any;
+    }
+    return this.tooltipService.getDocumentHint({
+      market: this.flowContext.market,
+      flow: this.flowContext.businessFlow,
+      doc
+    });
+  }
+
+  getCriticalBadgeText(hint?: DocumentHint): string {
+    if (!hint) return '';
+    if (hint.isCritical) return 'Crítico';
+    if (hint.isOptional) return 'Opcional';
+    return 'Obligatorio';
+  }
+
+  getCriticalBadgeClass(hint?: DocumentHint): any {
+    if (!hint) return {};
+    if (hint.isCritical) return { 'bg-red-100': true, 'text-red-700': true };
+    if (hint.isOptional) return { 'bg-gray-100': true, 'text-gray-700': true };
+    return { 'bg-emerald-100': true, 'text-emerald-700': true };
+  }
+
+  getExpiryBadgeClass(hint?: DocumentHint): any {
+    const level = hint?.expiry?.level;
+    if (level === 'expired') return { 'bg-red-100': true, 'text-red-700': true };
+    if (level === 'warning') return { 'bg-amber-100': true, 'text-amber-700': true };
+    if (level === 'ok') return { 'bg-emerald-100': true, 'text-emerald-700': true };
+    return {};
   }
 
   // OCR Helper methods

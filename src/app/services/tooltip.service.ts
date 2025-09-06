@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BusinessFlow, Document, DocumentStatus } from '../models/types';
+import { BusinessFlow, Document } from '../models/types';
 
 export interface DocumentHint {
   text: string;
