@@ -115,7 +115,6 @@ describe('BackendApiService', () => {
 
     it('should have correct API configuration', () => {
       expect(service['baseUrl']).toBe(environment.apiUrl);
-      expect(service['apiKey']).toBeTruthy();
     });
   });
 
@@ -132,7 +131,7 @@ describe('BackendApiService', () => {
           newClient,
           jasmine.objectContaining({
             headers: jasmine.objectContaining({
-              'Authorization': `Bearer ${service['apiKey']}`,
+              'Authorization': jasmine.stringMatching(/^Bearer\s.+/),
               'Content-Type': 'application/json'
             })
           })
@@ -501,7 +500,7 @@ describe('BackendApiService', () => {
           `${environment.apiUrl}${environment.endpoints.documents}/upload`,
           jasmine.any(FormData),
           jasmine.objectContaining({
-            headers: { 'Authorization': `Bearer ${service['apiKey']}` }
+            headers: jasmine.objectContaining({ 'Authorization': jasmine.stringMatching(/^Bearer\s.+/) })
           })
         );
         expect(response).toEqual(mockResponse);

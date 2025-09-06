@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ProtectionEngineService } from './protection-engine.service';
 import { FinancialCalculatorService } from './financial-calculator.service';
-import { Client, EventType } from '../models/types';
+import { Client, EventType, Actor, BusinessFlow } from '../models/types';
 
 describe('ProtectionEngineService', () => {
   let service: ProtectionEngineService;
@@ -54,16 +54,15 @@ describe('ProtectionEngineService', () => {
       id: 'c1',
       name: 'Juan',
       rfc: 'JUAX010101',
-      curp: 'JUAX010101HDF',
       phone: '5555',
       email: 'a@b.com',
-      address: 'CDMX',
-      route: 'R1',
-      market: 'edomex' as any,
+      flow: BusinessFlow.VentaPlazo,
+      status: 'cliente',
+      market: 'edomex',
       documents: [],
       events: [
-        { id: 'e1', type: EventType.Contribution, date: new Date(), amount: 1000 },
-        { id: 'e2', type: EventType.Collection, date: new Date(), amount: 1000 }
+        { id: 'e1', type: EventType.Contribution, timestamp: new Date(), message: 'contribución 1000', actor: Actor.Cliente },
+        { id: 'e2', type: EventType.Collection, timestamp: new Date(), message: 'cobro 1000', actor: Actor.Cliente }
       ],
       paymentPlan: { monthlyPayment: 7000, term: 60 },
       remainderAmount: 300000

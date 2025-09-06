@@ -410,6 +410,8 @@ export interface ProtectionScenario {
   newTerm: number;
   termChange: number;
   details: string[];
+  // Optional flags computed by financial analysis
+  tirOK?: boolean;
 }
 
 export interface Client {
