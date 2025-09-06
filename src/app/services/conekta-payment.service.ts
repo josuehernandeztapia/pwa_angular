@@ -35,6 +35,7 @@ interface PaymentRequest {
     client_id?: string;
     contract_id?: string;
     payment_type?: 'down_payment' | 'monthly_payment' | 'penalty';
+    test?: string;
   };
 }
 
