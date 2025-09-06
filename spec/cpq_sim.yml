@@ -1,0 +1,78 @@
+# CPQ pricing and simulation rule schema
+version: 1.0.0
+metadata:
+  name: cpq_sim_rules
+  last_updated: 2025-09-06
+
+price_lists:
+  default_currency: MXN
+  import_currencies: [USD, EUR]
+  taxes:
+    nacional:
+      iva_percent: 16
+    importacion:
+      iva_percent: 16
+      arancel_percent_default: 5
+      logistic_cost_percent_default: 3
+
+rules:
+  descuentos:
+    max_descuento_por_rol:
+      AsesorComercial: 10
+      BackOffice: 15
+      Admin: 30
+  margen:
+    minimo_por_producto:
+      default: 20
+      equipo_industrial: 18
+      software_saas: 30
+  importacion:
+    incoterms_validos: [EXW, FOB, CIF, DAP, DDP]
+    tipo_cambio_fuente: DOF
+
+simulation:
+  variables:
+    - nombre: precio_lista
+      rango: [0, 9999999]
+    - nombre: descuento
+      rango: [0, 50]
+    - nombre: plazo_meses
+      rango: [1, 60]
+    - nombre: moneda
+      opciones: [MXN, USD, EUR]
+    - nombre: incoterm
+      opciones: [EXW, FOB, CIF, DAP, DDP]
+  outputs:
+    - margen
+    - precio_final
+    - impuestos
+    - costos_logisticos
+    - aranceles
+    - tir
+  guardrails:
+    precio_minimo_abs: 1
+    margen_minimo_global: 15
+
+formulas:
+  nacional:
+    precio_neto: "precio_lista * (1 - descuento/100)"
+    impuestos: "precio_neto * price_lists.taxes.nacional.iva_percent/100"
+    precio_final: "precio_neto + impuestos"
+    margen: "(precio_neto - costo) / precio_neto * 100"
+  importacion:
+    precio_neto: "precio_lista * (1 - descuento/100)"
+    costos_logisticos: "precio_neto * price_lists.taxes.importacion.logistic_cost_percent_default/100"
+    aranceles: "precio_neto * price_lists.taxes.importacion.arancel_percent_default/100"
+    impuestos: "(precio_neto + costos_logisticos + aranceles) * price_lists.taxes.importacion.iva_percent/100"
+    precio_final: "precio_neto + costos_logisticos + aranceles + impuestos"
+    margen: "(precio_neto - costo - costos_logisticos - aranceles) / precio_neto * 100"
+
+approvals:
+  descuentos_superiores:
+    umbral_por_rol:
+      AsesorComercial: 10
+      BackOffice: 15
+    requiere_aprobacion_de: [Finanzas, Admin]
+  margen_inferior:
+    umbral_global: 15
+    requiere_aprobacion_de: [Finanzas]

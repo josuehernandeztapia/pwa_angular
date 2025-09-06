@@ -1,0 +1,43 @@
+# Contracts manifest, approvals and e-sign
+version: 1.0.0
+metadata:
+  name: contracts_manifest
+  last_updated: 2025-09-06
+
+templates:
+  nacional:
+    contrato_marco: v1
+    anexos:
+      - comerciales
+      - tecnicos
+  importacion:
+    contrato_marco: v1
+    anexos:
+      - comerciales
+      - tecnicos
+      - logistica
+
+variables:
+  - cliente_razon_social
+  - representante_legal
+  - domicilio_fiscal
+  - moneda
+  - incoterm
+
+signing:
+  providers: [eSign, DocuSign]
+  sequence:
+    - cliente
+    - representante_legal
+    - empresa
+
+approvals:
+  legales: [LegalCompliance]
+  comerciales: [Finanzas]
+  excepciones:
+    descuento_mayor_umbral: [Finanzas, Admin]
+    margen_bajo: [Finanzas]
+
+validations:
+  - rule: "Condiciones comerciales = cotizacion aprobada"
+  - rule: "Datos legales coinciden con onboarding"
