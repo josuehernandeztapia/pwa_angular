@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { ToastService, Toast } from './toast.service';
 
 describe('ToastService', () => {
@@ -178,39 +178,34 @@ describe('ToastService', () => {
   });
 
   describe('Auto-removal Functionality', () => {
-    it('should auto-remove toast after specified duration', (done) => {
+    it('should auto-remove toast after specified duration', fakeAsync(() => {
       const duration = 100; // Short duration for test
       
       service.success('Auto-remove toast', duration);
       
       expect(service.getToasts().length).toBe(1);
 
-      setTimeout(() => {
-        expect(service.getToasts().length).toBe(0);
-        done();
-      }, duration + 10); // Small buffer for timing
-    });
+      tick(duration + 1);
+      expect(service.getToasts().length).toBe(0);
+    }));
 
-    it('should auto-remove multiple toasts at different times', (done) => {
+    it('should auto-remove multiple toasts at different times', fakeAsync(() => {
       service.success('Fast toast', 50);
       service.error('Slow toast', 150);
 
       expect(service.getToasts().length).toBe(2);
 
-      setTimeout(() => {
-        // After 75ms, fast toast should be gone, slow toast remains
-        expect(service.getToasts().length).toBe(1);
-        expect(service.getToasts()[0].message).toBe('Slow toast');
-      }, 75);
+      tick(75);
+      // After 75ms, fast toast should be gone, slow toast remains
+      expect(service.getToasts().length).toBe(1);
+      expect(service.getToasts()[0].message).toBe('Slow toast');
 
-      setTimeout(() => {
-        // After 175ms, both should be gone
-        expect(service.getToasts().length).toBe(0);
-        done();
-      }, 175);
-    });
+      tick(100);
+      // After total 175ms, both should be gone
+      expect(service.getToasts().length).toBe(0);
+    }));
 
-    it('should handle manual removal before auto-removal', (done) => {
+    it('should handle manual removal before auto-removal', fakeAsync(() => {
       const duration = 200;
       
       service.success('Manual remove test', duration);
@@ -220,18 +215,15 @@ describe('ToastService', () => {
       
       const toastId = toasts[0].id;
       
-      setTimeout(() => {
-        // Manually remove before auto-removal
-        service.remove(toastId);
-        expect(service.getToasts().length).toBe(0);
-      }, 50);
+      tick(50);
+      // Manually remove before auto-removal
+      service.remove(toastId);
+      expect(service.getToasts().length).toBe(0);
 
-      setTimeout(() => {
-        // Should still be 0 after auto-removal time
-        expect(service.getToasts().length).toBe(0);
-        done();
-      }, duration + 10);
-    });
+      tick(duration);
+      // Should still be 0 after auto-removal time
+      expect(service.getToasts().length).toBe(0);
+    }));
   });
 
   describe('Observable Behavior', () => {

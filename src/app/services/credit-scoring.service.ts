@@ -59,11 +59,11 @@ export class CreditScoringService {
 
   // KINBAN/HASE API Configuration
   private readonly SCORING_CONFIG = {
-    apiUrl: process.env['KINBAN_API_URL'] || 'https://api.kinban.com',
-    clientId: process.env['KINBAN_CLIENT_ID'] || 'demo_client_id',
-    secret: process.env['KINBAN_SECRET'] || 'demo_secret',
-    haseUrl: process.env['HASE_API_URL'] || 'https://api.hase.mx',
-    haseToken: process.env['HASE_TOKEN'] || 'demo_hase_token'
+    apiUrl: (globalThis as any).process?.env?.['KINBAN_API_URL'] || 'https://api.kinban.com',
+    clientId: (globalThis as any).process?.env?.['KINBAN_CLIENT_ID'] || 'demo_client_id',
+    secret: (globalThis as any).process?.env?.['KINBAN_SECRET'] || 'demo_secret',
+    haseUrl: (globalThis as any).process?.env?.['HASE_API_URL'] || 'https://api.hase.mx',
+    haseToken: (globalThis as any).process?.env?.['HASE_TOKEN'] || 'demo_hase_token'
   };
 
   // Simulated scoring storage
@@ -73,43 +73,42 @@ export class CreditScoringService {
   constructor() { }
 
   /**
-   * Initiate credit scoring process with KINBAN/HASE
+   * Core starter for scoring with optional custom ID (used by retry)
    */
-  requestCreditScoring(scoringRequest: ScoringRequest): Observable<{ 
-    scoringId: string; 
-    status: ScoringStatus 
-  }> {
-    const scoringId = `scoring-${Date.now()}`;
-    
-    // Set initial status
+  private startScoring(scoringRequest: ScoringRequest, customId?: string): Observable<{ scoringId: string; status: ScoringStatus }> {
+    const scoringId = customId ?? `scoring-${Date.now()}`;
+
     const initialStatus: ScoringStatus = {
       status: 'processing',
       message: 'Análisis de crédito en proceso...',
       canRetry: false,
-      estimatedTime: 3 // 3 minutes average
+      estimatedTime: 3
     };
-    
     this.statusDB.set(scoringId, initialStatus);
 
-    // Simulate scoring process
     return new Observable<{ scoringId: string; status: ScoringStatus }>(observer => {
-      // Simulate KINBAN/HASE API call delay
       setTimeout(() => {
         const scoringResult = this.simulateScoring(scoringRequest, scoringId);
         this.scoringDB.set(scoringId, scoringResult);
-        
+
         const completedStatus: ScoringStatus = {
           status: 'completed',
           message: `Análisis completado - ${scoringResult.decision}`,
           canRetry: scoringResult.decision === 'REJECTED'
         };
-        
         this.statusDB.set(scoringId, completedStatus);
-        
+
         observer.next({ scoringId, status: completedStatus });
         observer.complete();
-      }, 2000); // 2 second simulation
+      }, 2000);
     }).pipe(delay(500));
+  }
+
+  /**
+   * Initiate credit scoring process with KINBAN/HASE
+   */
+  requestCreditScoring(scoringRequest: ScoringRequest): Observable<{ scoringId: string; status: ScoringStatus }> {
+    return this.startScoring(scoringRequest);
   }
 
   /**
@@ -370,7 +369,7 @@ export class CreditScoringService {
     updatedRequest: Partial<ScoringRequest>
   ): Observable<{ scoringId: string; status: ScoringStatus }> {
     const newScoringId = `scoring-retry-${Date.now()}`;
-    
+
     return new Observable(observer => {
       const originalScoring = this.scoringDB.get(originalScoringId);
       if (!originalScoring) {
@@ -388,8 +387,8 @@ export class CreditScoringService {
         documentStatus: updatedRequest.documentStatus || {} as any
       };
       
-      // Process retry
-      this.requestCreditScoring(fullRequest).subscribe({
+      // Process retry with custom ID
+      this.startScoring(fullRequest, newScoringId).subscribe({
         next: (result) => observer.next(result),
         error: (error) => observer.error(error),
         complete: () => observer.complete()

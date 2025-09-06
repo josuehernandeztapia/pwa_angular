@@ -1,6 +1,6 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import Tesseract, { Worker, createWorker } from 'tesseract.js';
+import type { Worker, PSM } from 'tesseract.js';
 import { CreateWorkerType, TESSERACT_CREATE_WORKER } from '../tokens/ocr.tokens';
 
 export interface OCRResult {
@@ -44,7 +44,8 @@ export class OCRService {
   constructor(
     @Optional() @Inject(TESSERACT_CREATE_WORKER) createWorkerFn: CreateWorkerType | null
   ) {
-    this.createWorkerFn = createWorkerFn ?? createWorker;
+    // Fallback a lazy dynamic import if token not provided
+    this.createWorkerFn = createWorkerFn ?? ((...args: any[]) => import('tesseract.js').then(m => m.createWorker(...(args as any)))) as any;
   }
   
   public progress$ = this.progressSubject.asObservable();
@@ -74,8 +75,9 @@ export class OCRService {
       });
 
       // Optimize for document recognition
+      // PSM 6 == SINGLE_BLOCK (avoid static import of tesseract enum)
       await this.worker.setParameters({
-        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_BLOCK,
+        tessedit_pageseg_mode: 6 as unknown as PSM,
         tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚáéíóúÑñ0123456789-/.,: ',
       });
 
@@ -85,6 +87,10 @@ export class OCRService {
     } catch (error) {
       console.error('Error initializing OCR worker:', error);
       this.progressSubject.next({ status: 'error', progress: 0, message: 'Error inicializando OCR' });
+      // Ensure state is reset on failure so subsequent tests can reinitialize cleanly
+      try { await this.worker?.terminate(); } catch {}
+      this.worker = null;
+      this.isInitialized = false;
       throw error;
     }
   }
@@ -169,6 +175,16 @@ export class OCRService {
     }
   }
 
+  /** Reset worker for test environments */
+  resetWorker(): Promise<void> {
+    return (async () => {
+      try { await this.worker?.terminate(); } catch {}
+      this.worker = null;
+      this.isInitialized = false;
+      this.progressSubject.next({ status: 'idle', progress: 0, message: '' });
+    })();
+  }
+
   /**
    * Extract structured data based on document type
    */
@@ -207,10 +223,11 @@ export class OCRService {
     const fields: { [key: string]: string } = {};
     let confidence = 0.3;
 
-    // Extract CURP
-    const curpMatch = text.match(/[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}/);
+    // Extract CURP (prefer labeled)
+    const curpLabeled = text.match(/CURP\s*:?\s*([A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2})/);
+    const curpMatch = curpLabeled ? curpLabeled[1] : (text.match(/[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]{2}/)?.[0]);
     if (curpMatch) {
-      fields['curp'] = curpMatch[0];
+      fields['curp'] = curpMatch;
       confidence += 0.2;
     }
 
@@ -431,9 +448,9 @@ export class OCRService {
     });
     
     const expectedIndicators = documentIndicators[expectedType.toUpperCase()] || [];
-    const expectedScore = expectedIndicators.reduce((acc: number, indicator: string) => {
-      return acc + (cleanText.includes(indicator) ? 1 : 0);
-    }, 0) / expectedIndicators.length;
+    const expectedScore = expectedIndicators.length === 0
+      ? 0
+      : expectedIndicators.reduce((acc: number, indicator: string) => acc + (cleanText.includes(indicator) ? 1 : 0), 0) / expectedIndicators.length;
     
     return {
       valid: expectedScore >= 0.3,

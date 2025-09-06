@@ -1,4 +1,4 @@
-export const environment = {
+export const environment: any = {
   production: false,
   apiUrl: 'http://localhost:3000',
   appName: 'Conductores PWA',
@@ -111,3 +111,15 @@ export const environment = {
     version: '1.0'
   }
 };
+
+// Allow tests to spyOnProperty(environment, 'services', 'get')
+// by redefining 'services' as an accessor at runtime (configurable).
+(() => {
+  const _services = environment.services;
+  try {
+    Object.defineProperty(environment, 'services', {
+      configurable: true,
+      get: () => _services
+    });
+  } catch {}
+})();

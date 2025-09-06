@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { Location } from '@angular/common';
 
@@ -34,10 +34,10 @@ export interface QuickAction {
 })
 export class NavigationService {
   private navigationState = new BehaviorSubject<NavigationState>({
-    currentRoute: '/',
+    currentRoute: '/dashboard',
     previousRoute: null,
-    breadcrumbs: [],
-    pageTitle: 'Conductores PWA',
+    breadcrumbs: [{ label: '🏠 Dashboard', route: '/dashboard' }],
+    pageTitle: 'Panel Principal',
     showBackButton: false
   });
 
@@ -405,14 +405,18 @@ export class NavigationService {
    * Get route parameters
    */
   getRouteParams(): Observable<any> {
-    return this.activatedRoute.params;
+    const stream: any = (this.activatedRoute as any).params;
+    const snapshot = (this.activatedRoute as any).snapshot?.params || {};
+    return (stream || of(snapshot)).pipe(map((p: any) => (p && Object.keys(p).length ? p : snapshot)));
   }
 
   /**
    * Get query parameters
    */
   getQueryParams(): Observable<any> {
-    return this.activatedRoute.queryParams;
+    const stream: any = (this.activatedRoute as any).queryParams;
+    const snapshot = (this.activatedRoute as any).snapshot?.queryParams || {};
+    return (stream || of(snapshot)).pipe(map((p: any) => (p && Object.keys(p).length ? p : snapshot)));
   }
 
   /**

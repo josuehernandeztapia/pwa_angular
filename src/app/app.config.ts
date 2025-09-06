@@ -11,7 +11,6 @@ import { ApiService } from './services/api.service';
 import { HttpClientService } from './services/http-client.service';
 import { environment } from '../environments/environment';
 import { TESSERACT_CREATE_WORKER } from './tokens/ocr.tokens';
-import { createWorker } from 'tesseract.js';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -40,7 +39,7 @@ export const appConfig: ApplicationConfig = {
     ,
     {
       provide: TESSERACT_CREATE_WORKER,
-      useValue: createWorker
+      useValue: ((...args: any[]) => import('tesseract.js').then(m => m.createWorker(...(args as any)))) as any
     }
   ]
 };

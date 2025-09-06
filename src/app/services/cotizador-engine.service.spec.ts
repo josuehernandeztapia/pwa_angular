@@ -159,6 +159,8 @@ describe('CotizadorEngineService', () => {
     });
 
     it('should calculate balance for interest-bearing loan', () => {
+      // Ajustar cuota mensual mockeada para este caso a un valor realista
+      (TestBed.inject(FinancialCalculatorService) as any).annuity.and.returnValue(12000);
       const balance = service.getBalance(100000, 0.12, 12, 6);
       
       // Should be less than 50000 due to interest calculations

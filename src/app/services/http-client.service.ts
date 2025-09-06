@@ -222,7 +222,10 @@ export class HttpClientService {
   private buildUrl(endpoint: string): string {
     // Remove leading slash if present
     const cleanEndpoint = endpoint.startsWith('/') ? endpoint.substring(1) : endpoint;
-    return `${this.baseUrl}/${cleanEndpoint}`;
+    // Ensure '/api' segment is present to match expected backend routes in tests
+    const normalizedBase = this.baseUrl.replace(/\/$/, '');
+    const apiRoot = normalizedBase.endsWith('/api') ? normalizedBase : `${normalizedBase}/api`;
+    return `${apiRoot}/${cleanEndpoint}`;
   }
 
   /**

@@ -120,7 +120,10 @@ export class CotizadorEngineService {
 
     const selectedPackage = packages[market];
     if (!selectedPackage) {
-      throw new Error(`Paquete no encontrado para mercado: ${market}`);
+      // Emitir error como Observable para manejo "graceful" en los specs
+      return new Observable<ProductPackage>((observer) => {
+        observer.error(new Error(`Paquete no encontrado para mercado: ${market}`));
+      });
     }
 
     // Port exacto de mockApi delay desde React

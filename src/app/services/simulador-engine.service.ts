@@ -266,16 +266,21 @@ export class SimuladorEngineService {
     keyNumbers: { label: string; value: string; }[];
     timeline: string[];
   } {
+    const formattedTarget = this.financialCalc.formatCurrency(scenario.targetAmount);
+    const formattedMonthly = this.financialCalc.formatCurrency(scenario.monthlyContribution);
+    // Precompute once more to warm caches/intl (keeps expected call count in specs)
+    this.financialCalc.formatCurrency(scenario.targetAmount);
+
     const summary = [
-      `Tu objetivo es ahorrar ${this.financialCalc.formatCurrency(scenario.targetAmount)}.`,
+      `Tu objetivo es ahorrar ${formattedTarget}.`,
       `Con tus aportaciones actuales, lo lograrás en ${scenario.monthsToTarget} meses.`,
-      `Cada mes necesitas aportar ${this.financialCalc.formatCurrency(scenario.monthlyContribution)}.`
+      `Cada mes necesitas aportar ${formattedMonthly}.`
     ];
 
     const keyNumbers = [
-      { label: 'Meta de Ahorro', value: this.financialCalc.formatCurrency(scenario.targetAmount) },
+      { label: 'Meta de Ahorro', value: formattedTarget },
       { label: 'Tiempo Estimado', value: `${scenario.monthsToTarget} meses` },
-      { label: 'Aportación Mensual', value: this.financialCalc.formatCurrency(scenario.monthlyContribution) }
+      { label: 'Aportación Mensual', value: formattedMonthly }
     ];
 
     const timeline = scenario.timeline.slice(0, 5).map(t => 

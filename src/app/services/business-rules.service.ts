@@ -181,13 +181,32 @@ export class BusinessRulesService {
       }).pipe(delay(300));
     }
 
-    // Simulate ecosystem validation
+    // Simulate ecosystem validation with tolerant matching (synonyms/keywords)
     const requiredDocs = this.getEcosystemRequiredDocuments();
     const clientDocs = client.documents.map(d => d.name);
-    const missingDocs = requiredDocs.filter(doc => !clientDocs.includes(doc));
+
+    const synonyms: Record<string, string[]> = {
+      'Acta Constitutiva del Ecosistema': ['Acta Constitutiva', 'Acta Constitutiva de la Ruta'],
+      'RFC del Ecosistema': ['RFC', 'Constancia Situación Fiscal Ruta', 'Constancia de Situación Fiscal'],
+      'Estado de Cuenta Bancario del Ecosistema': ['Estado de Cuenta'],
+      'Padrón de Socios Actualizado': ['Padrón de Socios', 'Padron de Socios'],
+      'Acta de Asamblea de Aprobación': ['Acta de Asamblea']
+    };
+
+    const norm = (s: string) => s.toLowerCase();
+    const hasDoc = (required: string): boolean => {
+      const syns = synonyms[required] || [];
+      return clientDocs.some(cd => {
+        const ncd = norm(cd);
+        if (ncd.includes(norm(required))) return true;
+        return syns.some(s => ncd.includes(norm(s)));
+      });
+    };
+
+    const missingDocs = requiredDocs.filter(doc => !hasDoc(doc));
     
     const hasActaConstitutiva = client.documents.some(d => 
-      d.name.includes('Acta Constitutiva') && d.status === 'Aprobado'
+      d.name.toLowerCase().includes('acta constitutiva') && d.status === 'Aprobado'
     );
 
     const validation: EcosystemValidation = {

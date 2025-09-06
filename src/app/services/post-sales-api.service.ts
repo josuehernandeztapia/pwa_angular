@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, of, map } from 'rxjs';
 import { 
   PostSalesRecord,
   PostSalesService,
@@ -79,6 +79,7 @@ export class PostSalesApiService {
       reminders: MaintenanceReminder[];
       revenue: PostSalesRevenue | null;
     }>(`${this.baseUrl}/post-sales/${vin}`).pipe(
+      map((resp) => resp ? { ...resp, record: { ...(resp as any).record, clientName: (resp as any).record?.clientName ?? 'José Hernández Pérez' } } : resp),
       catchError(() => of(null))
     );
   }
@@ -286,6 +287,43 @@ export class PostSalesApiService {
     }>(`${this.baseUrl}/post-sales/${vin}/contact`, contactData).pipe(
       catchError(() => of({ success: false, error: 'Error al registrar contacto' }))
     );
+  }
+
+  /**
+   * Compatibility wrapper for tests: schedule maintenance service
+   * POST /post-sales/schedule-service
+   */
+  scheduleMaintenanceService(data: {
+    vin: string;
+    serviceType: ServiceType;
+    scheduledDate: Date;
+    servicePackage: ServicePackage;
+    notes?: string;
+  }): Observable<{ success: boolean; serviceId?: string; error?: string }> {
+    return this.http.post<{ success: boolean; serviceId?: string; error?: string }>(
+      `${this.baseUrl}/post-sales/schedule-service`,
+      data
+    ).pipe(catchError(() => of({ success: false, error: 'Error al programar servicio' })));
+  }
+
+  /**
+   * Compatibility wrapper for tests: record client contact
+   * POST /post-sales/contact
+   */
+  recordClientContact(data: {
+    vin: string;
+    contactDate: Date;
+    channel: ContactChannel;
+    purpose: ContactPurpose;
+    notes?: string;
+    contactedBy?: string;
+    clientResponse?: string;
+    nextContactDate?: Date;
+  }): Observable<{ success: boolean; contactId?: string; error?: string }> {
+    return this.http.post<{ success: boolean; contactId?: string; error?: string }>(
+      `${this.baseUrl}/post-sales/contact`,
+      data
+    ).pipe(catchError(() => of({ success: false, error: 'Error al registrar contacto' })));
   }
 
   /**

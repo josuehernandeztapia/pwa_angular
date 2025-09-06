@@ -1,4 +1,4 @@
-export const environment = {
+export const environment: any = {
   production: true,
   apiUrl: 'https://api.conductores-pwa.com/v1',
   appName: 'Conductores PWA',
@@ -26,16 +26,16 @@ export const environment = {
   // External services - production keys
   services: {
     metamap: {
-      clientId: process.env['METAMAP_CLIENT_ID'] || '',
-      flowId: process.env['METAMAP_FLOW_ID'] || '',
+      clientId: '',
+      flowId: '',
       baseUrl: 'https://api.metamap.com'
     },
     conekta: {
-      publicKey: process.env['CONEKTA_PUBLIC_KEY'] || '',
+      publicKey: '',
       baseUrl: 'https://api.conekta.io'
     },
     mifiel: {
-      appId: process.env['MIFIEL_APP_ID'] || '',
+      appId: '',
       baseUrl: 'https://api.mifiel.com/api/v1'
     }
   },
@@ -52,3 +52,14 @@ export const environment = {
     version: '1.0'
   }
 };
+
+// Make 'services' spy-able in tests if ever loaded under prod env
+(() => {
+  const _services = environment.services;
+  try {
+    Object.defineProperty(environment, 'services', {
+      configurable: true,
+      get: () => _services
+    });
+  } catch {}
+})();

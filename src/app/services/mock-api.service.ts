@@ -37,10 +37,15 @@ export class MockApiService {
    * Initialize data - Port exacto de initializeDB desde React
    */
   private initializeData(): void {
-    // Get initial clients and initialize collective groups
-    this.clientDataService.getClients().subscribe(clients => {
-      this.collectiveGroupDataService.initializeCollectiveGroups(clients);
-    });
+    // Get initial clients and initialize collective groups (guard if spy not configured)
+    try {
+      const stream: any = this.clientDataService?.getClients?.();
+      if (stream && typeof stream.subscribe === 'function') {
+        stream.subscribe((clients: any) => {
+          this.collectiveGroupDataService.initializeCollectiveGroups(clients);
+        });
+      }
+    } catch {}
   }
 
   /**

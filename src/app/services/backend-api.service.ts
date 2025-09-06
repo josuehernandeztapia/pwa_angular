@@ -4,6 +4,7 @@ import { Observable, throwError, BehaviorSubject, of } from 'rxjs';
 import { catchError, retry, tap, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { StorageService } from './storage.service';
+import { AuthService } from './auth.service';
 
 interface ClientRecord {
   id?: string;
@@ -78,7 +79,7 @@ export class BackendApiService {
   constructor(
     private http: HttpClient,
     private storage: StorageService,
-    private authService: import('./auth.service').AuthService
+    private authService: AuthService
   ) {
     this.setupOnlineListener();
   }

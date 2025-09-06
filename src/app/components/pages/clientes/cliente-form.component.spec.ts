@@ -41,6 +41,7 @@ describe('ClienteFormComponent', () => {
     const apiServiceSpy = jasmine.createSpyObj('ApiService', ['createClient', 'updateClient', 'getClientById']);
 
     mockActivatedRoute = {
+      snapshot: { params: { id: null } },
       params: of({ id: null }),
       data: of({})
     };
@@ -75,8 +76,9 @@ describe('ClienteFormComponent', () => {
     expect(component.clienteForm.get('name')?.value).toBe('');
     expect(component.clienteForm.get('email')?.value).toBe('');
     expect(component.clienteForm.get('phone')?.value).toBe('');
-    expect(component.clienteForm.get('market')?.value).toBe('aguascalientes');
-    expect(component.clienteForm.get('flow')?.value).toBe(BusinessFlow.VentaPlazo);
+    // Form defaults are empty until user selection
+    expect(component.clienteForm.get('market')?.value).toBe('');
+    expect(component.clienteForm.get('flow')?.value).toBe('');
   });
 
   it('should validate required fields', () => {
@@ -263,6 +265,7 @@ describe('ClienteFormComponent', () => {
 describe('ClienteFormComponent Integration Tests', () => {
   it('should render form with all required fields', async () => {
     const mockActivatedRoute = {
+      snapshot: { params: { id: null } },
       params: of({ id: null }),
       data: of({})
     };
@@ -285,6 +288,7 @@ describe('ClienteFormComponent Integration Tests', () => {
 
   it('should show validation errors when submitting empty form', async () => {
     const mockActivatedRoute = {
+      snapshot: { params: { id: null } },
       params: of({ id: null }),
       data: of({})
     };
@@ -298,7 +302,7 @@ describe('ClienteFormComponent Integration Tests', () => {
       ]
     });
 
-    const submitButton = screen.getByRole('button', { name: /guardar/i });
+    const submitButton = screen.getByRole('button', { name: /(Crear Cliente|Actualizar)/i });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -309,6 +313,7 @@ describe('ClienteFormComponent Integration Tests', () => {
 
   it('should handle form input correctly', async () => {
     const mockActivatedRoute = {
+      snapshot: { params: { id: null } },
       params: of({ id: null }),
       data: of({})
     };
@@ -339,6 +344,7 @@ describe('ClienteFormComponent Integration Tests', () => {
 
   it('should submit form with valid data', async () => {
     const mockActivatedRoute = {
+      snapshot: { params: { id: null } },
       params: of({ id: null }),
       data: of({})
     };

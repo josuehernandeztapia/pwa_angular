@@ -9,6 +9,7 @@ import { RiskRadarComponent, RiskRadarClient } from '../../shared/risk-radar/ris
 import { HumanActivityFeedComponent, ActivityItem } from '../../shared/human-activity-feed/human-activity-feed.component';
 import { ClientModeToggleComponent, ViewMode } from '../../shared/client-mode-toggle/client-mode-toggle.component';
 import { DashboardService } from '../../../services/dashboard.service';
+import { of } from 'rxjs';
 import { DashboardStats, ActivityFeedItem, Market, OpportunityStage, ActionableGroup, ActionableClient } from '../../../models/types';
 
 @Component({
@@ -456,7 +457,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.dashboardService.getDashboardStats(this.selectedMarket).toPromise(),
       this.dashboardService.getOpportunityStages(this.selectedMarket).toPromise(),
       this.dashboardService.getActionableGroups(this.selectedMarket).toPromise(),
-      this.dashboardService.getAllClients(this.selectedMarket).toPromise()
+      typeof (this.dashboardService as any).getAllClients === 'function'
+        ? (this.dashboardService as any).getAllClients(this.selectedMarket).toPromise()
+        : Promise.resolve([])
     ]).then(([stats, funnel, groups, clients]) => {
       this.stats = stats || null;
       if (stats) {
@@ -485,11 +488,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
    * Subscribe to real-time activity feed
    */
   private subscribeToActivityFeed(): void {
-    this.dashboardService.activityFeed$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe(activities => {
-        this.activityFeed = activities;
-      });
+    const ds: any = this.dashboardService as any;
+    const stream = ds.activityFeed$ || (typeof ds.getActivityFeed === 'function' ? ds.getActivityFeed() : of([]));
+    stream.pipe(takeUntil(this.destroy$)).subscribe((activities: ActivityFeedItem[]) => {
+      this.activityFeed = activities;
+    });
   }
 
   /**

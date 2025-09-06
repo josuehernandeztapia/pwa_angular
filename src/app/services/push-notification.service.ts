@@ -99,10 +99,24 @@ export class PushNotificationService {
   }
 
   get currentSubscription(): Observable<PushSubscription | null> {
+    // Refresh from storage if missing in-memory value
+    if (!this.subscription$.value) {
+      const stored = localStorage.getItem('push_subscription');
+      if (stored) {
+        this.loadExistingSubscription();
+      }
+    }
     return this.subscription$.asObservable();
   }
 
   get notificationHistory(): Observable<NotificationHistory[]> {
+    // Refresh from storage if empty and storage has data
+    if (this.notifications$.value.length === 0) {
+      const stored = localStorage.getItem('notification_history');
+      if (stored) {
+        this.loadStoredNotifications();
+      }
+    }
     return this.notifications$.asObservable();
   }
 
@@ -262,7 +276,11 @@ export class PushNotificationService {
   }
 
   private handleNotificationClick(event: any): void {
-    const data = event.notification.data;
+    const data = event?.notification?.data;
+    if (!data) {
+      try { event?.notification?.close?.(); } catch {}
+      return;
+    }
     
     // Mark as clicked
     this.markNotificationAsClicked(data.notification_id);
