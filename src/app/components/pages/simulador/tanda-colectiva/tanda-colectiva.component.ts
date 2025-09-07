@@ -1,14 +1,14 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
-import { SimuladorEngineService, SavingsScenario, CollectiveScenarioConfig } from '../../../../services/simulador-engine.service';
-import { LoadingService } from '../../../../services/loading.service';
+import { Subject } from 'rxjs';
 import { FinancialCalculatorService } from '../../../../services/financial-calculator.service';
+import { LoadingService } from '../../../../services/loading.service';
 import { PdfExportService } from '../../../../services/pdf-export.service';
+import { CollectiveScenarioConfig, SavingsScenario, SimuladorEngineService } from '../../../../services/simulador-engine.service';
+import { SpeechService } from '../../../../services/speech.service';
 import { ToastService } from '../../../../services/toast.service';
-import { Client } from '../../../../models/types';
 
 interface WhatIfEvent {
   id: string;
@@ -658,7 +658,8 @@ export class TandaColectivaComponent implements OnInit, OnDestroy {
     private financialCalc: FinancialCalculatorService,
     private pdfExportService: PdfExportService,
     private toast: ToastService,
-    private router: Router
+    private router: Router,
+    private speech: SpeechService
   ) {
     this.configForm = this.fb.group({
       memberCount: [10, [Validators.required, Validators.min(5), Validators.max(50)]],
@@ -996,12 +997,7 @@ ${this.whatIfEvents.length > 0 ? '\n🎯 *Eventos What-If incluidos:*\n' + this.
     Con aportaciones mensuales de ${this.formatCurrency(this.simulationResult.scenario.monthlyContribution)} del grupo completo.
     ${this.whatIfEvents.length > 0 ? `Se han incluido ${this.whatIfEvents.length} eventos especiales en la simulación.` : ''}`;
 
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'es-MX';
-      utterance.rate = 0.8;
-      speechSynthesis.speak(utterance);
-    }
+    this.speech.speak(text);
   }
 
   getAvailableMemberIds(): string[] {

@@ -1,11 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CotizadorEngineService, ProductPackage } from '../../services/cotizador-engine.service';
-import { SimuladorEngineService, SavingsScenario } from '../../services/simulador-engine.service';
-import { FinancialCalculatorService } from '../../services/financial-calculator.service';
-import { ToastService } from '../../services/toast.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Client, Quote, SimulatorMode } from '../../models/types';
+import { CotizadorEngineService, ProductPackage } from '../../services/cotizador-engine.service';
+import { FinancialCalculatorService } from '../../services/financial-calculator.service';
+import { SavingsScenario, SimuladorEngineService } from '../../services/simulador-engine.service';
+import { SpeechService } from '../../services/speech.service';
+import { ToastService } from '../../services/toast.service';
 
 type Market = 'aguascalientes' | 'edomex';
 type ClientType = 'individual' | 'colectivo';
@@ -1197,7 +1198,8 @@ export class DualModeCotizadorComponent implements OnInit {
     private cotizadorEngine: CotizadorEngineService,
     private simuladorEngine: SimuladorEngineService,
     private financialCalc: FinancialCalculatorService,
-    private toast: ToastService
+    private toast: ToastService,
+    private speech: SpeechService
   ) {}
 
   ngOnInit() {
@@ -1367,15 +1369,8 @@ export class DualModeCotizadorComponent implements OnInit {
 
   speakSummary() {
     const text = this.generateSpeechText();
-    
-    if ('speechSynthesis' in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'es-MX';
-      utterance.rate = 0.8;
-      speechSynthesis.speak(utterance);
-    } else {
-      this.toast.info('Tu navegador no soporta síntesis de voz');
-    }
+
+    this.speech.speak(text);
   }
 
   formalizeQuote() {
