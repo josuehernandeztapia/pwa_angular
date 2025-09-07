@@ -1,7 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import Tesseract, { Worker, createWorker } from 'tesseract.js';
 import { CreateWorkerType, TESSERACT_CREATE_WORKER } from '../tokens/ocr.tokens';
+type Worker = any;
 
 export interface OCRResult {
   text: string;
@@ -44,7 +44,10 @@ export class OCRService {
   constructor(
     @Optional() @Inject(TESSERACT_CREATE_WORKER) createWorkerFn: CreateWorkerType | null
   ) {
-    this.createWorkerFn = createWorkerFn ?? createWorker;
+    this.createWorkerFn = createWorkerFn ?? (async (lang: string, oem?: number, options?: any) => {
+      const mod: any = await import('tesseract.js');
+      return mod.createWorker(lang, oem as any, options);
+    });
   }
   
   public progress$ = this.progressSubject.asObservable();
@@ -74,8 +77,9 @@ export class OCRService {
       });
 
       // Optimize for document recognition
+      const tesseractModule: any = await import('tesseract.js');
       await this.worker.setParameters({
-        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_BLOCK,
+        tessedit_pageseg_mode: (tesseractModule?.PSM && tesseractModule.PSM.SINGLE_BLOCK) || 6,
         tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚáéíóúÑñ0123456789-/.,: ',
       });
 

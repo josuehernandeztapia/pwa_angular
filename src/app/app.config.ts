@@ -2,7 +2,6 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { ApplicationConfig, ErrorHandler } from '@angular/core';
 import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
-import { createWorker } from 'tesseract.js';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
@@ -39,7 +38,7 @@ export const appConfig: ApplicationConfig = {
     ,
     {
       provide: TESSERACT_CREATE_WORKER,
-      useValue: createWorker
+      useValue: (lang: string, oem?: number, options?: any) => import('tesseract.js').then((m: any) => m.createWorker(lang, oem as any, options))
     }
   ]
 };

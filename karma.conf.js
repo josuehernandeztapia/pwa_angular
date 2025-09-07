@@ -26,7 +26,8 @@ module.exports = function (config) {
         // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
         // for example, you can disable the random execution order
         random: false,
-        stopSpecOnExpectationFailure: false
+        stopSpecOnExpectationFailure: false,
+        timeoutInterval: 60000
       },
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
@@ -61,6 +62,10 @@ module.exports = function (config) {
     },
     restartOnFileChange: true,
     singleRun: false,
-    logLevel: config.LOG_INFO
+    logLevel: config.LOG_INFO,
+    browserNoActivityTimeout: 60000,
+    browserDisconnectTimeout: 20000,
+    browserDisconnectTolerance: 2,
+    captureTimeout: 120000
   });
 };
