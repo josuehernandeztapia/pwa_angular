@@ -191,6 +191,7 @@ import {
             </div>
             <input 
               #photoInput
+              id="photoInput"
               type="file" 
               accept="image/*" 
               multiple 

@@ -66,7 +66,7 @@
       "name": "Nueva Oportunidad",
       "short_name": "Nueva",
       "description": "Crear nueva oportunidad de negocio",
-      "url": "/onboarding",
+      "url": "/nueva-oportunidad",
       "icons": [
         {
           "src": "assets/icons/shortcuts/shortcut-new.png",
@@ -102,7 +102,7 @@
       "name": "Clientes",
       "short_name": "Clientes",
       "description": "Gestión de clientes",
-      "url": "/clients",
+      "url": "/clientes",
       "icons": [
         {
           "src": "assets/icons/shortcuts/shortcut-clients.png",

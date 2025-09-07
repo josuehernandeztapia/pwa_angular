@@ -1,0 +1,132 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - link "Saltar al contenido" [ref=e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - navigation "Navegación principal":
+      - navigation [ref=e5]:
+        - generic [ref=e6]:
+          - generic [ref=e7]:
+            - generic [ref=e8]: 🚐
+            - generic [ref=e9]: Conductores PWA
+          - generic [ref=e10]:
+            - button "Abrir centro de notificaciones" [ref=e11] [cursor=pointer]: 🔔
+            - generic "Tamaño de letra" [ref=e12]:
+              - button "Tamaño normal" [ref=e13] [cursor=pointer]: A
+              - button "Tamaño grande" [ref=e14] [cursor=pointer]: A
+              - button "Tamaño extra grande" [ref=e15] [cursor=pointer]: A
+            - button "Alto contraste" [ref=e16] [cursor=pointer]
+            - button "Alternar tamaño del menú" [ref=e17] [cursor=pointer]: ⬅️
+        - generic [ref=e18]:
+          - generic [ref=e20]: AD
+          - generic [ref=e21]:
+            - generic [ref=e22]: Asesor Demo
+            - generic [ref=e23]: Asesor Financiero
+        - button "➕ Nueva Oportunidad" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26] [cursor=pointer]: ➕
+          - generic [ref=e27] [cursor=pointer]: Nueva Oportunidad
+        - generic [ref=e28]:
+          - generic [ref=e30] [cursor=pointer]:
+            - generic [ref=e31] [cursor=pointer]: 🏠
+            - generic [ref=e32] [cursor=pointer]: Dashboard
+          - generic [ref=e34] [cursor=pointer]:
+            - generic [ref=e35] [cursor=pointer]: ➕
+            - generic [ref=e36] [cursor=pointer]: Nueva Oportunidad
+            - generic [ref=e37] [cursor=pointer]: "2"
+          - generic [ref=e39] [cursor=pointer]:
+            - generic [ref=e40] [cursor=pointer]: 💰
+            - generic [ref=e41] [cursor=pointer]: Cotizador
+          - generic [ref=e43] [cursor=pointer]:
+            - generic [ref=e44] [cursor=pointer]: 🎯
+            - generic [ref=e45] [cursor=pointer]: Simulador
+          - generic [ref=e47] [cursor=pointer]:
+            - generic [ref=e48] [cursor=pointer]: 👥
+            - generic [ref=e49] [cursor=pointer]: Clientes
+            - generic [ref=e50] [cursor=pointer]: "12"
+          - generic [ref=e52] [cursor=pointer]:
+            - generic [ref=e53] [cursor=pointer]: 📋
+            - generic [ref=e54] [cursor=pointer]: Expedientes
+          - generic [ref=e56] [cursor=pointer]:
+            - generic [ref=e57] [cursor=pointer]: 🛡️
+            - generic [ref=e58] [cursor=pointer]: Protección
+            - generic [ref=e59] [cursor=pointer]: "3"
+          - generic [ref=e61] [cursor=pointer]:
+            - generic [ref=e62] [cursor=pointer]: 📊
+            - generic [ref=e63] [cursor=pointer]: Reportes
+        - generic [ref=e64]:
+          - generic [ref=e66] [cursor=pointer]:
+            - generic [ref=e67] [cursor=pointer]: ❓
+            - generic [ref=e68] [cursor=pointer]: Ayuda
+          - generic [ref=e70] [cursor=pointer]:
+            - generic [ref=e71] [cursor=pointer]: ⚙️
+            - generic [ref=e72] [cursor=pointer]: Configuración
+          - generic [ref=e74] [cursor=pointer]:
+            - generic [ref=e75] [cursor=pointer]: 🚪
+            - generic [ref=e76] [cursor=pointer]: Salir
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e80]: 🔔 Notificaciones
+          - button "✕" [ref=e82] [cursor=pointer]
+        - generic [ref=e84]:
+          - generic [ref=e85]: 🔔
+          - generic [ref=e86]:
+            - generic [ref=e87]: Activar Notificaciones
+            - generic [ref=e88]: Recibe alertas de pagos y actualizaciones importantes
+          - generic [ref=e89]:
+            - button "Activar" [ref=e90] [cursor=pointer]
+            - button "Después" [ref=e91] [cursor=pointer]
+        - generic [ref=e93]:
+          - generic [ref=e94]: 📭
+          - generic [ref=e95]: No hay notificaciones
+          - generic [ref=e96]: Las notificaciones aparecerán aquí
+    - main [ref=e97]:
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - button "← Volver" [ref=e101] [cursor=pointer]
+          - heading "🌵 Simulador AGS Ahorro" [level=1] [ref=e102]
+          - paragraph [ref=e103]: Proyecta tu ahorro, calcula liquidación en entrega
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - heading "🚐 Configuración de Unidad" [level=3] [ref=e108]
+            - generic [ref=e109]:
+              - generic [ref=e110]: Valor Total de la Unidad
+              - generic [ref=e111]:
+                - generic [ref=e112]: $
+                - spinbutton [ref=e113]: "799000"
+              - generic [ref=e114]: "Precio típico AGS: $799,000 (vagoneta + GNV)"
+            - generic [ref=e115]:
+              - generic [ref=e116]: Enganche Inicial Disponible
+              - generic [ref=e117]:
+                - generic [ref=e118]: $
+                - spinbutton [ref=e119]: "400000"
+              - generic [ref=e120]: Monto que tienes disponible ahora
+            - generic [ref=e121]:
+              - generic [ref=e122]: Meses Estimados para Entrega
+              - combobox [ref=e123]:
+                - option "Seleccionar"
+                - option "3 meses (entrega rápida)"
+                - option "6 meses (estándar)" [selected]
+                - option "9 meses (planificado)"
+                - option "12 meses (extendido)"
+          - generic [ref=e124]:
+            - heading "⛽ Configuración de Recaudación" [level=3] [ref=e125]
+            - generic [ref=e126]:
+              - generic [ref=e127]: Placas de Unidades Actuales
+              - generic [ref=e128]:
+                - textbox "ABC-1234" [ref=e129]
+                - button "+ Agregar" [ref=e130] [cursor=pointer]
+              - generic [ref=e132]:
+                - generic [ref=e133]: ABC-1234
+                - spinbutton [ref=e134]
+                - button "×" [ref=e135] [cursor=pointer]
+            - generic [ref=e136]:
+              - generic [ref=e137]: Sobreprecio por Litro
+              - generic [ref=e138]:
+                - generic [ref=e139]: $
+                - spinbutton [ref=e140]: "5"
+              - generic [ref=e141]: Cantidad extra por litro que vas a ahorrar
+          - button "📊 Simular Escenario" [ref=e143] [cursor=pointer]
+    - navigation "Navegación inferior"
+```

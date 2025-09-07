@@ -351,6 +351,7 @@ import {
       <!-- File Input (Hidden) -->
       <input 
         #fileInput
+        id="fileInput"
         type="file" 
         [accept]="currentUploadType() === 'contratos' || currentUploadType() === 'endosos' ? '.pdf' : '.pdf'"
         [multiple]="currentUploadType() === 'contratos' || currentUploadType() === 'endosos'"

@@ -37,7 +37,7 @@ describe('ClienteFormComponent', () => {
 
   beforeEach(async () => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-    const toastServiceSpy = jasmine.createSpyObj('ToastService', ['showSuccess', 'showError']);
+    const toastServiceSpy = jasmine.createSpyObj('ToastService', ['success', 'error', 'warning', 'info']);
     const apiServiceSpy = jasmine.createSpyObj('ApiService', ['createClient', 'updateClient', 'getClientById']);
 
     mockActivatedRoute = {
@@ -140,7 +140,7 @@ describe('ClienteFormComponent', () => {
     component.onSubmit();
 
     expect(mockApiService.createClient).toHaveBeenCalledWith(jasmine.objectContaining(clientData));
-    expect(mockToastService.showSuccess).toHaveBeenCalledWith('Cliente creado exitosamente');
+    expect(mockToastService.success).toHaveBeenCalledWith('Cliente creado exitosamente');
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/clientes']);
   });
 
@@ -175,7 +175,7 @@ describe('ClienteFormComponent', () => {
     component.onSubmit();
 
     expect(mockApiService.updateClient).toHaveBeenCalledWith('1', jasmine.objectContaining(updatedData));
-    expect(mockToastService.showSuccess).toHaveBeenCalledWith('Cliente actualizado exitosamente');
+    expect(mockToastService.success).toHaveBeenCalledWith('Cliente actualizado exitosamente');
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/clientes', '1']);
   });
 
@@ -193,7 +193,7 @@ describe('ClienteFormComponent', () => {
 
     component.onSubmit();
 
-    expect(mockToastService.showError).toHaveBeenCalledWith('Error al crear el cliente');
+    expect(mockToastService.error).toHaveBeenCalledWith('Error al crear el cliente');
     expect(component.isLoading).toBe(false);
   });
 
@@ -274,7 +274,7 @@ describe('ClienteFormComponent Integration Tests', () => {
       providers: [
         { provide: Router, useValue: jasmine.createSpyObj('Router', ['navigate']) },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['showSuccess', 'showError']) },
+        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['success', 'error']) },
         { provide: ApiService, useValue: jasmine.createSpyObj('ApiService', ['createClient', 'updateClient', 'getClientById']) }
       ]
     });
@@ -297,7 +297,7 @@ describe('ClienteFormComponent Integration Tests', () => {
       providers: [
         { provide: Router, useValue: jasmine.createSpyObj('Router', ['navigate']) },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['showSuccess', 'showError']) },
+        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['success', 'error']) },
         { provide: ApiService, useValue: jasmine.createSpyObj('ApiService', ['createClient', 'updateClient', 'getClientById']) }
       ]
     });
@@ -324,7 +324,7 @@ describe('ClienteFormComponent Integration Tests', () => {
       providers: [
         { provide: Router, useValue: jasmine.createSpyObj('Router', ['navigate']) },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['showSuccess', 'showError']) },
+        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['success', 'error']) },
         { provide: ApiService, useValue: jasmine.createSpyObj('ApiService', ['createClient', 'updateClient', 'getClientById']) }
       ]
     });
@@ -364,7 +364,7 @@ describe('ClienteFormComponent Integration Tests', () => {
       providers: [
         { provide: Router, useValue: mockRouter },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['showSuccess', 'showError']) },
+        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['success', 'error']) },
         { provide: ApiService, useValue: mockApiService }
       ]
     });
@@ -398,7 +398,7 @@ describe('ClienteFormComponent Integration Tests', () => {
       providers: [
         { provide: Router, useValue: mockRouter },
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
-        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['showSuccess', 'showError']) },
+        { provide: ToastService, useValue: jasmine.createSpyObj('ToastService', ['success', 'error']) },
         { provide: ApiService, useValue: jasmine.createSpyObj('ApiService', ['createClient', 'updateClient', 'getClientById']) }
       ]
     });

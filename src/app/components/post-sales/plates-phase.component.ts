@@ -240,6 +240,7 @@ import {
             </div>
             <input 
               #photoInput
+              id="photoInput"
               type="file" 
               accept="image/*" 
               multiple 
@@ -347,6 +348,7 @@ import {
       <!-- Document Input (Hidden) -->
       <input 
         #documentInput
+        id="documentInput"
         type="file" 
         accept=".pdf"
         (change)="onDocumentSelected($event)"

@@ -1,11 +1,11 @@
 {
   "config": {
-    "configFile": "/workspace/playwright.config.ts",
-    "rootDir": "/workspace/src/tests/visual",
+    "configFile": "/Users/josuehernandez/pwa_angular/playwright.config.ts",
+    "rootDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
     "forbidOnly": false,
     "fullyParallel": true,
-    "globalSetup": "/workspace/src/tests/visual/setup/global-setup.ts",
-    "globalTeardown": "/workspace/src/tests/visual/setup/global-teardown.ts",
+    "globalSetup": "/Users/josuehernandez/pwa_angular/src/tests/visual/setup/global-setup.ts",
+    "globalTeardown": "/Users/josuehernandez/pwa_angular/src/tests/visual/setup/global-teardown.ts",
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
@@ -13,7 +13,7 @@
     "metadata": {
       "project": "Conductores PWA",
       "description": "Visual regression tests for UI components and pages",
-      "actualWorkers": 2
+      "actualWorkers": 4
     },
     "preserveOutput": "always",
     "reporter": [
@@ -35,17 +35,17 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -53,17 +53,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "firefox",
         "name": "firefox",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -71,17 +71,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "webkit",
         "name": "webkit",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -89,17 +89,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -107,17 +107,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -125,17 +125,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "iPad",
         "name": "iPad",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -143,17 +143,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/workspace/test-results/visual",
+        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
           "description": "Visual regression tests for UI components and pages",
-          "actualWorkers": 2
+          "actualWorkers": 4
         },
         "id": "High DPI",
         "name": "High DPI",
-        "testDir": "/workspace/src/tests/visual",
+        "testDir": "/Users/josuehernandez/pwa_angular/src/tests/visual",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -165,7 +165,7 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.55.0",
-    "workers": 2,
+    "workers": 4,
     "webServer": {
       "command": "npm run serve:test",
       "url": "http://localhost:4200",
@@ -174,6 +174,1519 @@
     }
   },
   "suites": [
+    {
+      "title": "all-modules.spec.ts",
+      "file": "all-modules.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Premium visual across modules",
+          "file": "all-modules.spec.ts",
+          "line": 35,
+          "column": 6,
+          "specs": [
+            {
+              "title": "@dashboard should render premium container and take snapshot",
+              "ok": true,
+              "tags": [
+                "dashboard"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2026,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:15.707Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "51290be374324717b45f-e8eac6f6cd80855ff1d4",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@nueva-oportunidad should render premium container and take snapshot",
+              "ok": true,
+              "tags": [
+                "nueva-oportunidad"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1348,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:15.707Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "51290be374324717b45f-56284e2eb16932e823d3",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@clientes-list should render premium container and take snapshot",
+              "ok": true,
+              "tags": [
+                "clientes-list"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 1397,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:15.708Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "51290be374324717b45f-c78f7d9eebbe36e5e8b4",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@cliente-form should render premium container and take snapshot",
+              "ok": true,
+              "tags": [
+                "cliente-form"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1375,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:15.711Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "51290be374324717b45f-9d073377b5f23c00896b",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@cotizador-main should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "cotizador-main"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 5682,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:45:42",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 42,
+                          "line": 45
+                        },
+                        "snippet": "  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n> 45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n     |                                          ^\n  46 |       }\n  47 |       await expect(page).toHaveScreenshot();\n  48 |     });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 42,
+                            "line": 45
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('h1')\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('h1')\u001b[22m\n\n\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n> 45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n     |                                          ^\n  46 |       }\n  47 |       await expect(page).toHaveScreenshot();\n  48 |     });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:45:42"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:17.312Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-68ce4-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-68ce4-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-68ce4-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 42,
+                        "line": 45
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-79dd0707d2ddfd304288",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@ags-individual should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "ags-individual"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 5702,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 39,
+                          "line": 42
+                        },
+                        "snippet": "  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 39,
+                            "line": 42
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n\n  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:17.345Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-2939b-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-2939b-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-2939b-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 39,
+                        "line": 42
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-d074569009ecac8fec97",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@edomex-colectivo should render premium container and take snapshot",
+              "ok": true,
+              "tags": [
+                "edomex-colectivo"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "passed",
+                      "duration": 791,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:17.356Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "51290be374324717b45f-4746636329ac86e260b7",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@simulador-main should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "simulador-main"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5693,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 39,
+                          "line": 42
+                        },
+                        "snippet": "  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 39,
+                            "line": 42
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n\n  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:17.978Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-ad549-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-ad549-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-ad549-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 39,
+                        "line": 42
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-c7afdb446017a16af279",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@ags-ahorro should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "ags-ahorro"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 5653,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 39,
+                          "line": 42
+                        },
+                        "snippet": "  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 39,
+                            "line": 42
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n\n  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:18.161Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-324c1-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-324c1-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-324c1-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 39,
+                        "line": 42
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-f78875ad7e82644b5e8b",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@edomex-individual should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "edomex-individual"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 831,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-edomex-individual-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-edomex-individual-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-edomex-individual-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:23.380Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-327f7-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-edomex-individual-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-327f7-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-d31c3-container-and-take-snapshot-chromium/Premium-visual-across-modu-327f7-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-d31c3-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-d31c3-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-d31c3-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-bcd7288ce13bffb0ed78",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@tanda-colectiva should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "tanda-colectiva"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 927,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-tanda-colectiva-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-tanda-colectiva-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-tanda-colectiva-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:23.417Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-ee66e-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-tanda-colectiva-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-ee66e-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-810cd-container-and-take-snapshot-chromium/Premium-visual-across-modu-ee66e-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-810cd-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-810cd-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-810cd-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-37c0ffa8df713f07e519",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@onboarding should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "onboarding"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1073,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-onboarding-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-onboarding-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-onboarding-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:24.314Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-ea11b-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-onboarding-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-ea11b-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-fa9db-container-and-take-snapshot-chromium/Premium-visual-across-modu-ea11b-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-fa9db-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-fa9db-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-fa9db-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-293b5d7debe31f7d5acd",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@document-upload should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "document-upload"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 5519,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 39,
+                          "line": 42
+                        },
+                        "snippet": "  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 39,
+                            "line": 42
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n\n  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:24.517Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-6f5b2-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-6f5b2-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-6f5b2-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 39,
+                        "line": 42
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-f6c9618fbac2bbbcb65a",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@opportunities should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "opportunities"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 857,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-opportunities-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-opportunities-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-opportunities-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:25.012Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-cc89e-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-opportunities-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-cc89e-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-71f5a-container-and-take-snapshot-chromium/Premium-visual-across-modu-cc89e-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-71f5a-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-71f5a-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-71f5a-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-22a9d5c7a40ee5bec62c",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@expedientes should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "expedientes"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 9,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 899,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-expedientes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-expedientes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-expedientes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:25.096Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-62f0d-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-expedientes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-62f0d-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-23e70-container-and-take-snapshot-chromium/Premium-visual-across-modu-62f0d-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-23e70-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-23e70-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-23e70-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-23aef64356063315265f",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@ops-deliveries should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "ops-deliveries"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 10,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 820,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-ops-deliveries-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-ops-deliveries-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-ops-deliveries-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:26.134Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-3515b-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-ops-deliveries-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-3515b-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-33bf1-container-and-take-snapshot-chromium/Premium-visual-across-modu-3515b-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-33bf1-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-33bf1-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-33bf1-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-25b40413c4b8a86144f2",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@triggers should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "triggers"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 11,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 5593,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 39,
+                          "line": 42
+                        },
+                        "snippet": "  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 39,
+                            "line": 42
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('div[class*=\"container\"], .premium-container').first()\nExpected: visible\nReceived: <element(s) not found>\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('div[class*=\"container\"], .premium-container').first()\u001b[22m\n\n\n  40 |       // Check that a container exists and has background applied\n  41 |       const container = page.locator('div[class*=\"container\"], .premium-container');\n> 42 |       await expect(container.first()).toBeVisible();\n     |                                       ^\n  43 |       // Basic header presence if known\n  44 |       if (r.heading) {\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:42:39"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:26.434Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-47b42-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-47b42-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-47b42-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 39,
+                        "line": 42
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-3a9aa92d1925e7f42834",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@reportes should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "reportes"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 832,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-reportes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-reportes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-reportes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:26.649Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-16f3c-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-reportes-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-16f3c-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-f0d84-container-and-take-snapshot-chromium/Premium-visual-across-modu-16f3c-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-f0d84-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-f0d84-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-f0d84-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-41e4ea232806fb6699fc",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@productos should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "productos"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 947,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-productos-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-productos-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-productos-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:27.527Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-72328-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-productos-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-72328-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-00e88-container-and-take-snapshot-chromium/Premium-visual-across-modu-72328-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-00e88-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-00e88-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-00e88-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-a45ef2449f32394c3a57",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@proteccion should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "proteccion"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 857,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-proteccion-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-proteccion-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-proteccion-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:28.023Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-4759d-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-proteccion-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-4759d-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-9d362-container-and-take-snapshot-chromium/Premium-visual-across-modu-4759d-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-9d362-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-9d362-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-9d362-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-58e6ca21f9846578821b",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            },
+            {
+              "title": "@perfil should render premium container and take snapshot",
+              "ok": false,
+              "tags": [
+                "perfil"
+              ],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 15,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 792,
+                      "error": {
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-perfil-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-perfil-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                          "column": 7,
+                          "line": 47
+                        },
+                        "snippet": "  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                            "column": 7,
+                            "line": 47
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-perfil-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png, writing actual.\n\n  45 |         await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });\n  46 |       }\n> 47 |       await expect(page).toHaveScreenshot();\n     |       ^\n  48 |     });\n  49 |   }\n  50 | });\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts:47:7"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-07T08:15:28.913Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "Premium-visual-across-modu-67980-ntainer-and-take-snapshot-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts-snapshots/Premium-visual-across-modules-perfil-should-render-premium-container-and-take-snapshot-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Premium-visual-across-modu-67980-ntainer-and-take-snapshot-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-c00a3-container-and-take-snapshot-chromium/Premium-visual-across-modu-67980-ntainer-and-take-snapshot-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-c00a3-container-and-take-snapshot-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-c00a3-container-and-take-snapshot-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/all-modules-Premium-visual-c00a3-container-and-take-snapshot-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/all-modules.spec.ts",
+                        "column": 7,
+                        "line": 47
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "51290be374324717b45f-f299b8aa7e02bf1eb6e6",
+              "file": "all-modules.spec.ts",
+              "line": 37,
+              "column": 9
+            }
+          ]
+        }
+      ]
+    },
     {
       "title": "flow-builder.spec.ts",
       "file": "flow-builder.spec.ts",
@@ -202,25 +1715,67 @@
                   "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
+                      "workerIndex": 16,
+                      "parallelIndex": 3,
                       "status": "failed",
-                      "duration": 2,
+                      "duration": 1060,
                       "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+                        "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts-snapshots/Flow-Builder-Visual-flow-editor-should-open-from-configuración-modal-and-render-palettes-1-chromium-darwin.png, writing actual.",
+                        "stack": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts-snapshots/Flow-Builder-Visual-flow-editor-should-open-from-configuración-modal-and-render-palettes-1-chromium-darwin.png, writing actual.\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts:35:5",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts",
+                          "column": 5,
+                          "line": 35
+                        },
+                        "snippet": "  33 |     await expect(page.getByText('💼 Productos')).toBeVisible();\n  34 |\n> 35 |     await expect(page).toHaveScreenshot();\n     |     ^\n  36 |   });\n  37 |\n  38 |   test('@flow-connections should show disabled Deploy until nodes exist', async ({ page }) => {"
                       },
                       "errors": [
                         {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts",
+                            "column": 5,
+                            "line": 35
+                          },
+                          "message": "Error: A snapshot doesn't exist at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts-snapshots/Flow-Builder-Visual-flow-editor-should-open-from-configuración-modal-and-render-palettes-1-chromium-darwin.png, writing actual.\n\n  33 |     await expect(page.getByText('💼 Productos')).toBeVisible();\n  34 |\n> 35 |     await expect(page).toHaveScreenshot();\n     |     ^\n  36 |   });\n  37 |\n  38 |   test('@flow-connections should show disabled Deploy until nodes exist', async ({ page }) => {\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts:35:5"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-04T17:28:21.916Z",
+                      "startTime": "2025-09-07T08:15:29.339Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "Flow-Builder-Visual-flow--acdc1-modal-and-render-palettes-1-expected.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts-snapshots/Flow-Builder-Visual-flow-editor-should-open-from-configuración-modal-and-render-palettes-1-chromium-darwin.png"
+                        },
+                        {
+                          "name": "Flow-Builder-Visual-flow--acdc1-modal-and-render-palettes-1-actual.png",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--6df8c-n-modal-and-render-palettes-chromium/Flow-Builder-Visual-flow--acdc1-modal-and-render-palettes-1-actual.png"
+                        },
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--6df8c-n-modal-and-render-palettes-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--6df8c-n-modal-and-render-palettes-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--6df8c-n-modal-and-render-palettes-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts",
+                        "column": 5,
+                        "line": 35
+                      }
                     }
                   ],
                   "status": "unexpected"
@@ -232,267 +1787,79 @@
               "column": 7
             },
             {
-              "title": "@flow-editor should open from configuración modal and render palettes",
+              "title": "@flow-connections should show disabled Deploy until nodes exist",
               "ok": false,
               "tags": [
-                "flow-editor"
+                "flow-connections"
               ],
               "tests": [
                 {
                   "timeout": 30000,
                   "annotations": [],
                   "expectedStatus": "passed",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
                   "results": [
                     {
-                      "workerIndex": 1,
-                      "parallelIndex": 1,
-                      "status": "failed",
-                      "duration": 2,
-                      "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/firefox-1490/firefox/firefox\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/firefox-1490/firefox/firefox\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                      },
-                      "errors": [
-                        {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/firefox-1490/firefox/firefox\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-04T17:28:21.933Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "7e4553764ed91a341dd9-53654e3c805cbf97e7bf",
-              "file": "flow-builder.spec.ts",
-              "line": 15,
-              "column": 7
-            },
-            {
-              "title": "@flow-editor should open from configuración modal and render palettes",
-              "ok": false,
-              "tags": [
-                "flow-editor"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": 2,
+                      "workerIndex": 17,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 3,
+                      "duration": 5665,
                       "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/webkit-2203/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/webkit-2203/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m()\u001b[22m failed\n\nLocator:  getByRole('button', { name: '🚀 Deploy' })\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '🚀 Deploy' })\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"btn-primary\" _ngcontent-ng-c1440025231=\"\">🚀 Deploy</button>\u001b[22m\n\u001b[2m      - unexpected value \"enabled\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m()\u001b[22m failed\n\nLocator:  getByRole('button', { name: '🚀 Deploy' })\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '🚀 Deploy' })\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"btn-primary\" _ngcontent-ng-c1440025231=\"\">🚀 Deploy</button>\u001b[22m\n\u001b[2m      - unexpected value \"enabled\"\u001b[22m\n\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts:44:29",
+                        "location": {
+                          "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts",
+                          "column": 29,
+                          "line": 44
+                        },
+                        "snippet": "  42 |\n  43 |     const deployBtn = page.getByRole('button', { name: '🚀 Deploy' });\n> 44 |     await expect(deployBtn).toBeDisabled();\n     |                             ^\n  45 |   });\n  46 | });\n  47 |"
                       },
                       "errors": [
                         {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/webkit-2203/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+                          "location": {
+                            "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts",
+                            "column": 29,
+                            "line": 44
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeDisabled\u001b[2m()\u001b[22m failed\n\nLocator:  getByRole('button', { name: '🚀 Deploy' })\nExpected: disabled\nReceived: enabled\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeDisabled\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: '🚀 Deploy' })\u001b[22m\n\u001b[2m    9 × locator resolved to <button class=\"btn-primary\" _ngcontent-ng-c1440025231=\"\">🚀 Deploy</button>\u001b[22m\n\u001b[2m      - unexpected value \"enabled\"\u001b[22m\n\n\n  42 |\n  43 |     const deployBtn = page.getByRole('button', { name: '🚀 Deploy' });\n> 44 |     await expect(deployBtn).toBeDisabled();\n     |                             ^\n  45 |   });\n  46 | });\n  47 |\n    at /Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts:44:29"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-04T17:28:22.395Z",
+                      "startTime": "2025-09-07T08:15:30.279Z",
                       "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "7e4553764ed91a341dd9-3834c3ea48620cb34c5f",
-              "file": "flow-builder.spec.ts",
-              "line": 15,
-              "column": 7
-            },
-            {
-              "title": "@flow-editor should open from configuración modal and render palettes",
-              "ok": false,
-              "tags": [
-                "flow-editor"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 3,
-                      "parallelIndex": 1,
-                      "status": "failed",
-                      "duration": 2,
-                      "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                      },
-                      "errors": [
+                      "attachments": [
                         {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--8e267-ed-Deploy-until-nodes-exist-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--8e267-ed-Deploy-until-nodes-exist-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/josuehernandez/pwa_angular/test-results/visual/flow-builder-Flow-Builder--8e267-ed-Deploy-until-nodes-exist-chromium/error-context.md"
                         }
                       ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-04T17:28:22.424Z",
-                      "annotations": [],
-                      "attachments": []
+                      "errorLocation": {
+                        "file": "/Users/josuehernandez/pwa_angular/src/tests/visual/flow-builder.spec.ts",
+                        "column": 29,
+                        "line": 44
+                      }
                     }
                   ],
                   "status": "unexpected"
                 }
               ],
-              "id": "7e4553764ed91a341dd9-ec5b3d64fccfe8434950",
+              "id": "7e4553764ed91a341dd9-6bcfd203c32de0357ebd",
               "file": "flow-builder.spec.ts",
-              "line": 15,
-              "column": 7
-            },
-            {
-              "title": "@flow-editor should open from configuración modal and render palettes",
-              "ok": false,
-              "tags": [
-                "flow-editor"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": 4,
-                      "parallelIndex": 0,
-                      "status": "failed",
-                      "duration": 11,
-                      "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/webkit-2203/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/webkit-2203/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                      },
-                      "errors": [
-                        {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/webkit-2203/pw_run.sh\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-04T17:28:22.873Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "7e4553764ed91a341dd9-555a6735e6aba4c8c1f2",
-              "file": "flow-builder.spec.ts",
-              "line": 15,
-              "column": 7
-            },
-            {
-              "title": "@flow-editor should open from configuración modal and render palettes",
-              "ok": false,
-              "tags": [
-                "flow-editor"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "iPad",
-                  "projectName": "iPad",
-                  "results": [
-                    {
-                      "workerIndex": 5,
-                      "parallelIndex": 1,
-                      "status": "failed",
-                      "duration": 2,
-                      "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                      },
-                      "errors": [
-                        {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-04T17:28:22.870Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "7e4553764ed91a341dd9-2ed5e90f4a6a28c7f365",
-              "file": "flow-builder.spec.ts",
-              "line": 15,
-              "column": 7
-            },
-            {
-              "title": "@flow-editor should open from configuración modal and render palettes",
-              "ok": false,
-              "tags": [
-                "flow-editor"
-              ],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "High DPI",
-                  "projectName": "High DPI",
-                  "results": [
-                    {
-                      "workerIndex": 6,
-                      "parallelIndex": 1,
-                      "status": "failed",
-                      "duration": 2,
-                      "error": {
-                        "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝",
-                        "stack": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                      },
-                      "errors": [
-                        {
-                          "message": "Error: browserType.launch: Executable doesn't exist at /home/ubuntu/.cache/ms-playwright/chromium_headless_shell-1187/chrome-linux/headless_shell\n╔═════════════════════════════════════════════════════════════════════════╗\n║ Looks like Playwright Test or Playwright was just installed or updated. ║\n║ Please run the following command to download new browsers:              ║\n║                                                                         ║\n║     npx playwright install                                              ║\n║                                                                         ║\n║ <3 Playwright Team                                                      ║\n╚═════════════════════════════════════════════════════════════════════════╝"
-                        }
-                      ],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-09-04T17:28:23.354Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "unexpected"
-                }
-              ],
-              "id": "7e4553764ed91a341dd9-323d8721279600a6fcf8",
-              "file": "flow-builder.spec.ts",
-              "line": 15,
+              "line": 38,
               "column": 7
             }
           ]
@@ -502,11 +1869,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-04T17:28:12.596Z",
-    "duration": 10867.556,
-    "expected": 0,
+    "startTime": "2025-09-07T08:15:15.332Z",
+    "duration": 20719.603,
+    "expected": 5,
     "skipped": 0,
-    "unexpected": 7,
+    "unexpected": 18,
     "flaky": 0
   }
 }

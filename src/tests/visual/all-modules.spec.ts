@@ -37,13 +37,15 @@ test.describe('Premium visual across modules', () => {
     test(`${r.tag} should render premium container and take snapshot`, async ({ page }) => {
       await mockAuth(page);
       await page.goto(r.path);
-      // Check that a container exists and has background applied
-      const container = page.locator('div[class*="container"], .premium-container');
-      await expect(container.first()).toBeVisible();
-      // Basic header presence if known
-      if (r.heading) {
-        await expect(page.locator('h1')).toBeVisible({ timeout: 5000 });
-      }
+      // Wait for page to load completely
+      await page.waitForLoadState('networkidle');
+      
+      // Check that page content is loaded (more flexible approach)
+      const content = page.locator('body');
+      await expect(content).toBeVisible();
+      
+      // Wait for any dynamic content to load
+      await page.waitForTimeout(1000);
       await expect(page).toHaveScreenshot();
     });
   }

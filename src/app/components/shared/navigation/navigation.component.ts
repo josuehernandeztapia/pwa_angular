@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { PushNotificationService } from '../../../services/push-notification.service';
+import { UserPreferencesService } from '../../../services/user-preferences.service';
 import { NotificationCenterComponent } from '../notification-center/notification-center.component';
 
 interface NavigationItem {
@@ -18,7 +19,7 @@ interface NavigationItem {
   standalone: true,
   imports: [CommonModule, RouterModule, NotificationCenterComponent],
   template: `
-    <nav class="navigation" [class.collapsed]="isCollapsed">
+    <nav class="navigation" [class.collapsed]="isCollapsed" role="navigation" aria-label="Navegación principal">
       <!-- Header -->
       <div class="nav-header">
         <div class="logo" [class.collapsed]="isCollapsed">
@@ -30,16 +31,27 @@ interface NavigationItem {
             class="notification-btn" 
             (click)="toggleNotifications()"
             [class.has-notifications]="(unreadCount$ | async)! > 0"
+            aria-label="Abrir centro de notificaciones"
           >
             🔔
             <span class="notification-badge" *ngIf="(unreadCount$ | async) as count">
               {{ count > 99 ? '99+' : count }}
             </span>
           </button>
+          <!-- A11y quick controls -->
+          <div class="a11y-controls" title="Tamaño de letra">
+            <button class="a11y-btn" (click)="setFont('base')" aria-label="Tamaño normal">A</button>
+            <button class="a11y-btn" (click)="setFont('sm')" aria-label="Tamaño grande">A</button>
+            <button class="a11y-btn" (click)="setFont('lg')" aria-label="Tamaño extra grande">A</button>
+          </div>
+          <button class="hc-btn" (click)="toggleHC()" [attr.aria-pressed]="highContrast" aria-label="Alto contraste">
+            Alto contraste
+          </button>
           
           <button 
             class="toggle-btn" 
             (click)="toggleCollapse()"
+            aria-label="Alternar tamaño del menú"
           >
             {{ isCollapsed ? '➡️' : '⬅️' }}
           </button>
@@ -70,7 +82,7 @@ interface NavigationItem {
       </div>
 
       <!-- Navigation Menu -->
-      <div class="nav-menu">
+      <div class="nav-menu" tabindex="0" role="menu" aria-label="Menú de navegación">
         <div 
           *ngFor="let item of navigationItems" 
           class="nav-item"
@@ -79,7 +91,7 @@ interface NavigationItem {
         >
           <div class="nav-link">
             <span class="nav-icon">{{ item.icon }}</span>
-            <span class="nav-label" *ngIf="!isCollapsed">{{ item.label }}</span>
+            <span class="nav-label" *ngIf="!isCollapsed" [attr.aria-label]="item.label">{{ item.label }}</span>
             <span class="nav-badge" *ngIf="item.badge && !isCollapsed">{{ item.badge }}</span>
           </div>
           
@@ -139,6 +151,7 @@ interface NavigationItem {
       class="mobile-menu-btn" 
       (click)="toggleMobileMenu()"
       *ngIf="isMobileView"
+      aria-label="Abrir menú de navegación"
     >
       ☰
     </button>
@@ -200,6 +213,27 @@ interface NavigationItem {
     .notification-btn:hover {
       background: rgba(255, 255, 255, 0.2);
       transform: scale(1.05);
+    }
+
+    .a11y-controls { display: flex; gap: 4px; }
+    .a11y-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 4px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+      min-width: 32px;
+      line-height: 1;
+    }
+    .hc-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
     .notification-btn.has-notifications {
@@ -390,6 +424,7 @@ interface NavigationItem {
       flex: 1;
       font-size: 0.95rem;
       font-weight: 500;
+      color: #e5e7eb; /* Improved contrast for WCAG AA compliance */
     }
 
     .nav-badge {
@@ -561,19 +596,34 @@ export class NavigationComponent implements OnInit {
     }
   ];
 
+  highContrast = false;
+
   constructor(
     private router: Router,
-    private notificationService: PushNotificationService
+    private notificationService: PushNotificationService,
+    private prefs: UserPreferencesService
   ) {
     this.unreadCount$ = this.notificationService.getUnreadCount();
   }
 
   ngOnInit() {
+    // Apply stored accessibility preferences on load
+    this.prefs.initFromStorage();
+    this.highContrast = this.prefs.getHighContrast();
     this.checkMobileView();
     window.addEventListener('resize', () => this.checkMobileView());
     
     // Initialize notifications
     this.initializeNotifications();
+  }
+
+  setFont(scale: 'base'|'sm'|'lg') {
+    this.prefs.setFontScale(scale);
+  }
+
+  toggleHC() {
+    this.highContrast = !this.highContrast;
+    this.prefs.setHighContrast(this.highContrast);
   }
 
   async initializeNotifications() {
@@ -616,11 +666,11 @@ export class NavigationComponent implements OnInit {
 
   navigate(item: NavigationItem) {
     if (item.children) {
-      // Toggle submenu or navigate to parent route
-      return;
+      // Navegar al route padre para activar y mostrar el submenu
+      this.router.navigate([item.route]);
+    } else {
+      this.router.navigate([item.route]);
     }
-    
-    this.router.navigate([item.route]);
     
     if (this.isMobileView) {
       this.closeMobileMenu();

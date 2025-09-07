@@ -1,0 +1,156 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e2]:
+  - link "Saltar al contenido" [ref=e3] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=e4]:
+    - navigation "Navegación principal":
+      - navigation [ref=e5]:
+        - generic [ref=e6]:
+          - generic [ref=e7]:
+            - generic [ref=e8]: 🚐
+            - generic [ref=e9]: Conductores PWA
+          - generic [ref=e10]:
+            - button "Abrir centro de notificaciones" [ref=e11] [cursor=pointer]: 🔔
+            - generic "Tamaño de letra" [ref=e12]:
+              - button "Tamaño normal" [ref=e13] [cursor=pointer]: A
+              - button "Tamaño grande" [ref=e14] [cursor=pointer]: A
+              - button "Tamaño extra grande" [ref=e15] [cursor=pointer]: A
+            - button "Alto contraste" [ref=e16] [cursor=pointer]
+            - button "Alternar tamaño del menú" [ref=e17] [cursor=pointer]: ⬅️
+        - generic [ref=e18]:
+          - generic [ref=e20]: AD
+          - generic [ref=e21]:
+            - generic [ref=e22]: Asesor Demo
+            - generic [ref=e23]: Asesor Financiero
+        - button "➕ Nueva Oportunidad" [ref=e25] [cursor=pointer]:
+          - generic [ref=e26] [cursor=pointer]: ➕
+          - generic [ref=e27] [cursor=pointer]: Nueva Oportunidad
+        - generic [ref=e28]:
+          - generic [ref=e30] [cursor=pointer]:
+            - generic [ref=e31] [cursor=pointer]: 🏠
+            - generic [ref=e32] [cursor=pointer]: Dashboard
+          - generic [ref=e34] [cursor=pointer]:
+            - generic [ref=e35] [cursor=pointer]: ➕
+            - generic [ref=e36] [cursor=pointer]: Nueva Oportunidad
+            - generic [ref=e37] [cursor=pointer]: "2"
+          - generic [ref=e39] [cursor=pointer]:
+            - generic [ref=e40] [cursor=pointer]: 💰
+            - generic [ref=e41] [cursor=pointer]: Cotizador
+          - generic [ref=e43] [cursor=pointer]:
+            - generic [ref=e44] [cursor=pointer]: 🎯
+            - generic [ref=e45] [cursor=pointer]: Simulador
+          - generic [ref=e47] [cursor=pointer]:
+            - generic [ref=e48] [cursor=pointer]: 👥
+            - generic [ref=e49] [cursor=pointer]: Clientes
+            - generic [ref=e50] [cursor=pointer]: "12"
+          - generic [ref=e52] [cursor=pointer]:
+            - generic [ref=e53] [cursor=pointer]: 📋
+            - generic [ref=e54] [cursor=pointer]: Expedientes
+          - generic [ref=e56] [cursor=pointer]:
+            - generic [ref=e57] [cursor=pointer]: 🛡️
+            - generic [ref=e58] [cursor=pointer]: Protección
+            - generic [ref=e59] [cursor=pointer]: "3"
+          - generic [ref=e61] [cursor=pointer]:
+            - generic [ref=e62] [cursor=pointer]: 📊
+            - generic [ref=e63] [cursor=pointer]: Reportes
+        - generic [ref=e64]:
+          - generic [ref=e66] [cursor=pointer]:
+            - generic [ref=e67] [cursor=pointer]: ❓
+            - generic [ref=e68] [cursor=pointer]: Ayuda
+          - generic [ref=e70] [cursor=pointer]:
+            - generic [ref=e71] [cursor=pointer]: ⚙️
+            - generic [ref=e72] [cursor=pointer]: Configuración
+          - generic [ref=e74] [cursor=pointer]:
+            - generic [ref=e75] [cursor=pointer]: 🚪
+            - generic [ref=e76] [cursor=pointer]: Salir
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - generic [ref=e80]: 🔔 Notificaciones
+          - button "✕" [ref=e82] [cursor=pointer]
+        - generic [ref=e84]:
+          - generic [ref=e85]: 🔔
+          - generic [ref=e86]:
+            - generic [ref=e87]: Activar Notificaciones
+            - generic [ref=e88]: Recibe alertas de pagos y actualizaciones importantes
+          - generic [ref=e89]:
+            - button "Activar" [ref=e90] [cursor=pointer]
+            - button "Después" [ref=e91] [cursor=pointer]
+        - generic [ref=e93]:
+          - generic [ref=e94]: 📭
+          - generic [ref=e95]: No hay notificaciones
+          - generic [ref=e96]: Las notificaciones aparecerán aquí
+    - main [ref=e97]:
+      - generic [ref=e99]:
+        - generic [ref=e100]:
+          - heading "👤 Mi Perfil" [level=1] [ref=e101]
+          - paragraph [ref=e102]: Gestiona tu información personal y configuración de cuenta
+        - main [ref=e103]:
+          - generic [ref=e104]:
+            - generic [ref=e105]:
+              - generic [ref=e106]:
+                - generic [ref=e108]: JG
+                - button "📷 Cambiar Foto" [ref=e109] [cursor=pointer]
+              - generic [ref=e110]:
+                - heading "José Luis González Martínez" [level=2] [ref=e111]
+                - paragraph [ref=e112]: Gerente de Operaciones
+                - paragraph [ref=e113]: Transportes González y Asociados
+                - generic [ref=e114]:
+                  - generic [ref=e115]:
+                    - generic [ref=e116]: Último acceso
+                    - generic [ref=e117]: 07/09/2025 02:15
+                  - generic [ref=e118]:
+                    - generic [ref=e119]: Miembro desde
+                    - generic [ref=e120]: Jan 2023
+            - generic [ref=e121]:
+              - generic [ref=e122]:
+                - heading "✏️ Información Personal" [level=3] [ref=e123]
+                - button "✏️ Editar" [ref=e124] [cursor=pointer]
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - generic [ref=e127]:
+                    - generic [ref=e128]: Nombre
+                    - textbox [disabled] [ref=e129]: José Luis
+                  - generic [ref=e130]:
+                    - generic [ref=e131]: Apellidos
+                    - textbox [disabled] [ref=e132]: González Martínez
+                - generic [ref=e133]:
+                  - generic [ref=e134]:
+                    - generic [ref=e135]: Email
+                    - textbox [disabled] [ref=e136]: jose.gonzalez@conductores.com
+                  - generic [ref=e137]:
+                    - generic [ref=e138]: Teléfono
+                    - textbox [disabled] [ref=e139]: +52 449 123 4567
+                - generic [ref=e140]:
+                  - generic [ref=e141]:
+                    - generic [ref=e142]: Puesto
+                    - textbox [disabled] [ref=e143]: Gerente de Operaciones
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: Empresa
+                    - textbox [disabled] [ref=e146]: Transportes González y Asociados
+            - generic [ref=e147]:
+              - heading "🔒 Seguridad de la Cuenta" [level=3] [ref=e148]
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - generic [ref=e151]:
+                    - heading "Cambiar Contraseña" [level=4] [ref=e152]
+                    - paragraph [ref=e153]: Actualiza tu contraseña por seguridad
+                  - button "Cambiar" [ref=e154] [cursor=pointer]
+                - generic [ref=e155]:
+                  - generic [ref=e156]:
+                    - heading "Verificación en Dos Pasos" [level=4] [ref=e157]
+                    - paragraph [ref=e158]: Agrega una capa extra de seguridad
+                  - button "Configurar" [ref=e159] [cursor=pointer]
+                - generic [ref=e160]:
+                  - generic [ref=e161]:
+                    - heading "Sesiones Activas" [level=4] [ref=e162]
+                    - paragraph [ref=e163]: Revisa dónde has iniciado sesión
+                  - button "Ver Sesiones" [ref=e164] [cursor=pointer]
+            - generic [ref=e165]:
+              - heading "⚙️ Acciones de Cuenta" [level=3] [ref=e166]
+              - generic [ref=e167]:
+                - button "📤 Exportar Mis Datos" [ref=e168] [cursor=pointer]
+                - button "🗑️ Eliminar Cuenta" [ref=e169] [cursor=pointer]
+    - navigation "Navegación inferior"
+```

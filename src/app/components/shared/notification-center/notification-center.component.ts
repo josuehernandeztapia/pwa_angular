@@ -65,7 +65,7 @@ interface NotificationHistory {
       </div>
 
       <!-- Notifications List -->
-      <div class="notifications-list">
+      <div class="notifications-list" tabindex="0" role="list" aria-label="Lista de notificaciones">
         <div class="empty-state" *ngIf="(notifications$ | async)?.length === 0">
           <span class="empty-icon">📭</span>
           <div class="empty-title">No hay notificaciones</div>

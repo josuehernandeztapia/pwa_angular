@@ -198,6 +198,37 @@ body {
   html { scroll-behavior: auto; }
 }
 
+/* ===== Senior-First Accessibility MUSTS (lightweight) ===== */
+
+/* Font scale tokens and global application */
+:root { --font-scale: 1; }
+html.senior-sm { --font-scale: 1.2; }
+html.senior-lg { --font-scale: 1.45; }
+body { font-size: calc(16px * var(--font-scale)); }
+
+/* High-contrast toggle */
+html.hc { --bg: #ffffff; --text: #000000; --muted: #222222; --border: #000000; }
+html.hc body { background: var(--bg); color: var(--text); }
+
+/* Minimum tap target sizing */
+:where(button, a, [role="button"], .btn) {
+  min-height: 44px;
+  min-width: 44px;
+  padding: .75rem 1rem;
+}
+
+/* Table legibility utilities */
+.table-lg tr { height: 56px; }
+.table-lg td, .table-lg th { font-size: 18px; }
+.table-lg tr:nth-child(even) { background: #f6f6f6; }
+.num { font-variant-numeric: tabular-nums; text-align: right; }
+
+/* Print: large type and hide navigation chrome */
+@media print {
+  body { font-size: 16pt; }
+  .sidebar, .navigation, .bottom-nav-bar { display: none !important; }
+}
+
 /* Global focus-visible styles for accessibility */
 :where(a, button, [role="button"], input, select, textarea, [tabindex]):focus-visible {
   outline: 3px solid var(--focus-ring-color);

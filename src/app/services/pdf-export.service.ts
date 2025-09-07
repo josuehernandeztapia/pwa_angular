@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import jsPDF from 'jspdf';
 
 interface ContractData {
   clientInfo: {
@@ -58,7 +57,8 @@ export class PdfExportService {
   constructor() {}
 
   // Generate contract PDF
-  generateContractPDF(contractData: ContractData): Promise<Blob> {
+  async generateContractPDF(contractData: ContractData): Promise<Blob> {
+    const { default: jsPDF } = await import('jspdf');
     return new Promise((resolve) => {
       const doc = new jsPDF();
       
@@ -198,7 +198,8 @@ export class PdfExportService {
   }
 
   // Generate quote PDF
-  generateQuotePDF(quoteData: QuoteData): Promise<Blob> {
+  async generateQuotePDF(quoteData: QuoteData): Promise<Blob> {
+    const { default: jsPDF } = await import('jspdf');
     return new Promise((resolve) => {
       const doc = new jsPDF();
       

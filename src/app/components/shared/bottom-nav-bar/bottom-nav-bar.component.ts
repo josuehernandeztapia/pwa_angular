@@ -275,25 +275,12 @@ export class BottomNavBarComponent implements OnInit {
     const currentUrl = this.router.url;
     
     this.navItems.forEach(item => {
-      if (item.route === '/menu') {
-        // Special case for "More" menu - active if not on main routes
-        const mainRoutes = ['/dashboard', '/oportunidades', '/cotizador', '/clientes'];
-        item.isActive = !mainRoutes.some(route => 
-          currentUrl === route || currentUrl.startsWith(route + '/')
-        );
-      } else {
-        item.isActive = currentUrl === item.route || currentUrl.startsWith(item.route + '/');
-      }
+      item.isActive = currentUrl === item.route || currentUrl.startsWith(item.route + '/');
     });
   }
 
   navigateTo(route: string): void {
-    if (route === '/menu') {
-      // Handle special "More" menu - could open modal or navigate to menu page
-      this.showMoreMenu();
-    } else {
-      this.router.navigate([route]);
-    }
+    this.router.navigate([route]);
     
     // Haptic feedback on mobile devices
     if ('vibrate' in navigator) {
@@ -301,12 +288,7 @@ export class BottomNavBarComponent implements OnInit {
     }
   }
 
-  private showMoreMenu(): void {
-    // Implementation for more menu - could be modal, slide-up menu, etc.
-    console.log('Show more menu');
-    // For now, navigate to a menu route or show options
-    // This could open a modal with additional navigation options
-  }
+  private showMoreMenu(): void {}
 
   trackByRoute(index: number, item: BottomNavItem): string {
     return item.route;
