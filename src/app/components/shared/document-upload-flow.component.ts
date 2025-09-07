@@ -1,14 +1,14 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Subject, takeUntil, forkJoin } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
+import { BusinessFlow, Document, DocumentStatus } from '../../models/types';
+import { AviSimpleConfigService } from '../../services/avi-simple-config.service';
 import { DocumentRequirementsService } from '../../services/document-requirements.service';
 import { DocumentValidationService } from '../../services/document-validation.service';
+import { OCRProgress, OCRResult, OCRService } from '../../services/ocr.service';
 import { VoiceValidationService } from '../../services/voice-validation.service';
-import { AviSimpleConfigService } from '../../services/avi-simple-config.service';
-import { OCRService, OCRResult, OCRProgress } from '../../services/ocr.service';
-import { Document, DocumentStatus, BusinessFlow, Client } from '../../models/types';
 
 interface FlowContext {
   clientId?: string;

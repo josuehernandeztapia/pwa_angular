@@ -1,8 +1,8 @@
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy, inject, signal, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, computed, inject, signal } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
 import { Client, ImportStatus } from '../../models/types';
-import { IntegratedImportTrackerService, IntegratedImportStatus } from '../../services/integrated-import-tracker.service';
+import { IntegratedImportStatus, IntegratedImportTrackerService } from '../../services/integrated-import-tracker.service';
 
 interface ImportMilestone {
   key: keyof ImportStatus;

@@ -1,15 +1,15 @@
-import { Component, computed, signal, inject, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, computed, ElementRef, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IntegratedImportTrackerService } from '../../services/integrated-import-tracker.service';
-import { PostSalesApiService } from '../../services/post-sales-api.service';
-import { 
-  PlatesData, 
-  DocumentFile
-} from '../../models/types';
-import { PlatesValidationService } from '../../services/plates-validation.service';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
+import {
+  DocumentFile,
+  PlatesData
+} from '../../models/types';
+import { IntegratedImportTrackerService } from '../../services/integrated-import-tracker.service';
+import { PlatesValidationService } from '../../services/plates-validation.service';
+import { PostSalesApiService } from '../../services/post-sales-api.service';
 
 /**
  * FASE 8: PLACAS ENTREGADAS - HANDOVER CRÍTICO
