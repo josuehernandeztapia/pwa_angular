@@ -344,6 +344,7 @@ import {
                 <li>{{ error }}</li>
               }
             </ul>
+            <button class="btn btn-secondary" (click)="focusNextError()">Ir al siguiente error →</button>
           </div>
         }
       </form>
@@ -361,13 +362,13 @@ import {
 
     <!-- Success Modal -->
     @if (showSuccessModal()) {
-      <div class="modal-overlay" (click)="closeSuccessModal()">
-        <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="docs-success-title" aria-describedby="docs-success-desc" (keydown)="onDialogKeydown($event)" tabindex="-1" (click)="closeSuccessModal()">
+        <div class="modal" (click)="$event.stopPropagation()" (focusout)="maintainFocusInDialog($event)">
           <div class="modal-header">
-            <h3>✅ Documentos Transferidos</h3>
+            <h3 id="docs-success-title">✅ Documentos Transferidos</h3>
           </div>
           <div class="modal-body">
-            <p>La transferencia legal ha sido completada exitosamente.</p>
+            <p id="docs-success-desc">La transferencia legal ha sido completada exitosamente.</p>
             <div class="transfer-summary">
               <h4>📄 Documentos procesados:</h4>
               <ul>
@@ -419,6 +420,7 @@ export class DocumentsPhaseComponent {
   isSaving = signal(false);
   isSubmitting = signal(false);
   showSuccessModal = signal(false);
+  private lastFocusedBeforeDialog: HTMLElement | null = null;
 
   // Form
   documentsForm: FormGroup;
@@ -644,6 +646,7 @@ export class DocumentsPhaseComponent {
       next: (result) => {
         console.log('✅ Documents phase completed:', result);
         this.isSubmitting.set(false);
+        this.lastFocusedBeforeDialog = document.activeElement as HTMLElement;
         this.showSuccessModal.set(true);
       },
       error: (error) => {
@@ -660,10 +663,47 @@ export class DocumentsPhaseComponent {
 
   closeSuccessModal(): void {
     this.showSuccessModal.set(false);
+    setTimeout(() => this.lastFocusedBeforeDialog?.focus(), 0);
   }
 
   goToPlatesPhase(): void {
     this.router.navigate(['/post-sales/plates', this.clientId()]);
     this.closeSuccessModal();
+  }
+
+  // Form error navigator
+  focusNextError(): void {
+    const invalid = document.querySelector('.form-input.error, .form-textarea.error');
+    (invalid as HTMLElement | null)?.focus();
+  }
+
+  // A11y helpers
+  onDialogKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      this.closeSuccessModal();
+    }
+  }
+
+  maintainFocusInDialog(event: FocusEvent): void {
+    const dialog = (event.currentTarget as HTMLElement) || undefined;
+    if (!dialog) return;
+    const focusable = dialog.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const target = event.relatedTarget as HTMLElement | null;
+    if (target === null || !dialog.contains(target)) {
+      first.focus();
+    }
+    dialog.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
 }

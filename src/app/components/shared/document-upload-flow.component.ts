@@ -69,7 +69,8 @@ interface FlowContext {
                    [class.border-yellow-300]="doc.status === DocumentStatus.Pendiente"
                    [class.bg-yellow-50]="doc.status === DocumentStatus.Pendiente"
                    [class.border-red-300]="doc.status === DocumentStatus.Rechazado"
-                   [class.bg-red-50]="doc.status === DocumentStatus.Rechazado">
+                   [class.bg-red-50]="doc.status === DocumentStatus.Rechazado"
+                   (dragover)="onDragOver($event)" (drop)="onDrop($event, doc)">
                 
                 <div class="flex items-center justify-between">
                   <div class="flex-1">
@@ -92,6 +93,13 @@ interface FlowContext {
                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                     >
                       📤 Subir
+                    </button>
+                    <button
+                      *ngIf="doc.status === DocumentStatus.Rechazado"
+                      (click)="retryDocumentUpload(doc)"
+                      class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                    >
+                      🔁 Reintentar
                     </button>
                     
                     <!-- Status Icon -->
@@ -634,6 +642,7 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
   ocrResult: OCRResult | null = null;
   showOCRPreview = false;
   currentUploadingDoc: Document | null = null;
+  private uploadedHashes = new Map<string, string>();
 
   constructor(
     private fb: FormBuilder,
@@ -720,6 +729,18 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     this.showFileUploadDialog(document);
   }
 
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+  }
+
+  async onDrop(event: DragEvent, document: Document) {
+    event.preventDefault();
+    const file = event.dataTransfer?.files?.[0];
+    if (file) {
+      await this.processUploadedFile(file, document);
+    }
+  }
+
   private showFileUploadDialog(document: Document) {
     const input = window.document.createElement('input');
     input.type = 'file';
@@ -740,6 +761,16 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     try {
       document.status = DocumentStatus.EnRevision;
       this.updateCompletionStatus();
+
+      // Dedup by hash
+      const hash = await this.computeFileHash(file);
+      if (this.uploadedHashes.has(hash)) {
+        alert('Archivo duplicado detectado. Este documento ya fue subido.');
+        document.status = DocumentStatus.Pendiente;
+        this.updateCompletionStatus();
+        return;
+      }
+      this.uploadedHashes.set(hash, document.name);
 
       // Check if it's an image for OCR processing
       if (file.type.startsWith('image/')) {
@@ -788,6 +819,10 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
     await this.finalizeDocumentUpload(document, file);
   }
 
+  retryDocumentUpload(document: Document) {
+    this.uploadDocument(document);
+  }
+
   confirmOCRResult() {
     if (this.currentUploadingDoc && this.ocrResult) {
       this.finalizeDocumentUpload(this.currentUploadingDoc, null, this.ocrResult);
@@ -811,8 +846,8 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
   }
 
   private async finalizeDocumentUpload(document: Document, file: File | null, ocrData?: OCRResult) {
-    // Simulate upload process
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    // Simulate upload process with progress
+    await this.simulateProgress(800);
 
     // Validate document based on OCR results if available
     if (ocrData && ocrData.extractedData) {
@@ -838,6 +873,22 @@ export class DocumentUploadFlowComponent implements OnInit, OnDestroy {
       // Auto-start voice pattern if all docs are uploaded
       this.showVoicePattern = true;
     }
+  }
+
+  private async simulateProgress(totalMs: number): Promise<void> {
+    const steps = 5;
+    for (let i = 1; i <= steps; i++) {
+      await new Promise(r => setTimeout(r, totalMs / steps));
+      this.ocrProgress = { status: 'processing', progress: Math.min(99, (i / steps) * 100), message: 'Subiendo…' } as any;
+    }
+    this.ocrProgress = { status: 'completed', progress: 100, message: 'Listo' } as any;
+  }
+
+  private async computeFileHash(file: File): Promise<string> {
+    const buffer = await file.arrayBuffer();
+    const digest = await crypto.subtle.digest('SHA-256', buffer);
+    const bytes = new Uint8Array(digest);
+    return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
   startVoiceRecording() {

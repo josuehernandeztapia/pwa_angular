@@ -392,6 +392,9 @@ interface CollectionUnit {
               <button (click)="formalizeQuote()" class="action-btn formalize-btn">
                 ✅ Formalizar {{ currentMode === 'acquisition' ? 'Cotización' : 'Simulación' }}
               </button>
+              <button (click)="exportComparisonPDF()" class="action-btn">
+                ⤓ Exportar PDF
+              </button>
             </div>
           </div>
         </div>
@@ -1363,6 +1366,23 @@ export class DualModeCotizadorComponent implements OnInit {
 
   closeAmortizationModal() {
     this.showAmortizationModal = false;
+  }
+
+  async exportComparisonPDF() {
+    const element = document.querySelector('.results-panel') as HTMLElement || document.body;
+    const { default: html2canvas } = await import('html2canvas');
+    const canvas = await html2canvas(element, { scale: 2, backgroundColor: '#ffffff' });
+    const imgData = canvas.toDataURL('image/png');
+    const { default: jsPDF } = await import('jspdf');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
+    const imgWidth = pageWidth - 20;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, Math.min(imgHeight, pageHeight - 20));
+    pdf.setFontSize(12);
+    pdf.text('Comparativa de escenarios - Conductores PWA', pageWidth / 2, pageHeight - 10, { align: 'center' });
+    pdf.save('comparativa-simulador.pdf');
   }
 
   shareWhatsApp() {

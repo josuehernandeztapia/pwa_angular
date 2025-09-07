@@ -58,6 +58,13 @@ export const routes: Routes = [
     title: 'Carga de Documentos - Conductores PWA'
   },
 
+  {
+    path: 'flow-builder',
+    loadComponent: () => import('./components/shared/flow-builder.component').then(c => c.FlowBuilderComponent),
+    canActivate: [AuthGuard],
+    title: 'Flow Builder - Conductores PWA'
+  },
+
   /*
   {
     path: 'kyc-verification',

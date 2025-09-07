@@ -1,4 +1,4 @@
-import { Component, computed, signal, inject } from '@angular/core';
+import { Component, computed, signal, inject, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,6 +8,8 @@ import {
   PlatesData, 
   DocumentFile
 } from '../../models/types';
+import { PlatesValidationService } from '../../services/plates-validation.service';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 /**
  * FASE 8: PLACAS ENTREGADAS - HANDOVER CRÍTICO
@@ -354,12 +356,12 @@ import {
 
     <!-- Critical Success Modal -->
     @if (showSuccessModal()) {
-      <div class="modal-overlay">
-        <div class="modal critical-success">
+      <div class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="plates-success-title" aria-describedby="plates-success-desc" (keydown)="onDialogKeydown($event)" tabindex="-1">
+        <div class="modal critical-success" (focusout)="maintainFocusInDialog($event)">
           <div class="modal-header">
             <div class="success-animation">🎉</div>
-            <h3>¡Sistema Post-Venta Activado!</h3>
-            <p class="success-subtitle">VIN + Placa registrados exitosamente</p>
+            <h3 id="plates-success-title">¡Sistema Post-Venta Activado!</h3>
+            <p id="plates-success-desc" class="success-subtitle">VIN + Placa registrados exitosamente</p>
           </div>
           <div class="modal-body">
             <div class="activation-summary">
@@ -424,11 +426,17 @@ import {
   `,
   styleUrls: ['./plates-phase.component.scss']
 })
-export class PlatesPhaseComponent {
+export class PlatesPhaseComponent implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private importTracker = inject(IntegratedImportTrackerService);
   private postSalesApi = inject(PostSalesApiService);
+  private platesService = inject(PlatesValidationService);
+
+  private destroy$ = new Subject<void>();
+  private validating$ = new Subject<string>();
+  private lastFocusedBeforeDialog: HTMLElement | null = null;
+  @ViewChild('successDialog', { read: ElementRef }) successDialog?: ElementRef<HTMLElement>;
 
   // Signals
   clientId = signal<string>('client_001');
@@ -504,7 +512,7 @@ export class PlatesPhaseComponent {
 
   constructor() {
     this.platesForm = this.fb.group({
-      numeroPlacas: ['', [Validators.required, this.placaValidator]],
+      numeroPlacas: ['', [Validators.required, this.createPlateValidator()]],
       estado: ['', Validators.required],
       fechaAlta: [this.today, Validators.required],
       hologramas: [true],
@@ -517,19 +525,25 @@ export class PlatesPhaseComponent {
     this.loadPlatesData();
   }
 
-  private placaValidator(control: any) {
-    if (!control.value) return null;
-    
-    // Mexican license plate patterns (flexible)
-    const patterns = [
-      /^[A-Z]{3}-\d{3}-[A-Z]$/, // ABC-123-D (old format)
-      /^[A-Z]{3}-\d{2}-\d{2}$/, // ABC-12-34 (some states)
-      /^[A-Z]{2}-\d{3}-[A-Z]{2}$/, // AB-123-CD (some formats)
-      /^[A-Z]{3}-\d{4}$/, // ABC-1234 (simplified)
-    ];
+  ngOnInit(): void {
+    this.validating$.pipe(debounceTime(350), takeUntil(this.destroy$)).subscribe((value) => {
+      this.performAsyncPlateVerification(value);
+    });
+  }
 
-    const isValid = patterns.some(pattern => pattern.test(control.value.toUpperCase()));
-    return isValid ? null : { invalidPlaca: true };
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  private createPlateValidator() {
+    return (control: any) => {
+      if (!control.value) return null;
+      const normalized = this.platesService.normalizePlate(control.value);
+      const estado = this.platesForm?.get('estado')?.value || 'DEFAULT';
+      const result = this.platesService.validatePlateByState(normalized, estado);
+      return result.isValid ? null : { invalidPlaca: true };
+    };
   }
 
   private loadPlatesData(): void {
@@ -550,52 +564,39 @@ export class PlatesPhaseComponent {
   getUniqueIdentifier(): string {
     const vin = this.vehicleInfo()?.vin || '';
     const placa = this.platesForm?.get('numeroPlacas')?.value || '';
-    return vin && placa ? `${vin}+${placa}` : 'Pendiente...';
+    return vin && placa ? this.platesService.buildPostSalesId(vin, placa) : 'Pendiente...';
   }
 
   onPlacaInput(event: Event): void {
     const input = event.target as HTMLInputElement;
-    let value = input.value.toUpperCase();
-    
-    // Auto-format as user types
-    value = value.replace(/[^A-Z0-9]/g, '');
-    
-    if (value.length >= 3 && value.length <= 6) {
-      value = value.slice(0, 3) + '-' + value.slice(3);
+    const normalized = this.platesService.normalizePlate(input.value);
+    // Re-insert hyphens for readability: ABC-123-D or ABC-12-34 style
+    let formatted = normalized;
+    if (normalized.length >= 3 && normalized.length <= 6) {
+      formatted = normalized.slice(0, 3) + '-' + normalized.slice(3);
     }
-    if (value.length > 7) {
-      value = value.slice(0, 7) + '-' + value.slice(7);
+    if (normalized.length > 6) {
+      const first = normalized.slice(0, 3);
+      const middle = normalized.slice(3, 6);
+      const rest = normalized.slice(6);
+      formatted = `${first}-${middle}-${rest}`;
     }
-    
-    input.value = value;
-    this.platesForm.get('numeroPlacas')?.setValue(value, { emitEvent: false });
-    
-    // Validate placa format
-    this.validatePlaca(value);
+    input.value = formatted;
+    this.platesForm.get('numeroPlacas')?.setValue(formatted, { emitEvent: false });
+    this.placaValidation.set({ isValid: false });
+    this.validating$.next(formatted);
   }
 
-  private validatePlaca(placa: string): void {
-    // Simulate API validation
-    if (placa.length >= 8) {
-      setTimeout(() => {
-        const stateMapping: { [key: string]: string } = {
-          'ABC': 'CDMX', 'DEF': 'JALISCO', 'GHI': 'NUEVO_LEON',
-          'JKL': 'QUERETARO', 'MNO': 'GUANAJUATO'
-        };
-        
-        const prefix = placa.substring(0, 3);
-        const estado = stateMapping[prefix] || 'MEXICO';
-        
-        this.placaValidation.set({ isValid: true, estado });
-        
-        // Auto-set estado if detected
-        if (stateMapping[prefix]) {
-          this.platesForm.get('estado')?.setValue(estado);
+  private performAsyncPlateVerification(placa: string): void {
+    this.placaValidation.set({ isValid: false });
+    this.platesService.verifyPlateAsync(placa)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(result => {
+        this.placaValidation.set({ isValid: result.isValid, estado: result.estado });
+        if (result.estado) {
+          this.platesForm.get('estado')?.setValue(result.estado);
         }
-      }, 500);
-    } else {
-      this.placaValidation.set({ isValid: false });
-    }
+      });
   }
 
   triggerDocumentUpload(): void {
@@ -748,5 +749,35 @@ export class PlatesPhaseComponent {
   completeProcess(): void {
     this.showSuccessModal.set(false);
     this.router.navigate(['/dashboard']);
+  }
+
+  // A11y: trap focus and escape to close
+  onDialogKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape') {
+      this.completeProcess();
+    }
+  }
+
+  maintainFocusInDialog(event: FocusEvent): void {
+    const dialog = (event.currentTarget as HTMLElement) || undefined;
+    if (!dialog) return;
+    const focusable = dialog.querySelectorAll<HTMLElement>('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const target = event.relatedTarget as HTMLElement | null;
+    if (target === null || !dialog.contains(target)) {
+      first.focus();
+    }
+    dialog.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
   }
 }

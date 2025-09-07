@@ -40,6 +40,10 @@ interface ImportMilestone {
               <span class="text-sm font-medium">{{ getOverallStatus() }}</span>
             </div>
           </div>
+          <div class="flex items-center gap-3">
+            <div class="text-xs text-gray-400" *ngIf="integratedStatus()?.lastSyncDate">Última sync: {{ integratedStatus()?.lastSyncDate | date:'short' }}</div>
+            <button (click)="retrySync()" class="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-xs">Reintentar sincronización</button>
+          </div>
         </div>
       </div>
 
@@ -684,5 +688,9 @@ export class ImportTrackerComponent implements OnInit, OnDestroy {
     
     console.log('📱 Notificando cliente sobre estado de importación');
     // En implementación real, enviaría notificación WhatsApp via WhatsAppService
+  }
+
+  retrySync(): void {
+    this.loadIntegratedStatus();
   }
 }
