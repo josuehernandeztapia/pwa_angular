@@ -6,6 +6,7 @@ import { createWorker } from 'tesseract.js';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { CorrelationInterceptor } from './interceptors/correlation.interceptor';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { ApiService } from './services/api.service';
 import { ErrorHandlerService } from './services/error-handler.service';
@@ -28,6 +29,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorrelationInterceptor,
       multi: true
     },
     {
