@@ -736,7 +736,7 @@ export interface SmartUXConfiguration {
   realTimeValidation: {
     enabled: boolean;
     types: ('format' | 'business_rules' | 'duplicate_check' | 'external_validation')[];
-    showSuccess: boolean;
+    success: boolean;
     preventSubmission: boolean;
   };
   visualProgress: {

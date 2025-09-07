@@ -399,8 +399,8 @@ describe('HttpClientService', () => {
       });
     });
 
-    it('should not show error toast when showError is false', () => {
-      service.get('test', { showError: false }).subscribe({
+    it('should not show error toast when error is false', () => {
+      service.get('test', { error: false }).subscribe({
         error: () => {}
       });
 

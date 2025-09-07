@@ -62,9 +62,9 @@ export class HttpClientService {
     params?: HttpParams | { [param: string]: string | string[] };
     headers?: HttpHeaders;
     showLoading?: boolean;
-    showError?: boolean;
+    error?: boolean;
   } = {}): Observable<ApiResponse<T>> {
-    const { showLoading = true, showError = true } = options;
+    const { showLoading = true, error = true } = options;
 
     if (showLoading) {
       this.loadingService.setLoading(true, `GET ${url}`);
@@ -76,7 +76,7 @@ export class HttpClientService {
     return this.http.get<ApiResponse<T>>(fullUrl, { ...httpOptions, observe: 'body' as const, responseType: 'json' as const }).pipe(
       retry(this.maxRetries),
       tap(response => this.handleSuccess(response)),
-      catchError(error => this.handleError(error, showError)),
+      catchError(error => this.handleError(error, error)),
       finalize(() => {
         if (showLoading) {
           this.loadingService.setLoading(false, `GET ${url}`);
@@ -91,10 +91,10 @@ export class HttpClientService {
   post<T>(url: string, body: any, options: {
     headers?: HttpHeaders;
     showLoading?: boolean;
-    showError?: boolean;
+    error?: boolean;
     successMessage?: string;
   } = {}): Observable<ApiResponse<T>> {
-    const { showLoading = true, showError = true, successMessage } = options;
+    const { showLoading = true, error = true, successMessage } = options;
 
     if (showLoading) {
       this.loadingService.setLoading(true, `POST ${url}`);
@@ -111,7 +111,7 @@ export class HttpClientService {
           this.toast.success(successMessage);
         }
       }),
-      catchError(error => this.handleError(error, showError)),
+      catchError(error => this.handleError(error, error)),
       finalize(() => {
         if (showLoading) {
           this.loadingService.setLoading(false, `POST ${url}`);
@@ -126,10 +126,10 @@ export class HttpClientService {
   put<T>(url: string, body: any, options: {
     headers?: HttpHeaders;
     showLoading?: boolean;
-    showError?: boolean;
+    error?: boolean;
     successMessage?: string;
   } = {}): Observable<ApiResponse<T>> {
-    const { showLoading = true, showError = true, successMessage } = options;
+    const { showLoading = true, error = true, successMessage } = options;
 
     if (showLoading) {
       this.loadingService.setLoading(true, `PUT ${url}`);
@@ -145,7 +145,7 @@ export class HttpClientService {
           this.toast.success(successMessage);
         }
       }),
-      catchError(error => this.handleError(error, showError)),
+      catchError(error => this.handleError(error, error)),
       finalize(() => {
         if (showLoading) {
           this.loadingService.setLoading(false, `PUT ${url}`);
@@ -160,10 +160,10 @@ export class HttpClientService {
   delete<T>(url: string, options: {
     headers?: HttpHeaders;
     showLoading?: boolean;
-    showError?: boolean;
+    error?: boolean;
     successMessage?: string;
   } = {}): Observable<ApiResponse<T>> {
-    const { showLoading = true, showError = true, successMessage } = options;
+    const { showLoading = true, error = true, successMessage } = options;
 
     if (showLoading) {
       this.loadingService.setLoading(true, `DELETE ${url}`);
@@ -179,7 +179,7 @@ export class HttpClientService {
           this.toast.success(successMessage);
         }
       }),
-      catchError(error => this.handleError(error, showError)),
+      catchError(error => this.handleError(error, error)),
       finalize(() => {
         if (showLoading) {
           this.loadingService.setLoading(false, `DELETE ${url}`);
@@ -284,7 +284,7 @@ export class HttpClientService {
   /**
    * Handle API errors
    */
-  private handleError(error: HttpErrorResponse, showError: boolean = true): Observable<never> {
+  private handleError(error: HttpErrorResponse, error: boolean = true): Observable<never> {
     let errorMessage = 'Ha ocurrido un error inesperado';
     
     if (error.error instanceof ErrorEvent) {
@@ -340,7 +340,7 @@ export class HttpClientService {
 
     console.error('API Error:', apiError);
 
-    if (showError) {
+    if (error) {
       this.toast.error(errorMessage);
     }
 
@@ -353,7 +353,7 @@ export class HttpClientService {
   checkApiHealth(): Observable<boolean> {
     return this.get<{ status: string }>('health', { 
       showLoading: false, 
-      showError: false 
+      error: false 
     }).pipe(
       map(response => response.success && response.data?.status === 'ok'),
       catchError(() => {

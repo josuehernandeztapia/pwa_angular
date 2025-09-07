@@ -94,7 +94,7 @@ export class ErrorHandlerService implements ErrorHandler {
   /**
    * Show success message
    */
-  showSuccess(message: string, duration: number = 5000): void {
+  success(message: string, duration: number = 5000): void {
     const successError: AppError = {
       id: this.generateErrorId(),
       message,

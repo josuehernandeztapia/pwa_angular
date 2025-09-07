@@ -61,6 +61,7 @@ module.exports = function (config) {
     },
     restartOnFileChange: true,
     singleRun: false,
-    logLevel: config.LOG_INFO
+    logLevel: config.LOG_INFO,
+    browserNoActivityTimeout: 60000
   });
 };

@@ -1,7 +1,7 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import Tesseract, { Worker, createWorker } from 'tesseract.js';
 import { CreateWorkerType, TESSERACT_CREATE_WORKER } from '../tokens/ocr.tokens';
+type Worker = any;
 
 export interface OCRResult {
   text: string;
@@ -74,8 +74,9 @@ export class OCRService {
       });
 
       // Optimize for document recognition
+      const { PSM } = await import('tesseract.js');
       await this.worker.setParameters({
-        tessedit_pageseg_mode: Tesseract.PSM.SINGLE_BLOCK,
+        tessedit_pageseg_mode: (PSM as any).SINGLE_BLOCK,
         tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚáéíóúÑñ0123456789-/.,: ',
       });
 

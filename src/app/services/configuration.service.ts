@@ -937,7 +937,7 @@ export class ConfigurationService {
       realTimeValidation: {
         enabled: true,
         types: ['format', 'business_rules', 'duplicate_check'],
-        showSuccess: true,
+        success: true,
         preventSubmission: true
       },
       visualProgress: {

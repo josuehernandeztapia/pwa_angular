@@ -49,7 +49,7 @@ export class ToastService {
     this.show(type, message, duration, actionLabel, action);
   }
 
-  // Aliases for backwards-compat with specs
+  // Aliases for backwards compatibility with older tests/usages
   showSuccess(message: string, duration: number = 3000): void {
     this.success(message, duration);
   }
