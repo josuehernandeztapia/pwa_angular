@@ -38,7 +38,7 @@
     "test:visual:update": "playwright test --config=playwright.config.ts --update-snapshots",
     "test:visual:ui": "playwright test --config=playwright.config.ts --ui",
     "test:accessibility": "ng test --include='**/*.a11y.spec.ts' --watch=false --browsers=ChromeHeadless",
-    "test:a11y": "axe --dir ./dist/conductores-pwa --include='*.html' --save ./reports/accessibility/results.json",
+    "test:a11y": "node scripts/run-axe-playwright.js",
     "test:a11y:report": "axe-reporter --reporter=html --output=./reports/accessibility/report.html ./reports/accessibility/results.json",
     "test:a11y:framework": "ng test --include='**/accessibility/**/*.spec.ts' --watch=false --browsers=ChromeHeadless",
     "test:a11y:components": "ng test --include='**/components/**/*.a11y.spec.ts' --watch=false --browsers=ChromeHeadless",
