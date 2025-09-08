@@ -33,7 +33,7 @@
               "src/assets",
               "src/manifest.webmanifest"
             ],
-            "serviceWorker": "src/ngsw-config.json",
+            "serviceWorker": true,
             "styles": [
               "src/styles.scss"
             ],

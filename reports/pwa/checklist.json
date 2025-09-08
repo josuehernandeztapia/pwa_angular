@@ -1,0 +1,62 @@
+{
+  "generatedAt": "2025-09-08T02:41:16.069Z",
+  "distDir": "/workspace/dist/conductores-pwa",
+  "items": [
+    {
+      "id": "manifest_exists",
+      "label": "Manifest present",
+      "passed": false,
+      "details": "not found"
+    },
+    {
+      "id": "service_worker_exists",
+      "label": "Service worker present",
+      "passed": false,
+      "details": "not found"
+    },
+    {
+      "id": "icons_present",
+      "label": "Icons present",
+      "passed": false,
+      "details": "no icons"
+    },
+    {
+      "id": "icon_192",
+      "label": "Icon 192x192 present",
+      "passed": false
+    },
+    {
+      "id": "icon_512",
+      "label": "Icon 512x512 present",
+      "passed": false
+    },
+    {
+      "id": "start_url",
+      "label": "start_url defined",
+      "passed": false,
+      "details": ""
+    },
+    {
+      "id": "display_mode",
+      "label": "display mode set",
+      "passed": false,
+      "details": ""
+    },
+    {
+      "id": "theme_color",
+      "label": "theme_color set",
+      "passed": false,
+      "details": ""
+    },
+    {
+      "id": "background_color",
+      "label": "background_color set",
+      "passed": false,
+      "details": ""
+    }
+  ],
+  "summary": {
+    "passed": 0,
+    "total": 9
+  }
+}
