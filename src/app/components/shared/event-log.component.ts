@@ -524,7 +524,8 @@ export class EventLogComponent implements OnInit {
       [EventType.GoalAchieved]: '🎯',
       [EventType.StatusChange]: '🔄',
       [EventType.DocumentSubmission]: '📤',
-      [EventType.DocumentReview]: '📝'
+      [EventType.DocumentReview]: '📝',
+      [EventType.KYCCompleted]: '✅'
     };
     return icons[event.type] || '📝';
   }
@@ -576,7 +577,8 @@ export class EventLogComponent implements OnInit {
       [EventType.GoalAchieved]: 'Meta',
       [EventType.StatusChange]: 'Cambio de Estado',
       [EventType.DocumentSubmission]: 'Envío de Documento',
-      [EventType.DocumentReview]: 'Revisión de Documento'
+      [EventType.DocumentReview]: 'Revisión de Documento',
+      [EventType.KYCCompleted]: 'KYC'
     };
     return labels[eventType];
   }
@@ -591,7 +593,8 @@ export class EventLogComponent implements OnInit {
       [EventType.GoalAchieved]: 'Meta Alcanzada',
       [EventType.StatusChange]: 'Cambio de Estado',
       [EventType.DocumentSubmission]: 'Envío de Documento',
-      [EventType.DocumentReview]: 'Revisión de Documento'
+      [EventType.DocumentReview]: 'Revisión de Documento',
+      [EventType.KYCCompleted]: 'KYC Verificado'
     };
     return labels[eventType];
   }

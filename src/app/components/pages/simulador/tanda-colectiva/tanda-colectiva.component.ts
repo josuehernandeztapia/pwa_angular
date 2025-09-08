@@ -11,6 +11,7 @@ import { SpeechService } from '../../../../services/speech.service';
 import { ToastService } from '../../../../services/toast.service';
 import { SkeletonCardComponent } from '../../../shared/skeleton-card.component';
 import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-panel.component';
+import type { SummaryAction } from '../../../shared/summary-panel/summary-panel.component';
 
 interface WhatIfEvent {
   id: string;
@@ -662,10 +663,7 @@ interface KpiData {
             { label: 'Meses a Meta', value: (simulationResult?.scenario.monthsToTarget || 0) + ' meses' },
             { label: 'Meta Total', value: formatCurrency(simulationResult?.scenario.targetAmount || 0) }
           ]"
-          [actions]="[
-            { label: '📄 PDF', click: () => generatePDF() },
-            { label: '✅ Formalizar Grupo', click: () => proceedToClientCreation() }
-          ]"
+          [actions]="summaryActions"
         ></app-summary-panel>
       </div>
     </div>
@@ -684,6 +682,11 @@ export class TandaColectivaComponent implements OnInit, OnDestroy {
   newEvent: Partial<WhatIfEvent> = { month: 1, type: 'extra', memberId: 'M1', amount: 0 };
   showWhatsAppShare = false;
   kpiDashboard: KpiData[] = [];
+
+  summaryActions: SummaryAction[] = [
+    { label: '📄 PDF', click: () => this.generatePDF() },
+    { label: '✅ Formalizar Grupo', click: () => this.proceedToClientCreation() }
+  ];
 
   constructor(
     private fb: FormBuilder,

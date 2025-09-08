@@ -10,6 +10,7 @@ import { ToastService } from '../../../../services/toast.service';
 import { FormFieldComponent } from '../../../shared/form-field.component';
 import { SkeletonCardComponent } from '../../../shared/skeleton-card.component';
 import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-panel.component';
+import type { SummaryAction } from '../../../shared/summary-panel/summary-panel.component';
 
 @Component({
   selector: 'app-ags-ahorro',
@@ -131,10 +132,7 @@ import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-pan
             { label: 'Ahorro Total', value: (currentScenario?.targetAmount | currency:'MXN':'symbol':'1.0-0')! },
             { label: (remainderAmount <= 0 ? 'Validez' : 'Remanente'), value: (remainderAmount | currency:'MXN':'symbol':'1.0-0')!, badge: (remainderAmount <= 0 ? 'success' : 'warning') }
           ]"
-          [actions]="[
-            { label: '📄 PDF', click: () => generatePDF() },
-            { label: '✅ Continuar', click: () => proceedWithScenario() }
-          ]"
+          [actions]="summaryActions"
         ></app-summary-panel>
 
         <!-- Results Panel (left column visual details) -->
@@ -1150,6 +1148,11 @@ export class AgsAhorroComponent implements OnInit {
   showWhatsAppShare = false;
   currentViewMode: 'simple' | 'advanced' = 'simple';
   showProtectionDemo = false;
+
+  summaryActions: SummaryAction[] = [
+    { label: '📄 PDF', click: () => this.generatePDF() },
+    { label: '✅ Continuar', click: () => this.proceedWithScenario() }
+  ];
 
   constructor(
     private fb: FormBuilder,

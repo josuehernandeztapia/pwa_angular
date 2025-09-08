@@ -10,6 +10,7 @@ import { SavingsScenario, SimuladorEngineService } from '../../../../services/si
 import { ToastService } from '../../../../services/toast.service';
 import { SkeletonCardComponent } from '../../../shared/skeleton-card.component';
 import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-panel.component';
+import type { SummaryAction } from '../../../shared/summary-panel/summary-panel.component';
 
 @Component({
   selector: 'app-edomex-individual',
@@ -329,10 +330,7 @@ import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-pan
             { label: 'Meses a Meta', value: (scenario?.monthsToTarget || 0) + ' meses' },
             { label: 'Meta de Enganche', value: formatCurrency(scenario?.targetAmount || 0) }
           ]"
-          [actions]="[
-            { label: '📄 PDF', click: () => generatePDF() },
-            { label: '✅ Crear Cliente', click: () => proceedToClientCreation() }
-          ]"
+          [actions]="summaryActions"
         ></app-summary-panel>
       </div>
     </div>
@@ -344,6 +342,11 @@ export class EdomexIndividualComponent implements OnInit, OnDestroy {
   configForm: FormGroup;
   scenario: SavingsScenario | null = null;
   isCalculating = false;
+
+  summaryActions: SummaryAction[] = [
+    { label: '📄 PDF', click: () => this.generatePDF() },
+    { label: '✅ Crear Cliente', click: () => this.proceedToClientCreation() }
+  ];
 
   constructor(
     private fb: FormBuilder,
