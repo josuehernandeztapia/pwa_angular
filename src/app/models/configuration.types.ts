@@ -163,6 +163,15 @@ export interface AVIConfiguration {
   apiKey: string;
   timeout: number;
   retryAttempts: number;
+  // New: Voice analysis configuration (weights, thresholds, UI toggles)
+  voice?: {
+    weights: AVIVoiceWeights;
+    thresholds: AVIVoiceThresholds;
+    ui: {
+      enableVoiceAnalysis: boolean;
+      localOnlyByDefault: boolean;
+    };
+  };
   questions: {
     core: AVIQuestion[];
     businessFlow: {
@@ -191,6 +200,21 @@ export interface AVIConfiguration {
   };
   analytics: AVIAnalyticsConfiguration;
   optimization: AVIOptimizationConfiguration;
+}
+
+export interface AVIVoiceWeights {
+  pitch_var: number;
+  speech_rate_change: number;
+  pause_freq: number;
+  tremor: number;
+  coherence: number;
+}
+
+export interface AVIVoiceThresholds {
+  low: number;
+  med: number;
+  high: number;
+  critical: number;
 }
 
 export interface AVIAnalyticsConfiguration {

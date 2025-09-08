@@ -185,6 +185,18 @@ export class ConfigurationService {
     return this.getCurrentConfiguration().avi;
   }
 
+  /** Convenience accessor for AVI voice configuration */
+  getAVIVoiceConfiguration() {
+    const avi = this.getAVIConfiguration();
+    return (
+      avi.voice || {
+        weights: { pitch_var: 0.25, speech_rate_change: 0.2, pause_freq: 0.25, tremor: 0.15, coherence: 0.15 },
+        thresholds: { low: 800, med: 650, high: 500, critical: 350 },
+        ui: { enableVoiceAnalysis: true, localOnlyByDefault: true }
+      }
+    );
+  }
+
   /**
    * Get AVI questions by category
    */
@@ -506,6 +518,25 @@ export class ConfigurationService {
       apiKey: process.env['AVI_API_KEY'] || 'demo_avi_key',
       timeout: 30000,
       retryAttempts: 3,
+      voice: {
+        weights: {
+          pitch_var: 0.25,
+          speech_rate_change: 0.20,
+          pause_freq: 0.25,
+          tremor: 0.15,
+          coherence: 0.15
+        },
+        thresholds: {
+          low: 800,
+          med: 650,
+          high: 500,
+          critical: 350
+        },
+        ui: {
+          enableVoiceAnalysis: true,
+          localOnlyByDefault: true
+        }
+      },
       questions: {
         core: [
           {
