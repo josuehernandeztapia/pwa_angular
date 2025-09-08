@@ -57,20 +57,20 @@ interface KpiData {
       </div>
 
       <!-- Resumen KPIs -->
-      <div class="bg-white rounded-xl shadow-lg p-4">
+      <div class="bg-white rounded-xl shadow-lg p-4" *ngIf="simulationResult as res">
         <h2 class="text-lg font-semibold text-gray-800 mb-3">Resumen</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="bg-purple-50 p-3 rounded border border-purple-100">
             <div class="text-purple-600 text-xs">Mensualidad Grupo</div>
-            <div class="text-xl font-bold text-purple-800">{{ formatCurrency(simulationResult?.scenario.monthlyContribution || 0) }}</div>
+            <div class="text-xl font-bold text-purple-800">{{ formatCurrency(res?.scenario?.monthlyContribution || 0) }}</div>
           </div>
           <div class="bg-green-50 p-3 rounded border border-green-100">
             <div class="text-green-600 text-xs">Meses a Meta</div>
-            <div class="text-xl font-bold text-green-800">{{ simulationResult?.scenario.monthsToTarget || 0 }} meses</div>
+            <div class="text-xl font-bold text-green-800">{{ res?.scenario?.monthsToTarget || 0 }} meses</div>
           </div>
           <div class="bg-blue-50 p-3 rounded border border-blue-100">
             <div class="text-blue-600 text-xs">Meta Total</div>
-            <div class="text-xl font-bold text-blue-800">{{ formatCurrency(simulationResult?.scenario.targetAmount || 0) }}</div>
+            <div class="text-xl font-bold text-blue-800">{{ formatCurrency(res?.scenario?.targetAmount || 0) }}</div>
           </div>
         </div>
       </div>
@@ -659,9 +659,9 @@ interface KpiData {
         <!-- Aside Summary -->
         <app-summary-panel class="aside" *ngIf="simulationResult"
           [metrics]="[
-            { label: 'Mensualidad Grupo', value: formatCurrency(simulationResult?.scenario.monthlyContribution || 0), badge: 'success' },
-            { label: 'Meses a Meta', value: (simulationResult?.scenario.monthsToTarget || 0) + ' meses' },
-            { label: 'Meta Total', value: formatCurrency(simulationResult?.scenario.targetAmount || 0) }
+            { label: 'Mensualidad Grupo', value: formatCurrency(simulationResult?.scenario?.monthlyContribution || 0), badge: 'success' },
+            { label: 'Meses a Meta', value: (simulationResult?.scenario?.monthsToTarget || 0) + ' meses' },
+            { label: 'Meta Total', value: formatCurrency(simulationResult?.scenario?.targetAmount || 0) }
           ]"
           [actions]="summaryActions"
         ></app-summary-panel>
