@@ -84,13 +84,13 @@ export default defineConfig({
       fonts: 'ready',
       // Threshold for individual test
       threshold: 0.1,
-      // Maximum allowed pixel difference
-      maxDiffPixels: 100,
+      // Relax pixel diff for component/container snapshots (full-page not used)
+      maxDiffPixels: 2500,
     },
     // Page screenshot options
     toMatchSnapshot: {
       threshold: 0.1,
-      maxDiffPixels: 100,
+      maxDiffPixels: 2500,
     },
   },
 

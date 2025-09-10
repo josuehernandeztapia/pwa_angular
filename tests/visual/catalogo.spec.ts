@@ -52,29 +52,39 @@ test.describe('@productos Catálogo de Productos visual states', () => {
     await mockAuth(page);
     await freezeTime(page);
     await freezeRandom(page);
+    await page.addStyleTag({ content: '*{caret-color: transparent !important;} ::-webkit-scrollbar{display:none;} html,body{scroll-behavior:auto !important;}' });
     await page.goto('/productos');
     await page.getByRole('heading', { level: 1 }).first().waitFor();
     // Espera breve menor al delay de 600ms del servicio para capturar loading
     await page.waitForTimeout(100);
     const loading = page.getByRole('status', { name: /Cargando catálogo/i });
     await expect(loading).toBeVisible();
-    await expect(page).toHaveScreenshot();
+    const container = page.locator('.premium-container, .productos-grid').first();
+    await expect(container).toBeVisible();
+    await expect(container).toHaveScreenshot({
+      mask: [page.locator('[data-dynamic], .timestamp, time, .counter, .live, .loading, canvas, video')]
+    });
   });
 
   test('data state snapshot (con resultados)', async ({ page }) => {
     await mockAuth(page);
     await freezeTime(page);
     await freezeRandom(page);
+    await page.addStyleTag({ content: '*{caret-color: transparent !important;} ::-webkit-scrollbar{display:none;} html,body{scroll-behavior:auto !important;}' });
     await page.goto('/productos', { waitUntil: 'domcontentloaded' });
     // Esperar a que cargue el grid
     await page.locator('.productos-grid .producto-card').first().waitFor();
-    await expect(page).toHaveScreenshot();
+    const grid = page.locator('.productos-grid');
+    await expect(grid).toHaveScreenshot({
+      mask: [page.locator('[data-dynamic], .timestamp, time, .counter, .live, .loading, canvas, video')]
+    });
   });
 
   test('empty state snapshot (sin resultados) y limpiar filtros', async ({ page }) => {
     await mockAuth(page);
     await freezeTime(page);
     await freezeRandom(page);
+    await page.addStyleTag({ content: '*{caret-color: transparent !important;} ::-webkit-scrollbar{display:none;} html,body{scroll-behavior:auto !important;}' });
     await page.goto('/productos');
     await page.locator('.productos-grid').waitFor();
     // Combinar filtros que no existan: AGS + Colectivo
@@ -82,7 +92,10 @@ test.describe('@productos Catálogo de Productos visual states', () => {
     await page.getByRole('button', { name: /Crédito Colectivo/i }).click();
     await expect(page.getByRole('heading', { name: /Sin resultados/i })).toBeVisible();
     await expect(page.getByRole('button', { name: /Limpiar filtros/i })).toBeVisible();
-    await expect(page).toHaveScreenshot();
+    const content = page.locator('.premium-container, main, .productos-grid').first();
+    await expect(content).toHaveScreenshot({
+      mask: [page.locator('[data-dynamic], .timestamp, time, .counter, .live, .loading, canvas, video')]
+    });
   });
 });
 

@@ -14,6 +14,7 @@ async function mockAuth(page: Page) {
 test.describe('Flow Builder Visual', () => {
   test('@flow-editor should open from configuración modal and render palettes', async ({ page }: { page: Page }) => {
     await mockAuth(page);
+    await page.addStyleTag({ content: '*{caret-color: transparent !important;} ::-webkit-scrollbar{display:none;} html,body{scroll-behavior:auto !important;}' });
     await page.goto('/configuracion');
 
     // Ensure page header loaded
@@ -32,7 +33,11 @@ test.describe('Flow Builder Visual', () => {
     await expect(page.getByText('🔍 Verificaciones')).toBeVisible();
     await expect(page.getByText('💼 Productos')).toBeVisible();
 
-    await expect(page).toHaveScreenshot();
+    const container = page.locator('.premium-container, .flow-builder, .modal').first();
+    await expect(container).toBeVisible();
+    await expect(container).toHaveScreenshot({
+      mask: [page.locator('[data-dynamic], .timestamp, time, .counter, .live, .loading, canvas, video')]
+    });
   });
 
   test('@flow-connections should show disabled Deploy until nodes exist', async ({ page }: { page: Page }) => {

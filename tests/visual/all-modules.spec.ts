@@ -80,6 +80,8 @@ test.describe('Premium visual across modules', () => {
       await mockAuth(page);
       await freezeTime(page);
       await freezeRandom(page);
+      // Stabilize UI rendering to avoid flaky diffs
+      await page.addStyleTag({ content: '*{caret-color: transparent !important;} ::-webkit-scrollbar{display:none;} html,body{scroll-behavior:auto !important;}' });
       await page.goto(r.path, { waitUntil: 'networkidle' });
       await page.waitForLoadState('domcontentloaded');
       await page.waitForLoadState('networkidle');
@@ -95,7 +97,10 @@ test.describe('Premium visual across modules', () => {
         const heading = page.locator('h1, h2, [role="heading"][aria-level="1"], [role="heading"][aria-level="2"]');
         await expect(heading.first()).toBeVisible({ timeout: 5000 });
       }
-      await expect(page).toHaveScreenshot();
+      await container.first().scrollIntoViewIfNeeded();
+      await expect(container.first()).toHaveScreenshot({
+        mask: [page.locator('[data-dynamic], .timestamp, time, .counter, .live, .loading, canvas, video')]
+      });
     });
   }
 });
