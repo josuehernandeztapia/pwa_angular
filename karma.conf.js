@@ -13,6 +13,16 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    exclude: [
+      // Exclude all visual/playwright test files from unit tests
+      'src/**/*.visual.spec.ts',
+      'src/**/visual/**/*.ts', 
+      'src/tests/visual/**/*.ts',
+      'src/tests/visual/**/*.spec.ts',
+      // Exclude playwright-core and related node modules
+      'node_modules/playwright-core/**/*',
+      'node_modules/@playwright/**/*'
+    ],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
@@ -61,6 +71,33 @@ module.exports = function (config) {
     },
     restartOnFileChange: true,
     singleRun: false,
-    logLevel: config.LOG_INFO
+    logLevel: config.LOG_INFO,
+    
+    // Webpack configuration to prevent Node.js modules from being bundled
+    webpack: {
+      resolve: {
+        fallback: {
+          "fs": false,
+          "os": false, 
+          "path": false,
+          "net": false,
+          "child_process": false,
+          "crypto": false,
+          "stream": false,
+          "util": false,
+          "http": false,
+          "https": false,
+          "url": false,
+          "querystring": false,
+          "buffer": false,
+          "events": false,
+          "assert": false
+        }
+      },
+      externals: {
+        'playwright-core': 'var {}',
+        '@playwright/test': 'var {}'
+      }
+    }
   });
 };

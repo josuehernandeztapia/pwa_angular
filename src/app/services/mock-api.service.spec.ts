@@ -430,16 +430,30 @@ describe('MockApiService', () => {
     });
 
     it('should simulate timeout error', (done) => {
+      // Use jasmine timeout and shorter delay for testing
+      const startTime = Date.now();
+      
       service.simulateError('timeout').subscribe({
+        next: () => {
+          fail('Should have thrown error');
+          done();
+        },
         error: (error) => {
+          const endTime = Date.now();
           expect(error.message).toBe('Request timeout');
+          expect(endTime - startTime).toBeGreaterThanOrEqual(7900); // Close to 8000ms timeout
           done();
         }
       });
-    });
+    }, 10000); // Increase jasmine timeout for this test
 
     it('should simulate unknown error by default', (done) => {
-      service.simulateError(undefined as any).subscribe({
+      // Test with an invalid error type that falls through to default
+      service.simulateError('invalid' as any).subscribe({
+        next: () => {
+          fail('Should have thrown error');
+          done();
+        },
         error: (error) => {
           expect(error.message).toBe('Unknown error occurred');
           expect((error as any).status).toBe(500);
@@ -451,17 +465,26 @@ describe('MockApiService', () => {
 
   describe('Utility Methods', () => {
     it('should perform health check', (done) => {
+      const startTime = Date.now();
+      
       service.healthCheck().subscribe(health => {
+        const endTime = Date.now();
         expect(health.status).toBe('healthy');
         expect(health.timestamp).toBeInstanceOf(Date);
         expect(health.version).toBe('1.0.0');
+        expect(endTime - startTime).toBeGreaterThanOrEqual(150); // Should have fast delay (200ms)
         done();
       });
     });
 
     it('should get server time', (done) => {
+      const startTime = Date.now();
+      
       service.getServerTime().subscribe(time => {
+        const endTime = Date.now();
         expect(time.timestamp).toBeInstanceOf(Date);
+        expect(time.timestamp.getTime()).toBeGreaterThan(startTime - 1000); // Server time should be recent
+        expect(endTime - startTime).toBeGreaterThanOrEqual(150); // Should have fast delay (200ms)
         done();
       });
     });
@@ -552,13 +575,20 @@ describe('MockApiService', () => {
     it('should handle errors in mockApi', (done) => {
       spyOn(console, 'error');
       
-      // Force an error by mocking JSON.parse to throw
-      spyOn(JSON, 'parse').and.throwError('Parse error');
+      // Force an error by mocking JSON.stringify to throw (used in deep clone)
+      const originalStringify = JSON.stringify;
+      spyOn(JSON, 'stringify').and.throwError('Stringify error');
+      spyOn(JSON, 'parse').and.returnValue({});
 
       service['mockApi']('test data', 0).subscribe({
+        next: () => {
+          fail('Should have thrown error');
+          done();
+        },
         error: (error) => {
           expect(console.error).toHaveBeenCalledWith('MockApi Error:', jasmine.any(Error));
-          expect(error.message).toBe('Parse error');
+          expect(error.message).toBe('Stringify error');
+          JSON.stringify = originalStringify; // Restore original
           done();
         }
       });
