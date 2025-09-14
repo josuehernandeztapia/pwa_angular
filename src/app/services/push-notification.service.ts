@@ -83,7 +83,7 @@ export class PushNotificationService {
   // ==============================
 
   private checkSupport(): void {
-    this.isSupported = this.swPush.isEnabled && 'Notification' in window;
+    this.isSupported = this.swPush.isEnabled && typeof (window as any).Notification !== 'undefined';
     if (this.isSupported) {
       this.permission$.next(Notification.permission);
       this.loadExistingSubscription();

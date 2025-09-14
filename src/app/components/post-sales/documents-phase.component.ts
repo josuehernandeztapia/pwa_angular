@@ -676,7 +676,7 @@ export class DocumentsPhaseComponent {
       this.closeSuccessModal();
     }
   }
-  constructor(private router: Router, private fb: FormBuilder, private integratedImportTracker: IntegratedImportTrackerService, private postSalesApi: PostSalesApiService, private pdfExport?: any) {}
+  
 
   async printOnePager() {
     try {

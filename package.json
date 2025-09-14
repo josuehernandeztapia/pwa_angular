@@ -31,7 +31,7 @@
     "build:prod:premium": "npm run build:prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:unit": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:unit": "CHROME_BIN=$(node scripts/chrome-bin.js) ng test --watch=false --browsers=ChromeHeadless",
     "test:services": "ng test --ts-config=tsconfig.spec.services.json --include='**/services/**/*.spec.ts' --watch=false --browsers=ChromeHeadless",
     "test:components": "ng test --ts-config=tsconfig.spec.components.json --include='**/components/**/*.spec.ts' --watch=false --browsers=ChromeHeadless",
     "test:utilities": "ng test --include='**/utils/**/*.spec.ts,**/shared/**/*.spec.ts' --watch=false --browsers=ChromeHeadless",

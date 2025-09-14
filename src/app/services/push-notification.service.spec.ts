@@ -452,14 +452,10 @@ describe('PushNotificationService', () => {
         }
       };
 
-      // Safely mock window.location.assign in CI/JSDOM
-      const originalLocation = window.location;
+      // Safely mock window.location.assign using spyOnProperty
       const assignSpy = jasmine.createSpy('assign');
-      Object.defineProperty(window, 'location', {
-        configurable: true,
-        writable: true,
-        value: { assign: assignSpy } as any
-      });
+      const originalAssign = window.location.assign.bind(window.location);
+      spyOnProperty(window, 'location', 'get').and.returnValue({ assign: assignSpy } as any);
 
       // Spy on markNotificationAsClicked to verify the method is called
       spyOn(service as any, 'markNotificationAsClicked');
@@ -472,12 +468,9 @@ describe('PushNotificationService', () => {
       expect(service['markNotificationAsClicked']).toHaveBeenCalledWith('notif123');
       expect(mockEvent.notification.close).toHaveBeenCalled();
 
-      // Restore original window.location to avoid leaking state to other tests
-      Object.defineProperty(window, 'location', {
-        configurable: true,
-        writable: true,
-        value: originalLocation
-      });
+      // Restore assign to avoid leaking state
+      spyOnProperty(window, 'location', 'get').and.callThrough();
+      window.location.assign = originalAssign;
     });
   });
 

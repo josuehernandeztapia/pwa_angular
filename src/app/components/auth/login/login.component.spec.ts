@@ -178,7 +178,7 @@ describe('LoginComponent Integration Tests', () => {
       ]
     });
 
-    const submitButton = screen.getByRole('button');
+    const submitButton = screen.getByRole('button', { name: /acceder al cockpit/i });
     fireEvent.click(submitButton);
 
     await waitFor(() => {
@@ -218,7 +218,7 @@ describe('LoginComponent Integration Tests', () => {
 
     const emailInput = screen.getByLabelText(/correo electrónico/i);
     const passwordInput = screen.getByLabelText(/contraseña/i);
-    const submitButton = screen.getByRole('button', { name: /iniciar sesión/i });
+    const submitButton = screen.getByRole('button', { name: /acceder al cockpit/i });
 
     await user.type(emailInput, 'test@example.com');
     await user.type(passwordInput, 'validPassword123');

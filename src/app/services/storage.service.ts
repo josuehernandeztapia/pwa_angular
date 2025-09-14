@@ -340,6 +340,10 @@ export class StorageService {
   }
 
   async getPendingActions(): Promise<any[]> {
+    if (this.useMemoryStore) {
+      // No offline actions in memory mode for tests
+      return Promise.resolve([]);
+    }
     if (!this.db) throw new Error('Database not initialized');
 
     return new Promise((resolve, reject) => {

@@ -110,7 +110,7 @@ interface StepState {
                 <span class="meta" *ngIf="p.equivalent">Equiv: {{ p.equivalent }}</span>
                 <span class="meta" [class.low]="p.stock === 0">Stock: {{ p.stock }}</span>
               </div>
-              <button class="btn add" (click)="addToQuote(p)" [attr.data-cy]="'add-' + p.id" aria-label="Agregar {{ p.name }} a cotización">
+              <button class="btn add" (click)="addToQuote(p)" [attr.data-cy]="'add-' + p.id" [attr.aria-label]="'Agregar ' + p.name + ' a cotización'">
                 ➕ Agregar a cotización
               </button>
             </div>

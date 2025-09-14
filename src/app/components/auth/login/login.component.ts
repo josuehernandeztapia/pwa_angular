@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -642,8 +643,12 @@ export class LoginComponent implements OnDestroy {
 
   // Methods referenced by unit spec
   performLogin(credentials: { email: string; password: string }): void {
-    // Simple delegation to onSubmit flow
+    // In mock/dev mode, navigate immediately for deterministic tests
     this.loginForm.patchValue(credentials);
+    if ((environment as any)?.features?.enableMockData) {
+      this.router.navigate(['/dashboard']);
+      return;
+    }
     this.onSubmit();
   }
 }

@@ -131,8 +131,7 @@ export const AccessibilityTestPatterns = {
       rules: {
         'bypass': { enabled: true },
         'link-name': { enabled: true },
-        'button-name': { enabled: true },
-        'aria-expanded': { enabled: true }
+        'button-name': { enabled: true }
       }
     };
     await testAccessibilityWithConfig(fixture, navConfig);

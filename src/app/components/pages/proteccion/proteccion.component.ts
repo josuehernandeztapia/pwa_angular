@@ -113,13 +113,13 @@ import { environment } from '../../../../environments/environment';
                 <div class="row" title="Tasa interna de retorno posterior a la reestructura; debe cumplir con IRR mínima de políticas" data-cy="tip-irr">
                   <span class="label">TIR post</span>
                   <span class="value">
-                    <span class="irr" [class.ok]="(s as any).tirOK" [class.bad]="!(s as any).tirOK">{{ (((s as any).irr) || 0) * 100 | number:'1.0-2' }}%</span>
+                    <span class="irr" [class.ok]="isTirOk(s)" [class.bad]="!isTirOk(s)">{{ formatPercent(s.irr) }}</span>
                   </span>
                 </div>
 
                 <!-- Motivos de rechazo y sugerencias -->
                 <div class="rejection" *ngIf="!isScenarioEligible(s)" data-cy="rejection-box" title="Causas por las que el escenario no es elegible según políticas">
-                  <div class="reason" *ngIf="!(s as any).tirOK" title="La TIR posterior es menor a la mínima aceptada">Motivo: IRRpost < IRRmin</div>
+                  <div class="reason" *ngIf="!isTirOk(s)" title="La TIR posterior es menor a la mínima aceptada">Motivo: IRRpost < IRRmin</div>
                   <div class="reason" *ngIf="isBelowMinPayment(s)" title="El pago mensual reestructurado es inferior al mínimo permitido">Motivo: PMT′ < PMTmin</div>
                   <div class="suggestion" *ngIf="s.type==='step-down'">Sugerencia: reducir α a 20% y recalcular</div>
                   <div class="suggestion" *ngIf="s.type==='defer'">Sugerencia: limitar diferimiento a 3 meses</div>
@@ -314,7 +314,11 @@ export class ProteccionComponent {
   }
 
   isScenarioEligible(s: ProtectionScenario): boolean {
-    return ((s as any).tirOK !== false) && !this.isBelowMinPayment(s);
+    return this.isTirOk(s) && !this.isBelowMinPayment(s);
+  }
+
+  isTirOk(s: ProtectionScenario): boolean {
+    return s.tirOK !== false;
   }
 
   isBelowMinPayment(s: ProtectionScenario): boolean {
@@ -324,4 +328,9 @@ export class ProteccionComponent {
   }
 
   formatCurrency(v: number): string { return this.financialCalc.formatCurrency(v); }
+
+  formatPercent(value?: number): string {
+    const n = typeof value === 'number' ? value : 0;
+    return `${(n * 100).toFixed(2)}%`;
+  }
 }
