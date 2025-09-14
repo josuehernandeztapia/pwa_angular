@@ -1,0 +1,135 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 0,
+    "passes": 0,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-14T18:30:28.445Z",
+    "end": "2025-09-14T18:30:41.342Z",
+    "duration": 12897,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 2,
+    "hasOther": true,
+    "skipped": 1,
+    "hasSkipped": true
+  },
+  "results": [
+    {
+      "uuid": "be629d9c-dca6-4b62-ae81-b2dc2b4972c6",
+      "title": "",
+      "fullFile": "cypress/e2e/09-gnv-health-panel.cy.ts",
+      "file": "cypress/e2e/09-gnv-health-panel.cy.ts",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9063b081-50a4-4a97-bced-42a02d706d55",
+          "title": "GNV Health Panel (T+1)",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "loads the panel and shows controls",
+              "fullTitle": "GNV Health Panel (T+1) loads the panel and shows controls",
+              "timedOut": null,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/ops/gnv-health');\ncy.contains('GNV').should('be.visible');\ncy.get('input[type=\"date\"]').should('exist');\ncy.get('a').filter('[href*=\"template.csv\"], [href*=\"guide.pdf\"]').should('have.length.gte', 1);",
+              "err": {
+                "message": "CypressError: `cy.task('coverageReport')` failed with the following error:\n\n> Command failed with exit code 1: npm run coverage:report\n\nhttps://on.cypress.io/api/task\n\nBecause this error occurred during a `after all` hook we are skipping all of the remaining tests.\n\nAlthough you have test retries enabled, we do not retry tests when `before all` or `after all` hooks fail",
+                "estack": "CypressError: `cy.task('coverageReport')` failed with the following error:\n\n> Command failed with exit code 1: npm run coverage:report\n\nhttps://on.cypress.io/api/task\n\nBecause this error occurred during a `after all` hook we are skipping all of the remaining tests.\n\nAlthough you have test retries enabled, we do not retry tests when `before all` or `after all` hooks fail\n    at <unknown> (http://localhost:4200/__cypress/runner/cypress_runner.js:138627:70)\n    at tryCatcher (http://localhost:4200/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (http://localhost:4200/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (http://localhost:4200/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (http://localhost:4200/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (http://localhost:4200/__cypress/runner/cypress_runner.js:1667:18)\n    at _drainQueueStep (http://localhost:4200/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (http://localhost:4200/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (http://localhost:4200/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Object.proxyGetter [as get] (http://localhost:4200/__cypress/runner/cypress_runner.js:80426:22)\n    at exists (http://localhost:4200/__cypress/runner/cypress_runner.js:146470:26)\n    at elExists (http://localhost:4200/__cypress/runner/cypress_runner.js:146485:10)\n    at ensureExistence (http://localhost:4200/__cypress/runner/cypress_runner.js:146666:22)\n    at onFailFn (http://localhost:4200/__cypress/runner/cypress_runner.js:146695:53)\n\nFrom Node.js Internals:\n  Error: Command failed with exit code 1: npm run coverage:report\n      at makeError (/workspace/node_modules/@cypress/code-coverage/node_modules/execa/lib/error.js:59:11)\n      at handlePromise (/workspace/node_modules/@cypress/code-coverage/node_modules/execa/index.js:114:26)\n      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "59516d67-f52c-4b6c-9780-418955921f65",
+              "parentUUID": "9063b081-50a4-4a97-bced-42a02d706d55",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "renders stations when enabled or shows disabled message",
+              "fullTitle": "GNV Health Panel (T+1) renders stations when enabled or shows disabled message",
+              "timedOut": null,
+              "duration": 0,
+              "state": "skipped",
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('/ops/gnv-health');\ncy.get('body').then($b => {\n    const hasCards = $b.find('.station-card').length > 0;\n    if (hasCards) {\n        cy.get('.station-card').should('have.length.gte', 1);\n        cy.get('.station-card .status .dot').first().should('be.visible');\n    }\n    else {\n        cy.contains('Integración GNV desactivada').should('be.visible');\n    }\n});",
+              "err": {},
+              "uuid": "4dd94a6e-c038-4501-acc0-204acbb9dcaf",
+              "parentUUID": "9063b081-50a4-4a97-bced-42a02d706d55",
+              "isHook": false,
+              "skipped": true
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "59516d67-f52c-4b6c-9780-418955921f65"
+          ],
+          "pending": [],
+          "skipped": [
+            "4dd94a6e-c038-4501-acc0-204acbb9dcaf"
+          ],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "charts": true,
+        "reportPageTitle": "Conductores PWA E2E Tests",
+        "embeddedScreenshots": true,
+        "inlineAssets": true,
+        "saveAllAttempts": false,
+        "reportDir": "cypress/reports/html/.jsons",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
