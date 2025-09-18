@@ -1,0 +1,12 @@
+// App component styles - OpenAI minimal style
+:host {
+  display: block;
+  height: 100vh;
+  width: 100%;
+}
+
+main {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  font-variation-settings: 'opsz' 32;
+}
