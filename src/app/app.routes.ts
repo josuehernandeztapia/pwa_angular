@@ -44,6 +44,13 @@ const commonBeforeWildcard: Routes = [
   },
 
   {
+    path: 'usage',
+    loadComponent: () => import('./components/pages/usage/usage.component').then(c => c.UsageComponent),
+    canActivate: [AuthGuard],
+    title: 'Uso / Reportes - Conductores PWA'
+  },
+
+  {
     path: 'avi',
     loadComponent: () => import('./components/pages/avi/avi.component').then(c => c.AviComponent),
     canActivate: [AuthGuard],
