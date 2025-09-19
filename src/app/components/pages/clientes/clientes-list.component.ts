@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Client } from '../../../models/types';
 import { ApiService } from '../../../services/api.service';
 import { ToastService } from '../../../services/toast.service';
-import { Client, BusinessFlow } from '../../../models/types';
 
 @Component({
   selector: 'app-clientes-list',
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   template: `
-    <div class="clientes-container command-container">
+    <div class="clientes-container command-container ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
       <header class="clientes-header">
         <div class="header-content">
           <h1 class="page-title command-title">👥 Portafolio de Clientes Inteligente</h1>
@@ -25,7 +25,7 @@ import { Client, BusinessFlow } from '../../../models/types';
       </header>
 
       <!-- Strategic Search & Segmentation -->
-      <div class="segmentation-section">
+      <div class="segmentation-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="search-box premium-card">
           <div class="search-input-container">
             <span class="search-icon">🔍</span>
@@ -34,7 +34,7 @@ import { Client, BusinessFlow } from '../../../models/types';
               [(ngModel)]="searchTerm"
               (input)="onSearch()"
               placeholder="¿Dónde está el cliente...?"
-              class="premium-input"
+              class="premium-input ui-input"
             >
           </div>
         </div>
@@ -42,7 +42,7 @@ import { Client, BusinessFlow } from '../../../models/types';
         <div class="strategic-filters">
           <div class="filter-group priority premium-card">
             <label class="filter-label">🚨 Estado Crítico</label>
-            <select [(ngModel)]="filterStatus" (change)="applyFilters()" class="premium-select status">
+            <select [(ngModel)]="filterStatus" (change)="applyFilters()" class="premium-select ui-input status">
               <option value="">Todos los estados</option>
               <option value="Activo">✅ Activo</option>
               <option value="Pendiente">⏳ Pendiente</option>
@@ -55,7 +55,7 @@ import { Client, BusinessFlow } from '../../../models/types';
 
           <div class="filter-group critical premium-card">
             <label class="filter-label">💹 Health Score</label>
-            <select [(ngModel)]="filterHealthScore" (change)="applyFilters()" class="premium-select health">
+            <select [(ngModel)]="filterHealthScore" (change)="applyFilters()" class="premium-select ui-input health">
               <option value="">Todos los scores</option>
               <option value="critical">🔴 Crítico (&lt; 40)</option>
               <option value="poor">🟠 Regular (40-59)</option>
@@ -65,7 +65,7 @@ import { Client, BusinessFlow } from '../../../models/types';
           </div>
 
           <div class="filter-group secondary premium-card">
-            <select [(ngModel)]="filterMarket" (change)="applyFilters()" class="premium-select">
+            <select [(ngModel)]="filterMarket" (change)="applyFilters()" class="premium-select ui-input">
               <option value="">Todos los mercados</option>
               <option value="aguascalientes">Aguascalientes</option>
               <option value="edomex">Estado de México</option>
@@ -73,7 +73,7 @@ import { Client, BusinessFlow } from '../../../models/types';
           </div>
 
           <div class="filter-group secondary premium-card">
-            <select [(ngModel)]="filterFlow" (change)="applyFilters()" class="premium-select">
+            <select [(ngModel)]="filterFlow" (change)="applyFilters()" class="premium-select ui-input">
               <option value="">Todos los productos</option>
               <option value="Venta a Plazo">Venta a Plazo</option>
               <option value="Plan de Ahorro">Plan de Ahorro</option>
@@ -85,7 +85,7 @@ import { Client, BusinessFlow } from '../../../models/types';
           <button 
             *ngIf="hasActiveFilters()" 
             (click)="clearAllFilters()" 
-            class="premium-button outline"
+            class="premium-button ui-btn ui-btn-secondary outline"
             title="Limpiar todos los filtros"
           >
             🗑️ Limpiar
@@ -104,23 +104,23 @@ import { Client, BusinessFlow } from '../../../models/types';
       </div>
 
       <!-- Loading State -->
-      <div *ngIf="isLoading" class="loading-container premium-card">
+      <div *ngIf="isLoading" class="loading-container premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="premium-loading"></div>
         <p>Cargando clientes...</p>
       </div>
 
       <!-- Empty State -->
-      <div *ngIf="!isLoading && filteredClientes.length === 0" class="empty-state premium-card">
+      <div *ngIf="!isLoading && filteredClientes.length === 0" class="empty-state premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="empty-icon">📝</div>
         <h3>{{ searchTerm ? 'No se encontraron clientes' : 'No hay clientes registrados' }}</h3>
         <p>{{ searchTerm ? 'Intenta con otros términos de búsqueda' : 'Comienza creando tu primer cliente' }}</p>
-        <button *ngIf="!searchTerm" routerLink="/clientes/nuevo" class="premium-button">
+        <button *ngIf="!searchTerm" routerLink="/clientes/nuevo" class="premium-button ui-btn ui-btn-primary">
           Crear primer cliente
         </button>
       </div>
 
       <!-- Strategic Actions Bar -->
-      <div *ngIf="!isLoading && filteredClientes.length > 0" class="strategic-actions-bar premium-card">
+      <div *ngIf="!isLoading && filteredClientes.length > 0" class="strategic-actions-bar premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="selection-info">
           <label class="select-all-container">
             <input 
@@ -139,14 +139,14 @@ import { Client, BusinessFlow } from '../../../models/types';
         <div class="bulk-actions" *ngIf="selectedClientes.size > 0">
           <button 
             (click)="exportSelected()" 
-            class="premium-button"
+            class="premium-button ui-btn ui-btn-primary"
             title="Exportar clientes seleccionados"
           >
             📊 Exportar ({{ selectedClientes.size }})
           </button>
           <button 
             (click)="clearSelection()" 
-            class="premium-button outline"
+            class="premium-button ui-btn ui-btn-secondary outline"
             title="Limpiar selección"
           >
             🗑️ Limpiar
@@ -158,7 +158,7 @@ import { Client, BusinessFlow } from '../../../models/types';
       <div *ngIf="!isLoading && filteredClientes.length > 0" class="clients-grid">
         <div
           *ngFor="let cliente of paginatedClientes; trackBy: trackByClientId"
-          class="client-card"
+          class="client-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700"
           [class.selected]="selectedClientes.has(cliente.id)"
         >
           <!-- Selection Checkbox -->
@@ -236,21 +236,21 @@ import { Client, BusinessFlow } from '../../../models/types';
           <div class="client-actions">
             <button
               (click)="$event.stopPropagation(); callClient(cliente)"
-              class="action-btn call"
+              class="action-btn ui-btn ui-btn-secondary call"
               title="Llamar cliente"
             >
               📞
             </button>
             <button
               (click)="$event.stopPropagation(); emailClient(cliente)"
-              class="action-btn email"
+              class="action-btn ui-btn ui-btn-secondary email"
               title="Enviar email"
             >
               ✉️
             </button>
             <button
               (click)="$event.stopPropagation(); viewClientDetails(cliente.id)"
-              class="action-btn view"
+              class="action-btn ui-btn ui-btn-secondary view"
               title="Ver detalles completos"
             >
               👁️

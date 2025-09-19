@@ -1,17 +1,16 @@
-import { Component, OnInit, OnDestroy, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
-import { Market, BusinessFlow, Client } from '../../../models/types';
-import { Quote, ProductPackage, ClientType, SimulatorMode } from '../../../models/business';
+import { ClientType, ProductPackage, Quote, SimulatorMode } from '../../../models/business';
 import { TandaMilestone } from '../../../models/tanda';
+import { BusinessFlow, Client, Market } from '../../../models/types';
 import { CotizadorEngineService, ProductComponent } from '../../../services/cotizador-engine.service';
 import { PdfExportService } from '../../../services/pdf-export.service';
+import { ToastService } from '../../../services/toast.service';
 import { SavingsProjectionChartComponent } from '../../shared/savings-projection-chart.component';
 import { TandaTimelineComponent } from '../../shared/tanda-timeline.component';
-import { ToastService } from '../../../services/toast.service';
 
 interface CollectionUnit {
   id: number;
@@ -33,7 +32,7 @@ interface AmortizationRow {
   imports: [CommonModule, FormsModule, SavingsProjectionChartComponent, TandaTimelineComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="cotizador-container command-container">
+    <div class="cotizador-container command-container ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
       <!-- Header Section -->
       <div class="cotizador-header">
         <h2 class="cotizador-title command-title">
@@ -42,7 +41,7 @@ interface AmortizationRow {
       </div>
 
       <!-- Sticky Finance Summary -->
-      <div *ngIf="pkg" class="sticky-summary" role="region" aria-label="Resumen financiero" data-cy="cotizador-summary">
+      <div *ngIf="pkg" class="sticky-summary ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700" role="region" aria-label="Resumen financiero" data-cy="cotizador-summary">
         <div class="summary-grid">
           <div class="summary-item">
             <div class="label">Precio</div>
@@ -107,12 +106,12 @@ interface AmortizationRow {
         <!-- Left Panel: Configuration -->
         <div class="config-panel">
           <!-- Context Selectors (only if no client) -->
-          <div *ngIf="!client" class="context-section">
+          <div *ngIf="!client" class="context-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h4 class="section-title primary">1. Contexto</h4>
             <div class="context-grid">
               <div class="form-group">
                 <label for="market">Mercado</label>
-                <select id="market" [(ngModel)]="market" (change)="onMarketChange()" class="premium-select">
+                <select id="market" [(ngModel)]="market" (change)="onMarketChange()" class="premium-select ui-input">
                   <option value="">-- Elige --</option>
                   <option value="aguascalientes">Aguascalientes</option>
                   <option value="edomex">Estado de México</option>
@@ -120,7 +119,7 @@ interface AmortizationRow {
               </div>
               <div class="form-group">
                 <label for="clientType">Tipo de Cliente</label>
-                <select id="clientType" [(ngModel)]="clientType" (change)="onClientTypeChange()" [disabled]="!market" class="premium-select">
+                <select id="clientType" [(ngModel)]="clientType" (change)="onClientTypeChange()" [disabled]="!market" class="premium-select ui-input">
                   <option value="">-- Elige --</option>
                   <option value="individual">Individual</option>
                   <option value="colectivo" *ngIf="market === 'edomex'">Crédito Colectivo</option>
@@ -130,13 +129,13 @@ interface AmortizationRow {
           </div>
 
           <!-- Loading State -->
-          <div *ngIf="isLoading" class="loading-state premium-card">
+          <div *ngIf="isLoading" class="loading-state premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <div class="loading-spinner"></div>
             <p>Cargando paquete...</p>
           </div>
 
           <!-- Package Components -->
-          <div *ngIf="pkg" class="package-section premium-card">
+          <div *ngIf="pkg" class="package-section premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h4 class="section-title primary">2. Paquete de Producto</h4>
             <div class="components-list">
               <div *ngFor="let comp of pkg.components" class="component-item">
@@ -171,7 +170,7 @@ interface AmortizationRow {
                     id="downPaymentAmount" 
                     [(ngModel)]="downPaymentAmountDirect"
                     (input)="onDownPaymentDirectChange()"
-                    class="premium-input"
+                    class="premium-input ui-input"
                     placeholder="Ej: 400000"
                   />
                 </div>
@@ -179,7 +178,7 @@ interface AmortizationRow {
               
               <div *ngIf="!isVentaDirecta">
                 <h4 class="section-title primary">3. Estructura Financiera</h4>
-                <div class="financial-controls premium-card">
+                <div class="financial-controls premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                   <div class="form-group">
                     <label for="downPayment">Enganche ({{ downPaymentPercentage }}%)</label>
                     <input 
@@ -189,7 +188,7 @@ interface AmortizationRow {
                       max="90"
                       [(ngModel)]="downPaymentPercentage"
                       (input)="onDownPaymentSliderChange()"
-                      class="form-range premium-input"
+                      class="form-range premium-input ui-input"
                       [attr.aria-describedby]="'dp-note'"
                       [attr.title]="'Ajusta el % de enganche. Mínimo según política y paquete'"
                     />
@@ -200,7 +199,7 @@ interface AmortizationRow {
                   
                   <div class="form-group">
                     <label for="term">Plazo (meses)</label>
-                    <select id="term" [(ngModel)]="term" (change)="onTermChange()" class="premium-select" title="Selecciona el plazo del financiamiento en meses">
+                    <select id="term" [(ngModel)]="term" (change)="onTermChange()" class="premium-select ui-input" title="Selecciona el plazo del financiamiento en meses">
                       <option *ngFor="let t of pkg.terms" [value]="t">{{ t }} meses</option>
                     </select>
                   </div>
@@ -213,7 +212,7 @@ interface AmortizationRow {
               <h4 class="section-title amber">2. Simulación de Ahorro</h4>
               
               <!-- Aguascalientes Individual -->
-              <div *ngIf="market === 'aguascalientes' && clientType === 'individual'" class="savings-controls">
+              <div *ngIf="market === 'aguascalientes' && clientType === 'individual'" class="savings-controls ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                 <div class="form-group">
                   <label for="initialDown">Enganche Inicial (Aportación Fuerte)</label>
                   <input 
@@ -221,7 +220,7 @@ interface AmortizationRow {
                     id="initialDown"
                     [(ngModel)]="initialDownPayment"
                     (input)="onSavingsConfigChange()"
-                    class="premium-input" title="Monto de enganche disponible al inicio"
+                    class="premium-input ui-input" title="Monto de enganche disponible al inicio"
                     placeholder="Ej: 400000"
                   />
                 </div>
@@ -234,13 +233,13 @@ interface AmortizationRow {
                     max="6"
                     [(ngModel)]="deliveryTerm"
                     (input)="onSavingsConfigChange()"
-                    class="form-range premium-input" title="Mes estimado de entrega"
+                    class="form-range premium-input ui-input" title="Mes estimado de entrega"
                   />
                 </div>
               </div>
 
               <!-- EdoMex Colectivo -->
-              <div *ngIf="market === 'edomex' && clientType === 'colectivo'" class="savings-controls">
+              <div *ngIf="market === 'edomex' && clientType === 'colectivo'" class="savings-controls ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                 <div class="form-group">
                   <label for="tandaMembers">Número de Integrantes ({{ tandaMembers }})</label>
                   <input 
@@ -250,13 +249,13 @@ interface AmortizationRow {
                     max="20"
                     [(ngModel)]="tandaMembers"
                     (input)="onTandaMembersChange()"
-                    class="form-range premium-input" title="Número de integrantes del grupo"
+                    class="form-range premium-input ui-input" title="Número de integrantes del grupo"
                   />
                 </div>
               </div>
 
               <!-- Default Savings -->
-              <div *ngIf="!(market === 'aguascalientes' && clientType === 'individual') && !(market === 'edomex' && clientType === 'colectivo')" class="savings-controls">
+              <div *ngIf="!(market === 'aguascalientes' && clientType === 'individual') && !(market === 'edomex' && clientType === 'colectivo')" class="savings-controls ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                 <div class="form-group">
                   <label for="voluntary">Aportación Voluntaria Mensual ({{ formatCurrency(toNumber(voluntaryContribution) || 0) }})</label>
                   <input 
@@ -266,20 +265,20 @@ interface AmortizationRow {
                     step="500"
                     [(ngModel)]="voluntaryContribution"
                     (input)="onSavingsConfigChange()"
-                    class="form-range premium-input" title="Aportación voluntaria mensual"
+                    class="form-range premium-input ui-input" title="Aportación voluntaria mensual"
                   />
                   <input 
                     type="number" 
                     id="voluntary"
                     [(ngModel)]="voluntaryContribution"
                     (input)="onSavingsConfigChange()"
-                    class="premium-input"
+                    class="premium-input ui-input"
                   />
                 </div>
               </div>
 
               <!-- Collection Configuration -->
-              <div class="collection-section">
+              <div class="collection-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                 <h5 class="collection-title">Configurador de Recaudación</h5>
                 <div class="collection-units">
                   <div *ngFor="let unit of collectionUnits" class="collection-unit">
@@ -288,18 +287,18 @@ interface AmortizationRow {
                       [placeholder]="'Consumo (L) - Unidad ' + unit.id"
                       [(ngModel)]="unit.consumption"
                       (input)="onSavingsConfigChange()"
-                      class="collection-input"
+                      class="collection-input ui-input"
                     />
                     <input 
                       type="number" 
                       [placeholder]="'Sobreprecio ($) - Unidad ' + unit.id"
                       [(ngModel)]="unit.overprice"
                       (input)="onSavingsConfigChange()"
-                      class="collection-input"
+                      class="collection-input ui-input"
                     />
                   </div>
                 </div>
-                <button class="btn-add-unit" (click)="addCollectionUnit()">
+                <button class="btn-add-unit ui-btn ui-btn-secondary" (click)="addCollectionUnit()">
                   [+] Agregar Unidad a Recaudar
                 </button>
               </div>
@@ -358,13 +357,13 @@ interface AmortizationRow {
               <button 
                 *ngIf="!isVentaDirecta" 
                 (click)="calculateAmortization()" 
-                class="btn-amortization" data-cy="calc-amort" title="Calcula la tabla de amortización para el monto a financiar"
+                class="btn-amortization ui-btn ui-btn-primary" data-cy="calc-amort" title="Calcula la tabla de amortización para el monto a financiar"
               >
                 Calcular y Ver Amortización
               </button>
 
               <!-- Amortization Table -->
-              <div *ngIf="amortizationTable.length > 0 && !isVentaDirecta" class="amortization-table">
+              <div *ngIf="amortizationTable.length > 0 && !isVentaDirecta" class="amortization-table ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                 <div class="table-container">
                   <table>
                     <thead>
@@ -390,7 +389,7 @@ interface AmortizationRow {
               </div>
 
               <!-- Protection Demo -->
-              <div *ngIf="monthlyPayment > 0 && !isVentaDirecta" class="protection-demo">
+              <div *ngIf="monthlyPayment > 0 && !isVentaDirecta" class="protection-demo ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                 <div class="protection-content">
                   <div class="protection-icon">🛡️</div>
                   <div class="protection-info">
@@ -471,8 +470,8 @@ interface AmortizationRow {
 
           <!-- Action Buttons -->
           <div *ngIf="pkg" class="action-section">
-            <button class="btn-secondary" (click)="generateOnePagePDF()" data-cy="cotizador-pdf">Generar Propuesta en PDF</button>
-            <button class="btn-primary" (click)="handleFormalizeClick()">
+            <button class="btn-secondary ui-btn ui-btn-secondary" (click)="generateOnePagePDF()" data-cy="cotizador-pdf">Generar Propuesta en PDF</button>
+            <button class="btn-primary ui-btn ui-btn-primary" (click)="handleFormalizeClick()">
               Formalizar y Continuar Proceso
             </button>
           </div>

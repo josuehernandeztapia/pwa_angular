@@ -3,16 +3,16 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Subject, forkJoin, of } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { environment } from '../../../../environments/environment';
 import { ActionableClient, ActionableGroup, ActivityFeedItem, DashboardStats, Market, OpportunityStage } from '../../../models/types';
 import { DashboardService } from '../../../services/dashboard.service';
 import { ClientModeToggleComponent, ViewMode } from '../../shared/client-mode-toggle/client-mode-toggle.component';
 import { ContextualKPIsComponent, KPIData } from '../../shared/contextual-kpis/contextual-kpis.component';
+import { DevKpiMiniComponent } from '../../shared/dev-kpi-mini.component';
 import { ActivityItem, HumanActivityFeedComponent } from '../../shared/human-activity-feed/human-activity-feed.component';
 import { ActionButton, NextBestActionData, NextBestActionHeroComponent } from '../../shared/next-best-action-hero/next-best-action-hero.component';
 import { RiskRadarClient, RiskRadarComponent } from '../../shared/risk-radar/risk-radar.component';
-import { DevKpiMiniComponent } from '../../shared/dev-kpi-mini.component';
 import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.component';
-import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,9 +29,9 @@ import { environment } from '../../../../environments/environment';
     PremiumIconComponent
   ],
   template: `
-    <div class="command-center-dashboard">
+    <div class="command-center-dashboard ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
       <!-- Premium Header with Client Mode Toggle -->
-      <header class="command-header">
+      <header class="command-header ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="command-title-section">
           <h1 class="command-title">
             <app-premium-icon
@@ -73,7 +73,7 @@ import { environment } from '../../../../environments/environment';
 
       <main class="command-dashboard-main">
         <!-- Tu Próxima Mejor Acción (The Brain) -->
-        <section class="next-best-action-hero">
+        <section class="next-best-action-hero ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
           <div class="hero-header">
             <h2 class="hero-title">
               <app-premium-icon
@@ -95,7 +95,7 @@ import { environment } from '../../../../environments/environment';
 
         <!-- KPIs Contextuales & Radar de Riesgo -->
         <section class="intelligence-grid">
-          <div class="kpis-section">
+          <div class="kpis-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h3 class="section-title">
               <app-premium-icon
                 iconName="cotizador"
@@ -114,7 +114,7 @@ import { environment } from '../../../../environments/environment';
             </div>
           </div>
           
-          <div class="risk-radar-section">
+          <div class="risk-radar-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h3 class="section-title">
               <app-premium-icon
                 iconName="proteccion"
@@ -135,7 +135,7 @@ import { environment } from '../../../../environments/environment';
         </section>
 
         <!-- Feed de Actividad Humano -->
-        <section class="human-activity-section">
+        <section class="human-activity-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
           <h2 class="section-title">
             <app-premium-icon
               iconName="avi"
