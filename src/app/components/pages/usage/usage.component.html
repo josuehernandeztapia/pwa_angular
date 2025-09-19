@@ -35,7 +35,9 @@
 
 <div class="ui-card mt-6 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
   <h2 class="text-sm font-semibold mb-3">Uso mensual</h2>
-  <canvas id="usageChart" data-cy="usage-chart"></canvas>
+  <div style="height: 240px">
+    <canvas #usageChart id="usageChart" data-cy="usage-chart"></canvas>
+  </div>
 </div>
 
 <button class="ui-btn ui-btn-primary mt-4" data-cy="usage-export" (click)="exportCSV()">
