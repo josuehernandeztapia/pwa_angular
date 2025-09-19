@@ -30,6 +30,13 @@ const commonBeforeWildcard: Routes = [
 
   // Protected routes (require authentication)
   {
+    path: 'entregas',
+    loadComponent: () => import('./components/pages/entregas/entregas.component').then(c => c.EntregasComponent),
+    canActivate: [AuthGuard],
+    title: 'Entregas - Timeline Minimalista'
+  },
+
+  {
     path: 'dashboard',
     loadComponent: () => import('./components/pages/dashboard/dashboard.component').then(c => c.DashboardComponent),
     canActivate: [AuthGuard],

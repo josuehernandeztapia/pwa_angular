@@ -1,0 +1,29 @@
+<section class="ui-card dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+  <h2 class="text-sm font-semibold mb-3">Timeline de Entrega (77 días)</h2>
+
+  <ul *ngIf="loading" class="space-y-2">
+    <li class="h-6 bg-[var(--border)] dark:bg-slate-700 rounded animate-pulse"></li>
+    <li class="h-6 bg-[var(--border)] dark:bg-slate-700 rounded animate-pulse"></li>
+    <li class="h-6 bg-[var(--border)] dark:bg-slate-700 rounded animate-pulse"></li>
+  </ul>
+
+  <ul *ngIf="!loading" class="space-y-2" data-cy="delivery-timeline">
+    <li data-cy="delivery-step" class="flex justify-between">
+      <span>Día 1</span>
+      <span class="text-xs text-slate-500">Creación de entrega</span>
+    </li>
+    <li data-cy="delivery-step" class="flex justify-between">
+      <span>Día 30</span>
+      <span class="text-xs text-slate-500">Pago programado</span>
+    </li>
+    <li data-cy="delivery-step" class="flex justify-between">
+      <span>Día 77</span>
+      <span class="text-xs text-slate-500">Entrega final</span>
+    </li>
+  </ul>
+
+  <div *ngIf="!loading" class="mt-4 text-sm">
+    ETA calculado: <span class="font-semibold" data-cy="delivery-eta">{{ eta }} días</span>
+  </div>
+</section>
+
