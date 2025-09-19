@@ -27,14 +27,14 @@ interface UserProfile {
           <p class="page-description">Gestiona tu información personal y configuración de cuenta</p>
         </div>
         <div class="header-actions">
-          <button class="btn-primary" (click)="saveProfile()" [disabled]="!isEditing">💾 Guardar</button>
+          <button class="ui-btn ui-btn-primary" (click)="saveProfile()" [disabled]="!isEditing">💾 Guardar</button>
         </div>
       </header>
 
       <main class="page-main">
         <div class="profile-content">
           <!-- Profile Summary Card -->
-          <div class="profile-summary premium-card">
+          <div class="profile-summary ui-card">
             <div class="profile-avatar">
               <div class="avatar-circle" [class.has-image]="userProfile.avatar">
                 <img *ngIf="userProfile.avatar" [src]="userProfile.avatar" [alt]="userProfile.firstName">
@@ -66,7 +66,7 @@ interface UserProfile {
           </div>
 
           <!-- Profile Form -->
-          <div class="profile-form-section premium-card">
+          <div class="profile-form-section ui-card">
             <div class="section-header">
               <h3>✏️ Información Personal</h3>
               <button 
@@ -149,10 +149,10 @@ interface UserProfile {
               </div>
               
               <div class="form-actions" *ngIf="isEditing">
-                <button type="button" class="btn-secondary" (click)="cancelEdit()">
+                <button type="button" class="ui-btn ui-btn-secondary" (click)="cancelEdit()">
                   Cancelar
                 </button>
-                <button type="submit" class="btn-primary">
+                <button type="submit" class="ui-btn ui-btn-primary">
                   💾 Guardar Cambios
                 </button>
               </div>
@@ -160,7 +160,7 @@ interface UserProfile {
           </div>
 
           <!-- Security Section -->
-          <div class="security-section premium-card">
+          <div class="security-section ui-card">
             <h3>🔒 Seguridad de la Cuenta</h3>
             <div class="security-options">
               <div class="security-item">
@@ -168,7 +168,7 @@ interface UserProfile {
                   <h4>Cambiar Contraseña</h4>
                   <p>Actualiza tu contraseña por seguridad</p>
                 </div>
-                <button class="btn-tertiary" (click)="changePassword()">
+                <button class="ui-btn ui-btn-secondary" (click)="changePassword()">
                   Cambiar
                 </button>
               </div>
@@ -178,7 +178,7 @@ interface UserProfile {
                   <h4>Verificación en Dos Pasos</h4>
                   <p>Agrega una capa extra de seguridad</p>
                 </div>
-                <button class="btn-tertiary" (click)="setup2FA()">
+                <button class="ui-btn ui-btn-secondary" (click)="setup2FA()">
                   Configurar
                 </button>
               </div>
@@ -188,7 +188,7 @@ interface UserProfile {
                   <h4>Sesiones Activas</h4>
                   <p>Revisa dónde has iniciado sesión</p>
                 </div>
-                <button class="btn-tertiary" (click)="viewSessions()">
+                <button class="ui-btn ui-btn-secondary" (click)="viewSessions()">
                   Ver Sesiones
                 </button>
               </div>
@@ -196,13 +196,13 @@ interface UserProfile {
           </div>
 
           <!-- Account Actions -->
-          <div class="account-actions premium-card">
+          <div class="account-actions ui-card">
             <h3>⚙️ Acciones de Cuenta</h3>
             <div class="action-buttons">
-              <button class="btn-export" (click)="exportData()">
+              <button class="ui-btn ui-btn-secondary" (click)="exportData()">
                 📤 Exportar Mis Datos
               </button>
-              <button class="btn-danger" (click)="deleteAccount()">
+              <button class="ui-btn ui-btn-secondary" (click)="deleteAccount()">
                 🗑️ Eliminar Cuenta
               </button>
             </div>
@@ -452,15 +452,9 @@ interface UserProfile {
       font-size: 0.9rem;
     }
 
-    .btn-primary {
-      background: linear-gradient(135deg, #4299e1, #3182ce);
-      color: white;
-    }
+    .btn-primary { }
 
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #3182ce, #2c5282);
-      transform: translateY(-1px);
-    }
+    .btn-primary:hover { }
 
     .btn-secondary {
       background: #f7fafc;

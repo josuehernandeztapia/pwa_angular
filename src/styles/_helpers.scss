@@ -1,0 +1,21 @@
+.ui-card {
+  @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] border border-[var(--border)] rounded-lg p-4;
+}
+
+.ui-input {
+  @apply border border-[var(--border)] rounded px-3 py-2 w-full focus:ring-1 focus:ring-[var(--brand)];
+}
+
+.ui-btn {
+  @apply inline-flex items-center justify-center rounded px-4 py-2 font-medium;
+}
+
+.ui-btn-primary { @apply bg-[var(--brand)] text-white hover:opacity-90; }
+.ui-btn-secondary { @apply border border-[var(--border)] hover:bg-[var(--border)]; }
+.ui-btn-ghost { @apply text-[var(--text-1)] dark:text-[var(--text-1)] hover:bg-[var(--border)]/30 rounded px-2 py-2; }
+
+.ui-card-hover { @apply ui-card hover:shadow-md transition; }
+.ui-card-header { @apply border-b border-[var(--border)] pb-2 mb-2; }
+.ui-card-body { @apply text-[var(--text-1)]; }
+
+.ui-grid-cols-3 { @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4; }

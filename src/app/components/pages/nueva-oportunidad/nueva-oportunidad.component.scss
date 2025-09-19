@@ -1,6 +1,7 @@
 .nueva-oportunidad-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  background: var(--bg-light);
+  color: var(--text-1);
   padding: 20px;
 }
 
@@ -52,12 +53,7 @@
   margin: 0 auto;
 }
 
-.opportunity-form {
-  background: white;
-  border-radius: 16px;
-  padding: 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-}
+.opportunity-form { @apply ui-card; }
 
 .form-section {
   margin-bottom: 40px;
@@ -161,9 +157,9 @@
 }
 
 .opportunity-card.selected {
-  border-color: #4299e1;
-  background: linear-gradient(135deg, #ebf8ff, #f0f9ff);
-  box-shadow: 0 8px 25px rgba(66, 153, 225, 0.2);
+  border-color: var(--brand);
+  background: var(--bg-light);
+  box-shadow: none;
 }
 
 .card-icon {
@@ -244,16 +240,9 @@
   gap: 8px;
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #4299e1, #3182ce);
-  color: white;
-}
+.btn-primary { @apply ui-btn ui-btn-primary; }
 
-.btn-primary:hover:not(:disabled) {
-  background: linear-gradient(135deg, #3182ce, #2c5282);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
-}
+.btn-primary:hover:not(:disabled) { opacity: .9; }
 
 .btn-primary:disabled {
   opacity: 0.6;
@@ -356,17 +345,7 @@
   margin-top: 12px;
 }
 
-.context-tag {
-  background: linear-gradient(135deg, #4299e1, #3182ce);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
+.context-tag { background: var(--brand); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
 
 /* Progress Indicator Styles */
 .progress-indicator {
@@ -388,7 +367,7 @@
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4299e1, #3182ce);
+  background: var(--brand);
   border-radius: 3px;
   transition: width 0.5s ease;
 }
@@ -432,13 +411,7 @@
 }
 
 /* Draft Banner Styles */
-.draft-banner {
-  background: linear-gradient(135deg, #fef5e7, #fed7aa);
-  border: 1px solid #f6ad55;
-  border-radius: 12px;
-  padding: 16px;
-  margin: 16px 0;
-}
+.draft-banner { background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 16px 0; }
 
 .banner-content {
   display: flex;
@@ -513,22 +486,11 @@
 
 /* Suggestions skeletons */
 .suggestions-skeletons { margin-top: 8px; }
-.skeleton-row {
-  height: 16px;
-  background: linear-gradient(90deg, #e2e8f0 25%, #f7fafc 37%, #e2e8f0 63%);
-  background-size: 400% 100%;
-  animation: shimmer 1.4s ease infinite;
-  border-radius: 8px;
-  margin-bottom: 8px;
-}
-@keyframes shimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: 0 0; }
-}
+.skeleton-row { height: 16px; background: var(--border); border-radius: 8px; margin-bottom: 8px; }
 
 /* Ecosystem skeletons */
 .ecoskeletons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-.ecoskeleton-card { height: 120px; border-radius: 12px; background: linear-gradient(90deg, #e2e8f0 25%, #f7fafc 37%, #e2e8f0 63%); background-size: 400% 100%; animation: shimmer 1.4s ease infinite; }
+.ecoskeleton-card { height: 120px; border-radius: 12px; background: var(--border); }
 .ecosystem-error { color: #c05621; }
 
 /* Similar Clients Warning Styles */
@@ -581,19 +543,7 @@
   box-shadow: 0 4px 12px rgba(246, 173, 85, 0.2);
 }
 
-.client-avatar {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #4299e1, #3182ce);
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 14px;
-  flex-shrink: 0;
-}
+.client-avatar { width: 40px; height: 40px; background: var(--brand); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
 
 .client-info {
   flex: 1;
@@ -656,7 +606,7 @@
   position: absolute;
   top: -8px;
   left: 16px;
-  background: linear-gradient(135deg, #f6ad55, #ed8936);
+  background: var(--brand);
   color: white;
   padding: 4px 12px;
   border-radius: 12px;
