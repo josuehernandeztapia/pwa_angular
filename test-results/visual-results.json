@@ -166,12 +166,7 @@
     "updateSourceMethod": "patch",
     "version": "1.55.0",
     "workers": 2,
-    "webServer": {
-      "command": "bash -lc 'node_modules/.bin/ng build --configuration=development && npx http-server dist/conductores-pwa -p 4200 -s'",
-      "url": "http://localhost:4200",
-      "reuseExistingServer": true,
-      "timeout": 600000
-    }
+    "webServer": null
   },
   "suites": [
     {
@@ -203,7 +198,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 625,
+                      "duration": 632,
                       "error": {
                         "message": "TypeError: (0 , _playwright.injectAxe) is not a function",
                         "stack": "TypeError: (0 , _playwright.injectAxe) is not a function\n    at runA11y (/workspace/tests/visual/final-qa.spec.ts:101:18)\n    at /workspace/tests/visual/final-qa.spec.ts:134:29",
@@ -212,7 +207,7 @@
                           "column": 18,
                           "line": 101
                         },
-                        "snippet": "   99 |\n  100 | async function runA11y(page: Page) {\n> 101 |   await injectAxe(page);\n      |                  ^\n  102 |   const results = await getAxeResults(page, {\n  103 |     runOnly: {\n  104 |       type: 'rule',"
+                        "snippet": "\u001b[0m \u001b[90m  99 |\u001b[39m\n \u001b[90m 100 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m runA11y(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 101 |\u001b[39m   \u001b[36mawait\u001b[39m injectAxe(page)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 102 |\u001b[39m   \u001b[36mconst\u001b[39m results \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getAxeResults(page\u001b[33m,\u001b[39m {\n \u001b[90m 103 |\u001b[39m     runOnly\u001b[33m:\u001b[39m {\n \u001b[90m 104 |\u001b[39m       type\u001b[33m:\u001b[39m \u001b[32m'rule'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m"
                       },
                       "errors": [
                         {
@@ -221,13 +216,13 @@
                             "column": 18,
                             "line": 101
                           },
-                          "message": "TypeError: (0 , _playwright.injectAxe) is not a function\n\n   99 |\n  100 | async function runA11y(page: Page) {\n> 101 |   await injectAxe(page);\n      |                  ^\n  102 |   const results = await getAxeResults(page, {\n  103 |     runOnly: {\n  104 |       type: 'rule',\n    at runA11y (/workspace/tests/visual/final-qa.spec.ts:101:18)\n    at /workspace/tests/visual/final-qa.spec.ts:134:29"
+                          "message": "TypeError: (0 , _playwright.injectAxe) is not a function\n\n\u001b[0m \u001b[90m  99 |\u001b[39m\n \u001b[90m 100 |\u001b[39m \u001b[36masync\u001b[39m \u001b[36mfunction\u001b[39m runA11y(page\u001b[33m:\u001b[39m \u001b[33mPage\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 101 |\u001b[39m   \u001b[36mawait\u001b[39m injectAxe(page)\u001b[33m;\u001b[39m\n \u001b[90m     |\u001b[39m                  \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 102 |\u001b[39m   \u001b[36mconst\u001b[39m results \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getAxeResults(page\u001b[33m,\u001b[39m {\n \u001b[90m 103 |\u001b[39m     runOnly\u001b[33m:\u001b[39m {\n \u001b[90m 104 |\u001b[39m       type\u001b[33m:\u001b[39m \u001b[32m'rule'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[2m    at runA11y (/workspace/tests/visual/final-qa.spec.ts:101:18)\u001b[22m\n\u001b[2m    at /workspace/tests/visual/final-qa.spec.ts:134:29\u001b[22m"
                         }
                       ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:44.901Z",
+                      "startTime": "2025-09-19T19:02:07.982Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -272,7 +267,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.726Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -306,7 +301,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.728Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -340,7 +335,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.730Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -374,7 +369,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.733Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -408,7 +403,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.734Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -442,7 +437,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.736Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -476,7 +471,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.738Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -510,7 +505,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.740Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -544,7 +539,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.741Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -578,7 +573,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.744Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -612,7 +607,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.629Z",
+                      "startTime": "2025-09-19T19:02:08.745Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -646,7 +641,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T18:32:45.630Z",
+                      "startTime": "2025-09-19T19:02:08.746Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -666,8 +661,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-19T18:32:43.746Z",
-    "duration": 1894.0139999999997,
+    "startTime": "2025-09-19T19:02:07.461Z",
+    "duration": 1299.133,
     "expected": 0,
     "skipped": 12,
     "unexpected": 1,

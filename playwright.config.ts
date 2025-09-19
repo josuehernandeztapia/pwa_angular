@@ -4,6 +4,8 @@ import { defineConfig, devices } from 'playwright/test';
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
+const useWebServer = !process.env.PW_SKIP_WS;
+
 export default defineConfig({
   testDir: './',
   /* Run tests in files in parallel */
@@ -94,12 +96,12 @@ export default defineConfig({
   },
 
   /* Run your local dev server before starting the tests */
-  webServer: {
+  webServer: useWebServer ? {
     command: "bash -lc 'node_modules/.bin/ng build --configuration=development && npx http-server dist/conductores-pwa -p 4200 -s'",
     url: 'http://localhost:4200',
     reuseExistingServer: !process.env.CI,
     timeout: 600 * 1000,
-  },
+  } : undefined,
 
   /* Global setup and teardown */
   // globalSetup: require.resolve('./tests/visual/setup/global-setup.ts'),
