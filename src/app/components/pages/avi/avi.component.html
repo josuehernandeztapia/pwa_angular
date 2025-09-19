@@ -1,0 +1,20 @@
+<section class="ui-card" data-cy="avi-card">
+  <h2 class="text-sm font-semibold mb-3 text-[var(--text-1)]">Resultado AVI</h2>
+
+  <div *ngIf="loading" class="animate-pulse space-y-3" data-cy="avi-loading">
+    <div class="h-6 bg-[var(--border)] rounded"></div>
+    <div class="h-6 bg-[var(--border)] rounded"></div>
+  </div>
+
+  <div *ngIf="!loading">
+    <div class="flex justify-between items-center mb-3">
+      <div class="text-2xl font-semibold text-[var(--text-1)]" data-cy="avi-decision">{{ decision || '–' }}</div>
+      <button class="ui-btn ui-btn-primary" data-cy="avi-start" (click)="iniciarAnalisis()">Iniciar análisis</button>
+    </div>
+
+    <ul class="list-disc pl-5 space-y-1">
+      <li *ngFor="let f of flags" class="text-sm text-[var(--text-2)]" data-cy="avi-flag">{{ f }}</li>
+    </ul>
+  </div>
+</section>
+
