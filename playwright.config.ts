@@ -5,7 +5,7 @@ import { defineConfig, devices } from 'playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -28,7 +28,7 @@ export default defineConfig({
     /* Screenshot configuration */
     screenshot: 'only-on-failure',
     /* Video recording */
-    video: 'retain-on-failure',
+    video: 'off',
   },
 
   /* Configure projects for major browsers */
@@ -94,12 +94,12 @@ export default defineConfig({
   },
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'node_modules/.bin/ng serve --configuration=development --port=4200',
-  //   url: 'http://localhost:4200',
-  //   reuseExistingServer: !process.env.CI,
-  //   timeout: 600 * 1000,
-  // },
+  webServer: {
+    command: "bash -lc 'node_modules/.bin/ng build --configuration=development && npx http-server dist/conductores-pwa -p 4200 -s'",
+    url: 'http://localhost:4200',
+    reuseExistingServer: !process.env.CI,
+    timeout: 600 * 1000,
+  },
 
   /* Global setup and teardown */
   // globalSetup: require.resolve('./tests/visual/setup/global-setup.ts'),

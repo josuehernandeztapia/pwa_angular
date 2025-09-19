@@ -412,16 +412,26 @@ export class AVIService {
     // Combine multiple voice analyses from BFF
     return of(analysisObservables).pipe(
       map(observables => {
-        // Mock combined result for now - in real implementation you'd use forkJoin
-        return {
+        const defaultCategoryScores = {
+          basic_info: 0,
+          daily_operation: 0,
+          operational_costs: 0,
+          business_structure: 0,
+          assets_patrimony: 0,
+          credit_history: 0,
+          payment_intention: 0,
+          risk_evaluation: 0,
+        } as any;
+        const score: AVIScore = {
           totalScore: 750,
-          riskLevel: 'MEDIUM' as const,
-          categoryScores: {},
+          riskLevel: 'MEDIUM',
+          categoryScores: defaultCategoryScores,
           redFlags: [],
           recommendations: ['Based on BFF analysis - requires review'],
           processingTime: Date.now() - startTime,
-          confidence: 0.8
+          confidence: 0.8,
         };
+        return score;
       })
     );
   }

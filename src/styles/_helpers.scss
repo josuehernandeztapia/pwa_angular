@@ -12,7 +12,11 @@
 
 .ui-btn-primary { @apply bg-[var(--brand)] text-white hover:opacity-90; }
 .ui-btn-secondary { @apply border border-[var(--border)] hover:bg-[var(--border)]; }
-.ui-btn-ghost { @apply text-[var(--text-1)] dark:text-[var(--text-1)] hover:bg-[var(--border)]/30 rounded px-2 py-2; }
+.ui-btn-ghost {
+  color: var(--text-1);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.5rem;
+}
 
 .ui-card-hover { @apply ui-card hover:shadow-md transition; }
 .ui-card-header { @apply border-b border-[var(--border)] pb-2 mb-2; }

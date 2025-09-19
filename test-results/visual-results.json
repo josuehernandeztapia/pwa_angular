@@ -1,18 +1,19 @@
 {
   "config": {
-    "configFile": "/Users/josuehernandez/pwa_angular/playwright.config.ts",
-    "rootDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+    "configFile": "/workspace/playwright.config.ts",
+    "rootDir": "/workspace",
     "forbidOnly": false,
     "fullyParallel": true,
-    "globalSetup": "/Users/josuehernandez/pwa_angular/tests/visual/setup/global-setup.ts",
-    "globalTeardown": "/Users/josuehernandez/pwa_angular/tests/visual/setup/global-teardown.ts",
+    "globalSetup": null,
+    "globalTeardown": null,
     "globalTimeout": 0,
     "grep": {},
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
       "project": "Conductores PWA",
-      "description": "Visual regression tests for UI components and pages"
+      "description": "Visual regression tests for UI components and pages",
+      "actualWorkers": 1
     },
     "preserveOutput": "always",
     "reporter": [
@@ -34,16 +35,17 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -51,16 +53,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "firefox",
         "name": "firefox",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -68,16 +71,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "webkit",
         "name": "webkit",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -85,16 +89,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "Mobile Chrome",
         "name": "Mobile Chrome",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -102,16 +107,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "Mobile Safari",
         "name": "Mobile Safari",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -119,16 +125,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "iPad",
         "name": "iPad",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -136,16 +143,17 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/josuehernandez/pwa_angular/test-results/visual",
+        "outputDir": "/workspace/test-results/visual",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
           "project": "Conductores PWA",
-          "description": "Visual regression tests for UI components and pages"
+          "description": "Visual regression tests for UI components and pages",
+          "actualWorkers": 1
         },
         "id": "High DPI",
         "name": "High DPI",
-        "testDir": "/Users/josuehernandez/pwa_angular/tests/visual",
+        "testDir": "/workspace",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -157,27 +165,512 @@
     "updateSnapshots": "missing",
     "updateSourceMethod": "patch",
     "version": "1.55.0",
-    "workers": 4,
+    "workers": 2,
     "webServer": {
-      "command": "node_modules/.bin/ng serve --configuration=development --port=4300",
-      "url": "http://localhost:4300",
+      "command": "bash -lc 'node_modules/.bin/ng build --configuration=development && npx http-server dist/conductores-pwa -p 4200 -s'",
+      "url": "http://localhost:4200",
       "reuseExistingServer": true,
       "timeout": 600000
     }
   },
-  "suites": [],
-  "errors": [
+  "suites": [
     {
-      "message": "Error: No tests found.\nMake sure that arguments are regular expressions matching test files.\nYou may need to escape symbols like \"$\" or \"*\" and quote the arguments.",
-      "stack": "Error: No tests found.\nMake sure that arguments are regular expressions matching test files.\nYou may need to escape symbols like \"$\" or \"*\" and quote the arguments."
+      "title": "tests/visual/final-qa.spec.ts",
+      "file": "tests/visual/final-qa.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Final QA Visual + A11y (PR#239)",
+          "file": "tests/visual/final-qa.spec.ts",
+          "line": 123,
+          "column": 15,
+          "specs": [
+            {
+              "title": "Login – light/dark",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 619,
+                      "error": {
+                        "message": "TypeError: (0 , _playwright.injectAxe) is not a function",
+                        "stack": "TypeError: (0 , _playwright.injectAxe) is not a function\n    at runA11y (/workspace/tests/visual/final-qa.spec.ts:101:18)\n    at /workspace/tests/visual/final-qa.spec.ts:134:29",
+                        "location": {
+                          "file": "/workspace/tests/visual/final-qa.spec.ts",
+                          "column": 18,
+                          "line": 101
+                        },
+                        "snippet": "   99 |\n  100 | async function runA11y(page: Page) {\n> 101 |   await injectAxe(page);\n      |                  ^\n  102 |   const results = await getAxeResults(page, {\n  103 |     runOnly: {\n  104 |       type: 'rule',"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/workspace/tests/visual/final-qa.spec.ts",
+                            "column": 18,
+                            "line": 101
+                          },
+                          "message": "TypeError: (0 , _playwright.injectAxe) is not a function\n\n   99 |\n  100 | async function runA11y(page: Page) {\n> 101 |   await injectAxe(page);\n      |                  ^\n  102 |   const results = await getAxeResults(page, {\n  103 |     runOnly: {\n  104 |       type: 'rule',\n    at runA11y (/workspace/tests/visual/final-qa.spec.ts:101:18)\n    at /workspace/tests/visual/final-qa.spec.ts:134:29"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.202Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/workspace/test-results/visual/tests-visual-final-qa-Fina-0f6ab-y-PR-239-Login-–-light-dark-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/workspace/tests/visual/final-qa.spec.ts",
+                        "column": 18,
+                        "line": 101
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-5a48b20dd8d56d04622f",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 130,
+              "column": 7
+            },
+            {
+              "title": "Dashboard",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-1979b7cf2f8ee6f7b05e",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 195,
+              "column": 7
+            },
+            {
+              "title": "Clientes",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-fe039c2480ec00750ac5",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 200,
+              "column": 7
+            },
+            {
+              "title": "Cotizador (main)",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-44906401fe70db9aa04a",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 205,
+              "column": 7
+            },
+            {
+              "title": "Perfil",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-d9013a34624cce7b9fcb",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 210,
+              "column": 7
+            },
+            {
+              "title": "Nueva Oportunidad",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-f89f701b052b32488084",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 215,
+              "column": 7
+            },
+            {
+              "title": "EdoMex Colectivo",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-3af912b0e0317e6534a2",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 220,
+              "column": 7
+            },
+            {
+              "title": "Protección",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-86491948d26707bb71fa",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 225,
+              "column": 7
+            },
+            {
+              "title": "AVI – GO/REVIEW/NO-GO",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-25a2fe1e29b02a2a0705",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 230,
+              "column": 7
+            },
+            {
+              "title": "Documentos – Pendiente y Validado",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-ef8d7e2ac6a632398468",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 262,
+              "column": 7
+            },
+            {
+              "title": "Entregas",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-16cbc1fe145615a11fc6",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 297,
+              "column": 7
+            },
+            {
+              "title": "Configuración – Cotizador/Simulador",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-a2a2e586a5c5d0224dd3",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 310,
+              "column": 7
+            },
+            {
+              "title": "Usage / Reports",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "skipped",
+                      "duration": 0,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "skipped"
+                }
+              ],
+              "id": "f091b7e444f19601c9b9-b0cc8938afee7c48d6d8",
+              "file": "tests/visual/final-qa.spec.ts",
+              "line": 329,
+              "column": 7
+            }
+          ]
+        }
+      ]
     }
   ],
+  "errors": [],
   "stats": {
-    "startTime": "2025-09-15T05:50:52.599Z",
-    "duration": 12632.931,
+    "startTime": "2025-09-19T17:58:17.860Z",
+    "duration": 14095.796,
     "expected": 0,
-    "skipped": 0,
-    "unexpected": 0,
+    "skipped": 12,
+    "unexpected": 1,
     "flaky": 0
   }
 }
