@@ -32,120 +32,75 @@ interface StepState {
   imports: [CommonModule, FormsModule, NgOptimizedImage, ManualEntryComponent, ManualOCREntryComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="wizard-container" *ngIf="enabled; else disabledTpl">
-      <h1 class="title">Postventa – Wizard de 4 Fotos</h1>
+    <div class="ui-card p-4 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700" *ngIf="enabled; else disabledTpl">
+      <h1 class="text-lg font-semibold">Postventa — Fotos</h1>
+      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Sube 4 fotos básicas para validar el expediente.</p>
 
-      <div class="banner info" *ngIf="!caseId">
-        <span>Se creará un caso al iniciar. Las fotos se subirán y evaluarán automáticamente.</span>
+      <div class="mt-3" *ngIf="!caseId">
+        <button class="ui-btn ui-btn-primary" (click)="next()">Iniciar</button>
       </div>
 
-      <div class="steps">
-        <div *ngFor="let step of steps; let i = index" class="step-card" [class.active]="currentIndex === i" [class.done]="step.done">
-          <div class="step-header">
-            <div class="badge">{{ i+1 }}</div>
-            <div class="step-title">{{ step.title }}</div>
-            <div class="status" *ngIf="step.done">
-              <span class="ok" *ngIf="(step.confidence || 0) >= threshold && (!step.missing || step.missing.length === 0)">✓ OK ({{ (step.confidence!*100) | number:'1.0-0' }}%)</span>
-              <span class="warn" *ngIf="(step.confidence || 0) < threshold || (step.missing && step.missing.length>0)">⚠️ Revisión</span>
-            </div>
+      <div class="mt-3 divide-y divide-[var(--border)]">
+        <div class="py-3" *ngFor="let step of steps">
+          <div class="flex items-center justify-between">
+            <div class="font-medium">{{ step.title }}</div>
+            <div class="text-sm" [ngClass]="getStatusClass(step)">{{ getStatusText(step) }}</div>
           </div>
-
-          <div class="step-body">
-            <div class="example" *ngIf="step.example">
-              <div class="example-label">Ejemplo</div>
-              <img ngSrc="{{ step.example }}" width="320" height="180" alt="Ejemplo {{ step.title }}" (error)="onExampleError($event)">
-            </div>
-
-            <p class="hint">{{ step.hint }}</p>
-
-            <div class="actions">
-              <input type="file" accept="image/*" capture="environment" (change)="onFileSelected($event, step.id)" [disabled]="step.uploading" />
-              <button class="btn" (click)="retake(step.id)" *ngIf="step.done">Repetir</button>
-            </div>
-
-            <div class="upload" *ngIf="step.uploading">
-              Subiendo y analizando...
-              <div class="upload-progress" *ngIf="step.id === 'vin' && vinRetryAttempt > 0">
-                Intento {{ vinRetryAttempt }} de 3 (tiempo extendido para VIN)
-              </div>
-            </div>
-
-            <div class="qa" *ngIf="step.done">
-              <div class="ok" *ngIf="(step.confidence || 0) >= threshold && (!step.missing || step.missing.length === 0)">
-                ✅ Calidad suficiente (confianza {{ (step.confidence!*100) | number:'1.0-0' }}%)
-              </div>
-              <div class="warn" *ngIf="(step.confidence || 0) < threshold || (step.missing && step.missing.length > 0)">
-                <div>⚠️ Falta calidad o datos clave.</div>
-                <ul *ngIf="step.missing && step.missing.length > 0" class="missing">
-                  <li *ngFor="let m of step.missing">Falta: {{ m | titlecase }}</li>
-                </ul>
-                <button class="btn retry" (click)="retake(step.id)">Tomar de nuevo {{ step.title }}</button>
-                <button class="btn manual" (click)="openManualEntry(step.id)" *ngIf="step.id === 'vin' || step.id === 'odometer'" data-testid="manual-entry-btn">
-                  📝 Ingresar manualmente
-                </button>
-              </div>
-            </div>
+          <div class="mt-2 flex items-center gap-3">
+            <input type="file" accept="image/*" capture="environment" class="ui-input" data-cy="postventa-upload" (change)="onFileSelected($event, step.id)" [disabled]="step.uploading || !caseId" />
+            <button class="ui-btn ui-btn-secondary" (click)="retake(step.id)" *ngIf="step.done">Repetir</button>
+          </div>
+          <div class="mt-2" *ngIf="step.uploading">
+            <div class="h-3 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+            <div class="text-xs text-slate-500 mt-1" *ngIf="step.id === 'vin' && vinRetryAttempt > 0" data-cy="postventa-ocr">Intento VIN {{ vinRetryAttempt }}/3</div>
           </div>
         </div>
       </div>
 
-      <div class="summary" *ngIf="caseId">
-        <div class="banner success" *ngIf="isAllGood">Caso listo: 3 básicos completos en el primer intento.</div>
-        <div class="badge-time" *ngIf="firstRecommendationMs != null">
-          ⏱️ Tiempo a primera recomendación: {{ (firstRecommendationMs!/1000) | number:'1.1-1' }}s
+      <div class="mt-4" *ngIf="caseId">
+        <div class="text-xs text-slate-500" data-cy="postventa-ocr">
+          OCR: {{ isAllGood ? 'Validado' : (summaryIssues.length ? 'Pendiente' : 'Pendiente') }}
         </div>
-        <div class="banner warn" *ngIf="!isAllGood">
-          Faltan elementos o calidad baja. Identificamos:
-          <ul>
+        <div class="mt-2" *ngIf="!isAllGood && summaryIssues.length">
+          <ul class="text-xs text-slate-500 list-disc pl-5">
             <li *ngFor="let msg of summaryIssues">{{ msg }}</li>
           </ul>
-          <div class="cta-row">
-            <button class="btn" *ngIf="needsVin" (click)="jumpTo('vin')">Tomar foto de VIN</button>
-            <button class="btn" *ngIf="needsOdometer" (click)="jumpTo('odometer')">Tomar foto de Odómetro</button>
-            <button class="btn" *ngIf="needsEvidence" (click)="jumpTo('evidence')">Tomar Evidencia</button>
-        </div>
-
-        <!-- Enhanced VIN Detection Banner for timeout/error cases -->
-        <div class="banner warn" *ngIf="showVinDetectionBanner" data-testid="vin-detection-banner" data-cy="vin-detection-banner">
-          ⚠️ VIN requiere revisión manual - Timeout en detección automática después de varios intentos
-          <div class="banner-actions">
-            <button class="btn retry-vin" (click)="retakeVinWithRetry()">Reintentar VIN con tiempo extendido</button>
-          </div>
-        </div>
-
-        <!-- Chips de refacciones y CTA de agregado a cotización (dev/BFF flags) abajo -->
-      </div>
-        <!-- Trigger need_info recording when applicable -->
-        <ng-container *ngIf="showNeedInfoRecording"></ng-container>
-
-        <!-- Dev-only: Chips de refacciones sugeridas + CTA Agregar a cotización -->
-        <div *ngIf="enableAddToQuote && recommendedParts.length > 0" class="parts-suggested" data-cy="parts-suggested">
-          <h3 class="parts-title">🔧 Piezas sugeridas</h3>
-          <div class="chips">
-            <div class="chip" *ngFor="let p of recommendedParts" [attr.data-cy]="'chip-' + p.id">
-              <div class="chip-main">
-                <span class="chip-name">{{ p.name }}</span>
-                <span class="chip-price">{{ p.priceMXN | currency:'MXN':'symbol-narrow':'1.0-0' }}</span>
-              </div>
-              <div class="chip-meta">
-                <span class="meta">OEM: {{ p.oem }}</span>
-                <span class="meta" *ngIf="p.equivalent">Equiv: {{ p.equivalent }}</span>
-                <span class="meta" [class.low]="p.stock === 0">Stock: {{ p.stock }}</span>
-              </div>
-              <button class="btn add" (click)="addToQuote(p)" [attr.data-cy]="'add-' + p.id" [attr.aria-label]="'Agregar ' + p.name + ' a cotización'">
-                ➕ Agregar a cotización
-              </button>
-            </div>
-          </div>
-          <div class="draft-summary" data-cy="quote-draft-summary" aria-live="polite">
-            En cotización provisional: <strong>{{ draftCount }}</strong> artículos
-            <button class="btn clear" (click)="clearDraft()" data-cy="clear-draft">Limpiar</button>
-          </div>
         </div>
       </div>
 
-      <div class="footer">
-        <button class="btn primary" [disabled]="!caseId" (click)="next()" data-cy="wizard-next">{{ ctaText }}</button>
+      <div class="mt-4" *ngIf="enableAddToQuote && recommendedParts.length > 0" data-cy="postventa-refacciones">
+        <div class="text-sm font-semibold mb-2">Piezas sugeridas</div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead class="text-slate-500">
+              <tr>
+                <th class="text-left py-2">Pieza</th>
+                <th class="text-left py-2">OEM</th>
+                <th class="text-left py-2">Equivalente</th>
+                <th class="text-right py-2">Stock</th>
+                <th class="text-right py-2">Precio</th>
+                <th class="text-right py-2">Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of recommendedParts">
+                <td class="py-2">{{ p.name }}</td>
+                <td class="py-2">{{ p.oem }}</td>
+                <td class="py-2">{{ p.equivalent || '—' }}</td>
+                <td class="py-2 text-right">{{ p.stock }}</td>
+                <td class="py-2 text-right">{{ p.priceMXN | currency:'MXN':'symbol-narrow':'1.0-0' }}</td>
+                <td class="py-2 text-right">
+                  <button class="ui-btn ui-btn-primary" (click)="addToQuote(p)">Agregar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="text-sm mt-2">En cotización provisional: <strong>{{ draftCount }}</strong></div>
+      </div>
+
+      <div class="mt-4 flex justify-end">
+        <button class="ui-btn ui-btn-primary" [disabled]="!caseId" (click)="next()" data-cy="wizard-next">{{ ctaText }}</button>
       </div>
     </div>
 
@@ -158,8 +113,8 @@ interface StepState {
     </app-manual-ocr-entry>
 
     <ng-template #disabledTpl>
-      <div class="wizard-container">
-        <div class="banner warn">El Wizard de Postventa está desactivado. Actívalo con el flag environment.features.enablePostSalesWizard.</div>
+      <div class="ui-card p-4 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+        <div class="text-sm text-slate-500">El Wizard de Postventa está desactivado. Actívalo con el flag environment.features.enablePostSalesWizard.</div>
       </div>
     </ng-template>
   `,
@@ -490,6 +445,25 @@ export class PhotoWizardComponent {
     this.showVinDetectionBanner = false;
     this.vinRetryAttempt = 0;
     this.retake('vin');
+  }
+
+  getStatusText(step: StepState): string {
+    if (step.uploading) return 'Pendiente';
+    if (step.error) return 'Error';
+    if (step.done && (step.confidence || 0) >= this.threshold && (!step.missing || step.missing.length === 0)) return 'Validado';
+    return 'Pendiente';
+  }
+
+  getStatusClass(step: StepState): string {
+    const status = this.getStatusText(step);
+    switch (status) {
+      case 'Validado':
+        return 'text-green-600';
+      case 'Error':
+        return 'text-red-600';
+      default:
+        return 'text-slate-500';
+    }
   }
 
   private buildRecommendedParts(): PartSuggestion[] {
