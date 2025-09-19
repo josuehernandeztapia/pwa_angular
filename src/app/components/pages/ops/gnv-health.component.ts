@@ -8,85 +8,106 @@ import { GnvHealthService, StationHealthRow } from '../../../services/gnv-health
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="gnv-health-container">
-      <!-- Header -->
-      <div class="header">
-        <h1>⛽ GNV T+1 — Salud por estación</h1>
-        <p class="subtitle">Estado de la ingesta del día anterior por estación (stub dev)</p>
+    <div class="ui-card p-4 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-semibold">⛽ GNV T+1 — Salud por estación</h2>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Estado de la ingesta del día anterior por estación</p>
+        </div>
+        <div class="flex gap-2">
+          <a class="ui-btn ui-btn-secondary" href="assets/gnv/template.csv" download data-cy="dl-template">Plantilla CSV</a>
+          <a class="ui-btn ui-btn-secondary" href="assets/gnv/gnv_guide.pdf" target="_blank" rel="noopener" data-cy="dl-guide">Guía PDF</a>
+          <a class="ui-btn ui-btn-secondary" href="assets/gnv/ingesta_yesterday.csv" download data-cy="dl-latest">Última ingesta</a>
+        </div>
       </div>
 
-      <!-- Actions -->
-      <div class="actions">
-        <a class="btn" href="assets/gnv/template.csv" download data-cy="dl-template">📄 Plantilla CSV</a>
-        <a class="btn" href="assets/gnv/gnv_guide.pdf" target="_blank" rel="noopener" data-cy="dl-guide">📘 Guía PDF</a>
-        <a class="btn" href="assets/gnv/ingesta_yesterday.csv" download data-cy="dl-latest">⬇️ Última ingesta</a>
+      <div class="mt-4 flex items-center gap-3">
+        <input type="file" accept=".csv" class="ui-input" data-cy="gnv-upload" (change)="onCsvSelected($event)" />
+        <button class="ui-btn ui-btn-primary" data-cy="gnv-upload-btn" (click)="ingestCsv()" [disabled]="!selectedCsv">Subir CSV</button>
       </div>
 
-      <!-- Table -->
-      <div class="table-card" *ngIf="rows().length > 0; else emptyTpl">
-        <table class="health-table">
-          <thead>
+      <div class="mt-4" *ngIf="rows().length === 0">
+        <div class="space-y-2" aria-busy="true">
+          <div class="h-8 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+          <div class="h-8 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+          <div class="h-8 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+        </div>
+      </div>
+
+      <div class="mt-4 overflow-x-auto" *ngIf="rows().length > 0">
+        <table class="w-full text-sm" data-cy="gnv-table">
+          <thead class="text-slate-500">
             <tr>
-              <th>Estación</th>
-              <th>Archivo</th>
-              <th>Total</th>
-              <th>Aceptadas</th>
-              <th>Rechazadas</th>
-              <th>Warnings</th>
-              <th>Semáforo</th>
+              <th class="text-left py-2">Estación</th>
+              <th class="text-left py-2">Archivo</th>
+              <th class="text-right py-2">Total</th>
+              <th class="text-right py-2">Aceptadas</th>
+              <th class="text-right py-2">Rechazadas</th>
+              <th class="text-right py-2">Warnings</th>
+              <th class="text-left py-2">Estado</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let r of rows(); trackBy: trackByStation">
-              <td class="nowrap">{{ r.stationName }}</td>
-              <td>{{ r.fileName || '—' }}</td>
-              <td class="num">{{ r.rowsTotal }}</td>
-              <td class="num ok">{{ r.rowsAccepted }}</td>
-              <td class="num bad">{{ r.rowsRejected }}</td>
-              <td class="num warn">{{ r.warnings }}</td>
-              <td>
-                <span class="status-dot" [class.green]="r.status==='green'" [class.yellow]="r.status==='yellow'" [class.red]="r.status==='red'" [attr.data-cy]="'status-' + r.status" title="{{ r.status | titlecase }}"></span>
+            <tr *ngFor="let r of rows(); trackBy: trackByStation" class="border-t border-[var(--border)]">
+              <td class="py-2 whitespace-nowrap">{{ r.stationName }}</td>
+              <td class="py-2">{{ r.fileName || '—' }}</td>
+              <td class="py-2 text-right">{{ r.rowsTotal }}</td>
+              <td class="py-2 text-right">{{ r.rowsAccepted }}</td>
+              <td class="py-2 text-right">{{ r.rowsRejected }}</td>
+              <td class="py-2 text-right">{{ r.warnings }}</td>
+              <td class="py-2">
+                <span [ngClass]="getStatusClass(r)" data-cy="status-text">{{ getStatusText(r) }}</span>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-
-      <ng-template #emptyTpl>
-        <div class="empty">No hay datos de ingesta disponibles.</div>
-      </ng-template>
     </div>
   `,
   styles: [`
-    .gnv-health-container { padding: 24px; }
-    .header h1 { margin: 0 0 4px 0; font-size: 24px; font-weight: 800; }
-    .subtitle { color: #64748b; margin: 0 0 16px 0; }
-    .actions { display:flex; gap: 8px; margin-bottom: 12px; }
-    .btn { padding: 8px 12px; border:1px solid #e5e7eb; border-radius:8px; text-decoration: none; color: #111827; background:#fff; }
-    .btn:hover { background:#f9fafb; }
-    .table-card { border:1px solid #e5e7eb; border-radius: 12px; background:#fff; overflow: hidden; }
-    table { width: 100%; border-collapse: collapse; }
-    thead th { text-align: left; background:#f8fafc; color:#374151; padding: 10px; font-weight: 700; font-size: 13px; }
-    tbody td { padding: 10px; border-top: 1px solid #f1f5f9; font-size: 14px; }
-    .num { text-align: right; font-variant-numeric: tabular-nums; }
-    .nowrap { white-space: nowrap; }
-    .ok { color:#047857; }
-    .bad { color:#b91c1c; }
-    .warn { color:#b45309; }
-    .status-dot { display:inline-block; width: 14px; height: 14px; border-radius:50%; border:2px solid transparent; }
-    .status-dot.green { background:#10b981; border-color:#34d399; }
-    .status-dot.yellow { background:#f59e0b; border-color:#fbbf24; }
-    .status-dot.red { background:#ef4444; border-color:#f87171; }
-    .empty { padding: 16px; color:#6b7280; }
+    :host { display:block; }
   `]
 })
 export class GnvHealthComponent implements OnInit {
   private svc = inject(GnvHealthService);
   rows = signal<StationHealthRow[]>([]);
+  selectedCsv: File | null = null;
 
   ngOnInit(): void {
     this.svc.getYesterdayHealth().subscribe(rows => this.rows.set(rows));
   }
 
   trackByStation(_: number, r: StationHealthRow) { return r.stationId; }
+
+  getStatusText(r: StationHealthRow): string {
+    switch (r.status) {
+      case 'green': return 'OK';
+      case 'yellow': return 'Degradado';
+      case 'red': return 'Offline';
+      default: return 'Pendiente';
+    }
+  }
+
+  getStatusClass(r: StationHealthRow): string {
+    switch (r.status) {
+      case 'green': return 'text-green-600';
+      case 'yellow': return 'text-amber-600';
+      case 'red': return 'text-red-600';
+      default: return 'text-slate-500';
+    }
+  }
+
+  onCsvSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.selectedCsv = input.files && input.files[0] ? input.files[0] : null;
+  }
+
+  ingestCsv() {
+    if (!this.selectedCsv) return;
+    // Minimal stub: simulate ingestion and refresh rows
+    setTimeout(() => {
+      this.svc.getYesterdayHealth().subscribe(rows => this.rows.set(rows));
+      this.selectedCsv = null;
+    }, 500);
+  }
 }
