@@ -1,4 +1,241 @@
 {
-  "generatedAt": "2025-09-19T19:02:08.695Z",
-  "results": []
+  "generatedAt": "2025-09-19T19:19:42.224Z",
+  "results": [
+    {
+      "key": "login",
+      "title": "Login",
+      "route": "/login",
+      "screenshots": [
+        "/workspace/tests/screenshots/login-light.png",
+        "/workspace/tests/screenshots/login-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "dashboard",
+      "title": "Dashboard",
+      "route": "/dashboard",
+      "screenshots": [
+        "/workspace/tests/screenshots/dashboard-light.png",
+        "/workspace/tests/screenshots/dashboard-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "clientes",
+      "title": "Clientes",
+      "route": "/clientes",
+      "screenshots": [
+        "/workspace/tests/screenshots/clientes-light.png",
+        "/workspace/tests/screenshots/clientes-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "cotizador",
+      "title": "Cotizador",
+      "route": "/cotizador",
+      "screenshots": [
+        "/workspace/tests/screenshots/cotizador-light.png",
+        "/workspace/tests/screenshots/cotizador-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "perfil",
+      "title": "Perfil",
+      "route": "/perfil",
+      "screenshots": [
+        "/workspace/tests/screenshots/perfil-light.png",
+        "/workspace/tests/screenshots/perfil-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "oportunidad",
+      "title": "Nueva Oportunidad",
+      "route": "/nueva-oportunidad",
+      "screenshots": [
+        "/workspace/tests/screenshots/oportunidad-light.png",
+        "/workspace/tests/screenshots/oportunidad-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "edomex-col",
+      "title": "EdoMex Colectivo",
+      "route": "/cotizador/edomex-colectivo",
+      "screenshots": [
+        "/workspace/tests/screenshots/edomex-col-light.png",
+        "/workspace/tests/screenshots/edomex-col-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "proteccion",
+      "title": "Protección",
+      "route": "/proteccion",
+      "screenshots": [
+        "/workspace/tests/screenshots/proteccion-light.png",
+        "/workspace/tests/screenshots/proteccion-dark.png"
+      ],
+      "darkModeVerified": false,
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page",
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "avi",
+      "title": "AVI",
+      "route": "/avi",
+      "screenshots": [
+        "/workspace/tests/screenshots/avi-go.png",
+        "/workspace/tests/screenshots/avi-review.png",
+        "/workspace/tests/screenshots/avi-nogo.png"
+      ],
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "documentos",
+      "title": "Documentos",
+      "route": "/documentos",
+      "screenshots": [
+        "/workspace/tests/screenshots/documentos-pendiente.png",
+        "/workspace/tests/screenshots/documentos-validado.png"
+      ],
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "entregas",
+      "title": "Entregas",
+      "route": "/entregas",
+      "screenshots": [
+        "/workspace/tests/screenshots/entregas.png"
+      ],
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "config",
+      "title": "Configuración",
+      "route": "/configuracion",
+      "screenshots": [
+        "/workspace/tests/screenshots/config-cotizador.png",
+        "/workspace/tests/screenshots/config-simulador.png"
+      ],
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    },
+    {
+      "key": "usage",
+      "title": "Usage/Reports",
+      "route": "/usage",
+      "screenshots": [
+        "/workspace/tests/screenshots/usage.png"
+      ],
+      "gradientViolations": [],
+      "shimmerViolations": [],
+      "uiClassViolations": [
+        "No .ui-card present on page"
+      ],
+      "a11y": {
+        "violations": []
+      }
+    }
+  ]
 }

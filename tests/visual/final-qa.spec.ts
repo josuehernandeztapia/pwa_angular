@@ -1,5 +1,4 @@
 import { test, expect, Page } from '@playwright/test';
-import { injectAxe, getAxeResults } from '@axe-core/playwright';
 import fs from 'fs';
 import path from 'path';
 
@@ -98,14 +97,11 @@ async function checkUiClasses(page: Page): Promise<string[]> {
 }
 
 async function runA11y(page: Page) {
-  await injectAxe(page);
-  const results = await getAxeResults(page, {
-    runOnly: {
-      type: 'rule',
-      values: ['label', 'color-contrast', 'image-alt']
-    }
-  });
-  const violations = (results.violations || []).map(v => ({
+  const AxeBuilder = (await import('@axe-core/playwright')).default as any;
+  const results = await new AxeBuilder({ page })
+    .withRules(['label', 'color-contrast', 'image-alt'])
+    .analyze();
+  const violations = (results.violations || []).map((v: any) => ({
     id: v.id,
     impact: v.impact,
     description: v.description,
