@@ -203,7 +203,7 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "failed",
-                      "duration": 619,
+                      "duration": 630,
                       "error": {
                         "message": "TypeError: (0 , _playwright.injectAxe) is not a function",
                         "stack": "TypeError: (0 , _playwright.injectAxe) is not a function\n    at runA11y (/workspace/tests/visual/final-qa.spec.ts:101:18)\n    at /workspace/tests/visual/final-qa.spec.ts:134:29",
@@ -227,7 +227,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.202Z",
+                      "startTime": "2025-09-19T18:29:56.921Z",
                       "annotations": [],
                       "attachments": [
                         {
@@ -272,7 +272,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -306,7 +306,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -340,7 +340,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -374,7 +374,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -408,7 +408,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -442,7 +442,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -476,7 +476,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -510,7 +510,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.662Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -544,7 +544,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.663Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -578,7 +578,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.663Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -612,7 +612,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.663Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -646,7 +646,7 @@
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-09-19T17:58:31.941Z",
+                      "startTime": "2025-09-19T18:29:57.663Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -666,8 +666,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-09-19T17:58:17.860Z",
-    "duration": 14095.796,
+    "startTime": "2025-09-19T18:29:55.772Z",
+    "duration": 1901.8600000000001,
     "expected": 0,
     "skipped": 12,
     "unexpected": 1,
