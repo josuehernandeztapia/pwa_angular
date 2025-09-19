@@ -30,6 +30,13 @@ const commonBeforeWildcard: Routes = [
 
   // Protected routes (require authentication)
   {
+    path: 'usuarios',
+    loadComponent: () => import('./components/pages/usuarios/usuarios.component').then(c => c.UsuariosComponent),
+    canActivate: [AuthGuard],
+    title: 'Usuarios - Administración'
+  },
+
+  {
     path: 'entregas',
     loadComponent: () => import('./components/pages/entregas/entregas.component').then(c => c.EntregasComponent),
     canActivate: [AuthGuard],

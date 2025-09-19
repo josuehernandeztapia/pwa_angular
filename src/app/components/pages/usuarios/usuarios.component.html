@@ -1,0 +1,38 @@
+<section class="ui-card p-4" data-cy="usuarios-table">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-lg font-semibold">Usuarios</h2>
+    <button class="ui-btn ui-btn-secondary">Nuevo usuario</button>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="min-w-full text-sm">
+      <thead>
+        <tr class="text-left text-gray-600 dark:text-gray-300">
+          <th class="py-2 pr-4">Nombre</th>
+          <th class="py-2 pr-4">Rol</th>
+          <th class="py-2 pr-4">Estado</th>
+          <th class="py-2 pr-4 text-right">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users" class="border-t border-gray-200 dark:border-gray-800">
+          <td class="py-3 pr-4">{{ u.name }}</td>
+          <td class="py-3 pr-4">{{ u.role }}</td>
+          <td class="py-3 pr-4">
+            <span class="inline-flex items-center gap-2">
+              <span class="h-2 w-2 rounded-full" [class.bg-success-500]="u.active" [class.bg-gray-400]="!u.active"></span>
+              {{ u.active ? 'Activo' : 'Inactivo' }}
+            </span>
+          </td>
+          <td class="py-3 pr-0">
+            <div class="flex gap-2 justify-end">
+              <button class="ui-btn ui-btn-secondary" (click)="edit(u)">Editar</button>
+              <button class="ui-btn ui-btn-secondary" (click)="toggle(u)">{{ u.active ? 'Desactivar' : 'Activar' }}</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
