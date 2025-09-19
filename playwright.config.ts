@@ -31,6 +31,14 @@ export default defineConfig({
     video: 'off',
   },
 
+  /* Run your local dev server before starting the tests */
+  webServer: {
+    command: 'npm run serve:test',
+    url: 'http://localhost:4200',
+    reuseExistingServer: !process.env['CI'],
+    timeout: 600 * 1000,
+  },
+
   /* Configure projects for major browsers */
   projects: [
     // Desktop browsers
