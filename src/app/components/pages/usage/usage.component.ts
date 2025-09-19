@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js/auto';
 
 @Component({
@@ -9,7 +9,9 @@ import { Chart } from 'chart.js/auto';
   templateUrl: './usage.component.html',
   styleUrls: ['./usage.component.scss']
 })
-export class UsageComponent implements AfterViewInit {
+export class UsageComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('usageChart') usageChart!: ElementRef<HTMLCanvasElement>;
+  private chart?: Chart;
   tokens = 153450;
   requests = 1230;
   spend = 212.5;
@@ -20,15 +22,19 @@ export class UsageComponent implements AfterViewInit {
   ];
 
   ngAfterViewInit(): void {
-    new Chart('usageChart', {
+    const labels = this.categories.map(c => c.name);
+    const data = this.categories.map(c => c.tokens);
+
+    this.chart = new Chart(this.usageChart.nativeElement, {
       type: 'bar',
       data: {
-        labels: this.categories.map(c => c.name),
+        labels,
         datasets: [
           {
-            data: this.categories.map(c => c.tokens),
+            data,
             borderColor: '#0EA5E9',
-            backgroundColor: 'transparent'
+            backgroundColor: 'rgba(14,165,233,0.2)',
+            borderWidth: 1
           }
         ]
       },
@@ -36,10 +42,16 @@ export class UsageComponent implements AfterViewInit {
         plugins: { legend: { display: false } },
         scales: {
           x: { grid: { color: 'rgba(148,163,184,0.2)' } },
-          y: { grid: { color: 'rgba(148,163,184,0.2)' } }
-        }
+          y: { beginAtZero: true, grid: { color: 'rgba(148,163,184,0.2)' } }
+        },
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.chart?.destroy();
   }
 
   exportCSV(): void {
