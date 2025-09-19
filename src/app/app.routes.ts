@@ -283,6 +283,29 @@ const commonBeforeWildcard: Routes = [
     title: 'Configuración - Conductores PWA'
   },
 
+  // Integraciones externas minimalistas
+  {
+    path: 'integraciones',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'odoo',
+        loadComponent: () => import('./components/pages/integrations/odoo.component').then(c => c.OdooComponent),
+        title: 'Integración Odoo - Minimal'
+      },
+      {
+        path: 'neon',
+        loadComponent: () => import('./components/pages/integrations/neon.component').then(c => c.NeonComponent),
+        title: 'Integración NEON - Minimal'
+      },
+      {
+        path: 'callbacks',
+        loadComponent: () => import('./components/pages/integrations/callbacks.component').then(c => c.CallbacksComponent),
+        title: 'Integración Callbacks - Minimal'
+      }
+    ]
+  },
+
   // Flow Builder direct route (optional entry point)
   {
     path: 'flow-builder',
