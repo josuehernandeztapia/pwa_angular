@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
 import { environment } from '../environments/environment';
+import { AuthGuard } from './guards/auth.guard';
 
 // Rutas comunes (antes del wildcard)
 const commonBeforeWildcard: Routes = [
@@ -34,6 +34,13 @@ const commonBeforeWildcard: Routes = [
     loadComponent: () => import('./components/pages/dashboard/dashboard.component').then(c => c.DashboardComponent),
     canActivate: [AuthGuard],
     title: 'Dashboard - Conductores PWA'
+  },
+
+  {
+    path: 'avi',
+    loadComponent: () => import('./components/pages/avi/avi.component').then(c => c.AviComponent),
+    canActivate: [AuthGuard],
+    title: 'AVI - Validación de Voz'
   },
 
   {
