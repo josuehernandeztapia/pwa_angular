@@ -16,6 +16,8 @@
 @import 'styles/premium-animations.scss';
 
 /* ===== CSS VARIABLES (Common tokens) ===== */
+@import 'styles/_tokens.scss';
+@import 'styles/_helpers.scss';
 :root {
   --font-scale: 1;
   /* Palette */

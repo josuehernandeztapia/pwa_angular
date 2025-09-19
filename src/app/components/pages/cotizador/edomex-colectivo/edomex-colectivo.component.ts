@@ -15,24 +15,24 @@ import { CollectiveScenarioConfig, SimuladorEngineService } from '../../../../se
   template: `
     <div class="command-container p-6 space-y-6">
       <!-- Header -->
-      <div class="bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-xl p-6 shadow-lg">
-        <h1 class="text-3xl font-bold mb-2">Cotizador EdoMex Colectivo</h1>
-        <p class="text-emerald-100 text-lg">Genera cotizaciones para grupos de transportistas</p>
+      <div class="ui-card">
+        <h1 class="text-3xl font-bold mb-2 text-[var(--text-1)] dark:text-[var(--text-1)]">Cotizador EdoMex Colectivo</h1>
+        <p class="text-lg text-[var(--text-2)]">Genera cotizaciones para grupos de transportistas</p>
       </div>
 
       <!-- Resumen KPIs -->
-      <div class="bg-white rounded-xl shadow-lg p-4">
+      <div class="ui-card p-4">
         <h2 class="text-lg font-semibold text-gray-800 mb-3">Resumen</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="bg-emerald-50 p-3 rounded border border-emerald-100">
+          <div class="ui-card p-3">
             <div class="text-emerald-600 text-xs">Pago mensual por miembro</div>
             <div class="text-xl font-bold text-emerald-800">{{ formatCurrency(quotation?.monthlyPaymentPerMember || 0) }}</div>
           </div>
-          <div class="bg-blue-50 p-3 rounded border border-blue-100">
+          <div class="ui-card p-3">
             <div class="text-blue-600 text-xs">Plazo típico</div>
             <div class="text-xl font-bold text-blue-800">60 meses</div>
           </div>
-          <div class="bg-purple-50 p-3 rounded border border-purple-100">
+          <div class="ui-card p-3">
             <div class="text-purple-600 text-xs">Meta del grupo</div>
             <div class="text-xl font-bold text-purple-800">{{ formatCurrency(quotation?.scenario?.targetAmount || 0) }}</div>
           </div>
@@ -41,7 +41,7 @@ import { CollectiveScenarioConfig, SimuladorEngineService } from '../../../../se
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Configuration Panel -->
-        <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="ui-card p-6">
           <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
             <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</span>
             Unidad
@@ -191,7 +191,7 @@ import { CollectiveScenarioConfig, SimuladorEngineService } from '../../../../se
         </div>
 
         <!-- Results Panel -->
-        <div class="bg-white rounded-xl shadow-lg p-6" *ngIf="quotation">
+        <div class="ui-card p-6" *ngIf="quotation">
           <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
             <span class="bg-emerald-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</span>
             Finanzas
@@ -199,23 +199,23 @@ import { CollectiveScenarioConfig, SimuladorEngineService } from '../../../../se
 
           <!-- Group Summary -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-4 rounded-lg border border-emerald-200">
+            <div class="ui-card p-4">
               <div class="text-emerald-600 text-sm font-medium">Miembros del Grupo</div>
               <div class="text-2xl font-bold text-emerald-800">{{ quotation.memberCount }}</div>
             </div>
-            <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg border border-blue-200">
+            <div class="ui-card p-4">
               <div class="text-blue-600 text-sm font-medium">Inversión Total</div>
               <div class="text-2xl font-bold text-blue-800">{{ formatCurrency(quotation.totalInvestment) }}</div>
             </div>
-            <div class="bg-gradient-to-br from-amber-50 to-amber-100 p-4 rounded-lg border border-amber-200">
+            <div class="ui-card p-4">
               <div class="text-amber-600 text-sm font-medium">Tiempo a Primera Entrega</div>
               <div class="text-2xl font-bold text-amber-800">{{ quotation.scenario.monthsToFirstAward || 'N/A' }} meses</div>
             </div>
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+            <div class="ui-card p-4">
               <div class="text-purple-600 text-sm font-medium">Tiempo a Entrega Total</div>
               <div class="text-2xl font-bold text-purple-800">{{ quotation.scenario.monthsToFullDelivery || 'N/A' }} meses</div>
             </div>
-            <div class="bg-gradient-to-br from-emerald-50 to-emerald-100 p-4 rounded-lg border border-emerald-200">
+            <div class="ui-card p-4">
               <div class="text-emerald-600 text-sm font-medium">Tiempo a Meta de Ahorro del Grupo</div>
               <div class="text-2xl font-bold text-emerald-800">{{ quotation.scenario.monthsToTarget || 'N/A' }} meses</div>
             </div>
@@ -249,7 +249,7 @@ import { CollectiveScenarioConfig, SimuladorEngineService } from '../../../../se
           </div>
 
           <!-- Group Benefits -->
-          <div class="bg-amber-50 rounded-lg p-4 mb-6 border border-amber-200">
+          <div class="ui-card p-4 mb-6">
             <h3 class="font-semibold text-amber-800 mb-3 flex items-center">
               <span class="text-amber-600 mr-2">🎯</span>
               Beneficios del Grupo:
@@ -321,7 +321,7 @@ import { CollectiveScenarioConfig, SimuladorEngineService } from '../../../../se
         </div>
 
         <!-- Initial Info Panel -->
-        <div class="bg-white rounded-xl shadow-lg p-6" *ngIf="!quotation">
+        <div class="ui-card p-6" *ngIf="!quotation">
           <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
             <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">💡</span>
             Cotización Colectiva EdoMex

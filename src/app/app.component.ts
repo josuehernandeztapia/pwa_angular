@@ -20,5 +20,9 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     // Media permissions will be requested just-in-time when needed (voice/camera flows)
+    const saved = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const enableDark = saved ? saved === 'true' : prefersDark;
+    document.documentElement.classList.toggle('dark', enableDark);
   }
 }

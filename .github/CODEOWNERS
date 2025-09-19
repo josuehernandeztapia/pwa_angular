@@ -1,0 +1,4 @@
+# Require co-founder approval on sensitive areas
+src/** @cofounder
+.github/workflows/** @cofounder
+angular.json @cofounder

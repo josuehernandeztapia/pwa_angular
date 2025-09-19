@@ -1,0 +1,26 @@
+name: Guardrails
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  anti-deletions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Detect excessive deletions
+        run: |
+          set -e
+          BASE_REF="${{ github.base_ref }}"
+          if [ -z "$BASE_REF" ]; then BASE_REF=origin/main; fi
+          git fetch origin "$BASE_REF":"$BASE_REF" --depth=1
+          DELETIONS=$(git diff --shortstat "$BASE_REF"...HEAD | awk '{print $6}')
+          echo "Deletions: ${DELETIONS:=0}"
+          if [ "${DELETIONS:=0}" -gt 5000 ]; then
+            echo "❌ Too many deletions. Stop."
+            exit 1
+          fi
