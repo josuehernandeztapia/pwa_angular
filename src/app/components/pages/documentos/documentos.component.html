@@ -1,0 +1,47 @@
+<section class="ui-card dark:bg-slate-900 dark:text-slate-100">
+	<h2 class="text-sm font-semibold mb-3">Carga de Documentos</h2>
+
+	<input type="file" (change)="onFileSelected($event)" data-cy="doc-upload" class="block w-full text-sm mb-3" />
+
+	<button (click)="subirDocumento()" data-cy="doc-submit" class="ui-btn ui-btn-primary">
+		Subir
+	</button>
+
+	<div
+		class="mt-3 text-sm"
+		[ngClass]="{
+			'text-slate-500': estado==='Pendiente',
+			'text-green-600': estado==='Validado',
+			'text-red-600': estado==='Error'
+		}"
+		data-cy="doc-status"
+	>
+		{{ estado }}
+	</div>
+</section>
+
+<section class="ui-card mt-6 dark:bg-slate-900 dark:text-slate-100">
+	<h2 class="text-sm font-semibold mb-3">Documentos cargados</h2>
+	<table class="w-full text-sm border-collapse" data-cy="doc-table">
+		<thead>
+			<tr class="text-slate-500 border-b dark:border-slate-700">
+				<th class="text-left py-2">Nombre</th>
+				<th class="text-left py-2">Estado</th>
+				<th class="text-left py-2">Última actualización</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngIf="loading" class="loader-row animate-pulse">
+				<td class="py-2">Procesando...</td>
+				<td class="py-2">Pendiente</td>
+				<td class="py-2">-</td>
+			</tr>
+			<tr *ngFor="let doc of documentos" class="border-b dark:border-slate-700">
+				<td class="py-2">{{ doc.nombre }}</td>
+				<td class="py-2">{{ doc.estado }}</td>
+				<td class="py-2">{{ doc.fecha }}</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+
