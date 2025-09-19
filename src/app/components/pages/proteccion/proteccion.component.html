@@ -1,0 +1,25 @@
+<section class="ui-card">
+  <h2 class="text-sm font-semibold mb-3">Protección</h2>
+
+  <div *ngIf="loading" class="animate-pulse space-y-3">
+    <div class="h-6 bg-[var(--border)] rounded"></div>
+    <div class="h-6 bg-[var(--border)] rounded"></div>
+  </div>
+
+  <div *ngIf="!loading" class="grid gap-3 md:grid-cols-3">
+    <div class="ui-card">
+      <div class="text-xs text-slate-500">Health Score</div>
+      <div class="text-2xl font-semibold" data-cy="health-score">{{ healthScore }}</div>
+    </div>
+    <div class="ui-card">
+      <div class="text-xs text-slate-500">Cobertura</div>
+      <div class="text-2xl font-semibold" data-cy="coverage">{{ cobertura }}</div>
+    </div>
+    <div class="ui-card flex items-center justify-center">
+      <button data-cy="apply-protection" (click)="aplicarProteccion()" class="ui-btn ui-btn-primary w-full">
+        Aplicar
+      </button>
+    </div>
+  </div>
+</section>
+
