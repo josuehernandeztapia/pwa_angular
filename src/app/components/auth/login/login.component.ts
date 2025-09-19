@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
         <div class="connection-lines"></div>
       </div>
       
-      <div class="command-center-card">
+      <div class="command-center-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="command-center-header">
           <div class="brand-identity">
             <div class="brand-icon">🚀</div>
@@ -31,7 +31,7 @@ import { Router } from '@angular/router';
               id="email"
               type="email"
               formControlName="email"
-              class="premium-input"
+              class="premium-input ui-input"
               [class.error]="isFieldInvalid('email')"
               placeholder="ricardo.montoya@cmu.com"
             >
@@ -52,7 +52,7 @@ import { Router } from '@angular/router';
                 id="password"
                 [type]="showPassword ? 'text' : 'password'"
                 formControlName="password"
-                class="premium-input password-input"
+                class="premium-input ui-input password-input"
                 [class.error]="isFieldInvalid('password')"
                 placeholder="••••••••••••"
               >
@@ -90,7 +90,7 @@ import { Router } from '@angular/router';
 
           <button 
             type="submit" 
-            class="btn-primary command-center-btn"
+            class="btn-primary command-center-btn ui-btn ui-btn-primary"
             [disabled]="loginForm.invalid || isLoading"
           >
             <span *ngIf="!isLoading" class="btn-content">

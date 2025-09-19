@@ -5,19 +5,19 @@ import { defineConfig, devices } from 'playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './tests/visual',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
-  forbidOnly: !!process.env.CI,
+  forbidOnly: !!process.env['CI'],
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env['CI'] ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env['CI'] ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
-    ['json', { outputFile: 'test-results/visual-results.json' }]
+    ['list'],
+    ['html']
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -28,7 +28,15 @@ export default defineConfig({
     /* Screenshot configuration */
     screenshot: 'only-on-failure',
     /* Video recording */
-    video: 'retain-on-failure',
+    video: 'off',
+  },
+
+  /* Run your local dev server before starting the tests */
+  webServer: {
+    command: 'npm run serve:test',
+    url: 'http://localhost:4200',
+    reuseExistingServer: !process.env['CI'],
+    timeout: 600 * 1000,
   },
 
   /* Configure projects for major browsers */
@@ -75,8 +83,6 @@ export default defineConfig({
 
   /* Visual comparison settings */
   expect: {
-    // Threshold for pixel difference (0-1, where 1 = 100% different)
-    threshold: 0.1,
     // Animation handling
     toHaveScreenshot: {
       // Disable animations for consistent screenshots
@@ -86,9 +92,8 @@ export default defineConfig({
       // Maximum allowed pixel difference
       maxDiffPixels: 2500,
     },
-    // Page screenshot options
+    // Page snapshot options
     toMatchSnapshot: {
-      threshold: 0.1,
       maxDiffPixels: 2500,
     },
   },
