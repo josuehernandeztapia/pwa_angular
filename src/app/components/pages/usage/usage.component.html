@@ -1,0 +1,44 @@
+<section class="grid gap-4 md:grid-cols-3">
+  <div class="ui-card dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+    <div class="text-xs text-slate-500 dark:text-slate-400">Tokens usados</div>
+    <div class="text-2xl font-semibold" data-cy="usage-tokens">{{ tokens }}</div>
+  </div>
+  <div class="ui-card dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+    <div class="text-xs text-slate-500 dark:text-slate-400">Requests totales</div>
+    <div class="text-2xl font-semibold" data-cy="usage-requests">{{ requests }}</div>
+  </div>
+  <div class="ui-card dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+    <div class="text-xs text-slate-500 dark:text-slate-400">Gasto total</div>
+    <div class="text-2xl font-semibold" data-cy="usage-spend">{{ spend | currency }}</div>
+  </div>
+</section>
+
+<section class="ui-card mt-6 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+  <h2 class="text-sm font-semibold mb-3">Desglose por categoría</h2>
+  <table class="w-full text-sm border-collapse" data-cy="usage-table">
+    <thead>
+      <tr class="text-slate-500 dark:text-slate-400 border-b dark:border-slate-700">
+        <th class="text-left py-2">Categoría</th>
+        <th class="text-left py-2">Tokens</th>
+        <th class="text-left py-2">Requests</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of categories" class="border-b dark:border-slate-700">
+        <td class="py-2">{{ item.name }}</td>
+        <td class="py-2">{{ item.tokens }}</td>
+        <td class="py-2">{{ item.requests }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="ui-card mt-6 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+  <h2 class="text-sm font-semibold mb-3">Uso mensual</h2>
+  <canvas id="usageChart" data-cy="usage-chart"></canvas>
+</div>
+
+<button class="ui-btn ui-btn-primary mt-4" data-cy="usage-export" (click)="exportCSV()">
+  Exportar
+</button>
+
