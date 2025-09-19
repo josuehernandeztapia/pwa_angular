@@ -74,6 +74,13 @@ const commonBeforeWildcard: Routes = [
     title: 'Carga de Documentos - Conductores PWA'
   },
 
+  {
+    path: 'documentos',
+    loadComponent: () => import('./components/pages/documentos/documentos.component').then(c => c.DocumentosComponent),
+    canActivate: [AuthGuard],
+    title: 'Documentos - Conductores PWA'
+  },
+
   /*
   {
     path: 'kyc-verification',
