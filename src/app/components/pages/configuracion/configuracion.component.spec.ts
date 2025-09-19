@@ -1,61 +1,54 @@
 import { TestBed } from '@angular/core/testing';
 import { ConfiguracionComponent } from './configuracion.component';
-import { Router } from '@angular/router';
 
-class RouterStub {
-  navigate(commands: any[]): Promise<boolean> { return Promise.resolve(true); }
-}
-
-describe('ConfiguracionComponent', () => {
+describe('ConfiguracionComponent (Minimal UI)', () => {
   beforeEach(async () => {
-    localStorage.clear();
     await TestBed.configureTestingModule({
-      imports: [ConfiguracionComponent],
-      providers: [{ provide: Router, useClass: RouterStub }]
+      imports: [ConfiguracionComponent]
     }).compileComponents();
   });
 
-  it('should save and load configuration from localStorage', () => {
+  it('should render mode buttons and toggle modo', () => {
     const fixture = TestBed.createComponent(ConfiguracionComponent);
     const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    component.onSettingChange('language', 'en');
+    const el: HTMLElement = fixture.nativeElement as HTMLElement;
+    const btnCot = el.querySelector('[data-cy="mode-cotizador"]') as HTMLButtonElement;
+    const btnSim = el.querySelector('[data-cy="mode-simulador"]') as HTMLButtonElement;
+    expect(btnCot).toBeTruthy();
+    expect(btnSim).toBeTruthy();
 
-    const saved = JSON.parse(localStorage.getItem('app-configuration') || '{}');
-    expect(saved.language).toBe('en');
+    btnSim.click();
+    fixture.detectChanges();
+    expect(component.modo).toBe('simulador');
 
-    // Reload component to verify loadConfiguration populates values
-    const fixture2 = TestBed.createComponent(ConfiguracionComponent);
-    const component2 = fixture2.componentInstance;
-    fixture2.detectChanges();
-    const general = component2.configSections.find(s => s.id === 'general');
-    const langSetting = general?.settings.find(s => s.key === 'language');
-    expect(langSetting?.value).toBe('en');
+    btnCot.click();
+    fixture.detectChanges();
+    expect(component.modo).toBe('cotizador');
   });
 
-  it('should apply theme switching by setting data-theme on :root', () => {
+  it('should validate form controls and show error messages', () => {
     const fixture = TestBed.createComponent(ConfiguracionComponent);
     const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    component.onSettingChange('theme', 'light');
-    expect(document.documentElement.getAttribute('data-theme')).toBe('light');
+    component.form.controls['nombre'].markAsTouched();
+    component.form.controls['tipo'].markAsTouched();
+    fixture.detectChanges();
 
-    component.onSettingChange('theme', 'dark');
-    expect(document.documentElement.getAttribute('data-theme')).toBe('dark');
+    const el: HTMLElement = fixture.nativeElement as HTMLElement;
+    const errors = el.querySelectorAll('.text-red-600');
+    expect(errors.length).toBeGreaterThan(0);
   });
 
-  it('should open Flow Builder modal when enabled', () => {
+  it('should render product packages with select buttons', () => {
     const fixture = TestBed.createComponent(ConfiguracionComponent);
-    const component = fixture.componentInstance;
     fixture.detectChanges();
 
-    expect(component.isFlowBuilderEnabled).toBeTrue();
-    component.openFlowBuilder();
-    expect(component.showFlowBuilderModal).toBeTrue();
-    component.closeFlowBuilderModal();
-    expect(component.showFlowBuilderModal).toBeFalse();
+    const el: HTMLElement = fixture.nativeElement as HTMLElement;
+    const selectButtons = el.querySelectorAll('[data-cy="select-package"]');
+    expect(selectButtons.length).toBeGreaterThan(0);
   });
 });
 

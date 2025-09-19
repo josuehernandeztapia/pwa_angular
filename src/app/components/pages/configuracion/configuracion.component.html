@@ -1,0 +1,38 @@
+<section class="ui-card dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+  <h2 class="text-sm font-semibold mb-3">Configuración</h2>
+
+  <div class="flex gap-2 mb-4">
+    <button (click)="setModo('cotizador')"
+      [ngClass]="{'bg-[var(--brand)] text-white': modo==='cotizador'}"
+      data-cy="mode-cotizador" class="ui-btn">Cotizador</button>
+    <button (click)="setModo('simulador')"
+      [ngClass]="{'bg-[var(--brand)] text-white': modo==='simulador'}"
+      data-cy="mode-simulador" class="ui-btn">Simulador</button>
+  </div>
+
+  <form [formGroup]="form" class="space-y-3">
+    <input formControlName="nombre" placeholder="Nombre" data-cy="config-input" class="ui-input">
+    <div *ngIf="form.controls['nombre'].invalid && (form.controls['nombre'].touched || form.controls['nombre'].dirty)"
+         class="text-red-600 text-xs">Nombre requerido</div>
+
+    <select formControlName="tipo" data-cy="config-input" class="ui-input">
+      <option value="">Seleccione tipo</option>
+      <option value="basico">Básico</option>
+      <option value="premium">Premium</option>
+    </select>
+    <div *ngIf="form.controls['tipo'].invalid && (form.controls['tipo'].touched || form.controls['tipo'].dirty)"
+         class="text-red-600 text-xs">Tipo requerido</div>
+  </form>
+</section>
+
+<section class="grid md:grid-cols-2 gap-4 mt-6">
+  <div *ngFor="let p of paquetes" class="ui-card space-y-2 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+    <h3 class="font-semibold">{{ p.nombre }}</h3>
+    <p class="text-sm text-slate-500 dark:text-slate-300">{{ p.precio }}</p>
+    <ul class="list-disc pl-5 text-sm text-slate-600 dark:text-slate-300">
+      <li *ngFor="let f of p.features">{{ f }}</li>
+    </ul>
+    <button class="ui-btn ui-btn-primary" data-cy="select-package">Seleccionar</button>
+  </div>
+  
+</section>
