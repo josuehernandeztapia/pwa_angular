@@ -26,8 +26,8 @@
   </aside>
 
   <!-- Mobile overlay sidebar -->
-  <div class="md:hidden" [class.fixed]="mobileOpen" [class.inset-0]="mobileOpen" [class.z-50]="mobileOpen" [ngClass]="{'bg-black/50': mobileOpen}" (click)="closeMobile()"></div>
-  <aside class="ui-card fixed inset-y-0 left-0 z-50 w-64 p-4 transform transition md:hidden" [ngClass]="{'-translate-x-full': !mobileOpen, 'translate-x-0': mobileOpen}">
+  <div class="md:hidden" data-cy="overlay" [class.fixed]="mobileOpen" [class.inset-0]="mobileOpen" [class.z-50]="mobileOpen" [ngClass]="{'bg-black/50': mobileOpen}" (click)="closeMobile()"></div>
+  <aside class="ui-card fixed inset-y-0 left-0 z-50 w-64 p-4 transform transition md:hidden" data-cy="sidebar-mobile" [ngClass]="{'-translate-x-full': !mobileOpen, 'translate-x-0': mobileOpen}">
     <nav class="space-y-2" (click)="closeMobile()">
       <a routerLink="/dashboard" data-cy="nav-dashboard" class="ui-btn ui-btn-secondary flex items-center gap-2">
         <lucide-icon name="bar-chart" class="w-5 h-5"></lucide-icon>
