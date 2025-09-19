@@ -41,6 +41,7 @@
     "test:utilities": "ng test --include='**/utils/**/*.spec.ts,**/shared/**/*.spec.ts' --watch=false --browsers=ChromeHeadless",
     "test:coverage": "ng test --watch=false --browsers=ChromeHeadless --code-coverage",
     "test:visual": "playwright test --config=playwright.config.ts",
+    "test:no-core:qa": "bash -lc \"trap 'kill %1' EXIT; npx ng serve --configuration=development --port=4200 & npx wait-on http://localhost:4200 && npx playwright test e2e/no-core-qa.spec.ts --config=playwright.config.ts --project=chromium\"",
     "test:visual:all": "playwright test --config=playwright.config.ts",
     "test:visual:report": "playwright show-report",
     "test:visual:all:premium": "npm run test:ux:premium:consistency:all",
