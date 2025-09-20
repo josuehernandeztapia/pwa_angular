@@ -1,25 +1,25 @@
 [
   {
-    "module": "login",
-    "route": "/login",
-    "screenshots": [
-      "tests/screenshots/login-light.png",
-      "tests/screenshots/login-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 14
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
     "module": "dashboard",
     "route": "/dashboard",
     "screenshots": [
       "tests/screenshots/dashboard-light.png",
       "tests/screenshots/dashboard-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "login",
+    "route": "/login",
+    "screenshots": [
+      "tests/screenshots/login-light.png",
+      "tests/screenshots/login-dark.png"
     ],
     "helpersPresent": true,
     "accessibility": {
@@ -90,21 +90,6 @@
     "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
   },
   {
-    "module": "proteccion",
-    "route": "/proteccion",
-    "screenshots": [
-      "tests/screenshots/proteccion-light.png",
-      "tests/screenshots/proteccion-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
     "module": "edomex-colectivo",
     "route": "/edomex-colectivo",
     "screenshots": [
@@ -120,10 +105,11 @@
     "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
   },
   {
-    "module": "documentos-pendiente",
-    "route": "/documentos?status=pendiente",
+    "module": "proteccion",
+    "route": "/proteccion",
     "screenshots": [
-      "tests/screenshots/documentos-pendiente.png"
+      "tests/screenshots/proteccion-light.png",
+      "tests/screenshots/proteccion-dark.png"
     ],
     "helpersPresent": true,
     "accessibility": {
@@ -138,6 +124,20 @@
     "route": "/avi?state=go",
     "screenshots": [
       "tests/screenshots/avi-go.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "documentos-pendiente",
+    "route": "/documentos?status=pendiente",
+    "screenshots": [
+      "tests/screenshots/documentos-pendiente.png"
     ],
     "helpersPresent": true,
     "accessibility": {
@@ -358,19 +358,6 @@
     "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
   },
   {
-    "module": "offline",
-    "route": "/dashboard",
-    "screenshots": [
-      "tests/screenshots/offline.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 0,
-      "passes": 0
-    },
-    "state": "PASA"
-  },
-  {
     "module": "responsive",
     "route": "/dashboard",
     "screenshots": [
@@ -384,5 +371,18 @@
       "passes": 18
     },
     "state": "FALLA"
+  },
+  {
+    "module": "offline",
+    "route": "/dashboard",
+    "screenshots": [
+      "tests/screenshots/offline.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 0
+    },
+    "state": "PASA"
   }
 ]

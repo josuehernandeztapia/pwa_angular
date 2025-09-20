@@ -1,0 +1,31 @@
+? Port 4200 is already in use.
+Would you like to use a different port? (Y/n) [46D[46C
+Running 19 tests using 2 workers
+
+  ✓   2 [chromium] › tests/visual/final-qa.spec.ts:128:7 › QA Final E2E (Core + No-Core) › dashboard (3.2s)
+  ✓   1 [chromium] › tests/visual/final-qa.spec.ts:125:7 › QA Final E2E (Core + No-Core) › login (3.3s)
+  ✓   3 [chromium] › tests/visual/final-qa.spec.ts:131:7 › QA Final E2E (Core + No-Core) › clientes (2.7s)
+  ✓   4 [chromium] › tests/visual/final-qa.spec.ts:134:7 › QA Final E2E (Core + No-Core) › cotizador (2.8s)
+  ✓   5 [chromium] › tests/visual/final-qa.spec.ts:137:7 › QA Final E2E (Core + No-Core) › perfil (2.5s)
+  ✓   6 [chromium] › tests/visual/final-qa.spec.ts:140:7 › QA Final E2E (Core + No-Core) › oportunidad (2.5s)
+  ✓   7 [chromium] › tests/visual/final-qa.spec.ts:143:7 › QA Final E2E (Core + No-Core) › edomex-colectivo (2.6s)
+  ✓   8 [chromium] › tests/visual/final-qa.spec.ts:146:7 › QA Final E2E (Core + No-Core) › proteccion (2.9s)
+  ✓  10 [chromium] › tests/visual/final-qa.spec.ts:154:7 › QA Final E2E (Core + No-Core) › documentos (4.3s)
+  ✓   9 [chromium] › tests/visual/final-qa.spec.ts:149:7 › QA Final E2E (Core + No-Core) › avi (5.8s)
+  ✓  11 [chromium] › tests/visual/final-qa.spec.ts:158:7 › QA Final E2E (Core + No-Core) › entregas (2.3s)
+  ✓  13 [chromium] › tests/visual/final-qa.spec.ts:165:7 › QA Final E2E (Core + No-Core) › usage (2.4s)
+  ✓  12 [chromium] › tests/visual/final-qa.spec.ts:161:7 › QA Final E2E (Core + No-Core) › configuracion (4.0s)
+  ✓  14 [chromium] › tests/visual/final-qa.spec.ts:170:7 › QA Final E2E (Core + No-Core) › postventa (3.7s)
+  ✓  15 [chromium] › tests/visual/final-qa.spec.ts:174:7 › QA Final E2E (Core + No-Core) › gnv (3.7s)
+  ✓  17 [chromium] › tests/visual/final-qa.spec.ts:183:7 › QA Final E2E (Core + No-Core) › usuarios (2.5s)
+  ✓  18 [chromium] › tests/visual/final-qa.spec.ts:187:7 › QA Final E2E (Core + No-Core) › responsive (3.0s)
+  ✓  16 [chromium] › tests/visual/final-qa.spec.ts:178:7 › QA Final E2E (Core + No-Core) › integraciones (5.9s)
+  ✓  19 [chromium] › tests/visual/final-qa.spec.ts:209:7 › QA Final E2E (Core + No-Core) › offline (simulado) (226ms)
+
+  19 passed (32.0s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report[39m
+[36m[39m
+Reporte generado en /workspace/QA-REPORT.md
