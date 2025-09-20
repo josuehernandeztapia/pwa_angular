@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   template: `
-    <div class="expedientes-container premium-container">
+    <div class="expedientes-container ">
       <header class="page-header">
         <div class="header-content">
           <h1>📂 Expedientes</h1>
@@ -49,7 +49,7 @@ import { RouterModule } from '@angular/router';
 
         <!-- Expedientes Grid -->
         <section class="expedientes-grid">
-          <div *ngFor="let expediente of filteredExpedientes" class="expediente-card premium-card">
+          <div *ngFor="let expediente of filteredExpedientes" class="expediente-card ui-card">
             <div class="expediente-header">
               <div class="expediente-info">
                 <h3>{{ expediente.clientName }}</h3>
@@ -99,7 +99,7 @@ import { RouterModule } from '@angular/router';
         </section>
 
         <!-- Empty State -->
-        <div *ngIf="filteredExpedientes.length === 0" class="empty-state premium-card" role="status" aria-live="polite">
+        <div *ngIf="filteredExpedientes.length === 0" class="empty-state ui-card" role="status" aria-live="polite">
           <div class="empty-icon">📂</div>
           <h3>No hay expedientes</h3>
           <p>{{ searchTerm ? 'No se encontraron expedientes con ese criterio' : 'Aún no hay expedientes creados' }}</p>
@@ -150,12 +150,12 @@ import { RouterModule } from '@angular/router';
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #4299e1, #3182ce);
+      background: var(--surface-dark);
       color: white;
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #3182ce, #2c5282);
+      background: var(--surface-dark);
       transform: translateY(-1px);
     }
 

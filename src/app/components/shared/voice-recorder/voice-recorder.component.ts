@@ -211,12 +211,12 @@ interface VoiceRecorderState {
 
     .voice-recorder.recording {
       border-color: #ef4444;
-      background: linear-gradient(135deg, #fef2f2, #ffffff);
+      background: var(--surface-dark);
     }
 
     .voice-recorder.processing {
       border-color: #3b82f6;
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
+      background: var(--surface-dark);
     }
 
     /* Interview Guide Styles */
@@ -386,7 +386,7 @@ interface VoiceRecorderState {
       align-items: center;
       gap: 8px;
       padding: 16px 32px;
-      background: linear-gradient(135deg, #06d6a0, #059669);
+      background: var(--surface-dark);
       border: none;
       border-radius: 12px;
       color: white;
@@ -403,7 +403,7 @@ interface VoiceRecorderState {
     }
 
     .btn-record.recording {
-      background: linear-gradient(135deg, #ef4444, #dc2626);
+      background: var(--surface-dark);
       box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
     }
 

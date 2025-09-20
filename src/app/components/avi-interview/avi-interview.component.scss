@@ -38,7 +38,7 @@
     
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #4CAF50, #8BC34A);
+      background: var(--surface-dark);
       border-radius: 4px;
       transition: width 0.3s ease;
     }
@@ -115,7 +115,7 @@
     }
     
     .start-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--surface-dark);
       color: white;
       border: none;
       padding: 16px 40px;
@@ -326,7 +326,7 @@
         
         .submit-btn {
           padding: 12px 30px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: var(--surface-dark);
           color: white;
           border: none;
           border-radius: 25px;
@@ -372,7 +372,6 @@
         position: absolute;
         inset: 0;
         background: rgba(255,255,255,0.6);
-        backdrop-filter: blur(1px);
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -812,7 +811,7 @@
         transition: all 0.3s ease;
         
         &.restart-btn {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: var(--surface-dark);
           color: white;
           border: none;
           

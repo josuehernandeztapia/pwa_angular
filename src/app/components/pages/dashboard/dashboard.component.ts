@@ -12,7 +12,7 @@ import { DevKpiMiniComponent } from '../../shared/dev-kpi-mini.component';
 import { ActivityItem, HumanActivityFeedComponent } from '../../shared/human-activity-feed/human-activity-feed.component';
 import { ActionButton, NextBestActionData, NextBestActionHeroComponent } from '../../shared/next-best-action-hero/next-best-action-hero.component';
 import { RiskRadarClient, RiskRadarComponent } from '../../shared/risk-radar/risk-radar.component';
-import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.component';
+import { IconComponent } from '../../../icon/icon.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +26,7 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     HumanActivityFeedComponent,
     ClientModeToggleComponent,
     DevKpiMiniComponent,
-    PremiumIconComponent
+    IconComponent
   ],
   template: `
     <div class="command-center-dashboard ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
@@ -34,13 +34,13 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       <header class="command-header ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
         <div class="command-title-section">
           <h1 class="command-title">
-            <app-premium-icon
+            <app-icon
               class="command-icon"
               iconName="cotizador"
               size="lg"
               [showLabel]="false"
               ariaLabel="Centro de Comando">
-            </app-premium-icon>
+            </app-icon>
             Centro de Comando
           </h1>
           <p class="command-subtitle">Tu plan de acción para hoy, Ricardo.</p>
@@ -59,12 +59,12 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
               [class.active]="currentViewMode === 'client'"
               (click)="toggleProfileDropdown()"
             >
-              <app-premium-icon
+              <app-icon
                 iconName="entregas"
                 size="xs"
                 [showLabel]="false"
                 ariaLabel="Modo Cliente">
-              </app-premium-icon>
+              </app-icon>
               Modo Cliente
             </button>
           </div>
@@ -76,12 +76,12 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
         <section class="next-best-action-hero ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
           <div class="hero-header">
             <h2 class="hero-title">
-              <app-premium-icon
+              <app-icon
                 iconName="simulador"
                 size="md"
                 [showLabel]="false"
                 ariaLabel="Tu Próxima Mejor Acción">
-              </app-premium-icon>
+              </app-icon>
               TU PRÓXIMA MEJOR ACCIÓN
             </h2>
           </div>
@@ -97,12 +97,12 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
         <section class="intelligence-grid">
           <div class="kpis-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h3 class="section-title">
-              <app-premium-icon
+              <app-icon
                 iconName="cotizador"
                 size="sm"
                 [showLabel]="false"
                 ariaLabel="KPIs Clave">
-              </app-premium-icon>
+              </app-icon>
               KPIs Clave (vs. Semana Pasada)
             </h3>
             <app-contextual-kpis 
@@ -116,13 +116,13 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
           
           <div class="risk-radar-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h3 class="section-title">
-              <app-premium-icon
+              <app-icon
                 iconName="proteccion"
                 size="sm"
                 [showLabel]="false"
                 variant="error"
                 ariaLabel="Radar de Riesgo">
-              </app-premium-icon>
+              </app-icon>
               Radar de Riesgo
             </h3>
             <p class="section-subtitle">(Visualización de clientes por Health Score)</p>
@@ -137,12 +137,12 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
         <!-- Feed de Actividad Humano -->
         <section class="human-activity-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
           <h2 class="section-title">
-            <app-premium-icon
+            <app-icon
               iconName="avi"
               size="sm"
               [showLabel]="false"
               ariaLabel="Feed de Actividad en Tiempo Real">
-            </app-premium-icon>
+            </app-icon>
             Feed de Actividad en Tiempo Real
           </h2>
           <div class="activity-feed-container">
@@ -163,8 +163,8 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       min-height: 100vh;
       background: var(--bg-gray-950);
       background-image: 
-        radial-gradient(circle at 25% 25%, var(--primary-cyan-900) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, var(--accent-amber-900) 0%, transparent 50%);
+        radial-gradient(circle at 25% 25%, var(--brand) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, var(--warning) 0%, transparent 50%);
     }
 
     /* ===== PREMIUM HEADER ===== */
@@ -175,7 +175,6 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       padding: 24px 32px;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
       border-radius: 0 0 24px 24px;
       margin-bottom: 32px;
       box-shadow: var(--shadow-premium);
@@ -194,7 +193,7 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       margin: 0;
       font-size: 2rem;
       font-weight: 800;
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       letter-spacing: -0.025em;
     }
 
@@ -202,16 +201,16 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       margin-right: 8px;
     }
 
-    .command-icon app-premium-icon {
+    .command-icon app-icon {
       animation: glow-pulse 3s ease-in-out infinite;
     }
 
     @keyframes glow-pulse {
       0%, 100% { 
-        filter: drop-shadow(0 0 10px var(--primary-cyan-400));
+        filter: drop-shadow(0 0 10px var(--brand));
       }
       50% { 
-        filter: drop-shadow(0 0 20px var(--accent-amber-500));
+        filter: drop-shadow(0 0 20px var(--warning));
       }
     }
 
@@ -242,7 +241,7 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     }
 
     .client-mode-badge {
-      background: var(--accent-amber-500);
+      background: var(--warning);
       color: var(--bg-gray-950);
       padding: 8px 16px;
       border: none;
@@ -263,8 +262,8 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     }
 
     .client-mode-badge.active {
-      background: var(--accent-amber-400);
-      box-shadow: 0 0 20px var(--accent-amber-500);
+      background: var(--warning);
+      box-shadow: 0 0 20px var(--warning);
     }
 
     /* ===== MAIN DASHBOARD LAYOUT ===== */
@@ -281,7 +280,6 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     .next-best-action-hero {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
       border-radius: 24px;
       padding: 32px;
       box-shadow: var(--shadow-premium);
@@ -296,7 +294,7 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: linear-gradient(135deg, var(--primary-cyan-400), transparent, var(--accent-amber-500));
+      background: var(--surface-dark);
       border-radius: 24px;
       z-index: -1;
       opacity: 0.5;
@@ -310,7 +308,7 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     .hero-title {
       font-size: 1.8rem;
       font-weight: 800;
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       margin: 0;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -330,7 +328,6 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     .kpis-section, .risk-radar-section {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
       border-radius: 24px;
       padding: 32px;
       box-shadow: var(--shadow-premium);
@@ -339,7 +336,7 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     .section-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       margin: 0 0 8px 0;
       display: flex;
       align-items: center;
@@ -357,7 +354,6 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     .human-activity-section {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
       border-radius: 24px;
       padding: 32px;
       box-shadow: var(--shadow-premium);

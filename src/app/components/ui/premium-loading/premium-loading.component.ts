@@ -20,12 +20,12 @@ export type LoadingSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type LoadingVariant = 'primary' | 'secondary' | 'accent' | 'neutral';
 
 @Component({
-  selector: 'app-premium-loading',
+  selector: 'app-loading',
   standalone: true,
   imports: [CommonModule],
   template: `
     <div
-      class="premium-loading"
+      class="ui-loading"
       [class]="getLoadingClasses()"
       [attr.data-testid]="'loading-' + type"
       [attr.aria-label]="ariaLabel"
@@ -92,7 +92,7 @@ export type LoadingVariant = 'primary' | 'secondary' | 'accent' | 'neutral';
     </div>
   `,
   styles: [`
-    .premium-loading {
+    .ui-loading {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -142,7 +142,7 @@ export type LoadingVariant = 'primary' | 'secondary' | 'accent' | 'neutral';
 
     .skeleton-line {
       height: 12px;
-      background: linear-gradient(90deg, var(--bg) 25%, transparent 50%, var(--bg) 75%);
+      background: var(--surface-dark);
       background-size: 200% 100%;
       border-radius: 6px;
       margin-bottom: 8px;
@@ -242,7 +242,7 @@ export type LoadingVariant = 'primary' | 'secondary' | 'accent' | 'neutral';
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--color), rgba(6, 182, 212, 0.7));
+      background: var(--surface-dark);
       border-radius: 4px;
       transition: width 0.3s ease;
     }
@@ -369,7 +369,7 @@ export class PremiumLoadingComponent implements OnInit, OnDestroy {
 
   getLoadingClasses(): string {
     return [
-      'premium-loading',
+      'ui-loading',
       `loading--${this.size}`,
       `loading--${this.variant}`,
       `loading--${this.type}`

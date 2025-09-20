@@ -208,7 +208,7 @@ import { NotificationHistory } from '../../../models/notification';
 
     .permission-banner {
       padding: 16px 20px;
-      background: linear-gradient(135deg, #06d6a0, #059669);
+      background: var(--surface-dark);
       color: white;
     }
 

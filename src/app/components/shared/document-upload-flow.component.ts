@@ -354,7 +354,7 @@ interface FlowContext {
   styles: [`
     .document-upload-flow {
       min-height: 100vh;
-      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+      background: var(--surface-dark);
       padding: 20px;
     }
 
@@ -384,7 +384,6 @@ interface FlowContext {
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      backdrop-filter: blur(4px);
     }
 
     .ocr-preview-container {
@@ -404,7 +403,7 @@ interface FlowContext {
       justify-content: space-between;
       align-items: center;
       padding: 24px 32px;
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      background: var(--surface-dark);
       color: white;
     }
 
@@ -449,7 +448,7 @@ interface FlowContext {
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      background: var(--surface-dark);
       transition: width 0.3s ease;
       border-radius: 4px;
     }

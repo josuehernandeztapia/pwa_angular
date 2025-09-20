@@ -1,36 +1,6 @@
 @layer components {
-  .ui-card {
-    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] border border-[var(--border)] rounded-lg p-4;
-  }
-
-  .ui-input {
-    @apply border border-[var(--border)] rounded px-3 py-2 w-full focus:ring-1;
-  }
-  .ui-input:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 25%, transparent);
-  }
-
-  .ui-btn {
-    @apply inline-flex items-center justify-center rounded px-4 py-2 font-medium;
-  }
-
-  .ui-btn-primary { @apply text-white; background: var(--brand); }
-  .ui-btn-primary:hover { opacity: .9; }
-
-  .ui-btn-secondary { @apply border; border-color: var(--border); }
-  .ui-btn-secondary:hover { background: var(--border); }
-
-  .ui-btn-ghost { color: var(--text-1); }
-  .dark .ui-btn-ghost { color: var(--text-1); }
-  .ui-btn-ghost:hover { background: color-mix(in oklab, var(--border) 30%, transparent); }
-  .ui-btn-ghost { @apply rounded px-2 py-2; }
-
-  .ui-card-hover { @apply transition; }
-  .ui-card-hover:hover { @apply shadow-md; }
-
-  .ui-card-header { @apply border-b pb-2 mb-2; border-color: var(--border); }
-  .ui-card-body { color: var(--text-1); }
-
-  .ui-grid-cols-3 { @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4; }
+  .ui-card { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; padding: 16px; }
+  .ui-input { background: var(--surface-dark); color: var(--text-primary); border: 1px solid var(--border-dark); border-radius: 8px; padding: 10px 12px; width: 100%; }
+  .btn-primary { background: var(--brand); color: #fff; border: none; border-radius: 10px; padding: 12px 16px; font-weight: 700; cursor: pointer; }
+  .btn-secondary { background: var(--surface-dark); color: var(--text-primary); border: 1px solid var(--border-dark); border-radius: 10px; padding: 12px 16px; font-weight: 700; cursor: pointer; }
 }

@@ -529,7 +529,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       align-items: center;
       gap: 20px;
       padding: 24px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: var(--surface-dark);
       color: white;
       border: none;
       border-radius: 16px;
@@ -547,7 +547,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      background: var(--surface-dark);
       transition: left 0.5s;
     }
 

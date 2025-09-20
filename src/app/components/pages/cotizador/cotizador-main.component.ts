@@ -111,7 +111,7 @@ interface AmortizationRow {
             <div class="context-grid">
               <div class="form-group">
                 <label for="market">Mercado</label>
-                <select id="market" [(ngModel)]="market" (change)="onMarketChange()" class="premium-select ui-input">
+                <select id="market" [(ngModel)]="market" (change)="onMarketChange()" class="ui-input ui-input">
                   <option value="">-- Elige --</option>
                   <option value="aguascalientes">Aguascalientes</option>
                   <option value="edomex">Estado de México</option>
@@ -119,7 +119,7 @@ interface AmortizationRow {
               </div>
               <div class="form-group">
                 <label for="clientType">Tipo de Cliente</label>
-                <select id="clientType" [(ngModel)]="clientType" (change)="onClientTypeChange()" [disabled]="!market" class="premium-select ui-input">
+                <select id="clientType" [(ngModel)]="clientType" (change)="onClientTypeChange()" [disabled]="!market" class="ui-input ui-input">
                   <option value="">-- Elige --</option>
                   <option value="individual">Individual</option>
                   <option value="colectivo" *ngIf="market === 'edomex'">Crédito Colectivo</option>
@@ -129,13 +129,13 @@ interface AmortizationRow {
           </div>
 
           <!-- Loading State -->
-          <div *ngIf="isLoading" class="loading-state premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+          <div *ngIf="isLoading" class="loading-state ui-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <div class="loading-spinner"></div>
             <p>Cargando paquete...</p>
           </div>
 
           <!-- Package Components -->
-          <div *ngIf="pkg" class="package-section premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+          <div *ngIf="pkg" class="package-section ui-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
             <h4 class="section-title primary">2. Paquete de Producto</h4>
             <div class="components-list">
               <div *ngFor="let comp of pkg.components" class="component-item">
@@ -170,7 +170,7 @@ interface AmortizationRow {
                     id="downPaymentAmount" 
                     [(ngModel)]="downPaymentAmountDirect"
                     (input)="onDownPaymentDirectChange()"
-                    class="premium-input ui-input"
+                    class="ui-input ui-input"
                     placeholder="Ej: 400000"
                   />
                 </div>
@@ -178,7 +178,7 @@ interface AmortizationRow {
               
               <div *ngIf="!isVentaDirecta">
                 <h4 class="section-title primary">3. Estructura Financiera</h4>
-                <div class="financial-controls premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+                <div class="financial-controls ui-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
                   <div class="form-group">
                     <label for="downPayment">Enganche ({{ downPaymentPercentage }}%)</label>
                     <input 
@@ -188,7 +188,7 @@ interface AmortizationRow {
                       max="90"
                       [(ngModel)]="downPaymentPercentage"
                       (input)="onDownPaymentSliderChange()"
-                      class="form-range premium-input ui-input"
+                      class="form-range ui-input ui-input"
                       [attr.aria-describedby]="'dp-note'"
                       [attr.title]="'Ajusta el % de enganche. Mínimo según política y paquete'"
                     />
@@ -199,7 +199,7 @@ interface AmortizationRow {
                   
                   <div class="form-group">
                     <label for="term">Plazo (meses)</label>
-                    <select id="term" [(ngModel)]="term" (change)="onTermChange()" class="premium-select ui-input" title="Selecciona el plazo del financiamiento en meses">
+                    <select id="term" [(ngModel)]="term" (change)="onTermChange()" class="ui-input ui-input" title="Selecciona el plazo del financiamiento en meses">
                       <option *ngFor="let t of pkg.terms" [value]="t">{{ t }} meses</option>
                     </select>
                   </div>
@@ -220,7 +220,7 @@ interface AmortizationRow {
                     id="initialDown"
                     [(ngModel)]="initialDownPayment"
                     (input)="onSavingsConfigChange()"
-                    class="premium-input ui-input" title="Monto de enganche disponible al inicio"
+                    class="ui-input ui-input" title="Monto de enganche disponible al inicio"
                     placeholder="Ej: 400000"
                   />
                 </div>
@@ -233,7 +233,7 @@ interface AmortizationRow {
                     max="6"
                     [(ngModel)]="deliveryTerm"
                     (input)="onSavingsConfigChange()"
-                    class="form-range premium-input ui-input" title="Mes estimado de entrega"
+                    class="form-range ui-input ui-input" title="Mes estimado de entrega"
                   />
                 </div>
               </div>
@@ -249,7 +249,7 @@ interface AmortizationRow {
                     max="20"
                     [(ngModel)]="tandaMembers"
                     (input)="onTandaMembersChange()"
-                    class="form-range premium-input ui-input" title="Número de integrantes del grupo"
+                    class="form-range ui-input ui-input" title="Número de integrantes del grupo"
                   />
                 </div>
               </div>
@@ -265,14 +265,14 @@ interface AmortizationRow {
                     step="500"
                     [(ngModel)]="voluntaryContribution"
                     (input)="onSavingsConfigChange()"
-                    class="form-range premium-input ui-input" title="Aportación voluntaria mensual"
+                    class="form-range ui-input ui-input" title="Aportación voluntaria mensual"
                   />
                   <input 
                     type="number" 
                     id="voluntary"
                     [(ngModel)]="voluntaryContribution"
                     (input)="onSavingsConfigChange()"
-                    class="premium-input ui-input"
+                    class="ui-input ui-input"
                   />
                 </div>
               </div>

@@ -70,10 +70,10 @@ export interface MarketProductCompatibility {
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <div class="flow-builder-container premium-container">
+    <div class="flow-builder-container ">
       
       <!-- Header -->
-      <div class="flow-builder-header premium-card">
+      <div class="flow-builder-header ui-card">
         <div class="header-left">
           <h1>🎨 Flow Builder</h1>
           <span class="subtitle">Crear ciudad/flujo visualmente</span>
@@ -88,7 +88,7 @@ export interface MarketProductCompatibility {
       <div class="flow-builder-content">
         
         <!-- Nodes Palette Sidebar -->
-        <div class="nodes-palette premium-card">
+        <div class="nodes-palette ui-card">
           <div class="palette-header">
             <h3>📦 Componentes</h3>
             <input 
@@ -149,7 +149,7 @@ export interface MarketProductCompatibility {
         </div>
 
         <!-- Main Canvas -->
-        <div class="flow-canvas-container premium-card">
+        <div class="flow-canvas-container ui-card">
           <div class="canvas-toolbar">
             <div class="zoom-controls">
               <button class="zoom-btn" (click)="zoomOut()">➖</button>

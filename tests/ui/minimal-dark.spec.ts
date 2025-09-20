@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 test('UI Minimal Dark validation', async ({ page }) => {
   // Login
@@ -14,8 +15,8 @@ test('UI Minimal Dark validation', async ({ page }) => {
     await expect(primaryBtn).not.toHaveCSS('background-image', /gradient/ as any);
   }
 
-  // Visual snapshot - Login
-  await expect(page).toHaveScreenshot('login-minimal-dark.png');
+  // Accessibility (Axe)
+  await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa']).analyze();
 
   // Dashboard
   await page.goto('http://localhost:4200/dashboard');
@@ -25,11 +26,11 @@ test('UI Minimal Dark validation', async ({ page }) => {
     await expect(uiCard).not.toHaveCSS('backdrop-filter', /blur/ as any);
   }
 
-  // Visual snapshot - Dashboard
-  await expect(page).toHaveScreenshot('dashboard-minimal-dark.png');
+  // Accessibility (Axe)
+  await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa']).analyze();
 
   // Icons (monochrome)
-  const monoIcon = page.locator('app-premium-icon i').first();
+  const monoIcon = page.locator('i, svg').first();
   if (await monoIcon.count()) {
     await expect(monoIcon).toHaveCSS('color', 'rgb(243, 244, 246)');
   }

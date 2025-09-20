@@ -132,8 +132,6 @@ export interface ActionButton {
     .next-best-action-hero {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
       border-radius: 20px;
       padding: 32px;
       margin-bottom: 32px;
@@ -148,7 +146,7 @@ export interface ActionButton {
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, var(--accent-amber-500), var(--primary-cyan-400));
+      background: var(--surface-dark);
       opacity: 0.8;
     }
 
@@ -169,7 +167,7 @@ export interface ActionButton {
       height: 60px;
       border-radius: 50%;
       background: rgba(245, 158, 11, 0.1);
-      border: 2px solid var(--accent-amber-500);
+      border: 2px solid var(--warning);
     }
 
     .priority-pulse {
@@ -185,11 +183,11 @@ export interface ActionButton {
     }
 
     .priority-high {
-      background: radial-gradient(circle, var(--accent-amber-500) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--warning) 0%, transparent 70%);
     }
 
     .priority-medium {
-      background: radial-gradient(circle, var(--primary-cyan-400) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--brand) 0%, transparent 70%);
     }
 
     @keyframes pulse-priority {
@@ -209,7 +207,7 @@ export interface ActionButton {
     }
 
     .hero-title {
-      color: var(--accent-amber-400);
+      color: var(--warning);
       font-size: 1.8rem;
       font-weight: 700;
       margin: 0 0 4px 0;
@@ -228,7 +226,7 @@ export interface ActionButton {
       align-items: center;
       gap: 8px;
       background: rgba(34, 211, 238, 0.1);
-      border: 1px solid var(--primary-cyan-400);
+      border: 1px solid var(--brand);
       border-radius: 12px;
       padding: 8px 16px;
     }
@@ -238,7 +236,7 @@ export interface ActionButton {
     }
 
     .time-text {
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       font-weight: 600;
       font-size: 0.9rem;
     }
@@ -265,7 +263,7 @@ export interface ActionButton {
       width: 64px;
       height: 64px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
+      background: var(--surface-dark);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -293,8 +291,8 @@ export interface ActionButton {
     }
 
     .health-excellent { background: var(--success-500); color: white; }
-    .health-good { background: var(--primary-cyan-400); color: white; }
-    .health-warning { background: var(--accent-amber-500); color: var(--bg-gray-950); }
+    .health-good { background: var(--brand); color: white; }
+    .health-warning { background: var(--warning); color: var(--bg-gray-950); }
     .health-critical { background: var(--error-500); color: white; }
 
     .client-details {
@@ -314,7 +312,7 @@ export interface ActionButton {
 
     .route-badge {
       background: rgba(34, 211, 238, 0.2);
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       padding: 4px 10px;
       border-radius: 8px;
       font-size: 0.8rem;
@@ -348,7 +346,7 @@ export interface ActionButton {
     }
 
     .reasoning-title {
-      color: var(--accent-amber-400);
+      color: var(--warning);
       font-weight: 600;
       font-size: 1rem;
     }
@@ -380,7 +378,7 @@ export interface ActionButton {
     }
 
     .metric-value {
-      color: var(--accent-amber-300);
+      color: var(--warning);
       font-weight: 700;
       font-size: 0.9rem;
     }

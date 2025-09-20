@@ -19,25 +19,25 @@ import { ToastService } from '../../../services/toast.service';
       </header>
       
       <div class="reports-grid">
-        <div class="report-card premium-card">
+        <div class="report-card ui-card">
           <h3>📈 Reporte de Simulaciones</h3>
           <p>Resumen de todas las simulaciones realizadas</p>
           <button (click)="generateSimulationsReport()" class="report-btn">📄 Generar PDF</button>
         </div>
         
-        <div class="report-card premium-card">
+        <div class="report-card ui-card">
           <h3>💼 Reporte de Cotizaciones</h3>
           <p>Historial de cotizaciones y ventas</p>
           <button (click)="generateQuotesReport()" class="report-btn">📄 Generar PDF</button>
         </div>
         
-        <div class="report-card premium-card">
+        <div class="report-card ui-card">
           <h3>👥 Reporte de Clientes</h3>
           <p>Base de datos de clientes activos</p>
           <button (click)="generateClientsReport()" class="report-btn">📄 Generar PDF</button>
         </div>
         
-        <div class="report-card premium-card">
+        <div class="report-card ui-card">
           <h3>📊 Análisis Financiero</h3>
           <p>Métricas y análisis de rendimiento</p>
           <button (click)="generateFinancialReport()" class="report-btn">📄 Generar PDF</button>

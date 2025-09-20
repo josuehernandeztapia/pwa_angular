@@ -164,7 +164,7 @@ import { AVISystemValidatorService, ValidationReport } from '../../services/avi-
       }
       
       .run-btn {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: var(--surface-dark);
         color: white;
         border: none;
         padding: 15px 30px;
@@ -222,17 +222,17 @@ import { AVISystemValidatorService, ValidationReport } from '../../services/avi-
       
       &.passed {
         border-color: #4CAF50;
-        background: linear-gradient(135deg, #e8f5e8 0%, #f1f8e9 100%);
+        background: var(--surface-dark);
       }
       
       &.failed {
         border-color: #f44336;
-        background: linear-gradient(135deg, #ffebee 0%, #fce4ec 100%);
+        background: var(--surface-dark);
       }
       
       &.error {
         border-color: #ff9800;
-        background: linear-gradient(135deg, #fff3e0 0%, #fff8e1 100%);
+        background: var(--surface-dark);
       }
       
       .status-header {

@@ -43,7 +43,6 @@ interface BottomNavItem {
       z-index: 1000;
       display: flex;
       background: rgba(45, 55, 72, 0.95);
-      backdrop-filter: blur(20px);
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
@@ -104,7 +103,7 @@ interface BottomNavItem {
       right: -4px;
       min-width: 16px;
       height: 16px;
-      background: linear-gradient(135deg, #e53e3e, #c53030);
+      background: var(--surface-dark);
       color: white;
       border-radius: 8px;
       font-size: 10px;
@@ -147,7 +146,7 @@ interface BottomNavItem {
       transform: translateX(-50%);
       width: 20px;
       height: 3px;
-      background: linear-gradient(90deg, #06d6a0, #04d9ff);
+      background: var(--surface-dark);
       border-radius: 0 0 2px 2px;
       animation: slide-in 0.3s ease;
     }

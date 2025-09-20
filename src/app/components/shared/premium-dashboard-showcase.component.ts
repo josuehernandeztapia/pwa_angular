@@ -7,7 +7,7 @@ import { Component, OnInit, OnDestroy, ChangeDetectionStrategy, signal } from '@
 import { CommonModule } from '@angular/common';
 import { Subject, interval, takeUntil } from 'rxjs';
 
-import { PremiumIconComponent } from './premium-icon/premium-icon.component';
+import { IconComponent } from ../icon/icon.component';
 import { HumanMessageComponent } from './human-message/human-message.component';
 import { PremiumIconsService } from '../../services/premium-icons.service';
 import { HumanMicrocopyService } from '../../services/human-microcopy.service';
@@ -32,13 +32,13 @@ interface SystemStatus {
 @Component({
   selector: 'app-premium-dashboard-showcase',
   standalone: true,
-  imports: [CommonModule, PremiumIconComponent, HumanMessageComponent],
+  imports: [CommonModule, IconComponent, HumanMessageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="premium-dashboard command-center-layout">
       <!-- Dashboard Header with Welcome Message -->
       <header class="dashboard-header animate-fluid-enter">
-        <div class="header-content premium-container">
+        <div class="header-content ">
           <div class="welcome-section">
             <app-human-message
               microcopyId="welcome-first-time"
@@ -54,12 +54,12 @@ interface SystemStatus {
               *ngFor="let status of systemStatuses(); trackBy: trackByStatus"
               class="status-indicator"
               [ngClass]="'status-' + status.status">
-              <app-premium-icon 
+              <app-icon 
                 [iconName]="getStatusIcon(status.status)"
                 [theme]="getStatusTheme(status.status)"
                 size="sm"
                 [animate]="status.status !== 'healthy'">
-              </app-premium-icon>
+              </app-icon>
               <span class="status-label">{{ status.component }}</span>
             </div>
           </div>
@@ -67,10 +67,10 @@ interface SystemStatus {
       </header>
 
       <!-- Key Metrics Dashboard -->
-      <section class="metrics-section premium-container">
+      <section class="metrics-section ">
         <div class="section-header">
           <h2 class="section-title text-gradient-primary">
-            <app-premium-icon iconName="dashboard-insights" size="lg" theme="primary"></app-premium-icon>
+            <app-icon iconName="dashboard-insights" size="lg" theme="primary"></app-icon>
             Métricas en Tiempo Real
           </h2>
         </div>
@@ -78,28 +78,28 @@ interface SystemStatus {
         <div class="metrics-grid stagger-container">
           <div 
             *ngFor="let metric of dashboardMetrics(); let i = index; trackBy: trackByMetric"
-            class="metric-card premium-card card-premium-interact stagger-item animate-kpi-count-up"
+            class="metric-card ui-card card-premium-interact stagger-item animate-kpi-count-up"
             [style.--stagger-index]="i">
             
             <!-- Metric Icon with Animation -->
             <div class="metric-icon">
-              <app-premium-icon 
+              <app-icon 
                 [iconName]="metric.iconName"
                 [semanticContext]="metric.semanticContext"
                 size="xl"
                 [animate]="true">
-              </app-premium-icon>
+              </app-icon>
             </div>
 
             <!-- Metric Value -->
             <div class="metric-value">
               <span class="value animate-kpi-count-up">{{ formatMetricValue(metric.value) }}</span>
               <div class="metric-change" [ngClass]="'trend-' + metric.trend">
-                <app-premium-icon 
+                <app-icon 
                   [iconName]="getTrendIcon(metric.trend)"
                   size="sm"
                   [theme]="getTrendTheme(metric.trend)">
-                </app-premium-icon>
+                </app-icon>
                 {{ formatChange(metric.change) }}%
               </div>
             </div>
@@ -111,19 +111,19 @@ interface SystemStatus {
       </section>
 
       <!-- Interactive Success Demonstrations -->
-      <section class="demo-section premium-container">
+      <section class="demo-section ">
         <div class="section-header">
           <h2 class="section-title text-gradient-primary">
-            <app-premium-icon iconName="integration-active" size="lg" theme="primary"></app-premium-icon>
+            <app-icon iconName="integration-active" size="lg" theme="primary"></app-icon>
             Sistema de Experiencia Premium
           </h2>
         </div>
 
         <div class="demo-grid">
           <!-- Payment Success Demo -->
-          <div class="demo-card premium-card card-premium-interact">
+          <div class="demo-card ui-card card-premium-interact">
             <h3>
-              <app-premium-icon iconName="payment-processing" size="md" theme="success"></app-premium-icon>
+              <app-icon iconName="payment-processing" size="md" theme="success"></app-icon>
               Procesamiento de Pagos
             </h3>
             
@@ -134,18 +134,18 @@ interface SystemStatus {
             </app-human-message>
 
             <button 
-              class="demo-button btn-premium-hover btn-primary gpu-accelerated"
+              class="demo-button btn-primary btn-primary gpu-accelerated"
               (click)="triggerPaymentSuccess()"
               [class.animate-payment-success]="paymentSuccessTriggered()">
-              <app-premium-icon iconName="action-save" size="sm"></app-premium-icon>
+              <app-icon iconName="action-save" size="sm"></app-icon>
               Simular Pago Exitoso
             </button>
           </div>
 
           <!-- Contract Signing Demo -->
-          <div class="demo-card premium-card card-premium-interact">
+          <div class="demo-card ui-card card-premium-interact">
             <h3>
-              <app-premium-icon iconName="protection-shield" size="md" theme="info"></app-premium-icon>
+              <app-icon iconName="protection-shield" size="md" theme="info"></app-icon>
               Firma Digital
             </h3>
             
@@ -156,18 +156,18 @@ interface SystemStatus {
             </app-human-message>
 
             <button 
-              class="demo-button btn-premium-hover btn-accent gpu-accelerated"
+              class="demo-button btn-primary btn-accent gpu-accelerated"
               (click)="triggerContractSigning()"
               [class.animate-contract-signed]="contractSignedTriggered()">
-              <app-premium-icon iconName="customer-verification" size="sm"></app-premium-icon>
+              <app-icon iconName="customer-verification" size="sm"></app-icon>
               Simular Firma
             </button>
           </div>
 
           <!-- KYC Verification Demo -->
-          <div class="demo-card premium-card card-premium-interact">
+          <div class="demo-card ui-card card-premium-interact">
             <h3>
-              <app-premium-icon iconName="customer-verification" size="md" theme="success"></app-premium-icon>
+              <app-icon iconName="customer-verification" size="md" theme="success"></app-icon>
               Verificación KYC
             </h3>
             
@@ -178,10 +178,10 @@ interface SystemStatus {
             </app-human-message>
 
             <button 
-              class="demo-button btn-premium-hover btn-secondary gpu-accelerated"
+              class="demo-button btn-primary btn-secondary gpu-accelerated"
               (click)="triggerKYCVerification()"
               [class.animate-success-pulse]="kycVerifiedTriggered()">
-              <app-premium-icon iconName="system-healthy" size="sm"></app-premium-icon>
+              <app-icon iconName="system-healthy" size="sm"></app-icon>
               Verificar Cliente
             </button>
           </div>
@@ -189,17 +189,17 @@ interface SystemStatus {
       </section>
 
       <!-- Loading States Demo -->
-      <section class="loading-demo-section premium-container">
+      <section class="loading-demo-section ">
         <div class="section-header">
           <h2 class="section-title text-gradient-primary">
-            <app-premium-icon iconName="system-processing" size="lg" theme="info"></app-premium-icon>
+            <app-icon iconName="system-processing" size="lg" theme="info"></app-icon>
             Estados de Carga Premium
           </h2>
         </div>
 
         <div class="loading-grid">
           <!-- Shimmer Loading -->
-          <div class="loading-demo premium-card">
+          <div class="loading-demo ui-card">
             <h4>Shimmer Effect</h4>
             <div class="shimmer-container animate-shimmer">
               <div class="shimmer-line"></div>
@@ -209,7 +209,7 @@ interface SystemStatus {
           </div>
 
           <!-- Pulsing Dots -->
-          <div class="loading-demo premium-card">
+          <div class="loading-demo ui-card">
             <h4>Pulsing Dots</h4>
             <div class="dots-container">
               <div class="dot animate-pulsing-dots"></div>
@@ -219,25 +219,25 @@ interface SystemStatus {
           </div>
 
           <!-- Spinner -->
-          <div class="loading-demo premium-card">
+          <div class="loading-demo ui-card">
             <h4>Smart Spinner</h4>
             <div class="spinner-container">
-              <app-premium-icon 
+              <app-icon 
                 iconName="system-processing" 
                 size="xl" 
                 theme="primary"
                 [customClasses]="'animate-loading-spinner'">
-              </app-premium-icon>
+              </app-icon>
             </div>
           </div>
         </div>
       </section>
 
       <!-- Contextual Guidance Examples -->
-      <section class="guidance-section premium-container">
+      <section class="guidance-section ">
         <div class="section-header">
           <h2 class="section-title text-gradient-primary">
-            <app-premium-icon iconName="customer-communication" size="lg" theme="primary"></app-premium-icon>
+            <app-icon iconName="customer-communication" size="lg" theme="primary"></app-icon>
             Mensajería Contextual
           </h2>
         </div>
@@ -275,8 +275,6 @@ interface SystemStatus {
       background: var(--glass-bg);
       border-bottom: 1px solid var(--glass-border);
       padding: 2rem 0;
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
     }
 
     .header-content {
@@ -353,7 +351,7 @@ interface SystemStatus {
     .value {
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       display: block;
       margin-bottom: 0.5rem;
     }
@@ -461,7 +459,7 @@ interface SystemStatus {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background: var(--primary-cyan-400);
+      background: var(--brand);
     }
 
     .spinner-container {

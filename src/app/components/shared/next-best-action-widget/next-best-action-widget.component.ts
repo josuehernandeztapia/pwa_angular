@@ -136,7 +136,6 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
       padding: 20px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
       border: 1px solid rgba(0, 0, 0, 0.06);
-      backdrop-filter: blur(10px);
     }
 
     /* Header */
@@ -155,7 +154,7 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
     }
 
     .icon-container {
-      background: linear-gradient(135deg, #06d6a0, #04d9ff);
+      background: var(--surface-dark);
       border-radius: 12px;
       padding: 10px;
       box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
@@ -278,17 +277,17 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
     /* Priority styling */
     .action-card.priority-critical {
       border-left: 4px solid #dc2626;
-      background: linear-gradient(90deg, rgba(239, 68, 68, 0.05), #fafafa);
+      background: var(--surface-dark);
     }
 
     .action-card.priority-high {
       border-left: 4px solid #f59e0b;
-      background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), #fafafa);
+      background: var(--surface-dark);
     }
 
     .action-card.priority-medium {
       border-left: 4px solid #3b82f6;
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), #fafafa);
+      background: var(--surface-dark);
     }
 
     .action-card.priority-low {
@@ -510,7 +509,7 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
 
     .skeleton-card {
       height: 120px;
-      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+      background: var(--surface-dark);
       background-size: 200% 100%;
       animation: loading 1.5s infinite;
       border-radius: 12px;

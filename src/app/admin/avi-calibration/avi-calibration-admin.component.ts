@@ -6,7 +6,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { PremiumIconComponent } from '../../components/premium-icon/premium-icon.component';
+import { IconComponent } from '../../componen../icon/icon.component';
 import { HumanMessageComponent } from '../../components/human-message/human-message.component';
 
 interface CalibrationResult {
@@ -37,18 +37,18 @@ interface CalibrationResult {
 @Component({
   selector: 'app-avi-calibration-admin',
   standalone: true,
-  imports: [CommonModule, PremiumIconComponent, HumanMessageComponent],
+  imports: [CommonModule, IconComponent, HumanMessageComponent],
   template: `
     <div class="calibration-admin">
       <!-- Header -->
       <div class="admin-header">
         <div class="header-content">
           <div class="header-title">
-            <app-premium-icon 
+            <app-icon 
               name="voice-analysis" 
               [size]="32"
               class="header-icon">
-            </app-premium-icon>
+            </app-icon>
             <div>
               <h1>AVI Calibration Center</h1>
               <p>Real-time voice analysis calibration metrics</p>
@@ -59,11 +59,11 @@ interface CalibrationResult {
             [class.loading]="runningCalibration"
             (click)="runNewCalibration()"
             [disabled]="runningCalibration">
-            <app-premium-icon 
+            <app-icon 
               name="refresh" 
               [size]="20"
               [class.spinning]="runningCalibration">
-            </app-premium-icon>
+            </app-icon>
             {{ runningCalibration ? 'Running...' : 'Run New Calibration' }}
           </button>
         </div>
@@ -74,11 +74,11 @@ interface CalibrationResult {
         <div class="status-card" [attr.data-status]="latestResult.gateStatus">
           <div class="status-header">
             <div class="status-indicator">
-              <app-premium-icon 
+              <app-icon 
                 [name]="getStatusIcon(latestResult.gateStatus)"
                 [size]="24"
                 [class]="'status-' + latestResult.gateStatus.toLowerCase()">
-              </app-premium-icon>
+              </app-icon>
               <span class="status-text">{{ latestResult.gateStatus }}</span>
             </div>
             <span class="last-updated">
@@ -185,7 +185,7 @@ interface CalibrationResult {
       <!-- Loading State -->
       <div class="loading-overlay" *ngIf="runningCalibration">
         <div class="loading-content">
-          <app-premium-icon name="voice-analysis" [size]="48" class="loading-icon"></app-premium-icon>
+          <app-icon name="voice-analysis" [size]="48" class="loading-icon"></app-icon>
           <h3>Running AVI Calibration...</h3>
           <p>Analyzing voice samples and calculating metrics</p>
           <div class="loading-progress">
@@ -206,7 +206,7 @@ interface CalibrationResult {
     }
 
     .admin-header {
-      background: linear-gradient(135deg, #1a2332, #0B1220);
+      background: var(--surface-dark);
       border-radius: 16px;
       padding: 32px;
       margin-bottom: 24px;
@@ -233,7 +233,7 @@ interface CalibrationResult {
       margin: 0;
       font-size: 32px;
       font-weight: 700;
-      background: linear-gradient(135deg, #3AA6FF, #22D3EE);
+      background: var(--surface-dark);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -522,7 +522,7 @@ interface CalibrationResult {
 
     .progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, #3AA6FF, #22D3EE);
+      background: var(--surface-dark);
       border-radius: 8px;
       transition: width 0.3s ease;
     }

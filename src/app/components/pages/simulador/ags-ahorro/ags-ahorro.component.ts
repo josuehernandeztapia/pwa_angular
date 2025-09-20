@@ -26,7 +26,7 @@ import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-pan
       </div>
 
       <!-- Resumen KPIs -->
-      <div class="premium-card kpi-summary" *ngIf="!isLoading">
+      <div class="ui-card kpi-summary" *ngIf="!isLoading">
         <h2 class="section-title">Resumen</h2>
         <div class="kpi-grid">
           <div class="kpi-item">
@@ -46,7 +46,7 @@ import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-pan
 
       <div class="simulator-content grid-aside" *ngIf="!isLoading" data-loading="false">
         <!-- Left: Configuration Panel -->
-        <div class="premium-card config-panel">
+        <div class="ui-card config-panel">
           <form [formGroup]="simuladorForm">
             
             <!-- Unidad y Valor -->
@@ -136,7 +136,7 @@ import { SummaryPanelComponent } from '../../../shared/summary-panel/summary-pan
         ></app-summary-panel>
 
         <!-- Results Panel (left column visual details) -->
-        <div class="premium-card results-panel" *ngIf="currentScenario">
+        <div class="ui-card results-panel" *ngIf="currentScenario">
           <h3>📈 Proyección de Ahorro AGS</h3>
           
           <!-- Key Metrics -->

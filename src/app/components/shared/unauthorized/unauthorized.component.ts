@@ -90,7 +90,7 @@ import { AuthService } from '../../../services/auth.service';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+      background: var(--surface-dark);
       padding: 20px;
     }
 
@@ -102,7 +102,6 @@ import { AuthService } from '../../../services/auth.service';
       max-width: 500px;
       width: 100%;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(10px);
     }
 
     .error-illustration {
@@ -163,7 +162,7 @@ import { AuthService } from '../../../services/auth.service';
     .user-avatar {
       width: 60px;
       height: 60px;
-      background: linear-gradient(135deg, #4299e1, #3182ce);
+      background: var(--surface-dark);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -233,12 +232,12 @@ import { AuthService } from '../../../services/auth.service';
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #4299e1, #3182ce);
+      background: var(--surface-dark);
       color: white;
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #3182ce, #2c5282);
+      background: var(--surface-dark);
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(66, 153, 225, 0.3);
     }
@@ -305,7 +304,7 @@ import { AuthService } from '../../../services/auth.service';
     }
 
     .logout-btn {
-      background: linear-gradient(135deg, #e53e3e, #c53030);
+      background: var(--surface-dark);
       color: white;
       border: none;
       padding: 10px 20px;
@@ -320,7 +319,7 @@ import { AuthService } from '../../../services/auth.service';
     }
 
     .logout-btn:hover {
-      background: linear-gradient(135deg, #c53030, #9c2626);
+      background: var(--surface-dark);
       transform: translateY(-1px);
     }
 

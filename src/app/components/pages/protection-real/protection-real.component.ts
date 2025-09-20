@@ -463,7 +463,7 @@ import { Client } from '../../../models/types';
     }
 
     .eligibility-banner {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+      background: var(--surface-dark);
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 24px;
@@ -786,7 +786,7 @@ import { Client } from '../../../models/types';
     .progress-fill {
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, #06d6a0, #10b981);
+      background: var(--surface-dark);
       animation: progress-fill 3s ease-in-out infinite;
     }
 

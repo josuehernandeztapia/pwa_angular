@@ -3,7 +3,7 @@
 
 .simulator-hub {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: var(--surface-dark);
   padding: 24px;
 }
 
@@ -17,7 +17,7 @@
     font-weight: 800;
     color: #1e293b;
     margin: 0 0 8px 0;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    background: var(--surface-dark);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -92,7 +92,7 @@
     color: #92400e;
 
     &:hover {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      background: var(--surface-dark);
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15);
     }
@@ -103,7 +103,7 @@
     color: #1d4ed8;
 
     &:hover {
-      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      background: var(--surface-dark);
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
     }
@@ -114,7 +114,7 @@
     color: #6d28d9;
 
     &:hover {
-      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      background: var(--surface-dark);
       transform: translateY(-4px);
       box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
     }
@@ -177,7 +177,7 @@
 }
 
 .context-banner {
-  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  background: var(--surface-dark);
   color: white;
   padding: 16px 24px;
   border-radius: 12px;
@@ -202,7 +202,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--surface-dark);
 }
 
 .redirect-content {
@@ -286,12 +286,12 @@
 
   &.draft {
     border-color: #f59e0b;
-    background: linear-gradient(135deg, #fef9e7, #ffffff);
+    background: var(--surface-dark);
   }
 
   &.completed {
     border-color: #10b981;
-    background: linear-gradient(135deg, #ecfdf5, #ffffff);
+    background: var(--surface-dark);
   }
 
   &:hover {
@@ -305,7 +305,7 @@
 
   &.selected-for-comparison {
     border-color: #3b82f6;
-    background: linear-gradient(135deg, #dbeafe, #ffffff);
+    background: var(--surface-dark);
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
   }
@@ -491,7 +491,7 @@
 
 .compare-btn {
   padding: 14px 28px;
-  background: linear-gradient(135deg, #10b981, #059669);
+  background: var(--surface-dark);
   color: white;
   border: none;
   border-radius: 8px;
@@ -501,7 +501,7 @@
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: linear-gradient(135deg, #059669, #047857);
+    background: var(--surface-dark);
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
   }
@@ -580,7 +580,6 @@
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
 }
 
 .comparison-modal-content {
@@ -600,7 +599,7 @@
   align-items: center;
   padding: 24px 32px;
   border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  background: var(--surface-dark);
 
   h2 {
     font-size: 24px;
@@ -687,10 +686,10 @@
 }
 
 .highlight-row {
-  background: linear-gradient(135deg, #fef3c7, #fbbf24);
+  background: var(--surface-dark);
 
   &:hover {
-    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    background: var(--surface-dark);
   }
 }
 

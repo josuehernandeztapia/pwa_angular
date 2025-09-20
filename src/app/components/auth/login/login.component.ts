@@ -26,12 +26,12 @@ import { Router } from '@angular/router';
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="command-center-form">
           <div class="form-group">
-            <label for="email" class="premium-label">📧 Correo Electrónico</label>
+            <label for="email" class="ui-label">📧 Correo Electrónico</label>
             <input
               id="email"
               type="email"
               formControlName="email"
-              class="premium-input ui-input"
+              class="ui-input ui-input"
               [class.error]="isFieldInvalid('email')"
               placeholder="ricardo.montoya@cmu.com"
             >
@@ -46,19 +46,19 @@ import { Router } from '@angular/router';
           </div>
 
           <div class="form-group password-group">
-            <label for="password" class="premium-label">🔒 Contraseña</label>
+            <label for="password" class="ui-label">🔒 Contraseña</label>
             <div class="password-input-container">
               <input
                 id="password"
                 [type]="showPassword ? 'text' : 'password'"
                 formControlName="password"
-                class="premium-input ui-input password-input"
+                class="ui-input ui-input password-input"
                 [class.error]="isFieldInvalid('password')"
                 placeholder="••••••••••••"
               >
               <button
                 type="button"
-                class="password-toggle-premium"
+                class="password-toggle"
                 (click)="togglePassword()"
               >
                 {{ showPassword ? '👁️' : '🙈' }}
@@ -110,7 +110,7 @@ import { Router } from '@angular/router';
 
         <div class="command-center-footer">
           <div class="register-section">
-            <p class="register-text">¿Nuevo asesor? <a [attr.href]="'/register'" class="premium-link">Activar Cuenta</a></p>
+            <p class="register-text">¿Nuevo asesor? <a [attr.href]="'/register'" class="ui-link">Activar Cuenta</a></p>
           </div>
           
           <div class="security-badge">
@@ -167,14 +167,14 @@ import { Router } from '@angular/router';
       left: 20%;
       width: 4px;
       height: 4px;
-      background: var(--primary-cyan-400);
+      background: var(--brand);
       border-radius: 50%;
       animation: pulse-node 3s ease-in-out infinite;
       box-shadow: 
-        0 0 20px var(--primary-cyan-400),
-        200px 100px 0 var(--accent-amber-500),
-        400px 300px 0 var(--primary-cyan-300),
-        600px 150px 0 var(--accent-amber-400);
+        0 0 20px var(--brand),
+        200px 100px 0 var(--warning),
+        400px 300px 0 var(--brand),
+        600px 150px 0 var(--warning);
     }
 
     @keyframes pulse-node {
@@ -194,13 +194,7 @@ import { Router } from '@angular/router';
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(
-        45deg, 
-        transparent 45%, 
-        var(--primary-cyan-800) 46%, 
-        var(--primary-cyan-800) 47%, 
-        transparent 48%
-      );
+      background: var(--surface-dark);
       animation: slide-lines 8s linear infinite;
     }
 
@@ -213,8 +207,6 @@ import { Router } from '@angular/router';
     .command-center-card {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
       border-radius: 24px;
       padding: 48px;
       width: 100%;
@@ -232,7 +224,7 @@ import { Router } from '@angular/router';
       left: -1px;
       right: -1px;
       bottom: -1px;
-      background: linear-gradient(135deg, var(--primary-cyan-400), transparent, var(--accent-amber-500));
+      background: var(--surface-dark);
       border-radius: 24px;
       z-index: -1;
       opacity: 0.3;
@@ -259,11 +251,11 @@ import { Router } from '@angular/router';
     @keyframes rotate-glow {
       0%, 100% { 
         transform: rotate(0deg);
-        filter: drop-shadow(0 0 10px var(--primary-cyan-400));
+        filter: drop-shadow(0 0 10px var(--brand));
       }
       50% { 
         transform: rotate(5deg);
-        filter: drop-shadow(0 0 20px var(--accent-amber-500));
+        filter: drop-shadow(0 0 20px var(--warning));
       }
     }
 
@@ -295,8 +287,8 @@ import { Router } from '@angular/router';
       gap: 10px;
     }
 
-    .premium-label {
-      color: var(--primary-cyan-300);
+    .ui-label {
+      color: var(--brand);
       font-weight: 600;
       font-size: 0.95rem;
       letter-spacing: 0.025em;
@@ -310,7 +302,7 @@ import { Router } from '@angular/router';
       padding-right: 50px !important;
     }
 
-    .password-toggle-premium {
+    .password-toggle {
       position: absolute;
       right: 14px;
       top: 50%;
@@ -325,12 +317,12 @@ import { Router } from '@angular/router';
       transition: all 0.2s ease;
     }
 
-    .password-toggle-premium:hover {
+    .password-toggle:hover {
       background: rgba(255, 255, 255, 0.1);
-      color: var(--primary-cyan-300);
+      color: var(--brand);
     }
 
-    .premium-input.error {
+    .ui-input.error {
       border-color: var(--error-500);
       background: rgba(239, 68, 68, 0.05);
     }
@@ -365,13 +357,13 @@ import { Router } from '@angular/router';
     .remember-me input[type="checkbox"] {
       width: 18px;
       height: 18px;
-      accent-color: var(--primary-cyan-400);
+      accent-color: var(--brand);
     }
 
     .forgot-password {
       background: none;
       border: none;
-      color: var(--accent-amber-500);
+      color: var(--warning);
       font-size: 0.9rem;
       cursor: pointer;
       text-decoration: none;
@@ -380,7 +372,7 @@ import { Router } from '@angular/router';
     }
 
     .forgot-password:hover {
-      color: var(--accent-amber-400);
+      color: var(--warning);
       text-decoration: underline;
     }
 
@@ -464,15 +456,15 @@ import { Router } from '@angular/router';
       font-size: 0.95rem;
     }
 
-    .premium-link {
-      color: var(--primary-cyan-400);
+    .ui-link {
+      color: var(--brand);
       text-decoration: none;
       font-weight: 600;
       transition: all 0.2s ease;
     }
 
-    .premium-link:hover {
-      color: var(--primary-cyan-300);
+    .ui-link:hover {
+      color: var(--brand);
       text-decoration: underline;
     }
 
@@ -510,7 +502,7 @@ import { Router } from '@angular/router';
     }
 
     .demo-title {
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       font-weight: 600;
       font-size: 1rem;
     }
@@ -534,7 +526,7 @@ import { Router } from '@angular/router';
     }
 
     .credential-value {
-      color: var(--primary-cyan-200);
+      color: var(--brand);
       font-size: 0.9rem;
       font-family: 'Courier New', monospace;
       background: rgba(34, 211, 238, 0.1);

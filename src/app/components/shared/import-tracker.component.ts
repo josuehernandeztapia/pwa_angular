@@ -52,7 +52,7 @@ interface ImportMilestone {
               class="progress-fill h-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full transition-all duration-500"
               [style.width.%]="getOverallProgress()"
             ></div>
-            <div class="progress-percentage absolute -top-6 right-0 text-sm font-medium text-primary-cyan-400">
+            <div class="progress-percentage absolute -top-6 right-0 text-sm font-medium text-[var(--brand)]">
               {{ getOverallProgress() }}% Completado
             </div>
           </div>
@@ -87,7 +87,7 @@ interface ImportMilestone {
                     <button 
                       *ngIf="getMilestoneStatus(milestone) === 'pending' && canUpdate(milestone)"
                       (click)="updateMilestone(milestone.key); $event.stopPropagation()"
-                      class="update-btn px-3 py-1 bg-primary-cyan-600 hover:bg-primary-cyan-700 text-white rounded-lg text-sm font-medium transition-colors"
+                      class="update-btn px-3 py-1 bg-[var(--brand)] hover:bg-[var(--brand)] text-white rounded-lg text-sm font-medium transition-colors"
                     >
                       Actualizar
                     </button>
@@ -238,7 +238,7 @@ interface ImportMilestone {
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #3b82f6, #10b981);
+      background: var(--surface-dark);
     }
 
     .icon-container {

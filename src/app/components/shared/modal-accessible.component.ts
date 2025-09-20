@@ -14,7 +14,7 @@ import { FocusTrapService } from '../../services/focus-trap.service';
       [attr.aria-hidden]="!open"
     >
       <div
-        class="dialog premium-card"
+        class="dialog ui-card"
         role="dialog"
         [attr.aria-modal]="true"
         [attr.aria-labelledby]="ariaLabelledby || null"

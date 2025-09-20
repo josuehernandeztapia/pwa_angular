@@ -65,7 +65,7 @@ import { Document, DocumentStatus } from '../../models/types';
               <button 
                 *ngIf="document.status === 'Pendiente'"
                 (click)="onUpload.emit(document.id)"
-                class="upload-btn px-4 py-2 bg-primary-cyan-600 hover:bg-primary-cyan-700 text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
+                class="upload-btn px-4 py-2 bg-[var(--brand)] hover:bg-[var(--brand)] text-white rounded-lg text-sm font-medium transition-colors flex items-center gap-2"
               >
                 <span class="upload-icon">📄</span>
                 Subir
@@ -96,7 +96,7 @@ import { Document, DocumentStatus } from '../../models/types';
             <div class="progress-info">
               <div class="flex justify-between text-sm mb-2">
                 <span class="text-gray-400">Progreso del Convenio</span>
-                <span class="text-primary-cyan-400 font-medium">{{ getConvenioProgress() }}%</span>
+                <span class="text-[var(--brand)] font-medium">{{ getConvenioProgress() }}%</span>
               </div>
               <div class="progress-bar w-full bg-gray-700 rounded-full h-2">
                 <div 
@@ -120,7 +120,7 @@ import { Document, DocumentStatus } from '../../models/types';
             <p class="text-xs text-gray-400 mt-1">Estado general de documentos de garantía</p>
           </div>
           <div class="summary-stats text-right">
-            <div class="text-2xl font-bold text-primary-cyan-400">{{ getApprovedCount() }}/{{ documents.length }}</div>
+            <div class="text-2xl font-bold text-[var(--brand)]">{{ getApprovedCount() }}/{{ documents.length }}</div>
             <div class="text-xs text-gray-400">Aprobados</div>
           </div>
         </div>
@@ -184,7 +184,7 @@ import { Document, DocumentStatus } from '../../models/types';
       left: 0;
       right: 0;
       height: 4px;
-      background: linear-gradient(90deg, #0891b2, #10b981);
+      background: var(--surface-dark);
     }
 
     .icon-container {

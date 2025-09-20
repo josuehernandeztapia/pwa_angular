@@ -296,12 +296,12 @@ interface PipelineStats {
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #48bb78, #38a169);
+      background: var(--surface-dark);
       color: white;
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #38a169, #2f855a);
+      background: var(--surface-dark);
       transform: translateY(-1px);
     }
 
@@ -547,7 +547,7 @@ interface PipelineStats {
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #4299e1, #63b3ed);
+      background: var(--surface-dark);
       transition: width 0.3s ease;
     }
 

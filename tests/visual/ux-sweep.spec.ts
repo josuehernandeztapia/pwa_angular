@@ -130,7 +130,7 @@ test.describe('UX Sweep (visual + a11y + layout)', () => {
         await applyAntiFlakyStyles(page);
 
         // Basic presence
-        await expect(page.locator('main, [role="main"], .premium-container').first()).toBeVisible({ timeout: 15000 });
+        await expect(page.locator('main, [role="main"], div[class*="container"]').first()).toBeVisible({ timeout: 15000 });
 
         // Accessibility (critical/serious)
         await injectAxe(page);

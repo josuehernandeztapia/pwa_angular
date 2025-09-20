@@ -366,7 +366,7 @@
 .balance-bar {
   flex: 1;
   min-width: 24px;
-  background: linear-gradient(to top, #3b82f6, #60a5fa);
+  background: var(--surface-dark);
   border-radius: 2px 2px 0 0;
   position: relative;
   cursor: pointer;
@@ -374,7 +374,7 @@
 }
 
 .balance-bar:hover {
-  background: linear-gradient(to top, #2563eb, #3b82f6);
+  background: var(--surface-dark);
 }
 
 .bar-label {
@@ -485,22 +485,22 @@
 }
 
 .voice-btn {
-  background: linear-gradient(135deg, #3b82f6, #1e40af);
+  background: var(--surface-dark);
   color: white;
 }
 
 .voice-btn:hover {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  background: var(--surface-dark);
   transform: translateY(-1px);
 }
 
 .whatsapp-btn {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: var(--surface-dark);
   color: white;
 }
 
 .whatsapp-btn:hover {
-  background: linear-gradient(135deg, #16a34a, #15803d);
+  background: var(--surface-dark);
   transform: translateY(-1px);
 }
 
@@ -756,7 +756,7 @@
 }
 
 /* KPI Summary */
-.premium-card.kpi-summary {
+.ui-card.kpi-summary {
   padding: 16px 20px;
   margin-bottom: 24px;
 }

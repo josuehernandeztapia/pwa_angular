@@ -113,7 +113,7 @@ test.describe('Premium visual across modules', () => {
         await page.waitForSelector('h1', { timeout: 15000 });
       }
       // Check that a container exists and has background applied
-      const container = page.locator('div[class*="container"], .premium-container');
+      const container = page.locator('div[class*="container"], main, [role="main"]');
       await expect(container.first()).toBeVisible({ timeout: 15000 });
       await applyAntiFlakyStyles(page);
       // Basic header presence if known

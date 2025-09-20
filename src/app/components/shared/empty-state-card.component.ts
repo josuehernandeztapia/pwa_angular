@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
   standalone: true,
   imports: [CommonModule],
   template: `
-    <section class="premium-card" role="status" aria-live="polite">
+    <section class="ui-card" role="status" aria-live="polite">
       <div class="media" aria-hidden="true">{{ icon }}</div>
       <h3 class="section-title">{{ title }}</h3>
       <p class="helper-text">{{ subtitle }}</p>

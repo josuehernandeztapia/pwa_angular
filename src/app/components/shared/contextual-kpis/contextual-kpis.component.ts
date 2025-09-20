@@ -91,8 +91,6 @@ export interface KPIData {
     .kpi-card {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
       border-radius: 16px;
       padding: 24px;
       position: relative;
@@ -115,8 +113,8 @@ export interface KPIData {
       border-radius: 16px 16px 0 0;
     }
 
-    .kpi-primary::before { background: var(--primary-cyan-400); }
-    .kpi-accent::before { background: var(--accent-amber-500); }
+    .kpi-primary::before { background: var(--brand); }
+    .kpi-accent::before { background: var(--warning); }
     .kpi-success::before { background: var(--success-500); }
     .kpi-warning::before { background: var(--warning-500); }
     .kpi-error::before { background: var(--error-500); }
@@ -174,21 +172,21 @@ export interface KPIData {
       font-weight: 800;
       line-height: 1;
       margin-bottom: 8px;
-      background: linear-gradient(135deg, var(--bg-gray-100), var(--bg-gray-300));
+      background: var(--surface-dark);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .kpi-primary .kpi-value {
-      background: linear-gradient(135deg, var(--primary-cyan-300), var(--primary-cyan-500));
+      background: var(--surface-dark);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .kpi-accent .kpi-value {
-      background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
+      background: var(--surface-dark);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -223,15 +221,15 @@ export interface KPIData {
     }
 
     .trend-fill-up {
-      background: linear-gradient(90deg, var(--success-500), var(--success-400));
+      background: var(--surface-dark);
     }
 
     .trend-fill-down {
-      background: linear-gradient(90deg, var(--error-500), var(--error-400));
+      background: var(--surface-dark);
     }
 
     .trend-fill-stable {
-      background: linear-gradient(90deg, var(--bg-gray-500), var(--bg-gray-400));
+      background: var(--surface-dark);
     }
 
     @media (max-width: 768px) {

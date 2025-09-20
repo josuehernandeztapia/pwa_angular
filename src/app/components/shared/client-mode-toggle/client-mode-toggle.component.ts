@@ -65,15 +65,13 @@ export type ViewMode = 'advisor' | 'client';
       gap: 16px;
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
       padding: 12px 20px;
       border-radius: 16px;
       transition: all 0.3s ease;
     }
 
     .toggle-container:hover {
-      border-color: var(--primary-cyan-400);
+      border-color: var(--brand);
       box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.1);
     }
 
@@ -101,7 +99,7 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .client-mode .mode-icon {
-      filter: drop-shadow(0 0 8px var(--accent-amber-400));
+      filter: drop-shadow(0 0 8px var(--warning));
     }
 
     .mode-text {
@@ -111,7 +109,7 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .client-mode .mode-text {
-      color: var(--accent-amber-400);
+      color: var(--warning);
     }
 
     .toggle-button {
@@ -140,8 +138,8 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .toggle-slider.slider-client {
-      background: linear-gradient(135deg, var(--accent-amber-500), var(--accent-amber-600));
-      border-color: var(--accent-amber-400);
+      background: var(--surface-dark);
+      border-color: var(--warning);
       box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
     }
 
@@ -151,7 +149,7 @@ export type ViewMode = 'advisor' | 'client';
       left: 2px;
       width: 26px;
       height: 26px;
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-500));
+      background: var(--surface-dark);
       border-radius: 50%;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
@@ -162,7 +160,7 @@ export type ViewMode = 'advisor' | 'client';
 
     .slider-client .slider-handle {
       transform: translateX(28px);
-      background: linear-gradient(135deg, var(--bg-gray-950), var(--bg-gray-800));
+      background: var(--surface-dark);
       box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
     }
 
@@ -179,11 +177,11 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .toggle-button:hover .toggle-text {
-      color: var(--primary-cyan-300);
+      color: var(--brand);
     }
 
     .client-mode .toggle-button:hover .toggle-text {
-      color: var(--accent-amber-300);
+      color: var(--warning);
     }
 
     .mode-description {
@@ -200,7 +198,7 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .client-description p {
-      color: var(--accent-amber-300);
+      color: var(--warning);
     }
 
     /* ===== TRANSITION OVERLAY ===== */
@@ -211,8 +209,6 @@ export type ViewMode = 'advisor' | 'client';
       right: 0;
       bottom: 0;
       background: rgba(3, 7, 18, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -268,7 +264,7 @@ export type ViewMode = 'advisor' | 'client';
     .loading-dots span {
       width: 8px;
       height: 8px;
-      background: var(--primary-cyan-400);
+      background: var(--brand);
       border-radius: 50%;
       animation: loading-pulse 1.4s infinite ease-in-out both;
     }
@@ -330,7 +326,7 @@ export type ViewMode = 'advisor' | 'client';
 
     /* ===== ACCESSIBILITY ===== */
     .toggle-button:focus {
-      outline: 2px solid var(--primary-cyan-400);
+      outline: 2px solid var(--brand);
       outline-offset: 2px;
       border-radius: 8px;
     }

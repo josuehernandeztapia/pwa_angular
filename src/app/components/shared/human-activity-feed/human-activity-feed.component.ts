@@ -143,8 +143,6 @@ export interface ActivityItem {
     .activity-feed-container {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
       border-radius: 20px;
       padding: 28px;
       margin-bottom: 32px;
@@ -186,8 +184,8 @@ export interface ActivityItem {
     }
 
     .filter-btn.active {
-      background: var(--primary-cyan-400);
-      border-color: var(--primary-cyan-400);
+      background: var(--brand);
+      border-color: var(--brand);
       color: white;
     }
 
@@ -207,7 +205,7 @@ export interface ActivityItem {
     }
 
     .activity-stream::-webkit-scrollbar-thumb {
-      background: var(--primary-cyan-600);
+      background: var(--brand);
       border-radius: 2px;
     }
 
@@ -221,7 +219,7 @@ export interface ActivityItem {
 
     .activity-item.priority-high {
       background: rgba(245, 158, 11, 0.05);
-      border-left: 3px solid var(--accent-amber-500);
+      border-left: 3px solid var(--warning);
       padding-left: 16px;
       border-radius: 0 8px 8px 0;
     }
@@ -247,39 +245,39 @@ export interface ActivityItem {
     }
 
     .category-payment {
-      background: linear-gradient(135deg, var(--success-500), var(--success-600));
+      background: var(--surface-dark);
       color: white;
     }
 
     .category-document {
-      background: linear-gradient(135deg, var(--info-500), var(--info-600));
+      background: var(--surface-dark);
       color: white;
     }
 
     .category-communication {
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
+      background: var(--surface-dark);
       color: white;
     }
 
     .category-opportunity {
-      background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
+      background: var(--surface-dark);
       color: var(--bg-gray-950);
     }
 
     .category-renewal {
-      background: linear-gradient(135deg, var(--warning-500), var(--warning-600));
+      background: var(--surface-dark);
       color: white;
     }
 
     .category-achievement {
-      background: linear-gradient(135deg, var(--success-400), var(--success-500));
+      background: var(--surface-dark);
       color: white;
     }
 
     .timeline-line {
       width: 2px;
       height: 40px;
-      background: linear-gradient(to bottom, var(--glass-border), transparent);
+      background: var(--surface-dark);
       margin-top: 8px;
     }
 
@@ -317,12 +315,12 @@ export interface ActivityItem {
 
     .type-advisor {
       background: rgba(34, 211, 238, 0.2);
-      color: var(--primary-cyan-400);
+      color: var(--brand);
     }
 
     .type-client {
       background: rgba(245, 158, 11, 0.2);
-      color: var(--accent-amber-400);
+      color: var(--warning);
     }
 
     .type-automated {
@@ -381,7 +379,7 @@ export interface ActivityItem {
     }
 
     .suggested-action-btn {
-      background: linear-gradient(135deg, var(--accent-amber-500), var(--accent-amber-600));
+      background: var(--surface-dark);
       color: var(--bg-gray-950);
       border: none;
       padding: 8px 16px;
@@ -457,17 +455,17 @@ export interface ActivityItem {
 
     /* Highlight mentions and important text */
     .activity-description ::ng-deep .highlight {
-      color: var(--accent-amber-400);
+      color: var(--warning);
       font-weight: 600;
     }
 
     .activity-description ::ng-deep .client-name {
-      color: var(--primary-cyan-300);
+      color: var(--brand);
       font-weight: 600;
     }
 
     .activity-description ::ng-deep .action-suggestion {
-      color: var(--accent-amber-400);
+      color: var(--warning);
       font-weight: 600;
     }
 

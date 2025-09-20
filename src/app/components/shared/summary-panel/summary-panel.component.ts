@@ -9,7 +9,7 @@ export type SummaryAction = { label: string; click: () => void };
   standalone: true,
   imports: [CommonModule],
   template: `
-    <aside class="premium-card aside" aria-labelledby="summary-title">
+    <aside class="ui-card aside" aria-labelledby="summary-title">
       <div class="section-header">
         <h2 id="summary-title" class="section-title">Resumen</h2>
       </div>

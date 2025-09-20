@@ -322,12 +322,12 @@ import {
       </div>
 
       <!-- Loading State (placeholder estable) -->
-      <section *ngIf="loading()" class="premium-card loading-placeholder" role="status" aria-live="polite" aria-busy="true">
+      <section *ngIf="loading()" class="ui-card loading-placeholder" role="status" aria-live="polite" aria-busy="true">
         Cargando entregas...
       </section>
 
       <!-- Empty State -->
-      <section *ngIf="!loading() && filteredDeliveries().length === 0" class="premium-card empty-placeholder" role="status" aria-live="polite">
+      <section *ngIf="!loading() && filteredDeliveries().length === 0" class="ui-card empty-placeholder" role="status" aria-live="polite">
         0 pedidos — ajusta los filtros para ver resultados.
       </section>
 
@@ -608,7 +608,7 @@ import {
 
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #06d6a0, #10b981);
+      background: var(--surface-dark);
       transition: width 0.3s ease;
     }
 

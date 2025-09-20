@@ -353,7 +353,7 @@ interface StorageStatistics {
     .success-summary {
       margin-top: 32px;
       padding: 24px;
-      background: linear-gradient(to right, #064e3b, #1e3a8a);
+      background: var(--surface-dark);
       border-radius: 8px;
     }
 

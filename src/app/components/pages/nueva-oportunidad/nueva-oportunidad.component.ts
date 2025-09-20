@@ -27,7 +27,7 @@ interface WizardStep {
     <div class="nueva-oportunidad-container command-container">
       <div class="header-section">
         <div class="breadcrumb">
-          <button class="back-btn premium-button outline" (click)="goBack()" [attr.aria-label]="'Volver'">
+          <button class="back-btn btn-primary outline" (click)="goBack()" [attr.aria-label]="'Volver'">
             ⬅️ Regresar
           </button>
           <h1 class="command-title">💎 Generador de Oportunidades Inteligente</h1>
@@ -70,7 +70,7 @@ interface WizardStep {
         </div>
         
         <!-- Draft Recovery Banner -->
-        <div class="draft-banner premium-card" *ngIf="hasDraftAvailable && !draftRecovered">
+        <div class="draft-banner ui-card" *ngIf="hasDraftAvailable && !draftRecovered">
           <div class="banner-content">
             <span class="banner-icon">💾</span>
             <div class="banner-text">
@@ -78,15 +78,15 @@ interface WizardStep {
               <p>Tienes una oportunidad sin terminar del {{ formatDraftDate(draftData.timestamp) }}</p>
             </div>
             <div class="banner-actions">
-              <button class="premium-button" (click)="recoverDraft()">Continuar</button>
-              <button class="premium-button secondary" (click)="discardDraft()">Descartar</button>
+              <button class="btn-primary" (click)="recoverDraft()">Continuar</button>
+              <button class="btn-primary secondary" (click)="discardDraft()">Descartar</button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="form-container">
-        <form [formGroup]="opportunityForm" (ngSubmit)="onSubmit()" class="opportunity-form premium-card">
+        <form [formGroup]="opportunityForm" (ngSubmit)="onSubmit()" class="opportunity-form ui-card">
           
           <!-- Step 1: Client Information -->
           <div class="form-section">
@@ -99,7 +99,7 @@ interface WizardStep {
                   id="clientName"
                   type="text"
                   formControlName="clientName"
-                  class="premium-input"
+                  class="ui-input"
                   [class.error]="isFieldInvalid('clientName')"
                   [attr.aria-invalid]="isFieldInvalid('clientName')"
                   [attr.aria-describedby]="getErrorId('clientName')"
@@ -170,7 +170,7 @@ interface WizardStep {
                   </div>
                 </div>
                 <div class="continue-anyway">
-                  <button type="button" class="premium-button outline" (click)="clearSimilarClients()">
+                  <button type="button" class="btn-primary outline" (click)="clearSimilarClients()">
                     Continuar con cliente nuevo
                   </button>
                 </div>
@@ -483,7 +483,7 @@ interface WizardStep {
                 </div>
                 <div *ngIf="errorEcosystems" class="ecosystem-error">
                   <p>Ocurrió un error al cargar ecosistemas.</p>
-                  <button class="premium-button secondary" type="button" (click)="reloadEcosystems()">Reintentar</button>
+                  <button class="btn-primary secondary" type="button" (click)="reloadEcosystems()">Reintentar</button>
                 </div>
               </ng-template>
             </div>
@@ -510,7 +510,7 @@ interface WizardStep {
           <div class="form-actions" *ngIf="opportunityType">
             <button 
               type="button" 
-              class="premium-button secondary"
+              class="btn-primary secondary"
               (click)="saveDraft()"
               [disabled]="isLoading"
             >
@@ -519,7 +519,7 @@ interface WizardStep {
             
             <button 
               type="submit" 
-              class="premium-button"
+              class="btn-primary"
               [disabled]="opportunityForm.invalid || isLoading"
               [attr.aria-disabled]="opportunityForm.invalid || isLoading ? true : null"
             >

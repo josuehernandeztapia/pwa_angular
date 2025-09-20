@@ -123,8 +123,6 @@ export interface RiskRadarClient {
     .risk-radar-container {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
       border-radius: 20px;
       padding: 28px;
       margin-bottom: 32px;
@@ -177,7 +175,7 @@ export interface RiskRadarClient {
     }
 
     .risk-low { background: var(--success-500); }
-    .risk-medium { background: var(--accent-amber-500); }
+    .risk-medium { background: var(--warning); }
     .risk-high { background: var(--warning-500); }
     .risk-critical { background: var(--error-500); }
 
@@ -252,7 +250,7 @@ export interface RiskRadarClient {
     .risk-zone-label.warning {
       top: 25%;
       left: 35%;
-      color: var(--accent-amber-400);
+      color: var(--warning);
     }
 
     .risk-zone-label.danger {
@@ -303,7 +301,7 @@ export interface RiskRadarClient {
     }
 
     .pulse-medium {
-      background: radial-gradient(circle, var(--accent-amber-500) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--warning) 0%, transparent 70%);
     }
 
     .pulse-low {
@@ -385,8 +383,8 @@ export interface RiskRadarClient {
     }
 
     .health-excellent { color: var(--success-500); }
-    .health-good { color: var(--primary-cyan-400); }
-    .health-warning { color: var(--accent-amber-500); }
+    .health-good { color: var(--brand); }
+    .health-warning { color: var(--warning); }
     .health-critical { color: var(--error-500); }
 
     .client-metrics {
@@ -413,7 +411,7 @@ export interface RiskRadarClient {
     }
 
     .issues-title {
-      color: var(--accent-amber-400);
+      color: var(--warning);
       font-size: 0.9rem;
       font-weight: 600;
       margin: 0 0 8px 0;
@@ -575,7 +573,7 @@ export class RiskRadarComponent implements OnInit {
       {
         value: stats['medium'] || 0,
         label: 'Atención',
-        color: 'var(--accent-amber-500)'
+        color: 'var(--warning)'
       },
       {
         value: stats['low'] || 0,

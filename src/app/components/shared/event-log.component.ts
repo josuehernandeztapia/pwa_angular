@@ -31,7 +31,7 @@ interface EventGroup {
               <button 
                 (click)="setEventFilter('all')"
                 class="filter-btn px-3 py-1 text-xs font-medium rounded-full transition-colors"
-                [class]="eventFilter === 'all' ? 'bg-primary-cyan-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'"
+                [class]="eventFilter === 'all' ? 'bg-[var(--brand)] text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'"
               >
                 Todos
               </button>
@@ -63,14 +63,14 @@ interface EventGroup {
               <button 
                 (click)="setViewMode('timeline')"
                 class="toggle-btn px-3 py-1 text-xs font-medium rounded-md transition-colors"
-                [class]="viewMode === 'timeline' ? 'bg-primary-cyan-600 text-white' : 'text-gray-300 hover:text-white'"
+                [class]="viewMode === 'timeline' ? 'bg-[var(--brand)] text-white' : 'text-gray-300 hover:text-white'"
               >
                 Timeline
               </button>
               <button 
                 (click)="setViewMode('list')"
                 class="toggle-btn px-3 py-1 text-xs font-medium rounded-md transition-colors"
-                [class]="viewMode === 'list' ? 'bg-primary-cyan-600 text-white' : 'text-gray-300 hover:text-white'"
+                [class]="viewMode === 'list' ? 'bg-[var(--brand)] text-white' : 'text-gray-300 hover:text-white'"
               >
                 Lista
               </button>
@@ -83,15 +83,15 @@ interface EventGroup {
       <div class="timeline-view" *ngIf="viewMode === 'timeline' && filteredEvents.length > 0">
         <div class="timeline-container relative">
           <!-- Timeline Line -->
-          <div class="timeline-line absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-cyan-500 via-primary-cyan-600 to-gray-600"></div>
+          <div class="timeline-line absolute left-8 top-0 bottom-0 w-0.5" style="background-color: var(--brand);"></div>
           
           <!-- Event Groups by Date -->
           <div class="event-groups space-y-8">
             <div *ngFor="let group of getEventGroups(); trackBy: trackByDate" class="event-group">
               <!-- Date Header -->
-              <div class="date-header sticky top-0 z-10 bg-gray-900/80 backdrop-blur-sm py-3 mb-4">
+              <div class="date-header sticky top-0 z-10 bg-gray-900/80 py-3 mb-4">
                 <div class="flex items-center gap-4">
-                  <div class="date-marker w-4 h-4 bg-primary-cyan-500 rounded-full relative z-10 flex-shrink-0 ml-6"></div>
+                  <div class="date-marker w-4 h-4 bg-[var(--brand)] rounded-full relative z-10 flex-shrink-0 ml-6"></div>
                   <h4 class="text-lg font-semibold text-white">{{ group.date }}</h4>
                   <div class="date-line flex-1 h-px bg-gray-700"></div>
                   <span class="event-count px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm">
@@ -294,11 +294,7 @@ interface EventGroup {
     }
 
     .timeline-line {
-      background: linear-gradient(to bottom, 
-        #06b6d4 0%, 
-        #0891b2 50%, 
-        #6b7280 100%
-      );
+      background: var(--brand);
     }
 
     .event-node.payment {
@@ -324,7 +320,6 @@ interface EventGroup {
     .event-card {
       background: rgba(31, 41, 55, 0.5);
       border-color: rgba(75, 85, 99, 0.3);
-      backdrop-filter: blur(4px);
     }
 
     .event-card.payment {
@@ -398,7 +393,6 @@ interface EventGroup {
     }
 
     .date-header {
-      backdrop-filter: blur(8px);
     }
 
     @media (max-width: 768px) {

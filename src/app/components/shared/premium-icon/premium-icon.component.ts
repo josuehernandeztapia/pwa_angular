@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 import { PremiumIconsService, IconConfig } from '../../../services/premium-icons.service';
 
 @Component({
-  selector: 'app-premium-icon',
+  selector: 'app-icon',
   standalone: true,
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -111,7 +111,7 @@ import { PremiumIconsService, IconConfig } from '../../../services/premium-icons
     .h-8 { height: 2rem; }
   `]
 })
-export class PremiumIconComponent implements OnInit {
+export class IconComponent implements OnInit {
   @Input() iconName!: string;
   @Input() size: 'sm' | 'md' | 'lg' | 'xl' = 'md';
   @Input() theme?: 'primary' | 'success' | 'warning' | 'error' | 'neutral' | 'info';

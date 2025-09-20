@@ -12,7 +12,7 @@ import { PremiumIconsService } from '../../services/premium-icons.service';
 import { HumanMicrocopyService } from '../../services/human-microcopy.service';
 
 // Premium component imports (standalone components)
-import { PremiumIconComponent } from '../ui/premium-icon.component';
+import { IconComponent } from '../ui/premium-icon.component';
 import { HumanMessageComponent } from '../ui/human-message.component';
 
 export interface RiskEvaluation {
@@ -87,7 +87,7 @@ export interface RiskEvaluation {
     NgFor,
     AsyncPipe,
     DecimalPipe,
-    PremiumIconComponent,
+    IconComponent,
     HumanMessageComponent
   ],
   template: `
@@ -100,11 +100,11 @@ export interface RiskEvaluation {
       <div *ngIf="isLoading()" 
            class="loading-state animate-pulse"
            [attr.data-testid]="'evaluation-loading'">
-        <app-premium-icon 
+        <app-icon 
           icon-type="spinner"
           semantic-context="loading"
           [animate]="true">
-        </app-premium-icon>
+        </app-icon>
         <app-human-message 
           message-context="loading-evaluation"
           [show-animation]="true">
@@ -118,10 +118,10 @@ export interface RiskEvaluation {
         <div class="evaluation-header">
           <div class="score-section">
             <h3 class="section-title">
-              <app-premium-icon 
+              <app-icon 
                 icon-type="shield"
                 semantic-context="risk-evaluation">
-              </app-premium-icon>
+              </app-icon>
               Evaluación de Riesgo KIBAN/HASE
             </h3>
             
@@ -153,10 +153,10 @@ export interface RiskEvaluation {
             </div>
             
             <div class="score-breakdown">
-              <app-premium-icon 
+              <app-icon 
                 icon-type="chart-bar"
                 semantic-context="analytics">
-              </app-premium-icon>
+              </app-icon>
               <div class="breakdown-details">
                 <div class="breakdown-item">
                   <span>Score Final:</span>
@@ -191,10 +191,10 @@ export interface RiskEvaluation {
         <!-- HASE Risk Category -->
         <div class="hase-section card-section">
           <div class="hase-header">
-            <app-premium-icon 
+            <app-icon 
               icon-type="target"
               semantic-context="risk-analysis">
-            </app-premium-icon>
+            </app-icon>
             <h4>HASE - Análisis Integral</h4>
           </div>
           
@@ -210,10 +210,10 @@ export interface RiskEvaluation {
             <div *ngFor="let factor of riskEvaluation()?.hase.explain" 
                  class="factor-item"
                  [class]="getFactorImpactClass(factor.impact)">
-              <app-premium-icon 
+              <app-icon 
                 [icon-type]="getFactorIcon(factor.factor)"
                 [semantic-context]="'hase-factor'">
-              </app-premium-icon>
+              </app-icon>
               <div class="factor-details">
                 <span class="factor-name">{{ getFactorDisplayName(factor.factor) }}</span>
                 <div class="factor-weight">
@@ -231,10 +231,10 @@ export interface RiskEvaluation {
         <div class="risk-factors-section card-section" 
              *ngIf="riskEvaluation()?.riskFactors && riskEvaluation()?.riskFactors.length > 0">
           <div class="factors-header">
-            <app-premium-icon 
+            <app-icon 
               icon-type="warning-circle"
               semantic-context="risk-factors">
-            </app-premium-icon>
+            </app-icon>
             <h4>Factores de Riesgo Identificados</h4>
           </div>
           
@@ -245,10 +245,10 @@ export interface RiskEvaluation {
                  [attr.data-testid]="'risk-reason'">
               
               <div class="factor-icon">
-                <app-premium-icon 
+                <app-icon 
                   [icon-type]="getSeverityIcon(factor.severity)"
                   [semantic-context]="'risk-severity'">
-                </app-premium-icon>
+                </app-icon>
               </div>
               
               <div class="factor-content">
@@ -278,10 +278,10 @@ export interface RiskEvaluation {
         <!-- Decision Section -->
         <div class="decision-section card-section">
           <div class="decision-header">
-            <app-premium-icon 
+            <app-icon 
               [icon-type]="getDecisionIcon()"
               [semantic-context]="'decision'">
-            </app-premium-icon>
+            </app-icon>
             <h4>Decisión Final</h4>
           </div>
           
@@ -321,10 +321,10 @@ export interface RiskEvaluation {
         <div class="financial-recommendations card-section" 
              *ngIf="riskEvaluation()?.financialRecommendations">
           <div class="recommendations-header">
-            <app-premium-icon 
+            <app-icon 
               icon-type="calculator"
               semantic-context="financial-advice">
-            </app-premium-icon>
+            </app-icon>
             <h4>Recomendaciones Financieras</h4>
           </div>
           
@@ -377,10 +377,10 @@ export interface RiskEvaluation {
         <div class="next-steps-section card-section" 
              *ngIf="riskEvaluation()?.nextSteps || getSuggestions().length > 0">
           <div class="steps-header">
-            <app-premium-icon 
+            <app-icon 
               icon-type="checklist"
               semantic-context="action-items">
-            </app-premium-icon>
+            </app-icon>
             <h4>Siguientes Pasos</h4>
           </div>
           
@@ -400,10 +400,10 @@ export interface RiskEvaluation {
                  [attr.data-testid]="'mitigation-cta'">
               
               <button *ngIf="suggestion.includes('aval')" 
-                      class="btn btn-premium-hover"
+                      class="btn btn-primary"
                       [attr.data-testid]="'add-guarantor-btn'"
                       (click)="onAddGuarantor()">
-                <app-premium-icon icon-type="user-plus" semantic-context="guarantor"></app-premium-icon>
+                <app-icon icon-type="user-plus" semantic-context="guarantor"></app-icon>
                 Agregar Aval
               </button>
               
@@ -411,7 +411,7 @@ export interface RiskEvaluation {
                       class="btn btn-secondary"
                       [attr.data-testid]="'reduce-term-btn'"
                       (click)="onReduceTerm()">
-                <app-premium-icon icon-type="clock" semantic-context="term-adjustment"></app-premium-icon>
+                <app-icon icon-type="clock" semantic-context="term-adjustment"></app-icon>
                 Ajustar Plazo
               </button>
               
@@ -419,7 +419,7 @@ export interface RiskEvaluation {
                       class="btn btn-outline"
                       [attr.data-testid]="'upload-documents-btn'"
                       (click)="onUploadDocuments()">
-                <app-premium-icon icon-type="document-plus" semantic-context="documentation"></app-premium-icon>
+                <app-icon icon-type="document-plus" semantic-context="documentation"></app-icon>
                 Cargar Documentos
               </button>
             </div>
@@ -430,7 +430,7 @@ export interface RiskEvaluation {
         <div *ngIf="riskEvaluation()?.kiban.status === 'NOT_FOUND'" 
              class="fallback-message card-section"
              [attr.data-testid]="'fallback-message'">
-          <app-premium-icon icon-type="info-circle" semantic-context="information"></app-premium-icon>
+          <app-icon icon-type="info-circle" semantic-context="information"></app-icon>
           <app-human-message 
             message-context="not-found-fallback"
             [personalization-data]="getPersonalizationData()">
@@ -440,7 +440,7 @@ export interface RiskEvaluation {
         <div *ngIf="riskEvaluation()?.decision === 'NO-GO'" 
              class="rejection-message card-section"
              [attr.data-testid]="'rejection-message'">
-          <app-premium-icon icon-type="x-circle" semantic-context="rejection"></app-premium-icon>
+          <app-icon icon-type="x-circle" semantic-context="rejection"></app-icon>
           <app-human-message 
             message-context="rejection-explanation"
             [personalization-data]="getPersonalizationData()">
@@ -452,7 +452,7 @@ export interface RiskEvaluation {
       <div *ngIf="hasError()" 
            class="error-state"
            [attr.data-testid]="'api-error-message'">
-        <app-premium-icon icon-type="alert-triangle" semantic-context="error"></app-premium-icon>
+        <app-icon icon-type="alert-triangle" semantic-context="error"></app-icon>
         <app-human-message 
           message-context="evaluation-error"
           [show-retry]="true"

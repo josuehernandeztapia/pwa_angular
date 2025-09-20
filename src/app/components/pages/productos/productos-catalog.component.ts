@@ -68,7 +68,7 @@ interface ProductCatalogItem {
       </div>
 
       <!-- Loading State (placeholder estable) -->
-      <section *ngIf="isLoading" class="premium-card loading-placeholder" role="status" aria-live="polite" aria-busy="true" style="min-height: 280px">
+      <section *ngIf="isLoading" class="ui-card loading-placeholder" role="status" aria-live="polite" aria-busy="true" style="min-height: 280px">
         <p>Cargando catálogo de productos…</p>
       </section>
 
@@ -320,7 +320,7 @@ interface ProductCatalogItem {
       position: absolute;
       top: 16px;
       right: 16px;
-      background: linear-gradient(135deg, #f6ad55, #ed8936);
+      background: var(--surface-dark);
       color: white;
       padding: 6px 12px;
       border-radius: 20px;
@@ -506,12 +506,12 @@ interface ProductCatalogItem {
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #48bb78, #38a169);
+      background: var(--surface-dark);
       color: white;
     }
 
     .btn-primary:hover {
-      background: linear-gradient(135deg, #38a169, #2f855a);
+      background: var(--surface-dark);
       transform: translateY(-1px);
     }
 

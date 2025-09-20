@@ -22,7 +22,7 @@ import { ToastService } from '../../../../services/toast.service';
       </div>
 
       <!-- Resumen KPIs -->
-      <div class="summary-card premium-card" *ngIf="!isLoading">
+      <div class="summary-card ui-card" *ngIf="!isLoading">
         <h2 class="section-title">Resumen</h2>
         <div class="summary-grid">
           <div class="summary-chip">
@@ -42,7 +42,7 @@ import { ToastService } from '../../../../services/toast.service';
 
       <div class="content" *ngIf="!isLoading">
         <!-- Left Panel: Configuración -->
-        <div class="premium-card config-panel">
+        <div class="ui-card config-panel">
           <form [formGroup]="cotizadorForm">
             
             <!-- Tipo de Venta -->
@@ -126,7 +126,7 @@ import { ToastService } from '../../../../services/toast.service';
         </div>
 
         <!-- Right Panel: Resultado -->
-        <div class="premium-card quote-panel" *ngIf="currentQuote">
+        <div class="ui-card quote-panel" *ngIf="currentQuote">
           <h3>📋 Cotización AGS</h3>
           
           <!-- Resumen XL -->
@@ -187,7 +187,7 @@ import { ToastService } from '../../../../services/toast.service';
       </div>
 
       <!-- Loading -->
-      <section *ngIf="isLoading" class="premium-card loading" role="status" aria-live="polite" aria-busy="true" style="min-height: 160px; display:flex; align-items:center; justify-content:center;">
+      <section *ngIf="isLoading" class="ui-card loading" role="status" aria-live="polite" aria-busy="true" style="min-height: 160px; display:flex; align-items:center; justify-content:center;">
         Cargando paquete AGS...
       </section>
     </div>
@@ -263,7 +263,7 @@ import { ToastService } from '../../../../services/toast.service';
       color: #374151;
       margin-bottom: 16px;
     }
-    .summary-card.premium-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1); padding: 16px; margin-bottom: 16px; }
+    .summary-card.ui-card { background: #fff; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,.1); padding: 16px; margin-bottom: 16px; }
     .summary-card .section-title { margin: 0 0 8px; font-size: 18px; font-weight: 600; color: #374151; }
     .summary-grid { display: grid; gap: 12px; grid-template-columns: repeat(3, 1fr); }
     .summary-chip { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; text-align: center; }
