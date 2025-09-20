@@ -157,7 +157,7 @@ export interface ManualOCRData {
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      backdrop-filter: blur(4px);
+      /* remove blur for Minimal Dark */
     }
 
     .manual-entry-modal {

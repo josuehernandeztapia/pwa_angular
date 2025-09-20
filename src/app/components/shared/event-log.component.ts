@@ -293,13 +293,7 @@ interface EventGroup {
       opacity: 0.9;
     }
 
-    .timeline-line {
-      background: linear-gradient(to bottom, 
-        #06b6d4 0%, 
-        #0891b2 50%, 
-        #6b7280 100%
-      );
-    }
+    .timeline-line { background: var(--brand); }
 
     .event-node.payment {
       background-color: #10b981;
@@ -321,11 +315,7 @@ interface EventGroup {
       border-color: #0891b2;
     }
 
-    .event-card {
-      background: rgba(31, 41, 55, 0.5);
-      border-color: rgba(75, 85, 99, 0.3);
-      backdrop-filter: blur(4px);
-    }
+    .event-card { background: var(--surface-dark); border-color: var(--border-dark); }
 
     .event-card.payment {
       border-left: 4px solid #10b981;
@@ -397,9 +387,7 @@ interface EventGroup {
       animation: fadeIn 0.3s ease-out;
     }
 
-    .date-header {
-      backdrop-filter: blur(8px);
-    }
+    .date-header { background: rgba(0,0,0,0.5); }
 
     @media (max-width: 768px) {
       .log-controls {

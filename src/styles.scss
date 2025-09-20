@@ -25,44 +25,18 @@
 @import 'styles/_helpers.scss';
 :root {
   --font-scale: 1;
-  /* Palette */
-  --bg-gray-950: #0b0f14;
-  --bg-gray-100: #e5e7eb;
-
-  --primary-cyan-300: #67e8f9;
-  --primary-cyan-400: #22d3ee;
-  --primary-cyan-500: #06b6d4;
-  --primary-cyan-600: #0891b2;
-
-  --accent-amber-300: #fcd34d;
-  --accent-amber-400: #fbbf24;
-  --accent-amber-500: #f59e0b;
-  --accent-amber-600: #d97706;
-
-  --success-500: #22c55e;
-  --success-600: #16a34a;
-
-  --error-500: #ef4444;
-  --error-600: #dc2626;
-
-  /* Surfaces */
-  --glass-bg: rgba(255, 255, 255, 0.06);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --glass-backdrop: blur(10px) saturate(140%);
-  --command-center-bg: radial-gradient(1200px 600px at 10% -10%, rgba(34,211,238,0.07), transparent), radial-gradient(1000px 480px at 100% 0%, rgba(255,193,7,0.06), transparent), linear-gradient(180deg, #0b0f14 0%, #0b0f14 100%);
-
-  /* Shadows */
-  --shadow-card: 0 10px 24px rgba(0, 0, 0, 0.4);
-  --shadow-elevated: 0 14px 32px rgba(0, 0, 0, 0.5);
+  /* Minimal Dark core palette */
+  --bg-gray-950: var(--bg-dark);
+  --bg-gray-100: var(--text-light);
 
   /* Focus */
-  --focus-ring-color: #22d3ee;
+  --focus-ring-color: color-mix(in oklab, var(--brand) 70%, #ffffff 0%);
 
   /* Spacing, radii, motion */
   --space-button-padding: 12px 24px;
   --radius-md: 12px;
-  --transition-fast: all 0.3s ease;
-  --transition-quick: all 0.2s ease;
+  --transition-fast: all 0.2s ease;
+  --transition-quick: all 0.15s ease;
 
   /* UX Tokens - Spacing scale */
   --space-8: 8px;
@@ -74,26 +48,6 @@
   /* UX Tokens - Radius */
   --radius-sm: 8px;
   --radius-lg: 12px;
-
-  /* UX Tokens - Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.25), 0 1px 1px rgba(0,0,0,0.12);
-  --shadow-md: 0 6px 16px rgba(0,0,0,0.35);
-  --shadow-lg: 0 12px 28px rgba(0,0,0,0.45);
-
-  /* UX Tokens - Typography scale */
-  --font-h1-size: 1.75rem;
-  --font-h2-size: 1.5rem;
-  --font-h3-size: 1.25rem;
-  --font-body-size: 1rem;
-  --font-small-size: 0.875rem;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  /* UX Tokens - Status colors */
-  --state-success: var(--success-500);
-  --state-warning: var(--accent-amber-500);
-  --state-error: var(--error-500);
-  --state-info: var(--primary-cyan-400);
 }
 
 /* ===== GLOBAL RESET & BASE STYLES ===== */
@@ -110,8 +64,8 @@ html {
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: var(--bg-gray-950);
-  color: var(--bg-gray-100);
+  background: var(--bg-dark);
+  color: var(--text-light);
   line-height: 1.6;
   font-size: calc(16px * var(--font-scale));
   -webkit-font-smoothing: antialiased;
@@ -128,73 +82,59 @@ html.hc body { background: var(--bg); color: var(--text); }
 
 /* ===== PREMIUM COMPONENT STYLES ===== */
 
-/* Premium buttons */
+/* Minimal Dark buttons */
 .btn-primary {
-  background: var(--gradient-primary);
-  background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
-  color: white;
+  background: var(--brand);
+  color: #fff;
   border: none;
   padding: var(--space-button-padding);
   border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-fast);
-  box-shadow: var(--shadow-card);
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-elevated);
-  background: linear-gradient(135deg, var(--primary-cyan-300), var(--primary-cyan-500));
-}
+.btn-primary:hover { opacity: .9; }
 
-.btn-accent {
-  background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
-  color: var(--bg-gray-950);
-  border: none;
+/* Keep legacy class but map to secondary flat */
+.btn-accent,
+.btn-secondary {
+  background: var(--surface-dark);
+  color: var(--text-light);
+  border: 1px solid var(--border-dark);
   padding: var(--space-button-padding);
   border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition-fast);
-  box-shadow: var(--shadow-card);
+  transition: var(--transition-quick);
 }
 
-.btn-accent:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-elevated);
-  background: linear-gradient(135deg, var(--accent-amber-300), var(--accent-amber-500));
-}
+.btn-accent:hover,
+.btn-secondary:hover { background: color-mix(in oklab, var(--surface-dark) 85%, #000 15%); }
 
-/* Premium cards */
-.premium-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: var(--glass-backdrop);
-  -webkit-backdrop-filter: var(--glass-backdrop);
+/* Minimal Dark cards */
+.premium-card,
+.ui-card-legacy {
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: var(--shadow-card);
   transition: var(--transition-fast);
 }
 
-.premium-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-elevated);
-  border-color: var(--primary-cyan-400);
-}
+.premium-card:hover { border-color: var(--border-dark); }
 
 /* Command Center Layout */
 .command-center-layout {
   min-height: 100vh;
-  background: var(--command-center-bg);
+  background: var(--bg-dark);
 }
 
-/* Premium form inputs */
+/* Minimal Dark form inputs */
 .premium-input {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--bg-gray-100);
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  color: var(--text-light);
   padding: 14px 16px;
   border-radius: var(--radius-md);
   transition: var(--transition-fast);
@@ -203,32 +143,17 @@ html.hc body { background: var(--bg); color: var(--text); }
 
 .premium-input:focus {
   outline: none;
-  border-color: var(--primary-cyan-400);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
+  border-color: var(--border-dark);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 20%, transparent);
 }
 
-.premium-input::placeholder {
-  color: rgba(255, 255, 255, 0.4);
-}
+.premium-input::placeholder { color: color-mix(in oklab, var(--text-light) 50%, transparent); }
 
 /* Status indicators */
-.status-excellent { 
-  background: linear-gradient(135deg, var(--success-500), var(--success-600));
-  color: white;
-}
-.status-good { 
-  background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
-  color: white;
-}
-.status-warning { 
-  background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
-  color: var(--bg-gray-950);
-}
-.status-critical { 
-  background: linear-gradient(135deg, var(--error-500), var(--error-600));
-  color: white;
-}
+.status-excellent { background: var(--green); color: #0b0f14; }
+.status-good { background: var(--brand); color: #0b0f14; }
+.status-warning { background: var(--amber); color: #0b0f14; }
+.status-critical { background: var(--red); color: #fff; }
 
 /* Premium animations */
 @keyframes fadeInUp {
@@ -262,30 +187,14 @@ html.hc body { background: var(--bg); color: var(--text); }
 }
 
 /* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-gray-800);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-cyan-600);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-cyan-500);
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0b0f14; }
+::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #374151; }
 
 /* Utility classes */
-.text-gradient-primary {
-  background: linear-gradient(135deg, var(--primary-cyan-300), var(--primary-cyan-600));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* remove gradient text utility in Minimal Dark */
+/* .text-gradient-primary { removed in Minimal Dark } */
 
 /* ===== Helpers / Utility classes (global) ===== */
 .section-header {
@@ -396,12 +305,17 @@ html.hc body { background: var(--bg); color: var(--text); }
   }
 }
 
+/* Monochrome icons: inherit text color */
+app-premium-icon i,
+.ui-icon i,
+.icon i { color: currentColor; }
+
 /* ===== UX STANDARDIZATION ALIASES ===== */
 /* Unified secondary button style */
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: #f1f5f9;
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: var(--surface-dark);
+  color: var(--text-light);
+  border: 1px solid var(--border-dark);
   padding: var(--space-button-padding);
   border-radius: var(--radius-md);
   font-weight: 600;
@@ -409,11 +323,7 @@ html.hc body { background: var(--bg); color: var(--text); }
   transition: var(--transition-quick);
 }
 
-.btn-secondary:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-elevated);
-  background: rgba(255, 255, 255, 0.1);
-}
+.btn-secondary:hover { background: color-mix(in oklab, var(--surface-dark) 85%, #000 15%); }
 
 /* Map common ad-hoc buttons to primary style */
 .btn-edit,
@@ -448,9 +358,7 @@ html.hc body { background: var(--bg); color: var(--text); }
 /* Standardize inputs */
 .form-input,
 .readonly-input,
-.response-input {
-  @extend .premium-input;
-}
+.response-input { @extend .premium-input; }
 
 /* Standardize cards */
 .profile-card,
@@ -464,9 +372,7 @@ html.hc body { background: var(--bg); color: var(--text); }
 .red-flags-section,
 .category-scores,
 .recommendations-section,
-.technical-metrics {
-  @extend .premium-card;
-}
+.technical-metrics { @extend .premium-card; }
 
 /* Status badge style */
 .status-badge {
@@ -475,9 +381,9 @@ html.hc body { background: var(--bg); color: var(--text); }
   padding: 4px 10px;
   font-size: 0.75rem;
   border-radius: 9999px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  color: var(--bg-gray-100);
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
+  color: var(--text-light);
 }
 
 /* ===== PREMIUM ICONS ANIMATIONS - INTEGRATED FROM DESIGN SYSTEM ===== */

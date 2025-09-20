@@ -171,7 +171,7 @@ interface NavigationItem {
       left: 0;
       height: 100vh;
       width: 280px;
-      background: linear-gradient(180deg, #2d3748 0%, #1a202c 100%);
+      background: var(--bg-dark);
       color: white;
       transition: width 0.3s ease;
       z-index: 1000;
@@ -330,18 +330,7 @@ interface NavigationItem {
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .user-avatar {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #4299e1, #3182ce);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 1rem;
-      flex-shrink: 0;
-    }
+    .user-avatar { width: 40px; height: 40px; background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1rem; flex-shrink: 0; }
 
     .user-info {
       flex: 1;
@@ -364,29 +353,9 @@ interface NavigationItem {
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .btn-nueva-oportunidad {
-      width: 100%;
-      background: linear-gradient(135deg, #06d6a0, #059669);
-      border: none;
-      color: white;
-      padding: 16px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-    }
+    .btn-nueva-oportunidad { width: 100%; background: var(--brand); border: none; color: white; padding: 16px; border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.3s ease; }
 
-    .btn-nueva-oportunidad:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(6, 214, 160, 0.4);
-      background: linear-gradient(135deg, #059669, #047857);
-    }
+    .btn-nueva-oportunidad:hover { opacity: .9; }
 
     .btn-nueva-oportunidad.collapsed {
       width: 48px;

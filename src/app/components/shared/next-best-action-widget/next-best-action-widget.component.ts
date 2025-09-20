@@ -130,14 +130,7 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
     </div>
   `,
   styles: [`
-    .next-best-actions-widget {
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      backdrop-filter: blur(10px);
-    }
+    .next-best-actions-widget { background: var(--surface-dark); border-radius: 16px; padding: 20px; border: 1px solid var(--border-dark); }
 
     /* Header */
     .widget-header {
@@ -154,12 +147,7 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
       flex: 1;
     }
 
-    .icon-container {
-      background: linear-gradient(135deg, #06d6a0, #04d9ff);
-      border-radius: 12px;
-      padding: 10px;
-      box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-    }
+    .icon-container { background: var(--surface-dark); border-radius: 12px; padding: 10px; border: 1px solid var(--border-dark); }
 
     .widget-icon {
       font-size: 20px;
@@ -276,20 +264,11 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
     }
 
     /* Priority styling */
-    .action-card.priority-critical {
-      border-left: 4px solid #dc2626;
-      background: linear-gradient(90deg, rgba(239, 68, 68, 0.05), #fafafa);
-    }
+    .action-card.priority-critical { border-left: 4px solid #dc2626; }
 
-    .action-card.priority-high {
-      border-left: 4px solid #f59e0b;
-      background: linear-gradient(90deg, rgba(245, 158, 11, 0.05), #fafafa);
-    }
+    .action-card.priority-high { border-left: 4px solid #f59e0b; }
 
-    .action-card.priority-medium {
-      border-left: 4px solid #3b82f6;
-      background: linear-gradient(90deg, rgba(59, 130, 246, 0.05), #fafafa);
-    }
+    .action-card.priority-medium { border-left: 4px solid #3b82f6; }
 
     .action-card.priority-low {
       border-left: 4px solid #6b7280;
@@ -508,13 +487,7 @@ import { NextBestActionService, NextBestAction, ActionInsights } from '../../../
       gap: 12px;
     }
 
-    .skeleton-card {
-      height: 120px;
-      background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-      background-size: 200% 100%;
-      animation: loading 1.5s infinite;
-      border-radius: 12px;
-    }
+    .skeleton-card { height: 120px; background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; }
 
     @keyframes loading {
       0% { background-position: 200% 0; }

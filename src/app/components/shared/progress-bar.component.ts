@@ -126,29 +126,17 @@ type ProgressSize = 'sm' | 'md' | 'lg' | 'xl';
     .size-xl .progress-track { height: 1rem; }
 
     /* Theme Colors */
-    .theme-default .progress-fill {
-      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-    }
+    .theme-default .progress-fill { background: var(--brand); }
 
-    .theme-success .progress-fill {
-      background: linear-gradient(90deg, #10b981, #059669);
-    }
+    .theme-success .progress-fill { background: var(--green); }
 
-    .theme-warning .progress-fill {
-      background: linear-gradient(90deg, #f59e0b, #d97706);
-    }
+    .theme-warning .progress-fill { background: var(--amber); }
 
-    .theme-danger .progress-fill {
-      background: linear-gradient(90deg, #ef4444, #dc2626);
-    }
+    .theme-danger .progress-fill { background: var(--red); }
 
-    .theme-info .progress-fill {
-      background: linear-gradient(90deg, #06b6d4, #0891b2);
-    }
+    .theme-info .progress-fill { background: var(--brand); }
 
-    .theme-gradient .progress-fill {
-      background: linear-gradient(90deg, #8b5cf6, #06b6d4, #10b981);
-    }
+    .theme-gradient .progress-fill { background: var(--brand); }
 
     /* Track Backgrounds */
     .track-bg-light { background-color: #f1f5f9; }
@@ -168,11 +156,7 @@ type ProgressSize = 'sm' | 'md' | 'lg' | 'xl';
     .percentage-danger { color: #ef4444; }
 
     /* Shimmer Animation */
-    .shimmer-effect {
-      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
-      transform: translateX(-100%);
-      animation: shimmer 2s infinite;
-    }
+    .shimmer-effect { background: color-mix(in oklab, var(--text-light) 20%, transparent); transform: translateX(-100%); animation: shimmer 2s infinite; }
 
     @keyframes shimmer {
       0% { transform: translateX(-100%); }
@@ -339,11 +323,11 @@ export class ProgressBarComponent {
 
   getStatusMessage(): string {
     const percentage = this.getPercentage();
-    if (percentage >= 100) return '¡Objetivo completado!';
+    if (percentage >= 100) return 'ï¿½Objetivo completado!';
     if (percentage >= 80) return 'En buen camino';
     if (percentage >= 60) return 'Progreso constante';
-    if (percentage >= 40) return 'Necesita atención';
-    return 'Requiere acción urgente';
+    if (percentage >= 40) return 'Necesita atenciï¿½n';
+    return 'Requiere acciï¿½n urgente';
   }
 
   getStatusMessageClass(): string {

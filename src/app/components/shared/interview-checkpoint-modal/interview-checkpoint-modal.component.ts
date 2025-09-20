@@ -186,7 +186,7 @@ interface CheckpointModalData {
       align-items: center;
       justify-content: center;
       z-index: 2000;
-      backdrop-filter: blur(4px);
+      /* remove blur for Minimal Dark */
     }
 
     .checkpoint-modal {
@@ -215,7 +215,7 @@ interface CheckpointModalData {
       align-items: center;
       padding: 24px;
       border-bottom: 2px solid #fee2e2;
-      background: linear-gradient(135deg, #fef2f2, #ffffff);
+      background: var(--surface-dark);
     }
 
     .header-icon {

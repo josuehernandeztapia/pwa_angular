@@ -15,11 +15,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   styles: [
     `
       :host { display: block; }
-      .skeleton { position: relative; overflow: hidden; background: rgba(255,255,255,0.08); border-radius: var(--radius-sm); }
+      .skeleton { position: relative; overflow: hidden; background: var(--surface-dark); border: 1px solid var(--border-dark); color: var(--text-light); border-radius: var(--radius-sm); }
       .title { height: 22px; margin-bottom: var(--space-12); }
       .subtitle { height: 16px; margin-bottom: var(--space-16); }
       .button { height: 36px; width: 120px; border-radius: var(--radius-sm); }
-      .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); animation: shimmer 1.2s infinite; }
+      .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: color-mix(in oklab, var(--text-light) 12%, transparent); animation: shimmer 1.2s infinite; }
       @keyframes shimmer { 100% { transform: translateX(100%); } }
     `
   ],

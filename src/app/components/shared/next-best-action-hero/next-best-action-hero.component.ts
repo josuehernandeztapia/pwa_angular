@@ -129,28 +129,9 @@ export interface ActionButton {
     </div>
   `,
   styles: [`
-    .next-best-action-hero {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border-radius: 20px;
-      padding: 32px;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
-    }
+    .next-best-action-hero { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 20px; padding: 32px; margin-bottom: 32px; position: relative; overflow: hidden; }
 
-    .next-best-action-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent-amber-500), var(--primary-cyan-400));
-      opacity: 0.8;
-    }
+    .next-best-action-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--brand); opacity: 0.8; }
 
     /* ===== HERO HEADER ===== */
     .hero-header {
@@ -261,21 +242,7 @@ export interface ActionButton {
       flex-shrink: 0;
     }
 
-    .avatar-image {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 1.2rem;
-      background-size: cover;
-      background-position: center;
-      border: 3px solid var(--glass-border);
-    }
+    .avatar-image { width: 64px; height: 64px; border-radius: 50%; background: var(--surface-dark); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; background-size: cover; background-position: center; border: 3px solid var(--border-dark); }
 
     .health-score {
       position: absolute;

@@ -1,15 +1,26 @@
 :root {
+  /* Minimal Dark tokens */
+  --brand: #06b6d4;
+  --bg-dark: #0b0f14;
+  --surface-dark: #1f2937;
+  --border-dark: #374151;
+  --text-light: #f3f4f6;
+
+  /* Semantic accents */
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+
+  /* Backwards-compatible aliases used by helpers */
   --bg-light: #ffffff;
-  --bg-dark: #0f172a;
-  --text-1: #111827;
-  --text-2: #6b7280;
-  --brand: #0ea5e9;
-  --border: #e5e7eb;
+  --text-1: var(--text-light);
+  --text-2: #9ca3af;
+  --border: var(--border-dark);
 }
 
 .dark {
-  --bg-light: #0f172a;
-  --text-1: #f9fafb;
+  --bg-light: var(--bg-dark);
+  --text-1: var(--text-light);
   --text-2: #9ca3af;
-  --border: #374151;
+  --border: var(--border-dark);
 }

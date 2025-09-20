@@ -120,16 +120,7 @@ export interface RiskRadarClient {
     </div>
   `,
   styles: [`
-    .risk-radar-container {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border-radius: 20px;
-      padding: 28px;
-      margin-bottom: 32px;
-      position: relative;
-    }
+    .risk-radar-container { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 20px; padding: 28px; margin-bottom: 32px; position: relative; }
 
     .radar-header {
       display: flex;
@@ -189,20 +180,7 @@ export interface RiskRadarClient {
       min-height: 400px;
     }
 
-    .radar-grid {
-      position: relative;
-      aspect-ratio: 1;
-      background: radial-gradient(
-        circle,
-        rgba(16, 185, 129, 0.1) 0%,
-        rgba(245, 158, 11, 0.1) 40%,
-        rgba(249, 115, 22, 0.1) 70%,
-        rgba(239, 68, 68, 0.1) 100%
-      );
-      border-radius: 50%;
-      border: 1px solid var(--glass-border);
-      overflow: visible;
-    }
+    .radar-grid { position: relative; aspect-ratio: 1; background: var(--surface-dark); border-radius: 50%; border: 1px solid var(--border-dark); overflow: visible; }
 
     .radar-circle {
       position: absolute;
@@ -294,21 +272,13 @@ export interface RiskRadarClient {
       animation: pulse-radar 2s infinite;
     }
 
-    .pulse-critical {
-      background: radial-gradient(circle, var(--error-500) 0%, transparent 70%);
-    }
+    .pulse-critical { background: color-mix(in oklab, var(--red) 25%, transparent); }
 
-    .pulse-high {
-      background: radial-gradient(circle, var(--warning-500) 0%, transparent 70%);
-    }
+    .pulse-high { background: color-mix(in oklab, var(--amber) 25%, transparent); }
 
-    .pulse-medium {
-      background: radial-gradient(circle, var(--accent-amber-500) 0%, transparent 70%);
-    }
+    .pulse-medium { background: color-mix(in oklab, var(--amber) 18%, transparent); }
 
-    .pulse-low {
-      background: radial-gradient(circle, var(--success-500) 0%, transparent 70%);
-    }
+    .pulse-low { background: color-mix(in oklab, var(--green) 18%, transparent); }
 
     @keyframes pulse-radar {
       0% { opacity: 1; transform: scale(1); }
@@ -323,14 +293,7 @@ export interface RiskRadarClient {
       z-index: 2;
     }
 
-    .client-info-panel {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 20px;
-      max-height: 400px;
-      overflow-y: auto;
-    }
+    .client-info-panel { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 16px; padding: 20px; max-height: 400px; overflow-y: auto; }
 
     .client-info-header {
       display: flex;

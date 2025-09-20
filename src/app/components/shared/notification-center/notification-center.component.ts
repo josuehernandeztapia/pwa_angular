@@ -206,11 +206,7 @@ import { NotificationHistory } from '../../../models/notification';
       background: #e5e7eb;
     }
 
-    .permission-banner {
-      padding: 16px 20px;
-      background: linear-gradient(135deg, #06d6a0, #059669);
-      color: white;
-    }
+    .permission-banner { padding: 16px 20px; background: var(--brand); color: white; }
 
     .banner-content {
       display: flex;

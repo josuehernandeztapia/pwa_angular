@@ -271,13 +271,7 @@ interface SystemStatus {
       padding-bottom: 4rem;
     }
 
-    .dashboard-header {
-      background: var(--glass-bg);
-      border-bottom: 1px solid var(--glass-border);
-      padding: 2rem 0;
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-    }
+    .dashboard-header { background: var(--surface-dark); border-bottom: 1px solid var(--border-dark); padding: 2rem 0; }
 
     .header-content {
       display: flex;
@@ -350,13 +344,7 @@ interface SystemStatus {
       margin-bottom: 1rem;
     }
 
-    .value {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary-cyan-300);
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+    .value { font-size: 2.5rem; font-weight: 700; color: var(--text-light); display: block; margin-bottom: 0.5rem; }
 
     .metric-change {
       display: flex;

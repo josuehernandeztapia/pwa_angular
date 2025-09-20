@@ -76,15 +76,15 @@
   }
   30% {
     transform: scale(1.1) rotateY(180deg);
-    background: linear-gradient(135deg, #22c55e, #16a34a);
+    background: var(--green);
   }
   70% {
     transform: scale(1.05) rotateY(360deg);
-    background: linear-gradient(135deg, #22c55e, #16a34a);
+    background: var(--green);
   }
   100% {
     transform: scale(1) rotateY(360deg);
-    background: linear-gradient(135deg, #22c55e, #16a34a);
+    background: var(--green);
   }
 }
 
@@ -264,7 +264,7 @@
 
 /* 🔄 Loading States */
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background: color-mix(in oklab, var(--text-light) 10%, transparent);
   background-size: 200px 100%;
   animation: shimmer 2s infinite;
 }
@@ -449,7 +449,7 @@
 /* High contrast mode adjustments */
 @media (prefers-contrast: high) {
   .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: color-mix(in oklab, var(--text-light) 30%, transparent);
   }
   
   .icon-status-success,

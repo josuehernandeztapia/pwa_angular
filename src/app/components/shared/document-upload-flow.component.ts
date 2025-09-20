@@ -352,11 +352,7 @@ interface FlowContext {
     </div>
   `,
   styles: [`
-    .document-upload-flow {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-      padding: 20px;
-    }
+    .document-upload-flow { min-height: 100vh; background: var(--bg-dark); color: var(--text-light); padding: 20px; }
 
     .animate-pulse {
       animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -384,7 +380,7 @@ interface FlowContext {
       align-items: center;
       justify-content: center;
       z-index: 1000;
-      backdrop-filter: blur(4px);
+      /* remove blur for Minimal Dark */
     }
 
     .ocr-preview-container {
@@ -404,7 +400,8 @@ interface FlowContext {
       justify-content: space-between;
       align-items: center;
       padding: 24px 32px;
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      background: var(--surface-dark);
+      color: var(--text-light);
       color: white;
     }
 
@@ -447,12 +444,7 @@ interface FlowContext {
       margin-bottom: 12px;
     }
 
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-      transition: width 0.3s ease;
-      border-radius: 4px;
-    }
+    .progress-fill { height: 100%; background: var(--brand); transition: width 0.3s ease; border-radius: 4px; }
 
     .progress-message {
       margin: 0;

@@ -140,15 +140,7 @@ export interface ActivityItem {
     </div>
   `,
   styles: [`
-    .activity-feed-container {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border-radius: 20px;
-      padding: 28px;
-      margin-bottom: 32px;
-    }
+    .activity-feed-container { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 20px; padding: 28px; margin-bottom: 32px; }
 
     .feed-header {
       display: flex;
@@ -246,42 +238,19 @@ export interface ActivityItem {
       z-index: 2;
     }
 
-    .category-payment {
-      background: linear-gradient(135deg, var(--success-500), var(--success-600));
-      color: white;
-    }
+    .category-payment { background: var(--green); color: #0b0f14; }
 
-    .category-document {
-      background: linear-gradient(135deg, var(--info-500), var(--info-600));
-      color: white;
-    }
+    .category-document { background: var(--brand); color: #0b0f14; }
 
-    .category-communication {
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
-      color: white;
-    }
+    .category-communication { background: var(--brand); color: #0b0f14; }
 
-    .category-opportunity {
-      background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
-      color: var(--bg-gray-950);
-    }
+    .category-opportunity { background: var(--amber); color: #0b0f14; }
 
-    .category-renewal {
-      background: linear-gradient(135deg, var(--warning-500), var(--warning-600));
-      color: white;
-    }
+    .category-renewal { background: var(--amber); color: #0b0f14; }
 
-    .category-achievement {
-      background: linear-gradient(135deg, var(--success-400), var(--success-500));
-      color: white;
-    }
+    .category-achievement { background: var(--green); color: #0b0f14; }
 
-    .timeline-line {
-      width: 2px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--glass-border), transparent);
-      margin-top: 8px;
-    }
+    .timeline-line { width: 2px; height: 40px; background: var(--border-dark); margin-top: 8px; }
 
     .activity-content {
       flex: 1;
@@ -380,20 +349,7 @@ export interface ActivityItem {
       font-weight: 500;
     }
 
-    .suggested-action-btn {
-      background: linear-gradient(135deg, var(--accent-amber-500), var(--accent-amber-600));
-      color: var(--bg-gray-950);
-      border: none;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-    }
+    .suggested-action-btn { background: var(--surface-dark); color: var(--text-light); border: 1px solid var(--border-dark); padding: 8px 16px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease; }
 
     .suggested-action-btn:hover {
       transform: translateY(-1px);

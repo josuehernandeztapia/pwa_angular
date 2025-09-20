@@ -1,10 +1,10 @@
 @layer components {
   .ui-card {
-    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] border border-[var(--border)] rounded-lg p-4;
+    @apply bg-[var(--surface-dark)] border border-[var(--border-dark)] rounded-lg p-4;
   }
 
   .ui-input {
-    @apply border border-[var(--border)] rounded px-3 py-2 w-full focus:ring-1;
+    @apply border border-[var(--border-dark)] rounded px-3 py-2 w-full focus:ring-1;
   }
   .ui-input:focus {
     outline: none;
@@ -18,8 +18,8 @@
   .ui-btn-primary { @apply text-white; background: var(--brand); }
   .ui-btn-primary:hover { opacity: .9; }
 
-  .ui-btn-secondary { @apply border; border-color: var(--border); }
-  .ui-btn-secondary:hover { background: var(--border); }
+  .ui-btn-secondary { @apply border; border-color: var(--border-dark); background: var(--surface-dark); color: var(--text-light); }
+  .ui-btn-secondary:hover { background: color-mix(in oklab, var(--surface-dark) 85%, #000 15%); }
 
   .ui-btn-ghost { color: var(--text-1); }
   .dark .ui-btn-ghost { color: var(--text-1); }
