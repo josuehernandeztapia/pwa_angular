@@ -200,42 +200,16 @@ interface VoiceRecorderState {
     </div>
   `,
   styles: [`
-    .voice-recorder {
-      background: white;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      border: 2px solid transparent;
-      transition: all 0.3s ease;
-    }
+    .voice-recorder { background: var(--surface-dark); color: var(--text-primary); border-radius: 12px; padding: 24px; border: 1px solid var(--border-dark); transition: all 0.3s ease; }
 
-    .voice-recorder.recording {
-      border-color: #ef4444;
-      background: linear-gradient(135deg, #fef2f2, #ffffff);
-    }
+    .voice-recorder.recording { border-color: var(--error); }
 
-    .voice-recorder.processing {
-      border-color: #3b82f6;
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
-    }
+    .voice-recorder.processing { border-color: var(--brand); }
 
     /* Interview Guide Styles */
-    .interview-guide {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
+    .interview-guide { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 8px; margin-bottom: 20px; overflow: hidden; }
 
-    .guide-header {
-      display: flex;
-      align-items: center;
-      padding: 12px 16px;
-      background: #334155;
-      color: white;
-      cursor: pointer;
-    }
+    .guide-header { display: flex; align-items: center; padding: 12px 16px; background: var(--surface-dark); color: var(--text-primary); cursor: pointer; }
 
     .guide-icon {
       font-size: 1.2rem;
@@ -284,15 +258,9 @@ interface VoiceRecorderState {
       transition: background-color 0.2s;
     }
 
-    .question-item.asked {
-      background: #dcfce7;
-      border-left: 3px solid #22c55e;
-    }
+    .question-item.asked { background: rgba(34,197,94,0.12); border-left: 3px solid var(--success); }
 
-    .question-item.mandatory:not(.asked) {
-      background: #fef2f2;
-      border-left: 3px solid #ef4444;
-    }
+    .question-item.mandatory:not(.asked) { background: rgba(239,68,68,0.12); border-left: 3px solid var(--error); }
 
     .question-status {
       font-size: 1rem;
@@ -326,16 +294,7 @@ interface VoiceRecorderState {
     }
 
     /* Recorder Controls */
-    .recorder-status {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding: 16px;
-      background: #f9fafb;
-      border-radius: 8px;
-      border: 1px solid #e5e7eb;
-    }
+    .recorder-status { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 16px; background: var(--surface-dark); border-radius: 8px; border: 1px solid var(--border-dark); }
 
     .status-indicator {
       display: flex;
@@ -343,13 +302,7 @@ interface VoiceRecorderState {
       gap: 8px;
     }
 
-    .status-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #9ca3af;
-      transition: all 0.3s;
-    }
+    .status-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--text-secondary); transition: all 0.3s; }
 
     .status-dot.active {
       background: #ef4444;
@@ -362,10 +315,7 @@ interface VoiceRecorderState {
       100% { opacity: 1; }
     }
 
-    .status-text {
-      font-weight: 600;
-      color: #374151;
-    }
+    .status-text { font-weight: 600; color: var(--text-primary); }
 
     .duration {
       font-family: 'Courier New', monospace;
@@ -381,31 +331,14 @@ interface VoiceRecorderState {
       margin-bottom: 20px;
     }
 
-    .btn-record {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 16px 32px;
-      background: linear-gradient(135deg, #06d6a0, #059669);
-      border: none;
-      border-radius: 12px;
-      color: white;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 4px 12px rgba(6, 214, 160, 0.3);
-    }
+    .btn-record { display: flex; align-items: center; gap: 8px; padding: 16px 32px; background: var(--brand); border: none; border-radius: 12px; color: #fff; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: all 0.3s; box-shadow: none; }
 
     .btn-record:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(6, 214, 160, 0.4);
     }
 
-    .btn-record.recording {
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-    }
+    .btn-record.recording { background: var(--error); box-shadow: none; }
 
     .btn-record:disabled {
       opacity: 0.6;
@@ -413,95 +346,35 @@ interface VoiceRecorderState {
       transform: none;
     }
 
-    .btn-reset {
-      padding: 12px 20px;
-      background: #6b7280;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
+    .btn-reset { padding: 12px 20px; background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 8px; color: var(--text-primary); cursor: pointer; transition: opacity 0.2s; }
 
     .btn-reset:hover {
       background: #4b5563;
     }
 
     /* Processing Status */
-    .processing-status {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      padding: 16px;
-      background: #eff6ff;
-      border: 1px solid #dbeafe;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+    .processing-status { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 8px; margin-bottom: 20px; }
 
-    .processing-spinner {
-      width: 20px;
-      height: 20px;
-      border: 2px solid #bfdbfe;
-      border-top: 2px solid #3b82f6;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
+    .processing-spinner { width: 20px; height: 20px; border: 2px solid var(--border-dark); border-top: 2px solid var(--brand); border-radius: 50%; animation: spin 1s linear infinite; }
 
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    .processing-text {
-      color: #1e40af;
-      font-weight: 500;
-    }
+    .processing-text { color: var(--text-secondary); font-weight: 500; }
 
     /* Error Display */
-    .error-display {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 16px;
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      border-radius: 8px;
-      margin-bottom: 20px;
-    }
+    .error-display { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.35); border-radius: 8px; margin-bottom: 20px; }
 
-    .error-text {
-      flex: 1;
-      color: #dc2626;
-      font-weight: 500;
-    }
+    .error-text { flex: 1; color: var(--error); font-weight: 500; }
 
-    .btn-dismiss-error {
-      background: none;
-      border: none;
-      color: #dc2626;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
+    .btn-dismiss-error { background: none; border: none; color: var(--error); cursor: pointer; font-size: 1.2rem; }
 
     /* Live Feedback */
-    .live-feedback {
-      background: #f0f9ff;
-      border: 1px solid #bae6fd;
-      border-radius: 8px;
-      padding: 16px;
-      margin-bottom: 20px;
-    }
+    .live-feedback { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
 
-    .feedback-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      font-weight: 600;
-      color: #0c4a6e;
-    }
+    .feedback-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; font-weight: 600; color: var(--text-primary); }
 
     .progress-stats {
       display: flex;
@@ -513,17 +386,9 @@ interface VoiceRecorderState {
       text-align: center;
     }
 
-    .stat-value {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0369a1;
-      display: block;
-    }
+    .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--brand); display: block; }
 
-    .stat-label {
-      font-size: 0.8rem;
-      color: #64748b;
-    }
+    .stat-label { font-size: 0.8rem; color: var(--text-secondary); }
 
     .next-question {
       background: white;
@@ -545,21 +410,9 @@ interface VoiceRecorderState {
     }
 
     /* Results Preview */
-    .results-preview {
-      background: #f9fafb;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      padding: 20px;
-    }
+    .results-preview { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 8px; padding: 20px; }
 
-    .results-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-      font-weight: 600;
-      color: #374151;
-    }
+    .results-header { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; font-weight: 600; color: var(--text-primary); }
 
     .compliance-score {
       text-align: center;

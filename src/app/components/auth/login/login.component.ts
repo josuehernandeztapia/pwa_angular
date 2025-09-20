@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
         <div class="connection-lines"></div>
       </div>
       
-      <div class="command-center-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+      <div class="command-center-card ui-card">
         <div class="command-center-header">
           <div class="brand-identity">
             <div class="brand-icon">🚀</div>
@@ -26,12 +26,12 @@ import { Router } from '@angular/router';
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="command-center-form">
           <div class="form-group">
-            <label for="email" class="premium-label">📧 Correo Electrónico</label>
+            <label for="email" class="text-secondary">📧 Correo Electrónico</label>
             <input
               id="email"
               type="email"
               formControlName="email"
-              class="premium-input ui-input"
+              class="ui-input"
               [class.error]="isFieldInvalid('email')"
               placeholder="ricardo.montoya@cmu.com"
             >
@@ -46,13 +46,13 @@ import { Router } from '@angular/router';
           </div>
 
           <div class="form-group password-group">
-            <label for="password" class="premium-label">🔒 Contraseña</label>
+            <label for="password" class="text-secondary">🔒 Contraseña</label>
             <div class="password-input-container">
               <input
                 id="password"
                 [type]="showPassword ? 'text' : 'password'"
                 formControlName="password"
-                class="premium-input ui-input password-input"
+                class="ui-input password-input"
                 [class.error]="isFieldInvalid('password')"
                 placeholder="••••••••••••"
               >
@@ -90,7 +90,7 @@ import { Router } from '@angular/router';
 
           <button 
             type="submit" 
-            class="btn-primary command-center-btn ui-btn ui-btn-primary"
+            class="btn-primary command-center-btn"
             [disabled]="loginForm.invalid || isLoading"
           >
             <span *ngIf="!isLoading" class="btn-content">
