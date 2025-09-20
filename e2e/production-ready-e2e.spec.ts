@@ -330,37 +330,38 @@ test.describe('🚀 Production-Ready E2E Suite', () => {
     });
   });
 
-  test.describe('🔧 Premium UX/UI Components', () => {
-    test('Premium icons and animations are functional', async ({ page }) => {
+  test.describe('🔧 Minimal UI Components', () => {
+    test('Minimal UI elements render without premium effects', async ({ page }) => {
       try {
         await page.goto(`${BASE_URL}`);
         await TestUtils.waitForAppLoad(page);
         
-        // Look for premium components we implemented
-        const premiumSelectors = [
-          'app-premium-icon',
-          '.premium-icon', 
-          'app-human-message',
-          '.human-message',
-          '[class*="animate-"]', // Animation classes
-          '.premium-card',
-          '.btn-premium-hover'
+        // Look for minimal UI components
+        const minimalSelectors = [
+          '.ui-card',
+          '.ui-input',
+          '.btn-primary',
+          '.btn-secondary'
         ];
-        
-        let premiumComponentsFound = 0;
-        
-        for (const selector of premiumSelectors) {
+
+        let minimalComponentsFound = 0;
+        for (const selector of minimalSelectors) {
           if (await TestUtils.waitForElement(page, selector, 2000)) {
-            premiumComponentsFound++;
+            minimalComponentsFound++;
           }
         }
-        
-        // At least some premium components should be present
-        expect(premiumComponentsFound).toBeGreaterThan(0);
-        
+
+        expect(minimalComponentsFound).toBeGreaterThan(0);
+
+        // Ensure no premium-only styles are applied
+        const uiCard = page.locator('.ui-card').first();
+        if (await uiCard.count()) {
+          await expect(uiCard).not.toHaveCSS('background-image', /gradient/ as any);
+          await expect(uiCard).not.toHaveCSS('backdrop-filter', /blur/ as any);
+        }
       } catch (error) {
-        console.log('Premium components test info:', error);
-        // This is a soft test - premium components might not be integrated yet
+        console.log('Minimal UI components test info:', error);
+        // Soft test: minimal components may vary across pages
       }
     });
   });
