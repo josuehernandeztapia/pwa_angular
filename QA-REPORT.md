@@ -1,92 +1,46 @@
 ## QA Final E2E (Core + No-Core)
 
-Fecha: (pendiente de corrida)
+Fecha: 2025-09-20T02:30:04.173Z
 
-Este reporte se actualizará automáticamente tras la corrida con Playwright + Axe.
+Criterios: sin gradientes/shimmer, helpers .ui-* presentes, dark mode consistente, AA cumplido.
 
 ### Core
 
 | Módulo | Screenshot Light | Screenshot Dark | Helpers `.ui-*` | Accesibilidad AA | Estado |
 |--------|------------------|-----------------|-----------------|------------------|--------|
-| login |  |  |  |  |  |
-| dashboard |  |  |  |  |  |
-| clientes |  |  |  |  |  |
-| cotizador |  |  |  |  |  |
-| perfil |  |  |  |  |  |
-| oportunidad |  |  |  |  |  |
-| edomex-colectivo |  |  |  |  |  |
-| proteccion |  |  |  |  |  |
-| avi-go |  |  |  |  |  |
-| avi-review |  |  |  |  |  |
-| avi-nogo |  |  |  |  |  |
-| documentos-pendiente |  |  |  |  |  |
-| documentos-validado |  |  |  |  |  |
-| entregas |  |  |  |  |  |
-| config-cotizador |  |  |  |  |  |
-| config-simulador |  |  |  |  |  |
-| usage |  |  |  |  |  |
+| avi-go | [avi-go.png](tests/screenshots/avi-go.png) |  | Sí | Violaciones: 1 | FALLA |
+| avi-nogo | [avi-nogo.png](tests/screenshots/avi-nogo.png) |  | Sí | Violaciones: 1 | FALLA |
+| avi-review | [avi-review.png](tests/screenshots/avi-review.png) |  | Sí | Violaciones: 1 | FALLA |
+| clientes | [clientes-light.png](tests/screenshots/clientes-light.png) | [clientes-dark.png](tests/screenshots/clientes-dark.png) | Sí | Violaciones: 1 | FALLA |
+| config-cotizador | [config-cotizador.png](tests/screenshots/config-cotizador.png) |  | Sí | Violaciones: 1 | FALLA |
+| config-simulador | [config-simulador.png](tests/screenshots/config-simulador.png) |  | Sí | Violaciones: 1 | FALLA |
+| cotizador | [cotizador-light.png](tests/screenshots/cotizador-light.png) | [cotizador-dark.png](tests/screenshots/cotizador-dark.png) | Sí | Violaciones: 1 | FALLA |
+| dashboard | [dashboard-light.png](tests/screenshots/dashboard-light.png) | [dashboard-dark.png](tests/screenshots/dashboard-dark.png) | Sí | Violaciones: 1 | FALLA |
+| documentos-pendiente | [documentos-pendiente.png](tests/screenshots/documentos-pendiente.png) |  | Sí | Violaciones: 1 | FALLA |
+| documentos-validado | [documentos-validado.png](tests/screenshots/documentos-validado.png) |  | Sí | Violaciones: 1 | FALLA |
+| edomex-colectivo | [edomex-col-light.png](tests/screenshots/edomex-col-light.png) | [edomex-col-dark.png](tests/screenshots/edomex-col-dark.png) | Sí | Violaciones: 1 | FALLA |
+| entregas | [entregas.png](tests/screenshots/entregas.png) |  | Sí | Violaciones: 1 | FALLA |
+| login | [login-light.png](tests/screenshots/login-light.png) | [login-dark.png](tests/screenshots/login-dark.png) | Sí | Violaciones: 1 | FALLA |
+| oportunidad | [oportunidad-light.png](tests/screenshots/oportunidad-light.png) | [oportunidad-dark.png](tests/screenshots/oportunidad-dark.png) | Sí | Violaciones: 1 | FALLA |
+| perfil | [perfil-light.png](tests/screenshots/perfil-light.png) | [perfil-dark.png](tests/screenshots/perfil-dark.png) | Sí | Violaciones: 1 | FALLA |
+| proteccion | [proteccion-light.png](tests/screenshots/proteccion-light.png) | [proteccion-dark.png](tests/screenshots/proteccion-dark.png) | Sí | Violaciones: 1 | FALLA |
+| usage | [usage.png](tests/screenshots/usage.png) |  | Sí | Violaciones: 1 | FALLA |
+
 
 ### No-Core
 
 | Módulo | Screenshot Light | Screenshot Dark | Helpers `.ui-*` | Accesibilidad AA | Estado |
 |--------|------------------|-----------------|-----------------|------------------|--------|
-| postventa-fotos |  |  |  |  |  |
-| postventa-ocr |  |  |  |  |  |
-| gnv-salud |  |  |  |  |  |
-| gnv-csv |  |  |  |  |  |
-| odoo |  |  |  |  |  |
-| neon |  |  |  |  |  |
-| callbacks |  |  |  |  |  |
-| usuarios |  |  |  |  |  |
-| responsive |  |  |  |  |  |
-| offline |  |  |  |  |  |
+| callbacks | [callbacks.png](tests/screenshots/callbacks.png) |  | Sí | Violaciones: 1 | FALLA |
+| gnv-csv | [gnv-csv.png](tests/screenshots/gnv-csv.png) |  | Sí | Violaciones: 1 | FALLA |
+| gnv-salud | [gnv-salud.png](tests/screenshots/gnv-salud.png) |  | Sí | Violaciones: 1 | FALLA |
+| neon | [neon.png](tests/screenshots/neon.png) |  | Sí | Violaciones: 1 | FALLA |
+| odoo | [odoo.png](tests/screenshots/odoo.png) |  | Sí | Violaciones: 1 | FALLA |
+| offline | [offline.png](tests/screenshots/offline.png) |  | Sí | OK | PASA |
+| postventa-fotos | [postventa-fotos.png](tests/screenshots/postventa-fotos.png) |  | Sí | Violaciones: 1 | FALLA |
+| postventa-ocr | [postventa-ocr.png](tests/screenshots/postventa-ocr.png) |  | Sí | Violaciones: 1 | FALLA |
+| responsive | [responsive-desktop.png](tests/screenshots/responsive-desktop.png) |  | Sí | Violaciones: 1 | FALLA |
+| usuarios | [usuarios.png](tests/screenshots/usuarios.png) |  | Sí | Violaciones: 1 | FALLA |
 
-—
 
-Nota: Este archivo será regenerado por `scripts/generate-qa-report.js` cuando finalice la corrida.
-
-# QA Visual + Accesibilidad — PR #258
-
-Fecha: 2025-09-19
-
-## Resumen
-
-- Se limitó Playwright a tests visuales en `tests/visual`.
-- Se restauró `<app-update-banner>` en `shell`.
-- Se aplicó dark mode + `.ui-*` helpers en módulos: Login, Dashboard, Clientes, Cotizador.
-- Se ejecutaron pruebas visuales en Chromium con `webServer` auto-start.
-
-## Resultados de pruebas
-
-- Playwright (Chromium): ejecutado. Reporte HTML disponible en `playwright-report/index.html`.
-- Artifacts encontrados: `playwright-report/`, `test-results/`.
-- No se detectaron errores críticos en la corrida actual.
-
-## Cambios clave
-
-- `playwright.config.ts`:
-  - `testDir: ./tests/visual`
-  - `reporter: [['list'], ['html']]`
-  - `use.video: 'off'`
-  - `webServer` para levantar Angular dev server
-- `src/app/layout/shell/shell.component.html`:
-  - Banner de actualización presente: `<app-update-banner>`
-- Plantillas actualizadas con dark mode + helpers:
-  - `LoginComponent` (inline template)
-  - `DashboardComponent` (inline template)
-  - `ClientesListComponent` (inline template)
-  - `CotizadorMainComponent` (inline template)
-
-## Cómo abrir el reporte
-
-```bash
-npm run test:visual:report
-```
-
-o abrir `playwright-report/index.html` en el navegador.
-
-## Seguimiento
-
-- Si se requiere cross-browser, instalar `firefox` y `webkit` via Playwright.
-- Ajustar umbrales de `expect.toHaveScreenshot` si hay diffs visuales por tipografías.
-
+**Resumen**: 1/27 PASA, 26 FALLA.

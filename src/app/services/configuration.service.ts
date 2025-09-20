@@ -1,25 +1,26 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, BehaviorSubject, throwError } from 'rxjs';
-import { catchError, map, shareReplay, switchMap, tap, delay } from 'rxjs/operators';
-import { 
-  ApplicationConfiguration, 
-  MarketConfiguration, 
-  ScoringConfiguration,
-  PaymentCapacityConfiguration,
-  DocumentConfiguration,
-  EarlyPaymentConfiguration,
-  DownPaymentConfiguration,
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
+import { catchError, delay, map, shareReplay, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import {
+  AnalyticsConfiguration,
   APIConfiguration,
-  BusinessFlowConfiguration,
+  ApplicationConfiguration,
   AVIConfiguration,
-  QuestionnaireConfiguration,
+  BusinessFlowConfiguration,
+  DocumentConfiguration,
+  DownPaymentConfiguration,
+  EarlyPaymentConfiguration,
+  MarketConfiguration,
   NotificationConfiguration,
-  WorkflowConfiguration,
+  PaymentCapacityConfiguration,
+  QuestionnaireConfiguration,
+  ScoringConfiguration,
   SimpleUIConfiguration,
   SmartUXConfiguration,
-  AnalyticsConfiguration,
-  UXOptimizationConfiguration
+  UXOptimizationConfiguration,
+  WorkflowConfiguration
 } from '../models/configuration.types';
 import { BusinessFlow } from '../models/types';
 
@@ -98,13 +99,9 @@ export class ConfigurationService {
   }
 
   private loadFromRemote<T>(namespace: string): Observable<T> {
-    const { environment } = (window as any);
-    // Prefer Angular's environment if bundled
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const env = require('../../environments/environment');
-      const features = env.environment?.features || {};
-      const remoteBaseUrl = env.environment?.config?.remoteBaseUrl || '';
+      const features = (environment as any)?.features || {};
+      const remoteBaseUrl = (environment as any)?.config?.remoteBaseUrl || '';
       if (!features.enableRemoteConfig || !remoteBaseUrl) {
         return throwError(() => new Error('Remote config disabled'));
       }
@@ -129,9 +126,7 @@ export class ConfigurationService {
 
   private loadFromAssets<T>(namespace: string): Observable<T> {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const env = require('../../environments/environment');
-      const assetsBasePath = env.environment?.config?.assetsBasePath || '/assets/config';
+      const assetsBasePath = (environment as any)?.config?.assetsBasePath || '/assets/config';
       return this.http.get<T>(`${assetsBasePath}/${namespace}.json`).pipe(
         tap(value => this.namespaceCache.set(namespace, { value }))
       );
@@ -269,10 +264,10 @@ export class ConfigurationService {
   private getDefaultConfiguration(): ApplicationConfiguration {
     const getEnv = (key: string, fallback: string): string => {
       try {
-        // Safe access to process.env in browser
-        const env = (typeof process !== 'undefined' && (process as any).env)
-          || ((typeof window !== 'undefined' && (window as any).process && (window as any).process.env) ? (window as any).process.env : undefined);
-        const value = env?.[key];
+        const envObject = (typeof window !== 'undefined' && (window as any).process && (window as any).process.env)
+          ? (window as any).process.env
+          : undefined;
+        const value = envObject?.[key];
         return (typeof value === 'string' && value.length > 0) ? value : fallback;
       } catch {
         return fallback;

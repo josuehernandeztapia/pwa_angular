@@ -1,24 +1,22 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, BehaviorSubject } from 'rxjs';
-import { map, delay, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { catchError, delay, map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import {
+  AVI_VOICE_WEIGHTS,
+  AVILexiconAnalyzer
+} from '../data/avi-lexicons.data';
+import { ALL_AVI_QUESTIONS } from '../data/avi-questions.data';
+import {
+  AVICategory,
   AVIQuestionEnhanced,
   AVIResponse,
   AVIScore,
-  AVICategory,
-  VoiceAnalysis,
-  RedFlag
+  RedFlag,
+  VoiceAnalysis
 } from '../models/avi';
-import { ALL_AVI_QUESTIONS } from '../data/avi-questions.data';
-import {
-  AVI_LEXICONS,
-  AVI_VOICE_WEIGHTS,
-  AVI_VOICE_THRESHOLDS,
-  AVILexiconAnalyzer
-} from '../data/avi-lexicons.data';
 import { ConfigurationService } from './configuration.service';
-import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -113,15 +111,24 @@ export class AVIService {
     const responses = this.responses$.value;
     
     if (responses.length === 0) {
-      return of({
+      const emptyScore: AVIScore = {
         totalScore: 0,
         riskLevel: 'HIGH',
-        categoryScores: {} as any,
+        // Provide all required keys to satisfy AVIScore typing
+        categoryScores: {
+          personal: 0,
+          financial: 0,
+          experience: 0,
+          vehicle: 0,
+          identity: 0,
+          business: 0
+        } as any,
         redFlags: [],
         recommendations: ['Complete interview to get score'],
         processingTime: 0,
         confidence: 0.1
-      });
+      };
+      return of(emptyScore);
     }
 
     // Use BFF for AVI calculation
@@ -413,15 +420,26 @@ export class AVIService {
     return of(analysisObservables).pipe(
       map(observables => {
         // Mock combined result for now - in real implementation you'd use forkJoin
-        return {
+        const categoryScores = {
+          basic_info: 0,
+          daily_operation: 0,
+          operational_costs: 0,
+          business_structure: 0,
+          assets_patrimony: 0,
+          credit_history: 0,
+          payment_intention: 0,
+          risk_evaluation: 0
+        } as any;
+        const result: AVIScore = {
           totalScore: 750,
-          riskLevel: 'MEDIUM' as const,
-          categoryScores: {},
+          riskLevel: 'MEDIUM',
+          categoryScores,
           redFlags: [],
           recommendations: ['Based on BFF analysis - requires review'],
           processingTime: Date.now() - startTime,
           confidence: 0.8
         };
+        return result;
       })
     );
   }

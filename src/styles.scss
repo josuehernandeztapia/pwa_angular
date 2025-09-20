@@ -3,6 +3,11 @@
  * Version: Centro de Comando + Performance Pack
  */
 
+/* Tailwind layers (for @apply rules used by helpers) */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Performance-Critical Styles First */
 @import 'styles/performance.scss';
 
