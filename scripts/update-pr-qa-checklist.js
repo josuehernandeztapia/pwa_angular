@@ -67,18 +67,20 @@ async function main() {
 
   const { token, owner, repo } = parseRemote();
 
-  const checklist = `\n\n### ✅ QA Checklist – Minimal Dark\n\n- [ ] **Vacíos/Errores**: Empty states y mensajes de error sin gradientes; ilustraciones/íconos no rompen contraste.  \n- [ ] **Responsive**:  \n  - Revisar en 1440/820/390 px → layouts sin recortes, sin overflow inesperado.  \n  - Botones “tappeables” en mobile (espaciado suficiente).  \n- [ ] **Accesibilidad**:  \n  - Navegación por teclado en flujos principales.  \n  - Labels/aria en formularios clave.  \n  - Contraste: textos secundarios legibles.  \n- [ ] **Visual & Lint**:  \n  - No se ven gradientes ni glass en pantallas principales.  \n  - \`grep "linear-gradient|backdrop-filter"\` no encuentra usos en UI minimal.  \n- [ ] **Rendimiento**:  \n  - Primer paint fluido, sin shimmer/animaciones brillantes residuales.  \n  - No hay animaciones que distorsionen lectura.  \n- [ ] **Regresiones**: Revisión rápida de rutas clave: \`/login\`, \`/dashboard\`, \`/clientes\`, \`/cotizador\`, \`/perfil\`, \`/documentos\`, \`/entregas\`, \`/configuracion\`.
-`;
+  const checklistHeader = '### ✅ QA Checklist – Minimal Dark';
+  const checklistBlock = `\n\n${checklistHeader}\n\n- [ ] **Vacíos/Errores**: Empty states y mensajes de error sin gradientes; ilustraciones/íconos no rompen contraste.  \n- [ ] **Responsive**:  \n  - Revisar en 1440/820/390 px → layouts sin recortes ni overflow inesperado.  \n  - Botones “tappeables” en mobile con suficiente espaciado.  \n- [ ] **Accesibilidad**:  \n  - Navegación por teclado en flujos principales.  \n  - Labels/aria en formularios clave.  \n  - Contraste: textos secundarios legibles.  \n- [ ] **Visual & Lint**:  \n  - No se ven gradientes ni glass en pantallas principales.  \n  - \`grep "linear-gradient|backdrop-filter"\` no encuentra usos en UI minimal.  \n- [ ] **Rendimiento**:  \n  - Primer paint fluido, sin shimmer ni animaciones brillantes.  \n  - No hay animaciones que distorsionen lectura.  \n- [ ] **Regresiones**: Revisión rápida de rutas clave: \`/login\`, \`/dashboard\`, \`/clientes\`, \`/cotizador\`, \`/perfil\`, \`/documentos\`, \`/entregas\`, \`/configuracion\`.\n`;
 
   const pr = await ghRequest({ method: 'GET', path: `/repos/${owner}/${repo}/pulls/${prNumber}`, token });
   const currentBody = typeof pr.body === 'string' ? pr.body : '';
 
-  if (currentBody.includes('### ✅ QA Checklist – Minimal Dark')) {
-    // Already appended; nothing to do
-    return;
+  // Replace existing checklist block if present (from header to end), else append
+  let newBody;
+  const headerIndex = currentBody.indexOf(checklistHeader);
+  if (headerIndex !== -1) {
+    newBody = currentBody.slice(0, headerIndex).trimEnd() + checklistBlock;
+  } else {
+    newBody = (currentBody || '').trimEnd() + checklistBlock;
   }
-
-  const newBody = (currentBody || '').trimEnd() + checklist;
   await ghRequest({ method: 'PATCH', path: `/repos/${owner}/${repo}/pulls/${prNumber}`, token, data: { body: newBody } });
 }
 
