@@ -1,3 +1,50 @@
+## QA Final E2E (Core + No-Core)
+
+Fecha: (pendiente de corrida)
+
+Este reporte se actualizará automáticamente tras la corrida con Playwright + Axe.
+
+### Core
+
+| Módulo | Screenshot Light | Screenshot Dark | Helpers `.ui-*` | Accesibilidad AA | Estado |
+|--------|------------------|-----------------|-----------------|------------------|--------|
+| login |  |  |  |  |  |
+| dashboard |  |  |  |  |  |
+| clientes |  |  |  |  |  |
+| cotizador |  |  |  |  |  |
+| perfil |  |  |  |  |  |
+| oportunidad |  |  |  |  |  |
+| edomex-colectivo |  |  |  |  |  |
+| proteccion |  |  |  |  |  |
+| avi-go |  |  |  |  |  |
+| avi-review |  |  |  |  |  |
+| avi-nogo |  |  |  |  |  |
+| documentos-pendiente |  |  |  |  |  |
+| documentos-validado |  |  |  |  |  |
+| entregas |  |  |  |  |  |
+| config-cotizador |  |  |  |  |  |
+| config-simulador |  |  |  |  |  |
+| usage |  |  |  |  |  |
+
+### No-Core
+
+| Módulo | Screenshot Light | Screenshot Dark | Helpers `.ui-*` | Accesibilidad AA | Estado |
+|--------|------------------|-----------------|-----------------|------------------|--------|
+| postventa-fotos |  |  |  |  |  |
+| postventa-ocr |  |  |  |  |  |
+| gnv-salud |  |  |  |  |  |
+| gnv-csv |  |  |  |  |  |
+| odoo |  |  |  |  |  |
+| neon |  |  |  |  |  |
+| callbacks |  |  |  |  |  |
+| usuarios |  |  |  |  |  |
+| responsive |  |  |  |  |  |
+| offline |  |  |  |  |  |
+
+—
+
+Nota: Este archivo será regenerado por `scripts/generate-qa-report.js` cuando finalice la corrida.
+
 # QA Visual + Accesibilidad — PR #258
 
 Fecha: 2025-09-19
