@@ -400,7 +400,7 @@ export interface RiskEvaluation {
                  [attr.data-testid]="'mitigation-cta'">
               
               <button *ngIf="suggestion.includes('aval')" 
-                      class="btn btn-premium-hover"
+                      class="btn btn-primary"
                       [attr.data-testid]="'add-guarantor-btn'"
                       (click)="onAddGuarantor()">
                 <app-premium-icon icon-type="user-plus" semantic-context="guarantor"></app-premium-icon>

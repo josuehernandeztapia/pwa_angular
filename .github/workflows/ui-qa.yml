@@ -24,7 +24,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Minimal Dark visual checks
-        run: npm run qa:visual
+        run: npm run qa:ui
 
       - name: Build for Lighthouse
         run: npm run build:prod

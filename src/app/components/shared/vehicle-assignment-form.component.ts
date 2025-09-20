@@ -236,51 +236,22 @@ export interface VehicleAssignmentFormData {
     </div>
   `,
   styles: [`
-    .vehicle-assignment-form {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+    .vehicle-assignment-form { max-width: 800px; margin: 0 auto; padding: 20px; background: var(--surface-dark); color: var(--text-primary); border-radius: 8px; border: 1px solid var(--border-dark); }
 
-    .form-header {
-      margin-bottom: 30px;
-      padding-bottom: 20px;
-      border-bottom: 2px solid #e2e8f0;
-    }
+    .form-header { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 2px solid var(--border-dark); }
 
-    .form-header h3 {
-      margin: 0 0 10px 0;
-      color: #2d3748;
-      font-size: 1.5rem;
-    }
+    .form-header h3 { margin: 0 0 10px 0; color: var(--text-primary); font-size: 1.5rem; }
 
-    .form-header p {
-      margin: 5px 0;
-      color: #4a5568;
-    }
+    .form-header p { margin: 5px 0; color: var(--text-secondary); }
 
     .status-info {
       color: #38a169 !important;
       font-weight: 600;
     }
 
-    .form-section {
-      margin-bottom: 30px;
-      padding: 20px;
-      border: 1px solid #e2e8f0;
-      border-radius: 6px;
-    }
+    .form-section { margin-bottom: 30px; padding: 20px; border: 1px solid var(--border-dark); border-radius: 6px; }
 
-    .form-section h4 {
-      margin: 0 0 20px 0;
-      color: #2d3748;
-      font-size: 1.1rem;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 8px;
-    }
+    .form-section h4 { margin: 0 0 20px 0; color: var(--text-primary); font-size: 1.1rem; border-bottom: 1px solid var(--border-dark); padding-bottom: 8px; }
 
     .form-row {
       display: grid;
@@ -298,41 +269,22 @@ export interface VehicleAssignmentFormData {
       margin-bottom: 0;
     }
 
-    label {
-      margin-bottom: 5px;
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.9rem;
-    }
+    label { margin-bottom: 5px; font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
 
     .required {
       color: #e53e3e;
     }
 
-    input, select, textarea {
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
+    input, select, textarea { padding: 12px; border: 1px solid var(--border-dark); background: var(--surface-dark); color: var(--text-primary); border-radius: 6px; font-size: 0.95rem; transition: border-color 0.2s, box-shadow 0.2s; }
 
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: #3182ce;
-      box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
-    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15); }
 
     input.error {
       border-color: #e53e3e;
       box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.1);
     }
 
-    .field-hint {
-      margin-top: 5px;
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
+    .field-hint { margin-top: 5px; font-size: 0.8rem; color: var(--text-secondary); }
 
     .error-message {
       margin-top: 5px;
@@ -340,9 +292,7 @@ export interface VehicleAssignmentFormData {
       color: #e53e3e;
     }
 
-    .fixed-info {
-      background-color: #f7fafc;
-    }
+    .fixed-info { background-color: var(--surface-dark); }
 
     .fixed-specs {
       display: flex;
@@ -354,18 +304,9 @@ export interface VehicleAssignmentFormData {
       gap: 8px;
     }
 
-    .spec-item .label {
-      font-weight: 600;
-      color: #4a5568;
-    }
+    .spec-item .label { font-weight: 600; color: var(--text-secondary); }
 
-    .spec-item .value {
-      color: #2d3748;
-      background-color: #e2e8f0;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.9rem;
-    }
+    .spec-item .value { color: var(--text-primary); background-color: var(--surface-dark); border: 1px solid var(--border-dark); padding: 2px 8px; border-radius: 4px; font-size: 0.9rem; }
 
     .validation-errors {
       margin-bottom: 20px;
@@ -390,14 +331,7 @@ export interface VehicleAssignmentFormData {
       margin-bottom: 5px;
     }
 
-    .form-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 15px;
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid #e2e8f0;
-    }
+    .form-actions { display: flex; justify-content: flex-end; gap: 15px; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-dark); }
 
     .btn-primary, .btn-secondary {
       padding: 12px 24px;
@@ -410,30 +344,15 @@ export interface VehicleAssignmentFormData {
       gap: 8px;
     }
 
-    .btn-primary {
-      background-color: #3182ce;
-      color: white;
-      border: none;
-    }
+    .btn-primary { background: var(--brand); color: #fff; border: none; }
 
-    .btn-primary:hover:not(:disabled) {
-      background-color: #2c5aa0;
-    }
+    .btn-primary:hover:not(:disabled) { opacity: .95; }
 
-    .btn-primary:disabled {
-      background-color: #a0aec0;
-      cursor: not-allowed;
-    }
+    .btn-primary:disabled { opacity: .6; cursor: not-allowed; }
 
-    .btn-secondary {
-      background-color: #e2e8f0;
-      color: #4a5568;
-      border: 1px solid #cbd5e0;
-    }
+    .btn-secondary { background: var(--surface-dark); color: var(--text-primary); border: 1px solid var(--border-dark); }
 
-    .btn-secondary:hover:not(:disabled) {
-      background-color: #d1d5db;
-    }
+    .btn-secondary:hover:not(:disabled) { opacity: .95; }
 
     .spinner {
       width: 16px;
@@ -456,20 +375,11 @@ export interface VehicleAssignmentFormData {
       border-radius: 6px;
     }
 
-    .assignment-result.success {
-      background-color: #f0fff4;
-      border: 1px solid #38a169;
-    }
+    .assignment-result.success { background-color: rgba(34,197,94,0.12); border: 1px solid var(--success); }
 
-    .assignment-result.error {
-      background-color: #fed7d7;
-      border: 1px solid #e53e3e;
-    }
+    .assignment-result.error { background-color: rgba(239,68,68,0.12); border: 1px solid var(--error); }
 
-    .success-message h4 {
-      margin: 0 0 10px 0;
-      color: #38a169;
-    }
+    .success-message h4 { margin: 0 0 10px 0; color: var(--success); }
 
     .unit-summary {
       margin-top: 15px;

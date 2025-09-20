@@ -126,43 +126,31 @@ type ProgressSize = 'sm' | 'md' | 'lg' | 'xl';
     .size-xl .progress-track { height: 1rem; }
 
     /* Theme Colors */
-    .theme-default .progress-fill {
-      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
-    }
+    .theme-default .progress-fill { background: var(--brand); }
 
-    .theme-success .progress-fill {
-      background: linear-gradient(90deg, #10b981, #059669);
-    }
+    .theme-success .progress-fill { background: var(--success); }
 
-    .theme-warning .progress-fill {
-      background: linear-gradient(90deg, #f59e0b, #d97706);
-    }
+    .theme-warning .progress-fill { background: var(--warning); }
 
-    .theme-danger .progress-fill {
-      background: linear-gradient(90deg, #ef4444, #dc2626);
-    }
+    .theme-danger .progress-fill { background: var(--error); }
 
-    .theme-info .progress-fill {
-      background: linear-gradient(90deg, #06b6d4, #0891b2);
-    }
+    .theme-info .progress-fill { background: var(--brand); }
 
-    .theme-gradient .progress-fill {
-      background: linear-gradient(90deg, #8b5cf6, #06b6d4, #10b981);
-    }
+    .theme-gradient .progress-fill { background: var(--brand); }
 
     /* Track Backgrounds */
     .track-bg-light { background-color: #f1f5f9; }
-    .track-bg-dark { background-color: #374151; }
+    .track-bg-dark { background-color: var(--border-dark); }
 
     /* Label Colors */
     .label-light { color: #374151; }
     .label-dark { color: #f9fafb; }
-    .label-primary { color: #3b82f6; }
+    .label-primary { color: var(--brand); }
 
     /* Percentage Colors */
     .percentage-light { color: #1f2937; }
     .percentage-dark { color: #f3f4f6; }
-    .percentage-primary { color: #3b82f6; }
+    .percentage-primary { color: var(--brand); }
     .percentage-success { color: #10b981; }
     .percentage-warning { color: #f59e0b; }
     .percentage-danger { color: #ef4444; }
@@ -211,20 +199,15 @@ type ProgressSize = 'sm' | 'md' | 'lg' | 'xl';
     }
 
     /* Status Message Colors */
-    .status-on-track { color: #10b981; }
-    .status-behind { color: #f59e0b; }
-    .status-at-risk { color: #ef4444; }
-    .status-completed { color: #10b981; }
+    .status-on-track { color: var(--success); }
+    .status-behind { color: var(--warning); }
+    .status-at-risk { color: var(--error); }
+    .status-completed { color: var(--success); }
 
     /* Action Button */
-    .action-btn.btn-primary {
-      background-color: #3b82f6;
-      color: white;
-    }
+    .action-btn.btn-primary { background: var(--brand); color: #fff; }
 
-    .action-btn.btn-primary:hover:not(:disabled) {
-      background-color: #2563eb;
-    }
+    .action-btn.btn-primary:hover:not(:disabled) { opacity: .95; }
 
     .action-btn.btn-success {
       background-color: #10b981;
@@ -339,11 +322,11 @@ export class ProgressBarComponent {
 
   getStatusMessage(): string {
     const percentage = this.getPercentage();
-    if (percentage >= 100) return '¡Objetivo completado!';
+    if (percentage >= 100) return 'ï¿½Objetivo completado!';
     if (percentage >= 80) return 'En buen camino';
     if (percentage >= 60) return 'Progreso constante';
-    if (percentage >= 40) return 'Necesita atención';
-    return 'Requiere acción urgente';
+    if (percentage >= 40) return 'Necesita atenciï¿½n';
+    return 'Requiere acciï¿½n urgente';
   }
 
   getStatusMessageClass(): string {

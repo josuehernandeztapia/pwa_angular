@@ -235,8 +235,11 @@ html.hc body { background: var(--bg); color: var(--text); }
 
 .helper-text {
   font-size: var(--font-small-size);
-  color: #cbd5e1; /* improve contrast on dark bg */
+  color: var(--text-secondary);
 }
+
+/* Secondary text utility */
+.text-secondary { color: var(--text-secondary); }
 
 .error-text {
   font-size: var(--font-small-size);
