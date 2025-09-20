@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('UI Minimal Dark validation', async ({ page }) => {
   // Login
