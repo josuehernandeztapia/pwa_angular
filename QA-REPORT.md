@@ -1,6 +1,6 @@
 ## QA Final E2E (Core + No-Core)
 
-Fecha: 2025-09-20T04:28:38.878Z
+Fecha: 2025-09-20T04:34:35.659Z
 
 Criterios: sin gradientes/shimmer, helpers .ui-* presentes, dark mode consistente, AA cumplido.
 
