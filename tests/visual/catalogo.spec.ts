@@ -83,7 +83,7 @@ test.describe('@productos Catálogo de Productos visual states', () => {
     const loading = page.getByRole('status', { name: /Cargando catálogo/i });
     await expect(loading).toBeVisible();
     await applyAntiFlakyStyles(page);
-    const container = page.locator('.premium-container, .productos-grid').first();
+    const container = page.locator('.productos-grid').first();
     await expect(container).toBeVisible();
     await expect(container).toHaveScreenshot({
       animations: 'disabled',
@@ -119,7 +119,7 @@ test.describe('@productos Catálogo de Productos visual states', () => {
     await expect(page.getByRole('heading', { name: /Sin resultados/i })).toBeVisible();
     await expect(page.getByRole('button', { name: /Limpiar filtros/i })).toBeVisible();
     await applyAntiFlakyStyles(page);
-    const container = page.locator('.premium-container, .productos-grid').first();
+    const container = page.locator('.productos-grid').first();
     await expect(container).toBeVisible();
     await expect(container).toHaveScreenshot({
       animations: 'disabled',

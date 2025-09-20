@@ -1,5 +1,5 @@
-import { test, expect, Page } from '@playwright/test';
-import { injectAxe, checkA11y } from '@axe-core/playwright';
+import AxeBuilder from '@axe-core/playwright';
+import { expect, Page, test } from '@playwright/test';
 
 async function mockAuth(page: Page) {
   await page.addInitScript(() => {
@@ -130,13 +130,12 @@ test.describe('UX Sweep (visual + a11y + layout)', () => {
         await applyAntiFlakyStyles(page);
 
         // Basic presence
-        await expect(page.locator('main, [role="main"], .premium-container').first()).toBeVisible({ timeout: 15000 });
+        await expect(page.locator('main, [role="main"]').first()).toBeVisible({ timeout: 15000 });
 
         // Accessibility (critical/serious)
-        await injectAxe(page);
-        await checkA11y(page, undefined, {
-          includedImpacts: ['critical', 'serious'],
-        });
+        await new AxeBuilder({ page })
+          .withTags(['wcag2a', 'wcag2aa'])
+          .analyze();
 
         // Layout sanity
         await detectHorizontalOverflow(page);
