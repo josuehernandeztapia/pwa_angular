@@ -3,7 +3,7 @@
 
 .simulator-hub {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background: var(--bg-app, #0b0f16);
   padding: 24px;
 }
 
@@ -15,12 +15,8 @@
   h1 {
     font-size: 36px;
     font-weight: 800;
-    color: #1e293b;
+    color: #e5e7eb;
     margin: 0 0 8px 0;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
   }
 
   p {
@@ -64,12 +60,12 @@
 
 /* SCENARIO CARDS - Consolidado */
 .scenario-card {
-  background: white;
+  background: var(--surface-card, #111827);
   border-radius: 16px;
   padding: 24px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid transparent;
+  border: 1px solid #1f2937;
   position: relative;
   overflow: hidden;
   min-height: 200px;
@@ -87,37 +83,9 @@
     opacity: 0.8;
   }
 
-  &.ags-gradient {
-    border-color: #f59e0b;
-    color: #92400e;
-
-    &:hover {
-      background: linear-gradient(135deg, #fef3c7, #fde68a);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15);
-    }
-  }
-
-  &.edomex-individual-gradient {
-    border-color: #3b82f6;
-    color: #1d4ed8;
-
-    &:hover {
-      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-    }
-  }
-
-  &.edomex-collective-gradient {
-    border-color: #8b5cf6;
-    color: #6d28d9;
-
-    &:hover {
-      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
-    }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
   }
 }
 
@@ -151,7 +119,7 @@
   font-size: 16px;
   line-height: 1.5;
   margin: 0;
-  color: #64748b;
+  color: #9ca3af;
 }
 
 .scenario-arrow {
@@ -177,14 +145,14 @@
 }
 
 .context-banner {
-  background: linear-gradient(135deg, #3b82f6, #1e40af);
-  color: white;
+  background: #1f2937;
+  color: #e5e7eb;
   padding: 16px 24px;
   border-radius: 12px;
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
 }
 
 .context-icon {
@@ -202,12 +170,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--bg-app, #0b0f16);
 }
 
 .redirect-content {
   text-align: center;
-  color: white;
+  color: #e5e7eb;
   max-width: 400px;
   padding: 40px;
 
@@ -277,21 +245,21 @@
 
 /* SIMULATION CARDS - Consolidado */
 .simulation-card {
-  background: white;
+  background: var(--surface-card, #0f172a);
   border-radius: 12px;
   padding: 20px;
-  border: 2px solid transparent;
+  border: 1px solid #1f2937;
   transition: all 0.3s ease;
   position: relative;
 
   &.draft {
     border-color: #f59e0b;
-    background: linear-gradient(135deg, #fef9e7, #ffffff);
+    background: #1f2937;
   }
 
   &.completed {
     border-color: #10b981;
-    background: linear-gradient(135deg, #ecfdf5, #ffffff);
+    background: #10261f;
   }
 
   &:hover {
@@ -328,7 +296,7 @@
 .simulation-type {
   font-size: 12px;
   font-weight: 500;
-  color: #6b7280;
+  color: #9ca3af;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -350,8 +318,8 @@
 }
 
 .continue-btn {
-  background: #3b82f6;
-  color: white;
+  background: #2563eb;
+  color: #e5e7eb;
 
   &:hover {
     background: #2563eb;
@@ -360,12 +328,12 @@
 }
 
 .delete-btn {
-  background: #f3f4f6;
-  color: #6b7280;
+  background: #111827;
+  color: #9ca3af;
 
   &:hover {
     background: #ef4444;
-    color: white;
+    color: #fff;
   }
 }
 
@@ -383,12 +351,12 @@
 }
 
 .detail-label {
-  color: #6b7280;
+  color: #9ca3af;
   font-weight: 500;
 }
 
 .detail-value {
-  color: #1e293b;
+  color: #e5e7eb;
   font-weight: 600;
 }
 
@@ -402,7 +370,7 @@
 }
 
 .last-modified {
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .simulation-status {
@@ -425,9 +393,9 @@
 .comparison-controls {
   margin-top: 32px;
   padding: 24px;
-  background: white;
+  background: #0f172a;
   border-radius: 12px;
-  border: 2px solid #e2e8f0;
+  border: 1px solid #1f2937;
 }
 
 .comparison-header {
@@ -439,18 +407,18 @@
 
 .comparison-toggle-btn {
   padding: 12px 24px;
-  border: 2px solid #3b82f6;
+  border: 1px solid #334155;
   border-radius: 8px;
-  background: white;
-  color: #3b82f6;
+  background: #0b1220;
+  color: #e5e7eb;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover,
   &.active {
-    background: #3b82f6;
-    color: white;
+    background: #1f2937;
+    color: #e5e7eb;
     transform: translateY(-1px);
   }
 }
@@ -464,15 +432,15 @@
 .counter-text {
   font-size: 14px;
   font-weight: 600;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .clear-selection-btn {
   padding: 6px 12px;
-  background: #f3f4f6;
-  border: 1px solid #d1d5db;
+  background: #111827;
+  border: 1px solid #334155;
   border-radius: 6px;
-  color: #6b7280;
+  color: #9ca3af;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.2s;
@@ -480,7 +448,7 @@
   &:hover {
     background: #ef4444;
     border-color: #ef4444;
-    color: white;
+    color: #fff;
   }
 }
 
@@ -491,8 +459,8 @@
 
 .compare-btn {
   padding: 14px 28px;
-  background: linear-gradient(135deg, #10b981, #059669);
-  color: white;
+  background: #10b981;
+  color: #0b0f16;
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -501,9 +469,9 @@
   transition: all 0.3s ease;
 
   &:hover:not(:disabled) {
-    background: linear-gradient(135deg, #059669, #047857);
+    background: #059669;
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
 
   &:disabled {
@@ -585,7 +553,7 @@
 
 .comparison-modal-content {
   position: relative;
-  background: white;
+  background: #0b1220;
   border-radius: 16px;
   max-width: 1200px;
   width: 100%;
@@ -600,12 +568,12 @@
   align-items: center;
   padding: 24px 32px;
   border-bottom: 1px solid #e5e7eb;
-  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  background: #0f172a;
 
   h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #1e293b;
+    color: #e5e7eb;
     margin: 0;
   }
 }
@@ -645,9 +613,9 @@
   }
 
   th {
-    background: #f8fafc;
+    background: #0b0f16;
     font-weight: 600;
-    color: #374151;
+    color: #e5e7eb;
   }
 }
 
@@ -683,14 +651,14 @@
 }
 
 .metric-row:hover {
-  background: #f8fafc;
+  background: #0b0f16;
 }
 
 .highlight-row {
-  background: linear-gradient(135deg, #fef3c7, #fbbf24);
+  background: #fef3c7;
 
   &:hover {
-    background: linear-gradient(135deg, #fde68a, #f59e0b);
+    background: #fde68a;
   }
 }
 
