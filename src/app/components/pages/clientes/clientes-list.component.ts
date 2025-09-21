@@ -11,22 +11,22 @@ import { ToastService } from '../../../services/toast.service';
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
   template: `
-    <div class="clientes-container command-container ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+    <div class="clientes-container ui-card">
       <header class="clientes-header">
         <div class="header-content">
           <h1 class="page-title command-title">👥 Portafolio de Clientes Inteligente</h1>
           <p class="page-subtitle intelligence-subtitle">Administra todos tus clientes y sus expedientes</p>
         </div>
         <div class="header-actions">
-          <button routerLink="/clientes/nuevo" class="premium-button">
+          <button routerLink="/clientes/nuevo" class="ui-btn ui-btn-primary">
             ➕ Nuevo Cliente
           </button>
         </div>
       </header>
 
       <!-- Strategic Search & Segmentation -->
-      <div class="segmentation-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
-        <div class="search-box premium-card">
+      <div class="segmentation-section ui-card">
+        <div class="search-box ui-card">
           <div class="search-input-container">
             <span class="search-icon">🔍</span>
             <input
@@ -34,15 +34,15 @@ import { ToastService } from '../../../services/toast.service';
               [(ngModel)]="searchTerm"
               (input)="onSearch()"
               placeholder="¿Dónde está el cliente...?"
-              class="premium-input ui-input"
+              class="ui-input"
             >
           </div>
         </div>
 
         <div class="strategic-filters">
-          <div class="filter-group priority premium-card">
+          <div class="filter-group priority ui-card">
             <label class="filter-label">🚨 Estado Crítico</label>
-            <select [(ngModel)]="filterStatus" (change)="applyFilters()" class="premium-select ui-input status">
+            <select [(ngModel)]="filterStatus" (change)="applyFilters()" class="ui-input status">
               <option value="">Todos los estados</option>
               <option value="Activo">✅ Activo</option>
               <option value="Pendiente">⏳ Pendiente</option>
@@ -53,9 +53,9 @@ import { ToastService } from '../../../services/toast.service';
             </select>
           </div>
 
-          <div class="filter-group critical premium-card">
+          <div class="filter-group critical ui-card">
             <label class="filter-label">💹 Health Score</label>
-            <select [(ngModel)]="filterHealthScore" (change)="applyFilters()" class="premium-select ui-input health">
+            <select [(ngModel)]="filterHealthScore" (change)="applyFilters()" class="ui-input health">
               <option value="">Todos los scores</option>
               <option value="critical">🔴 Crítico (&lt; 40)</option>
               <option value="poor">🟠 Regular (40-59)</option>
@@ -64,16 +64,16 @@ import { ToastService } from '../../../services/toast.service';
             </select>
           </div>
 
-          <div class="filter-group secondary premium-card">
-            <select [(ngModel)]="filterMarket" (change)="applyFilters()" class="premium-select ui-input">
+          <div class="filter-group secondary ui-card">
+            <select [(ngModel)]="filterMarket" (change)="applyFilters()" class="ui-input">
               <option value="">Todos los mercados</option>
               <option value="aguascalientes">Aguascalientes</option>
               <option value="edomex">Estado de México</option>
             </select>
           </div>
 
-          <div class="filter-group secondary premium-card">
-            <select [(ngModel)]="filterFlow" (change)="applyFilters()" class="premium-select ui-input">
+          <div class="filter-group secondary ui-card">
+            <select [(ngModel)]="filterFlow" (change)="applyFilters()" class="ui-input">
               <option value="">Todos los productos</option>
               <option value="Venta a Plazo">Venta a Plazo</option>
               <option value="Plan de Ahorro">Plan de Ahorro</option>
@@ -85,7 +85,7 @@ import { ToastService } from '../../../services/toast.service';
           <button 
             *ngIf="hasActiveFilters()" 
             (click)="clearAllFilters()" 
-            class="premium-button ui-btn ui-btn-secondary outline"
+            class="ui-btn ui-btn-secondary"
             title="Limpiar todos los filtros"
           >
             🗑️ Limpiar
@@ -93,7 +93,7 @@ import { ToastService } from '../../../services/toast.service';
         </div>
 
         <!-- Active Filters Summary -->
-        <div *ngIf="hasActiveFilters()" class="active-filters-summary premium-card">
+        <div *ngIf="hasActiveFilters()" class="active-filters-summary ui-card">
           <span class="summary-label">Segmentación activa:</span>
           <span class="filter-tag" *ngIf="filterStatus">Estado: {{ filterStatus }}</span>
           <span class="filter-tag" *ngIf="filterHealthScore">Score: {{ getHealthScoreLabel(filterHealthScore) }}</span>
@@ -104,23 +104,23 @@ import { ToastService } from '../../../services/toast.service';
       </div>
 
       <!-- Loading State -->
-      <div *ngIf="isLoading" class="loading-container premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
-        <div class="premium-loading"></div>
+      <div *ngIf="isLoading" class="loading-container ui-card">
+        <div class="loading-spinner"></div>
         <p>Cargando clientes...</p>
       </div>
 
       <!-- Empty State -->
-      <div *ngIf="!isLoading && filteredClientes.length === 0" class="empty-state premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+      <div *ngIf="!isLoading && filteredClientes.length === 0" class="empty-state ui-card">
         <div class="empty-icon">📝</div>
         <h3>{{ searchTerm ? 'No se encontraron clientes' : 'No hay clientes registrados' }}</h3>
         <p>{{ searchTerm ? 'Intenta con otros términos de búsqueda' : 'Comienza creando tu primer cliente' }}</p>
-        <button *ngIf="!searchTerm" routerLink="/clientes/nuevo" class="premium-button ui-btn ui-btn-primary">
+        <button *ngIf="!searchTerm" routerLink="/clientes/nuevo" class="ui-btn ui-btn-primary">
           Crear primer cliente
         </button>
       </div>
 
       <!-- Strategic Actions Bar -->
-      <div *ngIf="!isLoading && filteredClientes.length > 0" class="strategic-actions-bar premium-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+      <div *ngIf="!isLoading && filteredClientes.length > 0" class="strategic-actions-bar ui-card">
         <div class="selection-info">
           <label class="select-all-container">
             <input 
@@ -139,14 +139,14 @@ import { ToastService } from '../../../services/toast.service';
         <div class="bulk-actions" *ngIf="selectedClientes.size > 0">
           <button 
             (click)="exportSelected()" 
-            class="premium-button ui-btn ui-btn-primary"
+            class="ui-btn ui-btn-primary"
             title="Exportar clientes seleccionados"
           >
             📊 Exportar ({{ selectedClientes.size }})
           </button>
           <button 
             (click)="clearSelection()" 
-            class="premium-button ui-btn ui-btn-secondary outline"
+            class="ui-btn ui-btn-secondary"
             title="Limpiar selección"
           >
             🗑️ Limpiar
@@ -158,7 +158,7 @@ import { ToastService } from '../../../services/toast.service';
       <div *ngIf="!isLoading && filteredClientes.length > 0" class="clients-grid">
         <div
           *ngFor="let cliente of paginatedClientes; trackBy: trackByClientId"
-          class="client-card ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700"
+          class="client-card ui-card"
           [class.selected]="selectedClientes.has(cliente.id)"
         >
           <!-- Selection Checkbox -->
@@ -221,7 +221,7 @@ import { ToastService } from '../../../services/toast.service';
                 🚨 Urgente
               </div>
               <div class="indicator opportunity" *ngIf="isHighValueClient(cliente)" title="Cliente de alto valor">
-                💎 Premium
+                💎 Valor
               </div>
               <div class="indicator risk" *ngIf="isAtRisk(cliente)" title="Cliente en riesgo">
                 ⚠️ Riesgo
@@ -236,21 +236,21 @@ import { ToastService } from '../../../services/toast.service';
           <div class="client-actions">
             <button
               (click)="$event.stopPropagation(); callClient(cliente)"
-              class="action-btn ui-btn ui-btn-secondary call"
+              class="ui-btn ui-btn-secondary action-btn call"
               title="Llamar cliente"
             >
               📞
             </button>
             <button
               (click)="$event.stopPropagation(); emailClient(cliente)"
-              class="action-btn ui-btn ui-btn-secondary email"
+              class="ui-btn ui-btn-secondary action-btn email"
               title="Enviar email"
             >
               ✉️
             </button>
             <button
               (click)="$event.stopPropagation(); viewClientDetails(cliente.id)"
-              class="action-btn ui-btn ui-btn-secondary view"
+              class="ui-btn ui-btn-secondary action-btn view"
               title="Ver detalles completos"
             >
               👁️
@@ -268,7 +268,7 @@ import { ToastService } from '../../../services/toast.service';
           </span>
           <div class="page-size-selector">
             <label>Mostrar:</label>
-            <select [(ngModel)]="pageSize" (change)="onPageSizeChange()" class="page-size-select">
+            <select [(ngModel)]="pageSize" (change)="onPageSizeChange()" class="ui-input page-size-select">
               <option value="20">20</option>
               <option value="50">50</option>
               <option value="100">100</option>
@@ -281,7 +281,7 @@ import { ToastService } from '../../../services/toast.service';
           <button 
             [disabled]="currentPage === 1" 
             (click)="goToPage(1)"
-            class="page-btn first"
+            class="ui-btn ui-btn-secondary page-btn first"
             title="Primera página"
           >
             ⏮️
@@ -289,7 +289,7 @@ import { ToastService } from '../../../services/toast.service';
           <button 
             [disabled]="currentPage === 1" 
             (click)="goToPage(currentPage - 1)"
-            class="page-btn prev"
+            class="ui-btn ui-btn-secondary page-btn prev"
             title="Página anterior"
           >
             ◀️
@@ -298,7 +298,7 @@ import { ToastService } from '../../../services/toast.service';
           <div class="page-numbers">
             <button 
               *ngFor="let page of getVisiblePages()" 
-              [class]="'page-btn ' + (page === currentPage ? 'active' : '')"
+              [class]="'ui-btn ui-btn-secondary page-btn ' + (page === currentPage ? 'active' : '')"
               [disabled]="page === '...'"
               (click)="page !== '...' && goToPage(+page)"
             >
@@ -309,7 +309,7 @@ import { ToastService } from '../../../services/toast.service';
           <button 
             [disabled]="currentPage === totalPages" 
             (click)="goToPage(currentPage + 1)"
-            class="page-btn next"
+            class="ui-btn ui-btn-secondary page-btn next"
             title="Página siguiente"
           >
             ▶️
@@ -317,7 +317,7 @@ import { ToastService } from '../../../services/toast.service';
           <button 
             [disabled]="currentPage === totalPages" 
             (click)="goToPage(totalPages)"
-            class="page-btn last"
+            class="ui-btn ui-btn-secondary page-btn last"
             title="Última página"
           >
             ⏭️

@@ -15,7 +15,7 @@ import { Client, BusinessFlow } from '../../../models/types';
     <div class="cliente-form-container">
       <header class="form-header">
         <div class="breadcrumb">
-          <button (click)="goBack()" class="back-button">← Volver</button>
+          <button (click)="goBack()" class="ui-btn ui-btn-secondary">← Volver</button>
           <span class="separator">/</span>
           <span class="current">{{ isEditMode ? 'Editar Cliente' : 'Nuevo Cliente' }}</span>
         </div>
@@ -24,7 +24,7 @@ import { Client, BusinessFlow } from '../../../models/types';
         </h1>
       </header>
 
-      <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()" class="cliente-form">
+      <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()" class="cliente-form ui-card">
         <!-- Información Personal -->
         <section class="form-section">
           <h2 class="section-title">👤 Información Personal</h2>
@@ -36,7 +36,7 @@ import { Client, BusinessFlow } from '../../../models/types';
                 id="name"
                 type="text"
                 formControlName="name"
-                class="form-input"
+                class="ui-input"
                 [class.error]="isFieldInvalid('name')"
                 placeholder="Ej. Juan Pérez García"
               >
@@ -51,7 +51,7 @@ import { Client, BusinessFlow } from '../../../models/types';
                 id="email"
                 type="email"
                 formControlName="email"
-                class="form-input"
+                class="ui-input"
                 [class.error]="isFieldInvalid('email')"
                 placeholder="juan@ejemplo.com"
               >
@@ -73,7 +73,7 @@ import { Client, BusinessFlow } from '../../../models/types';
                 id="phone"
                 type="tel"
                 formControlName="phone"
-                class="form-input"
+                class="ui-input"
                 [class.error]="isFieldInvalid('phone')"
                 placeholder="5555555555"
               >
@@ -88,7 +88,7 @@ import { Client, BusinessFlow } from '../../../models/types';
                 id="rfc"
                 type="text"
                 formControlName="rfc"
-                class="form-input"
+                class="ui-input"
                 [class.error]="isFieldInvalid('rfc')"
                 placeholder="XAXX010101000"
                 (input)="onRfcInput($event)"
@@ -110,7 +110,7 @@ import { Client, BusinessFlow } from '../../../models/types';
               <select
                 id="market"
                 formControlName="market"
-                class="form-select"
+                class="ui-input"
                 [class.error]="isFieldInvalid('market')"
               >
                 <option value="">Seleccionar mercado</option>
@@ -127,7 +127,7 @@ import { Client, BusinessFlow } from '../../../models/types';
               <select
                 id="flow"
                 formControlName="flow"
-                class="form-select"
+                class="ui-input"
                 [class.error]="isFieldInvalid('flow')"
               >
                 <option value="">Seleccionar producto</option>
@@ -147,7 +147,7 @@ import { Client, BusinessFlow } from '../../../models/types';
             <textarea
               id="notes"
               formControlName="notes"
-              class="form-textarea"
+              class="ui-input"
               rows="3"
               placeholder="Información adicional sobre el cliente..."
             ></textarea>
@@ -159,14 +159,14 @@ import { Client, BusinessFlow } from '../../../models/types';
           <button
             type="button"
             (click)="goBack()"
-            class="btn-secondary"
+            class="ui-btn ui-btn-secondary"
           >
             Cancelar
           </button>
           <button
             type="submit"
             [disabled]="isLoading || clienteForm.invalid"
-            class="btn-primary"
+            class="ui-btn ui-btn-primary"
           >
             {{ isLoading ? 'Guardando...' : (isEditMode ? 'Actualizar' : 'Crear Cliente') }}
           </button>
@@ -194,20 +194,7 @@ import { Client, BusinessFlow } from '../../../models/types';
       color: #6b7280;
     }
 
-    .back-button {
-      color: #3b82f6;
-      text-decoration: none;
-      padding: 4px 8px;
-      border-radius: 4px;
-      border: none;
-      background: none;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-
-    .back-button:hover {
-      background: #f3f4f6;
-    }
+    .back-button { display:none; }
 
     .separator {
       color: #9ca3af;
@@ -216,15 +203,15 @@ import { Client, BusinessFlow } from '../../../models/types';
     .page-title {
       font-size: 32px;
       font-weight: 700;
-      color: #111827;
+      color: var(--text-light);
       margin: 0;
     }
 
     .cliente-form {
-      background: white;
       border-radius: 12px;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
       padding: 32px;
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
     }
 
     .form-section {
@@ -238,10 +225,10 @@ import { Client, BusinessFlow } from '../../../models/types';
     .section-title {
       font-size: 18px;
       font-weight: 600;
-      color: #374151;
+      color: var(--text-light);
       margin-bottom: 16px;
       padding-bottom: 8px;
-      border-bottom: 2px solid #f3f4f6;
+      border-bottom: 1px solid var(--border-dark);
     }
 
     .form-row {
@@ -264,36 +251,26 @@ import { Client, BusinessFlow } from '../../../models/types';
 
     label {
       font-weight: 500;
-      color: #374151;
+      color: var(--text-2);
       font-size: 14px;
     }
 
     .form-input,
     .form-select,
-    .form-textarea {
-      padding: 12px;
-      border: 1px solid #d1d5db;
-      border-radius: 8px;
-      font-size: 16px;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
+    .form-textarea { display:none; }
 
     .form-input:focus,
     .form-select:focus,
-    .form-textarea:focus {
-      outline: none;
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    }
+    .form-textarea:focus { outline: none; }
 
     .form-input.error,
     .form-select.error,
     .form-textarea.error {
-      border-color: #ef4444;
+      border-color: var(--border-dark);
     }
 
     .error-message {
-      color: #ef4444;
+      color: var(--text-2);
       font-size: 12px;
       margin-top: 4px;
     }
@@ -303,44 +280,11 @@ import { Client, BusinessFlow } from '../../../models/types';
       gap: 16px;
       justify-content: flex-end;
       padding-top: 24px;
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--border-dark);
       margin-top: 32px;
     }
 
-    .btn-primary,
-    .btn-secondary {
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      border: none;
-    }
-
-    .btn-primary {
-      background: #3b82f6;
-      color: white;
-    }
-
-    .btn-primary:hover:not(:disabled) {
-      background: #2563eb;
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    .btn-secondary {
-      background: #f3f4f6;
-      color: #374151;
-      border: 1px solid #d1d5db;
-    }
-
-    .btn-secondary:hover {
-      background: #e5e7eb;
-    }
+    .btn-primary, .btn-secondary { display:none; }
 
     @media (max-width: 768px) {
       .form-actions {
