@@ -1,11 +1,9 @@
 :root {
   --brand: #06b6d4;
-  --bg-dark: #0b0f14;        /* fondo base */
-  --surface-dark: #1f2937;   /* cards, inputs */
-  --border-dark: #374151;    /* bordes */
-  --text-primary: #f3f4f6;   /* texto principal */
-  --text-secondary: #9ca3af; /* texto secundario */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
+  --bg-dark: #0b0f14;
+  --surface-dark: #1f2937;  /* slate-800 */
+  --border-dark: #374151;   /* slate-700 */
+  --text-light: #f3f4f6;    /* slate-100 */
+  --text-1: #0f172a;        /* slate-900 */
+  --text-2: #6b7280;        /* slate-500 */
 }
