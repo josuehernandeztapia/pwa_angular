@@ -16,7 +16,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
   template: `
     <div class="cliente-detail-container">
       <!-- Header -->
-      <div class="detail-header">
+      <div class="detail-header ui-card">
         <div class="client-info">
           <h1 class="client-name">{{ client?.name || 'Cliente' }}</h1>
           <div class="client-status">
@@ -41,21 +41,21 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
 
       <!-- Quick Stats -->
       <div class="quick-stats">
-        <div class="stat-card">
+        <div class="stat-card ui-card">
           <div class="stat-icon">📄</div>
           <div class="stat-info">
             <span class="stat-label">Documentos</span>
             <span class="stat-value">{{ getDocumentStats() }}</span>
           </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card ui-card">
           <div class="stat-icon">🎯</div>
           <div class="stat-info">
             <span class="stat-label">Flujo</span>
             <span class="stat-value">{{ getFlowDisplayName(client?.flow) }}</span>
           </div>
         </div>
-        <div class="stat-card">
+        <div class="stat-card ui-card">
           <div class="stat-icon">📍</div>
           <div class="stat-info">
             <span class="stat-label">Municipio</span>
@@ -66,13 +66,13 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
 
       <!-- Main Actions -->
       <div class="main-actions">
-        <div class="action-section">
+        <div class="action-section ui-card">
           <h2>Verificación y Validación</h2>
           <div class="action-buttons">
             
             <!-- AVI Button - Revolutionary -->
             <button 
-              class="btn-avi-verification"
+              class="ui-btn ui-btn-primary"
               [disabled]="!canStartAviVerification()"
               (click)="startAviVerification()">
               <span class="btn-icon">🎤</span>
@@ -85,7 +85,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
 
             <!-- Traditional KYC (Backup) -->
             <button 
-              class="btn-secondary-action"
+              class="ui-btn ui-btn-secondary"
               [disabled]="!canStartKyc()"
               (click)="startTraditionalKyc()">
               <span class="btn-icon">🔍</span>
@@ -97,10 +97,10 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
           </div>
         </div>
 
-        <div class="action-section">
+        <div class="action-section ui-card">
           <h2>Documentos y Contratos</h2>
           <div class="action-buttons">
-            <button class="btn-secondary-action" (click)="viewDocuments()">
+            <button class="ui-btn ui-btn-secondary" (click)="viewDocuments()">
               <span class="btn-icon">📋</span>
               <div class="btn-content">
                 <span class="btn-title">Ver Documentos</span>
@@ -108,7 +108,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
               </div>
             </button>
             
-            <button class="btn-secondary-action" [disabled]="!canGenerateContract()" (click)="generateContract()">
+            <button class="ui-btn ui-btn-secondary" [disabled]="!canGenerateContract()" (click)="generateContract()">
               <span class="btn-icon">📜</span>
               <div class="btn-content">
                 <span class="btn-title">Generar Contrato</span>
@@ -120,10 +120,10 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       </div>
 
       <!-- Protection Section (Financial Products Only) -->
-      <div class="protection-section" *ngIf="isFinancialProduct() && client">
+      <div class="protection-section ui-card" *ngIf="isFinancialProduct() && client">
         <div class="section-header mb-6">
-          <h2 class="text-xl font-semibold text-gray-800">🛡️ Sistema de Protección</h2>
-          <p class="text-sm text-gray-600 mt-2">
+          <h2 class="text-xl font-semibold">🛡️ Sistema de Protección</h2>
+          <p class="text-sm mt-2">
             Gestión de protección financiera para productos con plazo
           </p>
         </div>
@@ -135,9 +135,9 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       </div>
 
       <!-- Client Details -->
-      <div class="client-details" *ngIf="client">
+      <div class="client-details ui-card" *ngIf="client">
         <div class="details-grid">
-          <div class="detail-card">
+          <div class="detail-card ui-card">
             <h3>Información Personal</h3>
             <div class="detail-items">
               <div class="detail-item">
@@ -155,7 +155,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
             </div>
           </div>
 
-          <div class="detail-card">
+          <div class="detail-card ui-card">
             <h3>Información del Proceso</h3>
             <div class="detail-items">
               <div class="detail-item">
@@ -178,13 +178,13 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       <!-- Progress Tracking Section -->
       <div class="progress-tracking-section" *ngIf="client">
         <div class="section-header mb-6">
-          <h2 class="text-xl font-semibold text-gray-800">📈 Progreso Financiero</h2>
+          <h2 class="text-xl font-semibold">📈 Progreso Financiero</h2>
         </div>
         
         <div class="progress-cards grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
           <!-- Savings Progress -->
-          <div class="progress-card bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">💰 Plan de Ahorro</h3>
+          <div class="progress-card ui-card p-6 rounded-xl border">
+            <h3 class="text-lg font-semibold mb-4">💰 Plan de Ahorro</h3>
             <app-progress-bar 
               [progress]="getSavingsProgress()"
               [goal]="getSavingsGoal()"
@@ -200,21 +200,21 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
               [actionCallback]="openPaymentModal">
             </app-progress-bar>
             
-            <div class="savings-details mt-4 pt-4 border-t border-gray-200">
-              <div class="flex justify-between text-sm text-gray-600">
+            <div class="savings-details mt-4 pt-4 border-t">
+              <div class="flex justify-between text-sm">
                 <span>Última aportación:</span>
                 <span class="font-medium">{{ getLastContributionDate() }}</span>
               </div>
-              <div class="flex justify-between text-sm text-gray-600 mt-1">
+              <div class="flex justify-between text-sm mt-1">
                 <span>Próximo vencimiento:</span>
-                <span class="font-medium text-amber-600">{{ getNextPaymentDue() }}</span>
+                <span class="font-medium">{{ getNextPaymentDue() }}</span>
               </div>
             </div>
           </div>
           
           <!-- Payment Progress -->
-          <div class="progress-card bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">💳 Plan de Pagos</h3>
+          <div class="progress-card ui-card p-6 rounded-xl border">
+            <h3 class="text-lg font-semibold mb-4">💳 Plan de Pagos</h3>
             <app-progress-bar 
               [progress]="getPaymentProgress()"
               [goal]="getTotalPayments()"
@@ -227,14 +227,14 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
               [milestones]="getPaymentMilestones()">
             </app-progress-bar>
             
-            <div class="payment-details mt-4 pt-4 border-t border-gray-200">
-              <div class="flex justify-between text-sm text-gray-600">
+            <div class="payment-details mt-4 pt-4 border-t">
+              <div class="flex justify-between text-sm">
                 <span>Pagos restantes:</span>
                 <span class="font-medium">{{ getRemainingPayments() }}</span>
               </div>
-              <div class="flex justify-between text-sm text-gray-600 mt-1">
+              <div class="flex justify-between text-sm mt-1">
                 <span>Fecha estimada de liquidación:</span>
-                <span class="font-medium text-emerald-600">{{ getEstimatedCompletion() }}</span>
+                <span class="font-medium">{{ getEstimatedCompletion() }}</span>
               </div>
             </div>
           </div>
@@ -244,7 +244,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       <!-- Import Tracker Section -->
       <div class="import-tracker-section" *ngIf="client && client.importStatus">
         <div class="section-header mb-6">
-          <h2 class="text-xl font-semibold text-gray-800">🚢 Seguimiento de Importación</h2>
+          <h2 class="text-xl font-semibold">🚢 Seguimiento de Importación</h2>
         </div>
         <app-import-tracker [client]="client" (onUpdateMilestone)="updateImportMilestone($event)"></app-import-tracker>
       </div>
@@ -252,7 +252,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       <!-- Event Log Section -->
       <div class="event-log-section">
         <div class="section-header mb-6">
-          <h2 class="text-xl font-semibold text-gray-800">📜 Historial de Actividad</h2>
+          <h2 class="text-xl font-semibold">📜 Historial de Actividad</h2>
         </div>
         <app-event-log 
           [events]="clientEvents"
@@ -265,38 +265,38 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       <!-- Payment Actions Section -->
       <div class="payment-actions-section" *ngIf="client">
         <div class="section-header mb-6">
-          <h2 class="text-xl font-semibold text-gray-800">💳 Opciones de Pago</h2>
+          <h2 class="text-xl font-semibold">💳 Opciones de Pago</h2>
         </div>
         
         <div class="payment-options grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
           <button 
             (click)="generatePaymentLink('spei')"
-            class="payment-option-card p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:border-blue-400 hover:shadow-xl transition-all duration-200 text-left group"
+            class="payment-option-card ui-btn ui-btn-secondary p-6 text-left group"
           >
             <div class="flex items-center space-x-4">
-              <div class="payment-icon w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+              <div class="payment-icon w-12 h-12 rounded-lg flex items-center justify-center transition-colors">
                 <span class="text-2xl">🏦</span>
               </div>
               <div>
-                <h3 class="font-semibold text-gray-800">Transferencia SPEI</h3>
-                <p class="text-sm text-gray-600">Pago inmediato desde tu banco</p>
-                <p class="text-xs text-blue-600 mt-1">Sin comisiones adicionales</p>
+                <h3 class="font-semibold">Transferencia SPEI</h3>
+                <p class="text-sm">Pago inmediato desde tu banco</p>
+                <p class="text-xs mt-1">Sin comisiones adicionales</p>
               </div>
             </div>
           </button>
           
           <button 
             (click)="generatePaymentLink('conekta')"
-            class="payment-option-card p-6 bg-white rounded-xl shadow-lg border border-gray-200 hover:border-purple-400 hover:shadow-xl transition-all duration-200 text-left group"
+            class="payment-option-card ui-btn ui-btn-secondary p-6 text-left group"
           >
             <div class="flex items-center space-x-4">
-              <div class="payment-icon w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+              <div class="payment-icon w-12 h-12 rounded-lg flex items-center justify-center transition-colors">
                 <span class="text-2xl">💳</span>
               </div>
               <div>
-                <h3 class="font-semibold text-gray-800">Tarjeta de Crédito/Débito</h3>
-                <p class="text-sm text-gray-600">Pago seguro con Conekta</p>
-                <p class="text-xs text-purple-600 mt-1">Meses sin intereses disponibles</p>
+                <h3 class="font-semibold">Tarjeta de Crédito/Débito</h3>
+                <p class="text-sm">Pago seguro con Conekta</p>
+                <p class="text-xs mt-1">Meses sin intereses disponibles</p>
               </div>
             </div>
           </button>
@@ -304,16 +304,16 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
         
         <!-- Account Statement -->
         <div class="account-statement-section">
-          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+          <div class="ui-card p-6 rounded-xl border">
             <div class="flex justify-between items-center">
               <div>
-                <h3 class="font-semibold text-gray-800">📄 Estado de Cuenta</h3>
-                <p class="text-sm text-gray-600 mt-1">Genera y descarga tu estado de cuenta actualizado</p>
+                <h3 class="font-semibold">📄 Estado de Cuenta</h3>
+                <p class="text-sm mt-1">Genera y descarga tu estado de cuenta actualizado</p>
               </div>
               <div class="flex space-x-3">
                 <button 
                   (click)="previewAccountStatement()"
-                  class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors flex items-center space-x-2"
+                  class="ui-btn ui-btn-secondary flex items-center space-x-2"
                 >
                   <span>👁️</span>
                   <span>Vista Previa</span>
@@ -321,7 +321,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
                 <button 
                   (click)="generatePDF()"
                   [disabled]="isGeneratingPDF"
-                  class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 transition-colors flex items-center space-x-2"
+                  class="ui-btn ui-btn-primary flex items-center space-x-2"
                 >
                   <span *ngIf="!isGeneratingPDF">📄</span>
                   <span *ngIf="isGeneratingPDF" class="animate-spin">⏳</span>
@@ -349,7 +349,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       max-width: 1200px;
       margin: 0 auto;
       padding: 24px;
-      background: #f8fafc;
+      background: var(--surface-dark);
       min-height: 100vh;
     }
 
@@ -357,10 +357,10 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      background: white;
       padding: 32px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-dark);
+      background: var(--surface-dark);
       margin-bottom: 24px;
     }
 
@@ -371,7 +371,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     .client-name {
       font-size: 28px;
       font-weight: 700;
-      color: #1f2937;
+      color: var(--text-light);
       margin: 0 0 12px 0;
     }
 
@@ -386,30 +386,21 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       font-weight: 600;
     }
 
-    .status-expediente-en-proceso {
-      background: #fef3c7;
-      color: #92400e;
-    }
+    .status-expediente-en-proceso { border: 1px solid var(--border-dark); color: var(--text-light); }
 
-    .status-verificación-avi-completada {
-      background: #dcfce7;
-      color: #166534;
-    }
+    .status-verificación-avi-completada { border: 1px solid var(--border-dark); color: var(--text-light); }
 
-    .status-requiere-supervisión {
-      background: #fecaca;
-      color: #991b1b;
-    }
+    .status-requiere-supervisión { border: 1px solid var(--border-dark); color: var(--text-light); }
 
     .client-score {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      background: #f8fafc;
+      background: var(--surface-2);
       padding: 20px;
       border-radius: 12px;
-      border: 2px solid #e5e7eb;
+      border: 1px solid var(--border-dark);
     }
     
     .protection-status {
@@ -417,16 +408,16 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       flex-direction: column;
       align-items: center;
       gap: 8px;
-      background: #f0fdfa;
+      background: var(--surface-2);
       padding: 20px;
       border-radius: 12px;
-      border: 2px solid #06d6a0;
+      border: 1px solid var(--border-dark);
     }
 
     .score-label, .status-label {
       font-size: 12px;
       font-weight: 600;
-      color: #6b7280;
+      color: var(--text-2);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -439,8 +430,9 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     }
     
     .status-indicator.protection-available {
-      background: #06d6a0;
-      color: white;
+      background: var(--surface-3);
+      color: var(--text-light);
+      border: 1px solid var(--border-dark);
     }
 
     .score-value {
@@ -448,10 +440,10 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       font-weight: 700;
     }
 
-    .score-excellent { color: #059669; }
-    .score-good { color: #0891b2; }
-    .score-fair { color: #d97706; }
-    .score-poor { color: #dc2626; }
+    .score-excellent { color: var(--text-light); }
+    .score-good { color: var(--text-light); }
+    .score-fair { color: var(--text-light); }
+    .score-poor { color: var(--text-light); }
 
     .quick-stats {
       display: grid;
@@ -464,11 +456,10 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       display: flex;
       align-items: center;
       gap: 16px;
-      background: white;
+      background: var(--surface-dark);
       padding: 24px;
       border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      border-left: 4px solid #3b82f6;
+      border: 1px solid var(--border-dark);
     }
 
     .stat-icon {
@@ -485,14 +476,14 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     .stat-label {
       font-size: 12px;
       font-weight: 600;
-      color: #6b7280;
+      color: var(--text-2);
       text-transform: uppercase;
     }
 
     .stat-value {
       font-size: 18px;
       font-weight: 600;
-      color: #1f2937;
+      color: var(--text-light);
     }
 
     .main-actions {
@@ -503,18 +494,18 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     }
 
     .action-section {
-      background: white;
+      background: var(--surface-dark);
       padding: 32px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-dark);
     }
 
     .action-section h2 {
       margin: 0 0 24px 0;
       font-size: 20px;
       font-weight: 600;
-      color: #1f2937;
-      border-bottom: 1px solid #e5e7eb;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border-dark);
       padding-bottom: 12px;
     }
 
@@ -524,70 +515,8 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
       gap: 16px;
     }
 
-    .btn-avi-verification {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 24px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.3s;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
-    }
-
-    .btn-avi-verification::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .btn-avi-verification:hover:not(:disabled)::before {
-      left: 100%;
-    }
-
-    .btn-avi-verification:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(102, 126, 234, 0.4);
-    }
-
-    .btn-avi-verification:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .btn-secondary-action {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      padding: 20px;
-      background: white;
-      color: #374151;
-      border: 2px solid #e5e7eb;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-secondary-action:hover:not(:disabled) {
-      border-color: #3b82f6;
-      background: #f8fafc;
-    }
-
-    .btn-secondary-action:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    .btn-avi-verification { }
+    .btn-secondary-action { }
 
     .btn-icon {
       font-size: 24px;
@@ -618,10 +547,10 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     }
 
     .client-details {
-      background: white;
+      background: var(--surface-dark);
       padding: 32px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-dark);
     }
 
     .details-grid {
@@ -631,18 +560,18 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     }
 
     .detail-card {
-      background: #f8fafc;
+      background: var(--surface-2);
       padding: 24px;
       border-radius: 12px;
-      border: 1px solid #e5e7eb;
+      border: 1px solid var(--border-dark);
     }
 
     .detail-card h3 {
       margin: 0 0 20px 0;
       font-size: 18px;
       font-weight: 600;
-      color: #1f2937;
-      border-bottom: 1px solid #e5e7eb;
+      color: var(--text-light);
+      border-bottom: 1px solid var(--border-dark);
       padding-bottom: 12px;
     }
 
@@ -666,12 +595,12 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
 
     .detail-label {
       font-weight: 600;
-      color: #6b7280;
+      color: var(--text-2);
       font-size: 14px;
     }
 
     .detail-value {
-      color: #1f2937;
+      color: var(--text-light);
       font-size: 14px;
     }
 
@@ -715,16 +644,15 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     }
     
     .protection-section {
-      background: white;
+      background: var(--surface-dark);
       padding: 32px;
       border-radius: 16px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-dark);
       margin-bottom: 32px;
-      border-left: 4px solid #06d6a0;
     }
     
     .protection-section .section-header h2 {
-      color: #1f2937;
+      color: var(--text-light);
       font-size: 20px;
       font-weight: 600;
       margin: 0;
@@ -734,7 +662,7 @@ import { ProtectionRealComponent } from '../protection-real/protection-real.comp
     }
     
     .protection-section .section-header p {
-      color: #6b7280;
+      color: var(--text-2);
       font-size: 14px;
       margin: 8px 0 0 0;
     }
