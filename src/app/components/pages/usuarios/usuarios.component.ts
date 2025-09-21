@@ -12,7 +12,8 @@ interface UserRow {
   selector: 'app-usuarios',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './usuarios.component.html'
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent {
   users: UserRow[] = [
