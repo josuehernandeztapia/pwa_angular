@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -37,19 +37,18 @@ interface KpiData {
   template: `
     <div class="command-container p-6 space-y-6">
       <!-- Header -->
-      <div class="bg-gradient-to-r from-purple-600 to-purple-800 text-white rounded-xl p-6 shadow-lg">
+      <div class="ui-card">
         <div class="flex justify-between items-start">
           <div>
             <h1 class="text-3xl font-bold mb-2">Simulador de Tanda Colectiva</h1>
-            <p class="text-purple-100 text-lg">Encuentra la mejor estrategia de ahorro grupal con efecto bola de nieve</p>
+            <p class="text-lg">Encuentra la mejor estrategia de ahorro grupal con efecto bola de nieve</p>
           </div>
           
           <!-- View Mode Toggle -->
           <div class="flex gap-2">
             <button 
               (click)="toggleViewMode()"
-              [class]="currentViewMode === 'simple' ? 'bg-purple-500 text-white' : 'bg-white text-purple-600'"
-              class="px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-200">
+              [ngClass]="currentViewMode === 'simple' ? 'ui-btn ui-btn-primary' : 'ui-btn ui-btn-secondary'">
               {{ currentViewMode === 'simple' ? '📱 Simple' : '🔬 Avanzado' }}
             </button>
           </div>
@@ -57,18 +56,18 @@ interface KpiData {
       </div>
 
       <!-- Resumen KPIs -->
-      <div class="premium-card p-4">
+      <div class="ui-card">
         <h2 class="text-lg font-semibold text-gray-800 mb-3">Resumen</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div class="bg-purple-50 p-3 rounded border border-purple-100">
+          <div class="ui-card">
             <div class="text-purple-600 text-xs">Mensualidad Grupo</div>
             <div class="text-xl font-bold text-purple-800">{{ formatCurrency(simulationResult?.scenario?.monthlyContribution || 0) }}</div>
           </div>
-          <div class="bg-green-50 p-3 rounded border border-green-100">
+          <div class="ui-card">
             <div class="text-green-600 text-xs">Meses a Meta</div>
             <div class="text-xl font-bold text-green-800">{{ simulationResult?.scenario?.monthsToTarget || 0 }} meses</div>
           </div>
-          <div class="bg-blue-50 p-3 rounded border border-blue-100">
+          <div class="ui-card">
             <div class="text-blue-600 text-xs">Meta Total</div>
             <div class="text-xl font-bold text-blue-800">{{ formatCurrency(simulationResult?.scenario?.targetAmount || 0) }}</div>
           </div>
@@ -77,7 +76,7 @@ interface KpiData {
 
       <div class="grid-aside">
         <!-- Configuration Panel -->
-        <div class="premium-card p-6">
+        <div class="ui-card">
           <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
             <span class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</span>
             Unidad
@@ -93,7 +92,7 @@ interface KpiData {
                 type="number"
                 formControlName="memberCount"
                 placeholder="10"
-                class="w-full py-3 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                class="ui-input"
                 min="5"
                 max="50"
                 step="1"
@@ -121,7 +120,7 @@ interface KpiData {
                   type="number"
                   formControlName="unitPrice"
                   placeholder="749000"
-                  class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  class="ui-input pl-8"
                   min="500000"
                   step="1000"
                 />
@@ -143,7 +142,7 @@ interface KpiData {
                   type="number"
                   formControlName="avgConsumption"
                   placeholder="400"
-                  class="w-full pr-16 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  class="ui-input pr-16"
                   min="200"
                   step="50"
                 />
@@ -167,7 +166,7 @@ interface KpiData {
                   type="number"
                   formControlName="overpricePerLiter"
                   placeholder="3.00"
-                  class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  class="ui-input pl-8"
                   min="1"
                   step="0.1"
                 />
@@ -190,7 +189,7 @@ interface KpiData {
                   type="number"
                   formControlName="voluntaryMonthly"
                   placeholder="500"
-                  class="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  class="ui-input pl-8"
                   min="0"
                   step="100"
                 />
@@ -201,7 +200,7 @@ interface KpiData {
             </div>
 
             <!-- What-If Events Builder (Advanced Mode Only) -->
-            <div *ngIf="currentViewMode === 'advanced'" class="space-y-4 pt-6 border-t border-gray-200">
+            <div *ngIf="currentViewMode === 'advanced'" class="space-y-4 pt-6 border-t border-[var(--border-dark)]">
               <h3 class="text-lg font-semibold text-gray-800 flex items-center">
                 <span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-2">?</span>
                 What-If Events Builder
@@ -209,7 +208,7 @@ interface KpiData {
               <p class="text-sm text-gray-600">Simula eventos especiales como aportes extra o atrasos</p>
 
               <!-- Add New Event Form -->
-              <div class="bg-gray-50 rounded-lg p-4 space-y-3">
+              <div class="ui-card space-y-3">
                 <h4 class="font-medium text-gray-700">Agregar Evento</h4>
                 
                 <div class="grid grid-cols-2 gap-3">
@@ -220,7 +219,7 @@ interface KpiData {
                       [(ngModel)]="newEvent.month"
                       min="1"
                       max="60"
-                      class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      class="ui-input text-sm"
                       placeholder="1"
                     />
                   </div>
@@ -229,7 +228,7 @@ interface KpiData {
                     <label class="block text-xs font-medium text-gray-600 mb-1">Tipo</label>
                     <select
                       [(ngModel)]="newEvent.type"
-                      class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      class="ui-input text-sm"
                     >
                       <option value="extra">Aporte Extra ➕</option>
                       <option value="miss">Atraso ⚠️</option>
@@ -240,7 +239,7 @@ interface KpiData {
                     <label class="block text-xs font-medium text-gray-600 mb-1">Miembro</label>
                     <select
                       [(ngModel)]="newEvent.memberId"
-                      class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      class="ui-input text-sm"
                     >
                       <option *ngFor="let memberId of getAvailableMemberIds()" [value]="memberId">
                         Miembro {{ memberId.substring(1) }}
@@ -256,7 +255,7 @@ interface KpiData {
                         type="number"
                         [(ngModel)]="newEvent.amount"
                         min="0"
-                        class="w-full pl-6 pr-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        class="ui-input pl-6 pr-3 text-sm"
                         placeholder="1000"
                       />
                     </div>
@@ -266,7 +265,7 @@ interface KpiData {
                 <button
                   (click)="addWhatIfEvent()"
                   [disabled]="!newEvent.month || !newEvent.amount"
-                  class="w-full px-4 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-sm font-medium transition-colors duration-200"
+                  class="ui-btn ui-btn-primary w-full text-sm"
                 >
                   ➕ Agregar Evento
                 </button>
@@ -276,7 +275,7 @@ interface KpiData {
               <div *ngIf="whatIfEvents.length > 0" class="space-y-2">
                 <h4 class="font-medium text-gray-700">Eventos Programados ({{ whatIfEvents.length }})</h4>
                 
-                <div class="max-h-32 overflow-y-auto space-y-2">
+              <div class="max-h-32 overflow-y-auto space-y-2">
                   <div 
                     *ngFor="let event of whatIfEvents"
                     [class]="'flex items-center justify-between p-3 rounded-lg border ' + getEventTypeBgColor(event.type)"
@@ -292,7 +291,7 @@ interface KpiData {
                     
                     <button
                       (click)="removeWhatIfEvent(event.id)"
-                      class="text-red-500 hover:text-red-700 font-bold text-lg leading-none"
+                    class="ui-btn ui-btn-secondary"
                     >
                       ×
                     </button>
@@ -307,7 +306,7 @@ interface KpiData {
                 type="button"
                 (click)="simulateTanda()"
                 [disabled]="!configForm.valid || isSimulating"
-                class="flex-1 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                class="ui-btn ui-btn-primary flex-1 flex items-center justify-center"
               >
                 <span *ngIf="!isSimulating">Simular Tanda Colectiva</span>
                 <div *ngIf="isSimulating" class="flex items-center">
@@ -321,7 +320,7 @@ interface KpiData {
               <button
                 type="button"
                 (click)="resetForm()"
-                class="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+                class="ui-btn ui-btn-secondary"
               >
                 Limpiar
               </button>
@@ -330,7 +329,7 @@ interface KpiData {
         </div>
 
         <!-- Results Panel -->
-        <div class="premium-card p-6" *ngIf="simulationResult">
+        <div class="ui-card" *ngIf="simulationResult">
           <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
             <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</span>
             Finanzas
@@ -353,7 +352,7 @@ interface KpiData {
 
           <!-- Doble barra: Deuda activa vs Ahorro meta -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-            <div class="bg-white border border-gray-200 rounded-xl p-4">
+            <div class="ui-card">
               <div class="text-sm text-gray-600 mb-2" title="Porcentaje del inflow grupal que cubre la PMT estimada">Cobertura de Deuda (PMT) con Inflow</div>
               <div class="w-full h-6 bg-gray-100 rounded overflow-hidden">
                 <div class="h-6 bg-emerald-500" [style.width.%]="inflowVsPMT.coveragePct"></div>
@@ -364,7 +363,7 @@ interface KpiData {
               </div>
             </div>
 
-            <div class="bg-white border border-gray-200 rounded-xl p-4">
+            <div class="ui-card">
               <div class="text-sm text-gray-600 mb-2">Ahorro hacia Meta por Miembro</div>
               <div class="w-full h-6 bg-gray-100 rounded overflow-hidden">
                 <div class="h-6 bg-blue-500" [style.width.%]="savingProgressPct"></div>
@@ -384,7 +383,7 @@ interface KpiData {
             
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
               <div *ngFor="let kpi of kpiDashboard" 
-                   class="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow duration-200">
+                   class="ui-card">
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-2xl">{{ kpi.icon }}</span>
                   <div *ngIf="kpi.trend" 
@@ -400,12 +399,12 @@ interface KpiData {
 
           <!-- Summary Cards -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg border border-purple-200">
+            <div class="ui-card">
               <div class="text-purple-600 text-sm font-medium">Meta Total del Grupo</div>
               <div class="text-2xl font-bold text-purple-800">{{ formatCurrency(simulationResult.scenario.targetAmount) }}</div>
               <div class="text-xs text-purple-600 mt-1">{{ simulationResult.scenario.monthsToTarget }} meses estimados</div>
             </div>
-            <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg border border-green-200">
+            <div class="ui-card">
               <div class="text-green-600 text-sm font-medium">Aportación Mensual Total</div>
               <div class="text-2xl font-bold text-green-800">{{ formatCurrency(simulationResult.scenario.monthlyContribution) }}</div>
               <div class="text-xs text-green-600 mt-1">{{ formatCurrency(simulationResult.scenario.monthlyContribution / configForm.value.memberCount) }} por miembro</div>
@@ -413,7 +412,7 @@ interface KpiData {
           </div>
 
           <!-- Breakdown by Member -->
-          <div class="bg-gray-50 rounded-lg p-4 mb-6">
+          <div class="ui-card mb-6">
             <h3 class="font-semibold text-gray-800 mb-3">Aportación Individual por Miembro:</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div class="flex justify-between">
@@ -433,7 +432,7 @@ interface KpiData {
           </div>
 
           <!-- Tanda Results -->
-          <div class="bg-blue-50 rounded-lg p-4 mb-6" *ngIf="simulationResult.tandaResult">
+          <div class="ui-card mb-6" *ngIf="simulationResult.tandaResult">
             <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
               <span class="text-blue-600 mr-2">🎯</span>
               Resultados de la Tanda:
@@ -455,7 +454,7 @@ interface KpiData {
           </div>
 
           <!-- Snowball Effect -->
-          <div class="bg-amber-50 rounded-lg p-4 mb-6" *ngIf="simulationResult.snowballEffect">
+          <div class="ui-card mb-6" *ngIf="simulationResult.snowballEffect">
             <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
               <span class="text-amber-600 mr-2">⚡</span>
               Efecto Bola de Nieve:
@@ -485,7 +484,7 @@ interface KpiData {
               📅 Timeline Mensual Detallado
             </h3>
             
-            <div class="space-y-3 max-h-96 overflow-y-auto bg-gray-50 rounded-lg p-4">
+            <div class="space-y-3 max-h-96 overflow-y-auto ui-card">
               <div *ngFor="let month of generateMonthlyTimeline()" 
                    class="p-4 rounded-lg bg-white border border-gray-200 hover:shadow-sm transition-shadow">
                 <div class="flex justify-between items-center mb-2">
@@ -528,7 +527,7 @@ interface KpiData {
           <!-- Simple Progress Chart (Always visible) -->
           <div class="mb-6" *ngIf="simulationResult.snowballEffect?.totalSavings && currentViewMode === 'simple'">
             <h3 class="font-semibold text-gray-800 mb-3">Proyección de Ahorro Colectivo:</h3>
-            <div class="bg-gray-100 rounded-lg p-4">
+            <div class="ui-card">
               <div class="grid grid-cols-4 gap-2 text-xs text-gray-600 mb-2">
                 <span>Mes</span>
                 <span>Ahorro Total</span>
@@ -557,7 +556,7 @@ interface KpiData {
               📊 Análisis de Impacto Delta
             </h3>
             
-            <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-4 border border-blue-200">
+            <div class="ui-card">
               <div class="flex items-center justify-between mb-3">
                 <h4 class="font-medium text-blue-800">¿Qué pasa si cada miembro aporta $500 más?</h4>
                 <span class="text-2xl">💡</span>
@@ -589,24 +588,24 @@ interface KpiData {
           </div>
 
           <!-- Enhanced Action Buttons -->
-          <div class="space-y-4 pt-6 border-t border-gray-200">
+          <div class="space-y-4 pt-6 border-t border-[var(--border-dark)]">
             <!-- Simple Actions (Always Visible) -->
             <div class="flex gap-3">
               <button
                 (click)="generatePDF()"
-                class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                class="ui-btn ui-btn-primary"
               >
                 📄 PDF
               </button>
               <button
                 (click)="speakSummary()"
-                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                class="ui-btn ui-btn-primary flex-1"
               >
                 🔊 Escuchar Resumen
               </button>
               <button
                 (click)="shareWhatsApp()"
-                class="flex-1 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                class="ui-btn ui-btn-secondary flex-1"
               >
                 📱 Compartir
               </button>
@@ -616,7 +615,7 @@ interface KpiData {
             <div class="flex gap-4">
               <button
                 (click)="proceedToClientCreation()"
-                class="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center text-lg"
+                class="ui-btn ui-btn-primary flex-1 text-lg"
               >
                 <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -625,7 +624,7 @@ interface KpiData {
               </button>
               <button
                 (click)="recalculate()"
-                class="px-6 py-4 border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-50 transition-colors duration-200"
+                class="ui-btn ui-btn-secondary"
               >
                 🔄 Recalcular
               </button>
@@ -633,7 +632,7 @@ interface KpiData {
 
             <!-- What-If Events Impact (Advanced Mode) -->
             <div *ngIf="currentViewMode === 'advanced' && whatIfEvents.length > 0" 
-                 class="bg-gradient-to-r from-orange-50 to-orange-100 border border-orange-200 rounded-lg p-4">
+                 class="ui-card">
               <h4 class="font-semibold text-orange-800 mb-2 flex items-center">
                 <span class="mr-2">🎯</span>
                 Impacto de Eventos What-If
@@ -646,7 +645,7 @@ interface KpiData {
                   • {{ event.description }}
                 </div>
               </div>
-              <div class="mt-3 p-3 bg-white rounded-md border border-orange-200">
+              <div class="mt-3 p-3 ui-card">
                 <div class="flex items-center justify-between text-sm">
                   <span class="text-orange-700 font-medium">Impacto estimado en timeline:</span>
                   <span class="text-orange-800 font-bold">
@@ -663,7 +662,7 @@ interface KpiData {
               type="button"
               (click)="saveDraft()"
               [disabled]="!simulationResult"
-              class="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors duration-200"
+              class="ui-btn ui-btn-secondary"
               data-cy="save-scenario"
             >
               💾 Guardar
@@ -671,14 +670,14 @@ interface KpiData {
             <button
               type="button"
               (click)="generatePDF()"
-              class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              class="ui-btn ui-btn-primary"
             >
               📄 PDF
             </button>
             <button
               type="button"
               (click)="proceedToClientCreation()"
-              class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200"
+              class="ui-btn ui-btn-primary"
             >
               ✅ Formalizar Grupo
             </button>
@@ -686,7 +685,7 @@ interface KpiData {
         </div>
 
         <!-- Initial Help Panel -->
-        <div class="premium-card p-6" *ngIf="!simulationResult">
+        <div class="ui-card" *ngIf="!simulationResult">
           <h2 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
             <span class="bg-amber-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">💡</span>
             ¿Qué es una Tanda Colectiva?
