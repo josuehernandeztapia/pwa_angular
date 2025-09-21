@@ -1,0 +1,259 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - complementary [ref=e5]:
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e9] [cursor=pointer]
+        - text: Dashboard
+      - link "Usuarios" [ref=e10] [cursor=pointer]:
+        - /url: /usuarios
+        - text: Usuarios
+      - link "Clientes" [ref=e12] [cursor=pointer]:
+        - /url: /clientes
+        - img [ref=e14] [cursor=pointer]
+        - text: Clientes
+      - link "Cotizador" [ref=e19] [cursor=pointer]:
+        - /url: /cotizador
+        - img [ref=e21] [cursor=pointer]
+        - text: Cotizador
+      - link "Configuración" [ref=e23] [cursor=pointer]:
+        - /url: /configuracion
+        - img [ref=e25] [cursor=pointer]
+        - text: Configuración
+      - link "AVI" [ref=e28] [cursor=pointer]:
+        - /url: /avi
+        - img [ref=e30] [cursor=pointer]
+        - text: AVI
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e36]: Breadcrumbs
+      - generic [ref=e37]:
+        - textbox "Buscar..." [ref=e38]
+        - button "🌓" [ref=e39] [cursor=pointer]
+    - main [ref=e40]:
+      - generic [ref=e42]:
+        - generic [ref=e43]:
+          - generic [ref=e44]:
+            - heading "Centro de Comando Centro de Comando" [level=1] [ref=e45]:
+              - img [ref=e48] [cursor=pointer]
+              - text: Centro de Comando
+            - paragraph [ref=e52]: Tu plan de acción para hoy, Ricardo.
+          - generic [ref=e53]:
+            - generic [ref=e55]:
+              - generic [ref=e56]:
+                - generic [ref=e57]:
+                  - generic [ref=e58]:
+                    - generic [ref=e59]: 👤
+                    - generic [ref=e60]: Modo Asesor
+                  - button "Cambiar a Modo Cliente" [ref=e61] [cursor=pointer]:
+                    - generic [ref=e64] [cursor=pointer]: 👔
+                    - generic [ref=e65] [cursor=pointer]: Cambiar a Cliente
+                - paragraph [ref=e67]: Vista completa con herramientas de poder para análisis y gestión avanzada
+              - generic:
+                - generic:
+                  - heading [level=3]
+                  - paragraph
+            - generic [ref=e68]:
+              - generic [ref=e69]: 👤 Ricardo Montoya ⏷
+              - button "Modo Cliente Modo Cliente" [ref=e70] [cursor=pointer]:
+                - img [ref=e73] [cursor=pointer]
+                - text: Modo Cliente
+        - main [ref=e80]:
+          - generic [ref=e81]:
+            - heading "Tu Próxima Mejor Acción TU PRÓXIMA MEJOR ACCIÓN" [level=2] [ref=e83]:
+              - img [ref=e86] [cursor=pointer]
+              - text: TU PRÓXIMA MEJOR ACCIÓN
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - generic [ref=e95]: 📞
+                - generic [ref=e96]:
+                  - heading "Contactar a María García (Ruta 27)" [level=2] [ref=e97]
+                  - paragraph [ref=e98]: Tu próxima mejor acción para maximizar el impacto
+                - generic [ref=e99]:
+                  - generic [ref=e100]: ⏱️
+                  - generic [ref=e101]: 5 min
+              - generic [ref=e102]:
+                - generic [ref=e103]:
+                  - generic [ref=e104]:
+                    - generic [ref=e105]: MG
+                    - generic [ref=e106]: "78"
+                  - generic [ref=e107]:
+                    - heading "María García" [level=3] [ref=e108]
+                    - generic [ref=e110]: Ruta 27
+                    - paragraph [ref=e111]: Su expediente está incompleto (falta INE). Tiene un Health Score de 78.
+                - generic [ref=e112]:
+                  - generic [ref=e113]:
+                    - generic [ref=e114]: 🧠
+                    - generic [ref=e115]: Inteligencia de Negocio
+                  - paragraph [ref=e116]: Cliente con alto potencial que necesita completar documentación para avanzar en el proceso.
+                  - generic [ref=e117]:
+                    - generic [ref=e118]:
+                      - generic [ref=e119]: 📅
+                      - generic [ref=e120]: 5 días
+                      - generic [ref=e121]: esperando
+                    - generic [ref=e122]:
+                      - generic [ref=e123]: 💰
+                      - generic [ref=e124]: $15,000
+                      - generic [ref=e125]: en juego
+              - generic [ref=e126]:
+                - button "📄 Ver Expediente" [ref=e127] [cursor=pointer]:
+                  - generic [ref=e128] [cursor=pointer]: 📄
+                  - generic [ref=e129] [cursor=pointer]: Ver Expediente
+                - generic [ref=e130]:
+                  - button "📞 Llamar Ahora" [ref=e131] [cursor=pointer]:
+                    - generic [ref=e132] [cursor=pointer]: 📞
+                    - generic [ref=e133] [cursor=pointer]: Llamar Ahora
+                  - button "📱 Enviar Recordatorio por WhatsApp" [ref=e134] [cursor=pointer]:
+                    - generic [ref=e135] [cursor=pointer]: 📱
+                    - generic [ref=e136] [cursor=pointer]: Enviar Recordatorio por WhatsApp
+          - generic [ref=e137]:
+            - generic [ref=e138]:
+              - heading "KPIs Clave KPIs Clave (vs. Semana Pasada)" [level=3] [ref=e139]:
+                - img [ref=e142] [cursor=pointer]
+                - text: KPIs Clave (vs. Semana Pasada)
+              - generic [ref=e147]:
+                - generic [ref=e148]:
+                  - heading "📊 KPIs Clave" [level=3] [ref=e149]
+                  - paragraph [ref=e150]: vs. Semana Pasada
+                - generic [ref=e151]:
+                  - generic [ref=e152]:
+                    - generic [ref=e153]:
+                      - generic [ref=e154]: 💡
+                      - generic [ref=e155]:
+                        - generic [ref=e156]: ▲
+                        - generic [ref=e157]: 25%
+                    - generic [ref=e158]:
+                      - generic [ref=e159]: "12"
+                      - generic [ref=e160]: Oportunidades
+                      - generic [ref=e161]: Nuevas esta semana
+                  - generic [ref=e164]:
+                    - generic [ref=e165]:
+                      - generic [ref=e166]: 🎯
+                      - generic [ref=e167]:
+                        - generic [ref=e168]: ▲
+                        - generic [ref=e169]: 15%
+                    - generic [ref=e170]:
+                      - generic [ref=e171]: 28.0%
+                      - generic [ref=e172]: Tasa de Cierre
+                  - generic [ref=e175]:
+                    - generic [ref=e176]:
+                      - generic [ref=e177]: 📋
+                      - generic [ref=e178]:
+                        - generic [ref=e179]: →
+                        - generic [ref=e180]: 0%
+                    - generic [ref=e181]:
+                      - generic [ref=e182]: "28"
+                      - generic [ref=e183]: Contratos Activos
+                  - generic [ref=e185]:
+                    - generic [ref=e186]:
+                      - generic [ref=e187]: 💰
+                      - generic [ref=e188]:
+                        - generic [ref=e189]: ▲
+                        - generic [ref=e190]: 12%
+                    - generic [ref=e191]:
+                      - generic [ref=e192]: $1,250,000
+                      - generic [ref=e193]: Revenue del Mes
+              - generic "KPIs de Postventa (dev)" [ref=e198]:
+                - generic [ref=e199]:
+                  - generic [ref=e200]: t_first_recommendation (avg)
+                  - generic [ref=e201]: 0 ms
+                - generic [ref=e202]:
+                  - generic [ref=e203]: "%need_info"
+                  - generic [ref=e204]: 0%
+            - generic [ref=e205]:
+              - heading "Radar de Riesgo Radar de Riesgo" [level=3] [ref=e206]:
+                - img [ref=e209] [cursor=pointer]
+                - text: Radar de Riesgo
+              - paragraph [ref=e213]: (Visualización de clientes por Health Score)
+              - generic [ref=e215]:
+                - generic [ref=e216]:
+                  - generic [ref=e217]:
+                    - heading "🔥 Radar de Riesgo" [level=3] [ref=e218]
+                    - paragraph [ref=e219]: Visualización proactiva de la salud de tu cartera
+                  - generic [ref=e220]:
+                    - generic [ref=e223]: Bajo
+                    - generic [ref=e226]: Medio
+                    - generic [ref=e229]: Alto
+                    - generic [ref=e232]: Crítico
+                - generic [ref=e234]:
+                  - generic [ref=e241]: Zona Segura
+                  - generic [ref=e242]: Atención
+                  - generic [ref=e243]: Riesgo Alto
+                  - generic [ref=e244]: Crítico
+                  - generic [ref=e247] [cursor=pointer]: MG
+                  - generic [ref=e250] [cursor=pointer]: CM
+                  - generic [ref=e253] [cursor=pointer]: AR
+                  - generic [ref=e256] [cursor=pointer]: JH
+                - generic [ref=e257]:
+                  - generic [ref=e258]:
+                    - generic [ref=e259]: "2"
+                    - generic [ref=e260]: Críticos
+                  - generic [ref=e261]:
+                    - generic [ref=e262]: "0"
+                    - generic [ref=e263]: Alto Riesgo
+                  - generic [ref=e264]:
+                    - generic [ref=e265]: "1"
+                    - generic [ref=e266]: Atención
+                  - generic [ref=e267]:
+                    - generic [ref=e268]: "1"
+                    - generic [ref=e269]: Estables
+          - generic [ref=e270]:
+            - heading "Feed de Actividad en Tiempo Real Feed de Actividad en Tiempo Real" [level=2] [ref=e271]:
+              - img [ref=e274] [cursor=pointer]
+              - text: Feed de Actividad en Tiempo Real
+            - generic [ref=e280]:
+              - generic [ref=e281]:
+                - heading "🛰️ Feed de Actividad en Tiempo Real" [level=3] [ref=e282]
+                - generic [ref=e283]:
+                  - button "Todos" [ref=e284] [cursor=pointer]
+                  - button "Acciones" [ref=e285] [cursor=pointer]
+                  - button "Logros" [ref=e286] [cursor=pointer]
+              - generic [ref=e287]:
+                - generic [ref=e288]:
+                  - generic [ref=e290]: 💰
+                  - generic [ref=e292]:
+                    - generic [ref=e294]:
+                      - generic [ref=e295]: Sistema
+                      - generic [ref=e296]: hace 2 min
+                    - generic [ref=e297]:
+                      - heading "Pago de $5,000 MXN recibido de Juan Pérez." [level=4] [ref=e298]
+                      - paragraph [ref=e299]:
+                        - text: Pago de $5,000 MXN recibido de . ¡Felicítalo!
+                        - generic [ref=e300]: Juan Pérez
+                      - generic [ref=e302]:
+                        - generic [ref=e303]: 💰
+                        - generic [ref=e304]: $5,000
+                      - button "👏 ¡Felicítalo!" [ref=e305] [cursor=pointer]:
+                        - generic [ref=e306] [cursor=pointer]: 👏
+                        - generic [ref=e307] [cursor=pointer]: ¡Felicítalo!
+                - generic [ref=e308]:
+                  - generic [ref=e310]: 📄
+                  - generic [ref=e312]:
+                    - generic [ref=e314]:
+                      - generic [ref=e315]: Asesor
+                      - generic [ref=e316]: hace 15 min
+                    - generic [ref=e317]:
+                      - heading "Documento 'INE' de Ana López marcado como 'En Revisión'." [level=4] [ref=e318]
+                      - paragraph [ref=e319]:
+                        - text: El documento ha sido recibido y está siendo procesado por el equipo de validación.
+                        - generic [ref=e320]: Ana López
+                - generic [ref=e321]:
+                  - generic [ref=e323]: 💡
+                  - generic [ref=e324]:
+                    - generic [ref=e325]:
+                      - generic [ref=e326]:
+                        - generic [ref=e327]: Sistema
+                        - generic [ref=e328]: hace 1h
+                      - generic [ref=e330]: 🔥
+                    - generic [ref=e331]:
+                      - heading "Nueva oportunidad 'Carlos Sánchez' asignada." [level=4] [ref=e332]
+                      - paragraph [ref=e333]:
+                        - text: Se ha creado una nueva oportunidad de negocio que requiere tu atención.
+                        - generic [ref=e334]: Carlos Sánchez
+              - button "⬇️ Cargar más actividades" [ref=e336] [cursor=pointer]:
+                - generic [ref=e337] [cursor=pointer]: ⬇️
+                - text: Cargar más actividades
+```

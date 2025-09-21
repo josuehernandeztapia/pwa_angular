@@ -1,0 +1,66 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - complementary [ref=e5]:
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e9] [cursor=pointer]
+        - text: Dashboard
+      - link "Usuarios" [ref=e10] [cursor=pointer]:
+        - /url: /usuarios
+        - text: Usuarios
+      - link "Clientes" [ref=e12] [cursor=pointer]:
+        - /url: /clientes
+        - img [ref=e14] [cursor=pointer]
+        - text: Clientes
+      - link "Cotizador" [ref=e19] [cursor=pointer]:
+        - /url: /cotizador
+        - img [ref=e21] [cursor=pointer]
+        - text: Cotizador
+      - link "Configuración" [ref=e23] [cursor=pointer]:
+        - /url: /configuracion
+        - img [ref=e25] [cursor=pointer]
+        - text: Configuración
+      - link "AVI" [ref=e28] [cursor=pointer]:
+        - /url: /avi
+        - img [ref=e30] [cursor=pointer]
+        - text: AVI
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e36]: Breadcrumbs
+      - generic [ref=e37]:
+        - textbox "Buscar..." [ref=e38]
+        - button "🌓" [ref=e39] [cursor=pointer]
+    - main [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - heading "Configuración" [level=2] [ref=e43]
+          - generic [ref=e44]:
+            - button "Cotizador" [ref=e45] [cursor=pointer]
+            - button "Simulador" [ref=e46] [cursor=pointer]
+          - generic [ref=e47]:
+            - textbox "Nombre" [ref=e48]
+            - combobox [ref=e49]:
+              - option "Seleccione tipo" [selected]
+              - option "Básico"
+              - option "Premium"
+        - generic [ref=e50]:
+          - generic [ref=e51]:
+            - heading "Básico" [level=3] [ref=e52]
+            - paragraph [ref=e53]: $1000
+            - list [ref=e54]:
+              - listitem [ref=e55]: Hasta 3 flujos
+              - listitem [ref=e56]: Soporte básico
+              - listitem [ref=e57]: Reportes simples
+            - button "Seleccionar" [ref=e58] [cursor=pointer]
+          - generic [ref=e59]:
+            - heading "Premium" [level=3] [ref=e60]
+            - paragraph [ref=e61]: $2500
+            - list [ref=e62]:
+              - listitem [ref=e63]: Flujos ilimitados
+              - listitem [ref=e64]: Soporte prioritario
+              - listitem [ref=e65]: Analítica avanzada
+            - button "Seleccionar" [ref=e66] [cursor=pointer]
+```

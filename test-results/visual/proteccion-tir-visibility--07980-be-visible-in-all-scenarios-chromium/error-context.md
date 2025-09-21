@@ -1,0 +1,79 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - complementary [ref=e5]:
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e9] [cursor=pointer]
+        - text: Dashboard
+      - link "Usuarios" [ref=e10] [cursor=pointer]:
+        - /url: /usuarios
+        - text: Usuarios
+      - link "Clientes" [ref=e12] [cursor=pointer]:
+        - /url: /clientes
+        - img [ref=e14] [cursor=pointer]
+        - text: Clientes
+      - link "Cotizador" [ref=e19] [cursor=pointer]:
+        - /url: /cotizador
+        - img [ref=e21] [cursor=pointer]
+        - text: Cotizador
+      - link "Configuración" [ref=e23] [cursor=pointer]:
+        - /url: /configuracion
+        - img [ref=e25] [cursor=pointer]
+        - text: Configuración
+      - link "AVI" [ref=e28] [cursor=pointer]:
+        - /url: /avi
+        - img [ref=e30] [cursor=pointer]
+        - text: AVI
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e36]: Breadcrumbs
+      - generic [ref=e37]:
+        - textbox "Buscar..." [ref=e38]
+        - button "🌓" [ref=e39] [cursor=pointer]
+    - main [ref=e40]:
+      - generic [ref=e45]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: 🚀
+          - heading "Centro de Comando" [level=1] [ref=e49]
+          - paragraph [ref=e50]: El Copiloto Estratégico para el Asesor Moderno
+        - generic [ref=e51]:
+          - generic [ref=e52]:
+            - generic [ref=e53]: 📧 Correo Electrónico
+            - textbox "📧 Correo Electrónico" [ref=e54]
+          - generic [ref=e55]:
+            - generic [ref=e56]: 🔒 Contraseña
+            - generic [ref=e57]:
+              - textbox "🔒 Contraseña" [ref=e58]
+              - button "🙈" [ref=e59] [cursor=pointer]
+          - generic [ref=e60]:
+            - generic [ref=e61] [cursor=pointer]:
+              - checkbox "Recordarme" [ref=e62]
+              - text: Recordarme
+            - button "¿Olvidaste tu contraseña?" [ref=e63] [cursor=pointer]
+          - button "➡️ Acceder al Cockpit" [disabled] [ref=e64] [cursor=pointer]:
+            - generic [ref=e65] [cursor=pointer]:
+              - generic [ref=e66] [cursor=pointer]: ➡️
+              - generic [ref=e67] [cursor=pointer]: Acceder al Cockpit
+        - generic [ref=e68]:
+          - paragraph [ref=e70]:
+            - text: ¿Nuevo asesor?
+            - link "Activar Cuenta" [ref=e71] [cursor=pointer]:
+              - /url: /register
+          - generic [ref=e72]:
+            - generic [ref=e73]: 🔒
+            - generic [ref=e74]: Conexión Segura
+          - generic [ref=e75]:
+            - generic [ref=e76]:
+              - generic [ref=e77]: 🎯
+              - generic [ref=e78]: Acceso Demo
+            - generic [ref=e79]:
+              - generic [ref=e80]:
+                - generic [ref=e81]: "Email:"
+                - generic [ref=e82]: demo@conductores.com
+              - generic [ref=e83]:
+                - generic [ref=e84]: "Password:"
+                - generic [ref=e85]: demo123
+```

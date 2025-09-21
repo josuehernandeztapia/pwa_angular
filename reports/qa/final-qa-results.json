@@ -1,20 +1,5 @@
 [
   {
-    "module": "dashboard",
-    "route": "/dashboard",
-    "screenshots": [
-      "tests/screenshots/dashboard-light.png",
-      "tests/screenshots/dashboard-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
     "module": "login",
     "route": "/login",
     "screenshots": [
@@ -24,10 +9,23 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
+  },
+  {
+    "module": "dashboard",
+    "route": "/dashboard",
+    "screenshots": [
+      "tests/screenshots/dashboard-light.png",
+      "tests/screenshots/dashboard-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
   },
   {
     "module": "clientes",
@@ -39,10 +37,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "cotizador",
@@ -54,10 +51,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "perfil",
@@ -69,10 +65,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "oportunidad",
@@ -83,7 +78,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -98,7 +93,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -114,10 +109,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "avi-go",
@@ -128,10 +122,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "documentos-pendiente",
@@ -142,10 +135,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "avi-review",
@@ -158,8 +150,7 @@
       "violations": 1,
       "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "documentos-validado",
@@ -172,8 +163,7 @@
       "violations": 1,
       "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "avi-nogo",
@@ -186,8 +176,7 @@
       "violations": 1,
       "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "entregas",
@@ -198,10 +187,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "config-cotizador",
@@ -212,10 +200,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "usage",
@@ -226,10 +213,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "config-simulador",
@@ -242,8 +228,7 @@
       "violations": 1,
       "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "postventa-fotos",
@@ -253,7 +238,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -267,7 +252,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -281,7 +266,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -295,7 +280,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -309,7 +294,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -324,10 +309,9 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 13
+      "passes": 14
     },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+    "state": "FALLA"
   },
   {
     "module": "neon",
@@ -337,7 +321,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -351,7 +335,7 @@
     ],
     "helpersPresent": true,
     "accessibility": {
-      "violations": 1,
+      "violations": 0,
       "passes": 13
     },
     "state": "FALLA",
@@ -368,7 +352,7 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 18
+      "passes": 19
     },
     "state": "FALLA"
   },

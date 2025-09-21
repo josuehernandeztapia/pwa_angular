@@ -1,0 +1,355 @@
+
+Running 50 tests using 2 workers
+
+  ✓   2 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @dashboard should render premium container and take snapshot (2.3s)
+  ✓   1 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @nueva-oportunidad should render premium container and take snapshot (2.9s)
+  ✓   3 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @clientes-list should render premium container and take snapshot (2.6s)
+  ✓   4 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @cliente-form should render premium container and take snapshot (2.2s)
+  ✓   5 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @cotizador-main should render premium container and take snapshot (2.2s)
+  ✓   6 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @ags-individual should render premium container and take snapshot (2.6s)
+  ✓   7 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @edomex-colectivo should render premium container and take snapshot (2.4s)
+  ✓   9 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @ags-ahorro should render premium container and take snapshot (2.1s)
+  ✓  10 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @edomex-individual should render premium container and take snapshot (2.4s)
+  ✓  11 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @tanda-colectiva should render premium container and take snapshot (2.5s)
+  ✓  12 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @onboarding should render premium container and take snapshot (2.1s)
+  ✘   8 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @simulador-main should render premium container and take snapshot (16.8s)
+  ✓  14 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @opportunities should render premium container and take snapshot (2.9s)
+  ✓  15 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @expedientes should render premium container and take snapshot (1.9s)
+  ✓  16 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @ops-deliveries should render premium container and take snapshot (2.2s)
+  ✘  13 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @document-upload should render premium container and take snapshot (16.8s)
+  ✓  17 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @triggers should render premium container and take snapshot (2.6s)
+  ✓  18 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @productos should render premium container and take snapshot (2.9s)
+  ✓  19 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @reportes should render premium container and take snapshot (2.2s)
+  ✓  21 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @perfil should render premium container and take snapshot (2.4s)
+  ✘  22 [chromium] › tests/visual/catalogo.spec.ts:75:7 › @productos Catálogo de Productos visual states › loading state snapshot (placeholder, sin CLS) (6.5s)
+  ✓  23 [chromium] › tests/visual/catalogo.spec.ts:94:7 › @productos Catálogo de Productos visual states › data state snapshot (con resultados) (3.7s)
+  ✘  20 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @proteccion should render premium container and take snapshot (16.5s)
+  ✓  24 [chromium] › tests/visual/catalogo.spec.ts:110:7 › @productos Catálogo de Productos visual states › empty state snapshot (sin resultados) y limpiar filtros (3.5s)
+  ✓  25 [chromium] › tests/visual/final-qa.spec.ts:125:7 › QA Final E2E (Core + No-Core) › login (4.8s)
+  ✓  26 [chromium] › tests/visual/final-qa.spec.ts:128:7 › QA Final E2E (Core + No-Core) › dashboard (4.6s)
+  ✓  27 [chromium] › tests/visual/final-qa.spec.ts:131:7 › QA Final E2E (Core + No-Core) › clientes (4.3s)
+  ✓  28 [chromium] › tests/visual/final-qa.spec.ts:134:7 › QA Final E2E (Core + No-Core) › cotizador (4.6s)
+  ✓  29 [chromium] › tests/visual/final-qa.spec.ts:137:7 › QA Final E2E (Core + No-Core) › perfil (4.7s)
+  ✓  30 [chromium] › tests/visual/final-qa.spec.ts:140:7 › QA Final E2E (Core + No-Core) › oportunidad (5.6s)
+  ✓  31 [chromium] › tests/visual/final-qa.spec.ts:143:7 › QA Final E2E (Core + No-Core) › edomex-colectivo (5.1s)
+  ✓  32 [chromium] › tests/visual/final-qa.spec.ts:146:7 › QA Final E2E (Core + No-Core) › proteccion (4.1s)
+  ✓  34 [chromium] › tests/visual/final-qa.spec.ts:154:7 › QA Final E2E (Core + No-Core) › documentos (6.9s)
+  ✓  33 [chromium] › tests/visual/final-qa.spec.ts:149:7 › QA Final E2E (Core + No-Core) › avi (10.1s)
+  ✓  35 [chromium] › tests/visual/final-qa.spec.ts:158:7 › QA Final E2E (Core + No-Core) › entregas (3.8s)
+  ✓  37 [chromium] › tests/visual/final-qa.spec.ts:165:7 › QA Final E2E (Core + No-Core) › usage (3.9s)
+  ✓  36 [chromium] › tests/visual/final-qa.spec.ts:161:7 › QA Final E2E (Core + No-Core) › configuracion (7.2s)
+  ✓  38 [chromium] › tests/visual/final-qa.spec.ts:170:7 › QA Final E2E (Core + No-Core) › postventa (8.8s)
+  ✓  39 [chromium] › tests/visual/final-qa.spec.ts:174:7 › QA Final E2E (Core + No-Core) › gnv (9.7s)
+  ✓  41 [chromium] › tests/visual/final-qa.spec.ts:183:7 › QA Final E2E (Core + No-Core) › usuarios (4.1s)
+  ✓  42 [chromium] › tests/visual/final-qa.spec.ts:187:7 › QA Final E2E (Core + No-Core) › responsive (4.3s)
+  ✓  40 [chromium] › tests/visual/final-qa.spec.ts:178:7 › QA Final E2E (Core + No-Core) › integraciones (12.0s)
+  ✓  43 [chromium] › tests/visual/final-qa.spec.ts:209:7 › QA Final E2E (Core + No-Core) › offline (simulado) (566ms)
+  ✘  44 [chromium] › tests/visual/flow-builder.spec.ts:39:7 › Flow Builder Visual › @flow-editor should open from configuración modal and render palettes (6.2s)
+  ✘  45 [chromium] › tests/visual/flow-builder.spec.ts:68:7 › Flow Builder Visual › @flow-connections should show disabled Deploy until nodes exist (30.2s)
+  ✘  46 [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:10:7 › Protección TIR Visibility Tests › TIR post values should always be visible in all scenarios (30.3s)
+  ✘  47 [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:48:7 › Protección TIR Visibility Tests › Rejection reasons should be visible when scenarios are not eligible (30.4s)
+  ✘  48 [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:86:7 › Protección TIR Visibility Tests › All scenario data should be present in DOM regardless of eligibility (30.3s)
+  ✘  50 [chromium] › tests/visual/ux-sweep.spec.ts:88:7 › UX Sweep (visual + a11y + layout) › crawl core routes, check a11y and take snapshots (17.7s)
+  ✘  49 [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:124:7 › Protección TIR Visibility Tests › Edge case: All scenarios rejected should still show TIR values (30.3s)
+
+
+  1) [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @simulador-main should render premium container and take snapshot 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  locator('div[class*="container"], .premium-container').first()
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  15000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('div[class*="container"], .premium-container').first()[22m
+
+
+      115 |       // Check that a container exists and has background applied
+      116 |       const container = page.locator('div[class*="container"], .premium-container');
+    > 117 |       await expect(container.first()).toBeVisible({ timeout: 15000 });
+          |                                       ^
+      118 |       await applyAntiFlakyStyles(page);
+      119 |       // Basic header presence if known
+      120 |       if (r.heading) {
+        at /workspace/tests/visual/all-modules.spec.ts:117:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/all-modules-Premium-visual-ad549-container-and-take-snapshot-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/all-modules-Premium-visual-ad549-container-and-take-snapshot-chromium/error-context.md
+
+  2) [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @document-upload should render premium container and take snapshot 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  locator('div[class*="container"], .premium-container').first()
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  15000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('div[class*="container"], .premium-container').first()[22m
+
+
+      115 |       // Check that a container exists and has background applied
+      116 |       const container = page.locator('div[class*="container"], .premium-container');
+    > 117 |       await expect(container.first()).toBeVisible({ timeout: 15000 });
+          |                                       ^
+      118 |       await applyAntiFlakyStyles(page);
+      119 |       // Basic header presence if known
+      120 |       if (r.heading) {
+        at /workspace/tests/visual/all-modules.spec.ts:117:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/all-modules-Premium-visual-6f5b2-container-and-take-snapshot-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/all-modules-Premium-visual-6f5b2-container-and-take-snapshot-chromium/error-context.md
+
+  3) [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @proteccion should render premium container and take snapshot 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  locator('div[class*="container"], .premium-container').first()
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  15000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('div[class*="container"], .premium-container').first()[22m
+
+
+      115 |       // Check that a container exists and has background applied
+      116 |       const container = page.locator('div[class*="container"], .premium-container');
+    > 117 |       await expect(container.first()).toBeVisible({ timeout: 15000 });
+          |                                       ^
+      118 |       await applyAntiFlakyStyles(page);
+      119 |       // Basic header presence if known
+      120 |       if (r.heading) {
+        at /workspace/tests/visual/all-modules.spec.ts:117:39
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/all-modules-Premium-visual-9d362-container-and-take-snapshot-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/all-modules-Premium-visual-9d362-container-and-take-snapshot-chromium/error-context.md
+
+  4) [chromium] › tests/visual/catalogo.spec.ts:75:7 › @productos Catálogo de Productos visual states › loading state snapshot (placeholder, sin CLS) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  getByRole('status', { name: /Cargando catálogo/i })
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('status', { name: /Cargando catálogo/i })[22m
+
+
+      82 |     await page.waitForTimeout(100);
+      83 |     const loading = page.getByRole('status', { name: /Cargando catálogo/i });
+    > 84 |     await expect(loading).toBeVisible();
+         |                           ^
+      85 |     await applyAntiFlakyStyles(page);
+      86 |     const container = page.locator('.premium-container, .productos-grid').first();
+      87 |     await expect(container).toBeVisible();
+        at /workspace/tests/visual/catalogo.spec.ts:84:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/catalogo--productos-Catálo-c9dc0-apshot-placeholder-sin-CLS--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/catalogo--productos-Catálo-c9dc0-apshot-placeholder-sin-CLS--chromium/error-context.md
+
+  5) [chromium] › tests/visual/flow-builder.spec.ts:39:7 › Flow Builder Visual › @flow-editor should open from configuración modal and render palettes 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  getByRole('heading', { name: '⚙️ Configuración' })
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: '⚙️ Configuración' })[22m
+
+
+      42 |
+      43 |     // Ensure page header loaded
+    > 44 |     await expect(page.getByRole('heading', { name: '⚙️ Configuración' })).toBeVisible();
+         |                                                                           ^
+      45 |
+      46 |     // Ensure Flow Builder toggle is enabled then click button
+      47 |     await page.getByRole('button', { name: '🎨 Abrir Constructor' }).click();
+        at /workspace/tests/visual/flow-builder.spec.ts:44:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/flow-builder-Flow-Builder--6df8c-n-modal-and-render-palettes-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/flow-builder-Flow-Builder--6df8c-n-modal-and-render-palettes-chromium/error-context.md
+
+  6) [chromium] › tests/visual/flow-builder.spec.ts:68:7 › Flow Builder Visual › @flow-connections should show disabled Deploy until nodes exist 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('button', { name: '🎨 Abrir Constructor' })[22m
+
+
+      69 |     await mockAuth(page);
+      70 |     await page.goto('/configuracion');
+    > 71 |     await page.getByRole('button', { name: '🎨 Abrir Constructor' }).click();
+         |                                                                      ^
+      72 |
+      73 |     const deployBtn = page.getByRole('button', { name: '🚀 Deploy' });
+      74 |     await expect(deployBtn).toBeDisabled();
+        at /workspace/tests/visual/flow-builder.spec.ts:71:70
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/flow-builder-Flow-Builder--8e267-ed-Deploy-until-nodes-exist-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/flow-builder-Flow-Builder--8e267-ed-Deploy-until-nodes-exist-chromium/error-context.md
+
+  7) [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:10:7 › Protección TIR Visibility Tests › TIR post values should always be visible in all scenarios 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[formcontrolname="currentBalance"]')[22m
+
+
+      10 |   test('TIR post values should always be visible in all scenarios', async ({ page }) => {
+      11 |     // Fill form with values that generate both eligible and ineligible scenarios
+    > 12 |     await page.fill('input[formcontrolname="currentBalance"]', '320000');
+         |                ^
+      13 |     await page.fill('input[formcontrolname="originalPayment"]', '10500');
+      14 |     await page.fill('input[formcontrolname="remainingTerm"]', '36');
+      15 |     await page.selectOption('select[formcontrolname="market"]', 'edomex');
+        at /workspace/tests/visual/proteccion-tir-visibility.spec.ts:12:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/proteccion-tir-visibility--07980-be-visible-in-all-scenarios-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/proteccion-tir-visibility--07980-be-visible-in-all-scenarios-chromium/error-context.md
+
+  8) [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:48:7 › Protección TIR Visibility Tests › Rejection reasons should be visible when scenarios are not eligible 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[formcontrolname="currentBalance"]')[22m
+
+
+      48 |   test('Rejection reasons should be visible when scenarios are not eligible', async ({ page }) => {
+      49 |     // Fill form with values that will generate rejected scenarios
+    > 50 |     await page.fill('input[formcontrolname="currentBalance"]', '100000');
+         |                ^
+      51 |     await page.fill('input[formcontrolname="originalPayment"]', '3000');
+      52 |     await page.fill('input[formcontrolname="remainingTerm"]', '12');
+      53 |     await page.selectOption('select[formcontrolname="market"]', 'aguascalientes');
+        at /workspace/tests/visual/proteccion-tir-visibility.spec.ts:50:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/proteccion-tir-visibility--5320b--scenarios-are-not-eligible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/proteccion-tir-visibility--5320b--scenarios-are-not-eligible-chromium/error-context.md
+
+  9) [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:86:7 › Protección TIR Visibility Tests › All scenario data should be present in DOM regardless of eligibility 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[formcontrolname="currentBalance"]')[22m
+
+
+      86 |   test('All scenario data should be present in DOM regardless of eligibility', async ({ page }) => {
+      87 |     // Fill form 
+    > 88 |     await page.fill('input[formcontrolname="currentBalance"]', '500000');
+         |                ^
+      89 |     await page.fill('input[formcontrolname="originalPayment"]', '15000');
+      90 |     await page.fill('input[formcontrolname="remainingTerm"]', '48');
+      91 |     await page.selectOption('select[formcontrolname="market"]', 'edomex');
+        at /workspace/tests/visual/proteccion-tir-visibility.spec.ts:88:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/proteccion-tir-visibility--dcf77-M-regardless-of-eligibility-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/proteccion-tir-visibility--dcf77-M-regardless-of-eligibility-chromium/error-context.md
+
+  10) [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:124:7 › Protección TIR Visibility Tests › Edge case: All scenarios rejected should still show TIR values 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 30000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[formcontrolname="currentBalance"]')[22m
+
+
+      124 |   test('Edge case: All scenarios rejected should still show TIR values', async ({ page }) => {
+      125 |     // Use extreme values that will likely reject all scenarios
+    > 126 |     await page.fill('input[formcontrolname="currentBalance"]', '50000');
+          |                ^
+      127 |     await page.fill('input[formcontrolname="originalPayment"]', '8000');
+      128 |     await page.fill('input[formcontrolname="remainingTerm"]', '6');
+      129 |     await page.selectOption('select[formcontrolname="market"]', 'aguascalientes');
+        at /workspace/tests/visual/proteccion-tir-visibility.spec.ts:126:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/proteccion-tir-visibility--d1b5d-hould-still-show-TIR-values-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/proteccion-tir-visibility--d1b5d-hould-still-show-TIR-values-chromium/error-context.md
+
+  11) [chromium] › tests/visual/ux-sweep.spec.ts:88:7 › UX Sweep (visual + a11y + layout) › crawl core routes, check a11y and take snapshots › Route / 
+
+    TypeError: (0 , _playwright.injectAxe) is not a function
+
+      134 |
+      135 |         // Accessibility (critical/serious)
+    > 136 |         await injectAxe(page);
+          |                        ^
+      137 |         await checkA11y(page, undefined, {
+      138 |           includedImpacts: ['critical', 'serious'],
+      139 |         });
+        at /workspace/tests/visual/ux-sweep.spec.ts:136:24
+        at /workspace/tests/visual/ux-sweep.spec.ts:127:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/visual/ux-sweep-UX-Sweep-visual-a-51f79-eck-a11y-and-take-snapshots-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/visual/ux-sweep-UX-Sweep-visual-a-51f79-eck-a11y-and-take-snapshots-chromium/error-context.md
+
+  11 failed
+    [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @simulador-main should render premium container and take snapshot 
+    [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @document-upload should render premium container and take snapshot 
+    [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @proteccion should render premium container and take snapshot 
+    [chromium] › tests/visual/catalogo.spec.ts:75:7 › @productos Catálogo de Productos visual states › loading state snapshot (placeholder, sin CLS) 
+    [chromium] › tests/visual/flow-builder.spec.ts:39:7 › Flow Builder Visual › @flow-editor should open from configuración modal and render palettes 
+    [chromium] › tests/visual/flow-builder.spec.ts:68:7 › Flow Builder Visual › @flow-connections should show disabled Deploy until nodes exist 
+    [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:10:7 › Protección TIR Visibility Tests › TIR post values should always be visible in all scenarios 
+    [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:48:7 › Protección TIR Visibility Tests › Rejection reasons should be visible when scenarios are not eligible 
+    [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:86:7 › Protección TIR Visibility Tests › All scenario data should be present in DOM regardless of eligibility 
+    [chromium] › tests/visual/proteccion-tir-visibility.spec.ts:124:7 › Protección TIR Visibility Tests › Edge case: All scenarios rejected should still show TIR values 
+    [chromium] › tests/visual/ux-sweep.spec.ts:88:7 › UX Sweep (visual + a11y + layout) › crawl core routes, check a11y and take snapshots 
+  39 passed (3.5m)
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m

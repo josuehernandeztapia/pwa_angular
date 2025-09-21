@@ -1,0 +1,1784 @@
+
+Running 88 tests using 2 workers
+
+Failed to take screenshot: page.screenshot: Target page, context or browser has been closed
+    at Function.takeScreenshotOnError [90m(/workspace/[39me2e/kiban-hase-integration.spec.ts:120:18[90m)[39m
+    at [90m/workspace/[39me2e/kiban-hase-integration.spec.ts:288:34 {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'/workspace/e2e/kiban-hase-integration.spec.ts'[39m,
+      line: [33m120[39m,
+      column: [33m18[39m,
+      function: [32m'Function.takeScreenshotOnError'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m'Screenshot'[39m,
+    apiName: [32m'page.screenshot'[39m,
+    params: {
+      path: [32m'test-results/kiban-hase-error-low-risk-approval-1758428194932.png'[39m,
+      fullPage: [33mtrue[39m,
+      mask: [90mundefined[39m,
+      timeout: [33m0[39m,
+      type: [32m'png'[39m
+    },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@43'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@43'[39m,
+      _title: [32m'Screenshot'[39m,
+      _parentStep: [36m[TestStepInfoImpl][39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    recoverFromStepError: [36m[AsyncFunction: recoverFromStepError][39m,
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1758428194940[39m,
+    error: {
+      message: [32m'Error: page.screenshot: Target page, context or browser has been closed'[39m,
+      stack: [32m'Error: page.screenshot: Target page, context or browser has been closed\n'[39m +
+        [32m'    at Function.takeScreenshotOnError (/workspace/e2e/kiban-hase-integration.spec.ts:120:18)\n'[39m +
+        [32m'    at /workspace/e2e/kiban-hase-integration.spec.ts:288:34'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+  ✘   1 [chromium] › e2e/kiban-hase-integration.spec.ts:264:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟢 Low Risk Scenarios - GO Decision › Low risk client gets approved automatically (1.0m)
+Failed to take screenshot: page.screenshot: Target page, context or browser has been closed
+    at Function.takeScreenshotOnError [90m(/workspace/[39me2e/kiban-hase-integration.spec.ts:120:18[90m)[39m
+    at [90m/workspace/[39me2e/kiban-hase-integration.spec.ts:325:34
+  ✘   2 [chromium] › e2e/kiban-hase-integration.spec.ts:295:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟡 Medium Risk Scenarios - REVIEW Decision › Medium risk client requires review with suggestions (1.0m)
+Failed to take screenshot: page.screenshot: Target page, context or browser has been closed
+    at Function.takeScreenshotOnError [90m(/workspace/[39me2e/kiban-hase-integration.spec.ts:120:18[90m)[39m
+    at [90m/workspace/[39me2e/kiban-hase-integration.spec.ts:357:34
+  ✘   3 [chromium] › e2e/kiban-hase-integration.spec.ts:330:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟡 Medium Risk Scenarios - REVIEW Decision › Review decision shows mitigation options (1.0m)
+Failed to take screenshot: page.screenshot: Target page, context or browser has been closed
+    at Function.takeScreenshotOnError [90m(/workspace/[39me2e/kiban-hase-integration.spec.ts:120:18[90m)[39m
+    at [90m/workspace/[39me2e/kiban-hase-integration.spec.ts:396:34 {
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'/workspace/e2e/kiban-hase-integration.spec.ts'[39m,
+      line: [33m120[39m,
+      column: [33m18[39m,
+      function: [32m'Function.takeScreenshotOnError'[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m'Screenshot'[39m,
+    apiName: [32m'page.screenshot'[39m,
+    params: {
+      path: [32m'test-results/kiban-hase-error-high-risk-rejection-1758428257503.png'[39m,
+      fullPage: [33mtrue[39m,
+      mask: [90mundefined[39m,
+      timeout: [33m0[39m,
+      type: [32m'png'[39m
+    },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@43'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@43'[39m,
+      _title: [32m'Screenshot'[39m,
+      _parentStep: [36m[TestStepInfoImpl][39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    recoverFromStepError: [36m[AsyncFunction: recoverFromStepError][39m,
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1758428257505[39m,
+    error: {
+      message: [32m'Error: page.screenshot: Target page, context or browser has been closed'[39m,
+      stack: [32m'Error: page.screenshot: Target page, context or browser has been closed\n'[39m +
+        [32m'    at Function.takeScreenshotOnError (/workspace/e2e/kiban-hase-integration.spec.ts:120:18)\n'[39m +
+        [32m'    at /workspace/e2e/kiban-hase-integration.spec.ts:396:34'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+  ✘   4 [chromium] › e2e/kiban-hase-integration.spec.ts:364:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔴 High Risk Scenarios - NO-GO Decision › High risk client gets rejected with hard stops (1.0m)
+Failed to take screenshot: page.screenshot: Target page, context or browser has been closed
+    at Function.takeScreenshotOnError [90m(/workspace/[39me2e/kiban-hase-integration.spec.ts:120:18[90m)[39m
+    at [90m/workspace/[39me2e/kiban-hase-integration.spec.ts:429:34
+  ✘   6 [chromium] › e2e/kiban-hase-integration.spec.ts:436:9 › 🎯 KIBAN/HASE Risk Evaluation System › ⚡ Performance & UX › Risk evaluation completes within performance thresholds (1.0m)
+  ✘   5 [chromium] › e2e/kiban-hase-integration.spec.ts:403:9 › 🎯 KIBAN/HASE Risk Evaluation System › ❓ Not Found Scenarios - Fallback to AVI+GNV › Not found in KIBAN falls back to AVI+GNV evaluation (1.0m)
+Failed to take screenshot: page.screenshot: Target page, context or browser has been closed
+    at Function.takeScreenshotOnError [90m(/workspace/[39me2e/kiban-hase-integration.spec.ts:120:18[90m)[39m
+    at [90m/workspace/[39me2e/kiban-hase-integration.spec.ts:506:34
+  ✘   7 [chromium] › e2e/kiban-hase-integration.spec.ts:487:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔄 Error Handling & Resilience › Handles BFF API errors gracefully (1.0m)
+  ✘   8 [chromium] › e2e/kiban-hase-integration.spec.ts:461:9 › 🎯 KIBAN/HASE Risk Evaluation System › ⚡ Performance & UX › Premium UX components render correctly (1.0m)
+  ✘   9 [chromium] › e2e/kiban-hase-integration.spec.ts:533:7 › 🔗 Integration with Existing Systems › KIBAN/HASE integrates with Webhook Retry System (1.0m)
+  ✘  10 [chromium] › e2e/kiban-hase-integration.spec.ts:511:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔄 Error Handling & Resilience › Handles timeout scenarios (1.0m)
+  ✘  11 [chromium] › e2e/kiban-hase-integration.spec.ts:556:7 › 🔗 Integration with Existing Systems › Risk evaluation integrates with Premium Icons (1.0m)
+  ✘  12 [chromium] › e2e/kiban-hase-integration.spec.ts:572:7 › 🔗 Integration with Existing Systems › Human microcopy system provides contextual messages (1.0m)
+  ✘  14 [chromium] › e2e/no-core-qa.spec.ts:91:7 › No-Core QA Suite (PR#14–PR#18) › GNV panel shows table and statuses + screenshots (2.7s)
+  ✘  15 [chromium] › e2e/no-core-qa.spec.ts:112:7 › No-Core QA Suite (PR#14–PR#18) › Integraciones Externas (Odoo/Neon/Callbacks) validations + screenshots (2.0s)
+  ✘  13 [chromium] › e2e/no-core-qa.spec.ts:36:7 › No-Core QA Suite (PR#14–PR#18) › Postventa (wizard) validations and screenshots (7.5s)
+  ✘  16 [chromium] › e2e/no-core-qa.spec.ts:139:7 › No-Core QA Suite (PR#14–PR#18) › Administración/Usuarios table and columns + screenshot (2.2s)
+  ✘  17 [chromium] › e2e/no-core-qa.spec.ts:155:7 › No-Core QA Suite (PR#14–PR#18) › Responsive (desktop/tablet/mobile) + Offline redirect + screenshots (5.4s)
+  ✘  18 [chromium] › e2e/production-critical-flows.spec.ts:44:9 › 🚀 Production Critical Flows - PWA Conductores › 🏠 Dashboard & Navigation › Dashboard loads successfully with navigation elements (7.0s)
+  ✘  19 [chromium] › e2e/production-critical-flows.spec.ts:59:9 › 🚀 Production Critical Flows - PWA Conductores › 🏠 Dashboard & Navigation › Premium icons demo page loads and renders icons (7.0s)
+  ✘  20 [chromium] › e2e/production-critical-flows.spec.ts:76:9 › 🚀 Production Critical Flows - PWA Conductores › 📋 Client Management Flow › Clientes list page loads with proper structure (6.8s)
+  ✘  21 [chromium] › e2e/production-critical-flows.spec.ts:91:9 › 🚀 Production Critical Flows - PWA Conductores › 📋 Client Management Flow › Navigation to nuevo cliente works (6.8s)
+  ✘  22 [chromium] › e2e/production-critical-flows.spec.ts:105:9 › 🚀 Production Critical Flows - PWA Conductores › 🧮 Cotizador System › Cotizador main page loads successfully (7.0s)
+  ✘  23 [chromium] › e2e/production-critical-flows.spec.ts:116:9 › 🚀 Production Critical Flows - PWA Conductores › 🧮 Cotizador System › AGS Individual cotizador loads (7.2s)
+  ✘  24 [chromium] › e2e/production-critical-flows.spec.ts:129:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › Simulador main page loads successfully (7.3s)
+  ✘  25 [chromium] › e2e/production-critical-flows.spec.ts:140:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › AGS Ahorro simulador loads (7.0s)
+  ✘  26 [chromium] › e2e/production-critical-flows.spec.ts:151:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › Tanda Colectiva simulador loads (7.3s)
+  ✘  27 [chromium] › e2e/production-critical-flows.spec.ts:164:9 › 🚀 Production Critical Flows - PWA Conductores › ⚙️ Operations Dashboard › OPS deliveries page loads successfully (7.1s)
+  ✓  29 [chromium] › e2e/production-critical-flows.spec.ts:188:9 › 🚀 Production Critical Flows - PWA Conductores › 🔐 Core Application Structure › Application handles 404 routes gracefully (2.0s)
+  ✓  30 [chromium] › e2e/production-critical-flows.spec.ts:196:9 › 🚀 Production Critical Flows - PWA Conductores › 🔐 Core Application Structure › Protected routes require authentication (redirect check) (1.6s)
+  ✘  28 [chromium] › e2e/production-critical-flows.spec.ts:175:9 › 🚀 Production Critical Flows - PWA Conductores › ⚙️ Operations Dashboard › GNV Health monitoring loads (7.4s)
+  ✓  31 [chromium] › e2e/production-critical-flows.spec.ts:209:9 › 🚀 Production Critical Flows - PWA Conductores › 🔐 Core Application Structure › Service Worker registration works (1.8s)
+  ✓  33 [chromium] › e2e/production-critical-flows.spec.ts:223:9 › 🚀 Production Critical Flows - PWA Conductores › 📱 Performance & PWA Features › Page load performance is acceptable (2.0s)
+  ✓  32 [chromium] › e2e/production-critical-flows.spec.ts:236:9 › 🚀 Production Critical Flows - PWA Conductores › 📱 Performance & PWA Features › Application displays content without major layout shifts (4.3s)
+  ✓  34 [chromium] › e2e/production-critical-flows.spec.ts:258:9 › 🚀 Production Critical Flows - PWA Conductores › 📱 Performance & PWA Features › Critical CSS and assets load properly (1.6s)
+  ✘  35 [chromium] › e2e/production-critical-flows.spec.ts:274:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Complete onboarding flow navigation (6.9s)
+  ✘  36 [chromium] › e2e/production-critical-flows.spec.ts:286:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Document upload flow is accessible (6.9s)
+  ✓  38 [chromium] › e2e/production-public-routes.spec.ts:18:9 › 🚀 Production Public Routes - PWA Conductores › 🔐 Authentication Flow › Login page loads successfully (2.0s)
+  ✓  39 [chromium] › e2e/production-public-routes.spec.ts:30:9 › 🚀 Production Public Routes - PWA Conductores › 🔐 Authentication Flow › Register page loads successfully (1.9s)
+  ✓  40 [chromium] › e2e/production-public-routes.spec.ts:44:9 › 🚀 Production Public Routes - PWA Conductores › 🔐 Core Application Structure › Root redirects to dashboard (1.6s)
+  ✘  37 [chromium] › e2e/production-critical-flows.spec.ts:298:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Nueva oportunidad creation flow (7.0s)
+  ✓  41 [chromium] › e2e/production-public-routes.spec.ts:53:9 › 🚀 Production Public Routes - PWA Conductores › 🔐 Core Application Structure › 404 page handles non-existent routes (1.8s)
+  ✓  42 [chromium] › e2e/production-public-routes.spec.ts:69:9 › 🚀 Production Public Routes - PWA Conductores › 🔐 Core Application Structure › Unauthorized page is accessible (1.7s)
+  ✓  43 [chromium] › e2e/production-public-routes.spec.ts:61:9 › 🚀 Production Public Routes - PWA Conductores › 🔐 Core Application Structure › Offline page is accessible (1.8s)
+  ✓  44 [chromium] › e2e/production-public-routes.spec.ts:79:9 › 🚀 Production Public Routes - PWA Conductores › 📱 Performance & PWA Features › Application loads basic assets correctly (1.8s)
+  ✓  45 [chromium] › e2e/production-public-routes.spec.ts:92:9 › 🚀 Production Public Routes - PWA Conductores › 📱 Performance & PWA Features › Service Worker support is available (1.9s)
+  ✓  46 [chromium] › e2e/production-public-routes.spec.ts:104:9 › 🚀 Production Public Routes - PWA Conductores › 📱 Performance & PWA Features › Page load performance is reasonable (2.0s)
+  ✓  48 [chromium] › e2e/production-public-routes.spec.ts:142:9 › 🚀 Production Public Routes - PWA Conductores › 🔄 Navigation & Routing › Protected routes redirect to login when not authenticated (1.8s)
+  ✘  47 [chromium] › e2e/production-public-routes.spec.ts:117:9 › 🚀 Production Public Routes - PWA Conductores › 📱 Performance & PWA Features › No major console errors on page load (1.8s)
+  ✓  49 [chromium] › e2e/production-public-routes.spec.ts:151:9 › 🚀 Production Public Routes - PWA Conductores › 🔄 Navigation & Routing › Multiple protected routes redirect properly (4.8s)
+  ✓  50 [chromium] › e2e/production-public-routes.spec.ts:171:9 › 🚀 Production Public Routes - PWA Conductores › 🎨 UI & Styling › Login page renders with proper styling (2.8s)
+  ✓  52 [chromium] › e2e/production-public-routes.spec.ts:208:9 › 🚀 Production Public Routes - PWA Conductores › 💡 Progressive Web App Features › Meta tags for PWA are present (1.9s)
+  ✓  51 [chromium] › e2e/production-public-routes.spec.ts:190:9 › 🚀 Production Public Routes - PWA Conductores › 🎨 UI & Styling › Page layout is stable on load (3.8s)
+  ✘  53 [chromium] › e2e/production-public-routes.spec.ts:222:9 › 🚀 Production Public Routes - PWA Conductores › 💡 Progressive Web App Features › Basic responsive design works (1.6s)
+  ✓  54 [chromium] › e2e/production-ready-e2e.spec.ts:80:9 › 🚀 Production-Ready E2E Suite › 🏠 Core Navigation & Layout › App loads successfully with basic navigation (1.7s)
+Element app-cotizador-main not found within 5000ms
+Element app-dashboard not found within 5000ms
+Element app-simulador not found within 5000ms
+Element .dashboard not found within 5000ms
+Element .cotizador not found within 5000ms
+Element [data-testid*="dashboard"] not found within 5000ms
+  ✓  56 [chromium] › e2e/production-ready-e2e.spec.ts:114:9 › 🚀 Production-Ready E2E Suite › 🏠 Core Navigation & Layout › Dashboard route is accessible (18.3s)
+Element .simulator not found within 5000ms
+Element .pmt not found within 3000ms
+Element input[type="number"] not found within 5000ms
+  ✓  55 [chromium] › e2e/production-ready-e2e.spec.ts:163:9 › 🚀 Production-Ready E2E Suite › 💰 Cotizador Module - Critical Path › Cotizador loads and accepts basic input (28.3s)
+Element .payment not found within 3000ms
+Element .mensual not found within 3000ms
+Data display test encountered issues: ExpectError: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+Expected: [32mtrue[39m
+Received: [31mfalse[39m
+    at [90m/workspace/[39me2e/production-ready-e2e.spec.ts:323:27 {
+  matcherResult: {
+    actual: [33mfalse[39m,
+    expected: [33mtrue[39m,
+    message: [32m'\x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n'[39m +
+      [32m'\n'[39m +
+      [32m'Expected: \x1B[32mtrue\x1B[39m\n'[39m +
+      [32m'Received: \x1B[31mfalse\x1B[39m'[39m,
+    name: [32m'toBe'[39m,
+    pass: [33mfalse[39m
+  },
+  [[32mSymbol(step)[39m]: {
+    category: [32m'expect'[39m,
+    apiName: [32m'expect.toBe'[39m,
+    title: [32m'Expect "toBe"'[39m,
+    params: { expected: [33mtrue[39m },
+    infectParentStepsWithError: [90mundefined[39m,
+    stepId: [32m'expect@60'[39m,
+    group: [90mundefined[39m,
+    boxedStack: [90mundefined[39m,
+    location: {
+      file: [32m'/workspace/e2e/production-ready-e2e.spec.ts'[39m,
+      line: [33m323[39m,
+      column: [33m27[39m
+    },
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'expect@60'[39m,
+      _title: [32m'Expect "toBe"'[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    recoverFromStepError: [36m[AsyncFunction: recoverFromStepError][39m,
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1758428651137[39m,
+    error: {
+      message: [32m'Error: \x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n'[39m +
+        [32m'\n'[39m +
+        [32m'Expected: \x1B[32mtrue\x1B[39m\n'[39m +
+        [32m'Received: \x1B[31mfalse\x1B[39m'[39m,
+      stack: [32m'Error: \x1B[2mexpect(\x1B[22m\x1B[31mreceived\x1B[39m\x1B[2m).\x1B[22mtoBe\x1B[2m(\x1B[22m\x1B[32mexpected\x1B[39m\x1B[2m) // Object.is equality\x1B[22m\n'[39m +
+        [32m'\n'[39m +
+        [32m'Expected: \x1B[32mtrue\x1B[39m\n'[39m +
+        [32m'Received: \x1B[31mfalse\x1B[39m\n'[39m +
+        [32m'    at /workspace/e2e/production-ready-e2e.spec.ts:323:27'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+  ✓  58 [chromium] › e2e/production-ready-e2e.spec.ts:284:9 › 🚀 Production-Ready E2E Suite › 📊 Data Display & Components › Tables and lists render with data (4.9s)
+Element #pmt not found within 3000ms
+Element .btn-secondary not found within 2000ms
+  ✓  59 [chromium] › e2e/production-ready-e2e.spec.ts:334:9 › 🚀 Production-Ready E2E Suite › 🔧 Minimal UI Components › Minimal UI elements render without premium effects (4.8s)
+Element [data-testid*="pmt"] not found within 3000ms
+  ✓  60 [chromium] › e2e/production-ready-e2e.spec.ts:370:9 › 🚀 Production-Ready E2E Suite › ⚡ Performance & Reliability › Page loads within acceptable time (2.7s)
+Element .currency not found within 3000ms
+Element span:has-text("$") not found within 3000ms
+  ✓  61 [chromium] › e2e/production-ready-e2e.spec.ts:391:9 › 🚀 Production-Ready E2E Suite › ⚡ Performance & Reliability › Error boundaries work correctly (4.8s)
+Element .financial-result not found within 3000ms
+  ✓  57 [chromium] › e2e/production-ready-e2e.spec.ts:223:9 › 🚀 Production-Ready E2E Suite › 💰 Cotizador Module - Critical Path › Financial calculation shows results (29.0s)
+Webhook integration test info: apiRequestContext.get: connect ECONNREFUSED ::1:3001
+Call log:
+[2m  - → GET http://localhost:3001/api/bff/webhooks/health[22m
+[2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.16 Safari/537.36[22m
+[2m    - accept: */*[22m
+[2m    - accept-encoding: gzip,deflate,br[22m
+
+    at [90m/workspace/[39me2e/production-ready-e2e.spec.ts:425:45 {
+  name: [32m'Error'[39m,
+  [[32mSymbol(step)[39m]: {
+    location: {
+      file: [32m'/workspace/e2e/production-ready-e2e.spec.ts'[39m,
+      line: [33m425[39m,
+      column: [33m45[39m
+    },
+    category: [32m'pw:api'[39m,
+    title: [32m'GET "/api/bff/webhooks/health"'[39m,
+    apiName: [32m'apiRequestContext.get'[39m,
+    params: {
+      url: [32m'http://localhost:3001/api/bff/webhooks/health'[39m,
+      params: [90mundefined[39m,
+      encodedParams: [90mundefined[39m,
+      method: [32m'GET'[39m,
+      headers: [90mundefined[39m,
+      postData: [90mundefined[39m,
+      jsonData: [90mundefined[39m,
+      formData: [90mundefined[39m,
+      multipartData: [90mundefined[39m,
+      timeout: [33m0[39m,
+      failOnStatusCode: [90mundefined[39m,
+      ignoreHTTPSErrors: [90mundefined[39m,
+      maxRedirects: [90mundefined[39m,
+      maxRetries: [90mundefined[39m,
+      __testHookLookup: [90mundefined[39m
+    },
+    group: [90mundefined[39m,
+    stepId: [32m'pw:api@30'[39m,
+    boxedStack: [90mundefined[39m,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [36m[TestInfoImpl][39m,
+      _stepId: [32m'pw:api@30'[39m,
+      _title: [32m'GET "/api/bff/webhooks/health"'[39m,
+      _parentStep: [90mundefined[39m,
+      skip: [36m[Function (anonymous)][39m
+    },
+    recoverFromStepError: [36m[AsyncFunction: recoverFromStepError][39m,
+    complete: [36m[Function: complete][39m,
+    endWallTime: [33m1758428665839[39m,
+    error: {
+      message: [32m'Error: apiRequestContext.get: connect ECONNREFUSED ::1:3001\n'[39m +
+        [32m'Call log:\n'[39m +
+        [32m'\x1B[2m  - → GET http://localhost:3001/api/bff/webhooks/health\x1B[22m\n'[39m +
+        [32m'\x1B[2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.16 Safari/537.36\x1B[22m\n'[39m +
+        [32m'\x1B[2m    - accept: */*\x1B[22m\n'[39m +
+        [32m'\x1B[2m    - accept-encoding: gzip,deflate,br\x1B[22m\n'[39m,
+      stack: [32m'Error: apiRequestContext.get: connect ECONNREFUSED ::1:3001\n'[39m +
+        [32m'Call log:\n'[39m +
+        [32m'\x1B[2m  - → GET http://localhost:3001/api/bff/webhooks/health\x1B[22m\n'[39m +
+        [32m'\x1B[2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.7339.16 Safari/537.36\x1B[22m\n'[39m +
+        [32m'\x1B[2m    - accept: */*\x1B[22m\n'[39m +
+        [32m'\x1B[2m    - accept-encoding: gzip,deflate,br\x1B[22m\n'[39m +
+        [32m'\n'[39m +
+        [32m'    at apiRequestContext.get: connect ECONNREFUSED ::1:3001\n'[39m +
+        [32m'    at /workspace/e2e/production-ready-e2e.spec.ts:425:45'[39m,
+      cause: [90mundefined[39m
+    }
+  }
+}
+  ✓  62 [chromium] › e2e/production-ready-e2e.spec.ts:422:9 › 🚀 Production-Ready E2E Suite › 🏭 Webhook System Integration › BFF webhook endpoints are accessible (2.2s)
+  ✘  63 [chromium] › e2e/proteccion-dom-surgical.spec.ts:17:7 › P0.1 Surgical Fix - Protección DOM Rendering › TIR post is ALWAYS visible in DOM (6.8s)
+  ✘  64 [chromium] › e2e/proteccion-dom-surgical.spec.ts:34:7 › P0.1 Surgical Fix - Protección DOM Rendering › PMT′ is ALWAYS visible in DOM (6.7s)
+  ✓  66 [chromium] › e2e/proteccion-dom-surgical.spec.ts:63:7 › P0.1 Surgical Fix - Protección DOM Rendering › Rejection reasons are visible when applicable (3.8s)
+  ✘  65 [chromium] › e2e/proteccion-dom-surgical.spec.ts:48:7 › P0.1 Surgical Fix - Protección DOM Rendering › n′ is ALWAYS visible in DOM (6.9s)
+  ✘  67 [chromium] › e2e/proteccion-dom-surgical.spec.ts:80:7 › P0.1 Surgical Fix - Protección DOM Rendering › All TIR/PMT′/n′ elements survive form changes (6.6s)
+  ✘  69 [chromium] › e2e/proteccion-dom-surgical.spec.ts:127:7 › P0.1 Surgical Fix - Protección DOM Rendering › Multiple scenarios all render TIR/PMT′/n′ (6.8s)
+  ✘  70 [chromium] › e2e/proteccion-dom-surgical.spec.ts:151:7 › P0.1 Acceptance Criteria › ✅ AC1: TIR post renders in ALL scenarios (11.3s)
+  ✘  71 [chromium] › e2e/proteccion-dom-surgical.spec.ts:165:7 › P0.1 Acceptance Criteria › ✅ AC2: PMT′/n′ render in ALL scenarios (9.0s)
+  ✘  68 [chromium] › e2e/proteccion-dom-surgical.spec.ts:107:7 › P0.1 Surgical Fix - Protección DOM Rendering › Edge case: Invalid form data still renders elements (1.0m)
+  ✘  73 [chromium] › e2e/proteccion-dom-surgical.spec.ts:196:7 › P0.1 Acceptance Criteria › ✅ AC4: Playwright getByTestId works consistently (11.4s)
+  ✘  74 [chromium] › e2e/staging-qa.spec.ts:17:9 › 🧪 Staging QA Suite - Conductores PWA › 📊 Dashboard Module › Dashboard loads with key components (481ms)
+  ✘  75 [chromium] › e2e/staging-qa.spec.ts:30:9 › 🧪 Staging QA Suite - Conductores PWA › 💰 Cotizador Module › PMT calculation with financial formula (446ms)
+  ✘  76 [chromium] › e2e/staging-qa.spec.ts:58:9 › 🧪 Staging QA Suite - Conductores PWA › 💰 Cotizador Module › Amortization table shows interest/capital breakdown (437ms)
+  ✘  77 [chromium] › e2e/staging-qa.spec.ts:77:9 › 🧪 Staging QA Suite - Conductores PWA › 🎤 AVI Module › AVI questions flow with decision pills (446ms)
+  ✘  78 [chromium] › e2e/staging-qa.spec.ts:105:9 › 🧪 Staging QA Suite - Conductores PWA › 🎤 AVI Module › HIGH risk case for evasive nervous with admission (480ms)
+  ✘  79 [chromium] › e2e/staging-qa.spec.ts:121:9 › 🧪 Staging QA Suite - Conductores PWA › 👥 Tanda Module › Tanda timeline shows "Te toca en mes X" (434ms)
+  ✘  80 [chromium] › e2e/staging-qa.spec.ts:143:9 › 🧪 Staging QA Suite - Conductores PWA › 👥 Tanda Module › Inflow alert when inflow ≤ PMT (455ms)
+  ✘  81 [chromium] › e2e/staging-qa.spec.ts:162:9 › 🧪 Staging QA Suite - Conductores PWA › 🛡️ Protección Module › Protection simulation with step-down (496ms)
+  ✘  82 [chromium] › e2e/staging-qa.spec.ts:179:9 › 🧪 Staging QA Suite - Conductores PWA › 🛡️ Protección Module › Rejection shows motivo (IRR post < IRRmin) (510ms)
+  ✘  72 [chromium] › e2e/proteccion-dom-surgical.spec.ts:175:7 › P0.1 Acceptance Criteria › ✅ AC3: Rejection motivo visible when applicable (1.0m)
+  ✘  83 [chromium] › e2e/staging-qa.spec.ts:192:9 › 🧪 Staging QA Suite - Conductores PWA › 🚚 Entregas Module › Timeline shows PO → Entregado hitos (508ms)
+  ✘  84 [chromium] › e2e/staging-qa.spec.ts:206:9 › 🧪 Staging QA Suite - Conductores PWA › 🚚 Entregas Module › Delay shows timeline rojo + nuevo compromiso (468ms)
+  ✘  85 [chromium] › e2e/staging-qa.spec.ts:239:9 › 🧪 Staging QA Suite - Conductores PWA › ⛽ GNV Module › CSV template download available (553ms)
+  ✘  86 [chromium] › e2e/staging-qa.spec.ts:227:9 › 🧪 Staging QA Suite - Conductores PWA › ⛽ GNV Module › Panel shows semáforo verde/amarillo/rojo (703ms)
+  ✘  87 [chromium] › e2e/staging-qa.spec.ts:256:9 › 🧪 Staging QA Suite - Conductores PWA › 📋 Post-venta Module › Photo upload flow (4 fotos: Placa, VIN, Odómetro, Evidencia) (597ms)
+  ✘  88 [chromium] › e2e/staging-qa.spec.ts:273:9 › 🧪 Staging QA Suite - Conductores PWA › 📋 Post-venta Module › RAG diagnosis with refaccion chips (463ms)
+
+
+  1) [chromium] › e2e/kiban-hase-integration.spec.ts:264:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟢 Low Risk Scenarios - GO Decision › Low risk client gets approved automatically 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:267:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--a4f20-gets-approved-automatically-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--a4f20-gets-approved-automatically-chromium/error-context.md
+
+  2) [chromium] › e2e/kiban-hase-integration.spec.ts:295:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟡 Medium Risk Scenarios - REVIEW Decision › Medium risk client requires review with suggestions 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:298:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--27d0a-res-review-with-suggestions-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--27d0a-res-review-with-suggestions-chromium/error-context.md
+
+  3) [chromium] › e2e/kiban-hase-integration.spec.ts:330:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟡 Medium Risk Scenarios - REVIEW Decision › Review decision shows mitigation options 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:333:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--8340c-on-shows-mitigation-options-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--8340c-on-shows-mitigation-options-chromium/error-context.md
+
+  4) [chromium] › e2e/kiban-hase-integration.spec.ts:364:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔴 High Risk Scenarios - NO-GO Decision › High risk client gets rejected with hard stops 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:367:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--628c9-ts-rejected-with-hard-stops-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--628c9-ts-rejected-with-hard-stops-chromium/error-context.md
+
+  5) [chromium] › e2e/kiban-hase-integration.spec.ts:403:9 › 🎯 KIBAN/HASE Risk Evaluation System › ❓ Not Found Scenarios - Fallback to AVI+GNV › Not found in KIBAN falls back to AVI+GNV evaluation 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:406:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--e50d3--back-to-AVI-GNV-evaluation-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--e50d3--back-to-AVI-GNV-evaluation-chromium/error-context.md
+
+  6) [chromium] › e2e/kiban-hase-integration.spec.ts:436:9 › 🎯 KIBAN/HASE Risk Evaluation System › ⚡ Performance & UX › Risk evaluation completes within performance thresholds 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:446:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--638d8-thin-performance-thresholds-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--638d8-thin-performance-thresholds-chromium/error-context.md
+
+  7) [chromium] › e2e/kiban-hase-integration.spec.ts:461:9 › 🎯 KIBAN/HASE Risk Evaluation System › ⚡ Performance & UX › Premium UX components render correctly 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:463:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--a4cb7-components-render-correctly-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--a4cb7-components-render-correctly-chromium/error-context.md
+
+  8) [chromium] › e2e/kiban-hase-integration.spec.ts:487:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔄 Error Handling & Resilience › Handles BFF API errors gracefully 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:495:34
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--f3a1e-s-BFF-API-errors-gracefully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--f3a1e-s-BFF-API-errors-gracefully-chromium/error-context.md
+
+  9) [chromium] › e2e/kiban-hase-integration.spec.ts:511:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔄 Error Handling & Resilience › Handles timeout scenarios 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:524:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🎯--38bb2-e-Handles-timeout-scenarios-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🎯--38bb2-e-Handles-timeout-scenarios-chromium/error-context.md
+
+  10) [chromium] › e2e/kiban-hase-integration.spec.ts:533:7 › 🔗 Integration with Existing Systems › KIBAN/HASE integrates with Webhook Retry System 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:547:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🔗--82a55-s-with-Webhook-Retry-System-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🔗--82a55-s-with-Webhook-Retry-System-chromium/error-context.md
+
+  11) [chromium] › e2e/kiban-hase-integration.spec.ts:556:7 › 🔗 Integration with Existing Systems › Risk evaluation integrates with Premium Icons 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:558:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🔗--1054f-tegrates-with-Premium-Icons-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🔗--1054f-tegrates-with-Premium-Icons-chromium/error-context.md
+
+  12) [chromium] › e2e/kiban-hase-integration.spec.ts:572:7 › 🔗 Integration with Existing Systems › Human microcopy system provides contextual messages 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="client-id-input"]')[22m
+
+
+      76 |   static async triggerRiskEvaluation(page: Page, clientData: any) {
+      77 |     // Fill client information
+    > 78 |     await page.fill('[data-testid="client-id-input"]', clientData.clientId);
+         |                ^
+      79 |     await page.fill('[data-testid="document-number"]', clientData.document.idNumber);
+      80 |     await page.fill('[data-testid="curp-input"]', clientData.document.curp);
+      81 |     
+        at Function.triggerRiskEvaluation (/workspace/e2e/kiban-hase-integration.spec.ts:78:16)
+        at /workspace/e2e/kiban-hase-integration.spec.ts:574:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/kiban-hase-integration-🔗--c3783-rovides-contextual-messages-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/kiban-hase-integration-🔗--c3783-rovides-contextual-messages-chromium/error-context.md
+
+  13) [chromium] › e2e/no-core-qa.spec.ts:36:7 › No-Core QA Suite (PR#14–PR#18) › Postventa (wizard) validations and screenshots 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoContainText[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Locator: locator('[data-cy="postventa-ocr"]').first()
+    Expected pattern: [32m/Pendiente/i[39m
+    Received: <element(s) not found>
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toContainText" with timeout 5000ms[22m
+    [2m  - waiting for locator('[data-cy="postventa-ocr"]').first()[22m
+
+
+      58 |     // OCR status shows Pendiente initially
+      59 |     const ocr = page.locator('[data-cy="postventa-ocr"]').first();
+    > 60 |     await expect(ocr).toContainText(/Pendiente/i);
+         |                       ^
+      61 |     await page.screenshot({ path: path.join(shots, 'postventa-ocr.png') });
+      62 |
+      63 |     // Nudge OCR results to be deterministic OK (override randomness)
+        at /workspace/e2e/no-core-qa.spec.ts:60:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/no-core-qa-No-Core-QA-Suit-b33ab-validations-and-screenshots-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/no-core-qa-No-Core-QA-Suit-b33ab-validations-and-screenshots-chromium/error-context.md
+
+  14) [chromium] › e2e/no-core-qa.spec.ts:91:7 › No-Core QA Suite (PR#14–PR#18) › GNV panel shows table and statuses + screenshots 
+
+    Error: expect.toBeVisible: Error: strict mode violation: getByText('OK') resolved to 5 elements:
+        1) <span data-cy="status-text" class="text-green-600" _ngcontent-ng-c1760204921="" ng-reflect-ng-class="text-green-600">OK</span> aka getByRole('row', { name: 'Estación Aguascalientes 01' }).locator('span')
+        2) <span data-cy="status-text" class="text-green-600" _ngcontent-ng-c1760204921="" ng-reflect-ng-class="text-green-600">OK</span> aka getByRole('row', { name: 'Estación Aguascalientes 02' }).locator('span')
+        3) <span data-cy="status-text" class="text-green-600" _ngcontent-ng-c1760204921="" ng-reflect-ng-class="text-green-600">OK</span> aka getByRole('row', { name: 'Estación EdoMex 11' }).locator('span')
+        4) <span data-cy="status-text" class="text-green-600" _ngcontent-ng-c1760204921="" ng-reflect-ng-class="text-green-600">OK</span> aka getByRole('row', { name: 'Estación EdoMex 12' }).locator('span')
+        5) <span data-cy="status-text" class="text-green-600" _ngcontent-ng-c1760204921="" ng-reflect-ng-class="text-green-600">OK</span> aka getByRole('row', { name: 'Estación Querétaro 03' }).locator('span')
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText('OK')[22m
+
+
+       99 |     await expect(page.locator('[data-cy="gnv-table"]')).toBeVisible({ timeout: 15000 });
+      100 |     // Status texts
+    > 101 |     await expect(page.getByText('OK')).toBeVisible();
+          |                                        ^
+      102 |     await expect(page.getByText('Degradado')).toBeVisible();
+      103 |     await expect(page.getByText('Offline')).toBeVisible();
+      104 |
+        at /workspace/e2e/no-core-qa.spec.ts:101:40
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/no-core-qa-No-Core-QA-Suit-2fcba-le-and-statuses-screenshots-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/no-core-qa-No-Core-QA-Suit-2fcba-le-and-statuses-screenshots-chromium/error-context.md
+
+  15) [chromium] › e2e/no-core-qa.spec.ts:112:7 › No-Core QA Suite (PR#14–PR#18) › Integraciones Externas (Odoo/Neon/Callbacks) validations + screenshots › Visit odoo 
+
+    TypeError: (0 , _playwright.injectAxe) is not a function
+
+      131 |         await expect(status).toContainText(/Pendiente|Completado|Error/);
+      132 |         await page.screenshot({ path: path.join(shots, `${t.key}.png`) });
+    > 133 |         await injectAxe(page);
+          |                        ^
+      134 |         await checkA11y(page, undefined, { includedImpacts: ['critical', 'serious'] });
+      135 |       });
+      136 |     }
+        at /workspace/e2e/no-core-qa.spec.ts:133:24
+        at /workspace/e2e/no-core-qa.spec.ts:121:7
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/no-core-qa-No-Core-QA-Suit-ca923-cks-validations-screenshots-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/no-core-qa-No-Core-QA-Suit-ca923-cks-validations-screenshots-chromium/error-context.md
+
+  16) [chromium] › e2e/no-core-qa.spec.ts:139:7 › No-Core QA Suite (PR#14–PR#18) › Administración/Usuarios table and columns + screenshot 
+
+    TypeError: (0 , _playwright.injectAxe) is not a function
+
+      149 |     await expect(page.getByText('Estado')).toBeVisible();
+      150 |     await page.screenshot({ path: path.join(shots, 'usuarios.png'), fullPage: true });
+    > 151 |     await injectAxe(page);
+          |                    ^
+      152 |     await checkA11y(page, undefined, { includedImpacts: ['critical', 'serious'] });
+      153 |   });
+      154 |
+        at /workspace/e2e/no-core-qa.spec.ts:151:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/no-core-qa-No-Core-QA-Suit-2708f-able-and-columns-screenshot-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/no-core-qa-No-Core-QA-Suit-2708f-able-and-columns-screenshot-chromium/error-context.md
+
+  17) [chromium] › e2e/no-core-qa.spec.ts:155:7 › No-Core QA Suite (PR#14–PR#18) › Responsive (desktop/tablet/mobile) + Offline redirect + screenshots 
+
+    TypeError: (0 , _playwright.injectAxe) is not a function
+
+      184 |     // Dark mode sanity (toggle via DOM class)
+      185 |     await page.evaluate(() => document.documentElement.classList.add('dark'));
+    > 186 |     await injectAxe(page);
+          |                    ^
+      187 |     await checkA11y(page, undefined, { includedImpacts: ['critical', 'serious'] });
+      188 |
+      189 |     // Offline simulation -> should go to offline page
+        at /workspace/e2e/no-core-qa.spec.ts:186:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/no-core-qa-No-Core-QA-Suit-00d4a-ffline-redirect-screenshots-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/no-core-qa-No-Core-QA-Suit-00d4a-ffline-redirect-screenshots-chromium/error-context.md
+
+  18) [chromium] › e2e/production-critical-flows.spec.ts:44:9 › 🚀 Production Critical Flows - PWA Conductores › 🏠 Dashboard & Navigation › Dashboard loads successfully with navigation elements 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Dashboard.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      47 |
+      48 |       // Verify page loads
+    > 49 |       await expect(page).toHaveTitle(/Dashboard.*Conductores PWA/);
+         |                          ^
+      50 |
+      51 |       // Verify main navigation sections are present
+      52 |       await expect(page.locator('h1, .page-title, .dashboard-title')).toBeVisible();
+        at /workspace/e2e/production-critical-flows.spec.ts:49:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--7f5a8-ly-with-navigation-elements-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--7f5a8-ly-with-navigation-elements-chromium/error-context.md
+
+  19) [chromium] › e2e/production-critical-flows.spec.ts:59:9 › 🚀 Production Critical Flows - PWA Conductores › 🏠 Dashboard & Navigation › Premium icons demo page loads and renders icons 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Premium Icons.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      62 |
+      63 |       // Verify page loads
+    > 64 |       await expect(page).toHaveTitle(/Premium Icons.*Conductores PWA/);
+         |                          ^
+      65 |
+      66 |       // Verify premium icons are rendered
+      67 |       const iconElements = await page.locator('app-premium-icon, .premium-icon, svg').count();
+        at /workspace/e2e/production-critical-flows.spec.ts:64:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--8cd9d-age-loads-and-renders-icons-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--8cd9d-age-loads-and-renders-icons-chromium/error-context.md
+
+  20) [chromium] › e2e/production-critical-flows.spec.ts:76:9 › 🚀 Production Critical Flows - PWA Conductores › 📋 Client Management Flow › Clientes list page loads with proper structure 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Clientes.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      79 |
+      80 |       // Verify page loads
+    > 81 |       await expect(page).toHaveTitle(/Clientes.*Conductores PWA/);
+         |                          ^
+      82 |
+      83 |       // Verify main content area exists
+      84 |       await expect(page.locator('main, .main-content, .clientes-container, body')).toBeVisible();
+        at /workspace/e2e/production-critical-flows.spec.ts:81:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--6752b-loads-with-proper-structure-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--6752b-loads-with-proper-structure-chromium/error-context.md
+
+  21) [chromium] › e2e/production-critical-flows.spec.ts:91:9 › 🚀 Production Critical Flows - PWA Conductores › 📋 Client Management Flow › Navigation to nuevo cliente works 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Nuevo Cliente.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      94 |
+      95 |       // Verify page loads
+    > 96 |       await expect(page).toHaveTitle(/Nuevo Cliente.*Conductores PWA/);
+         |                          ^
+      97 |
+      98 |       // Verify form elements exist
+      99 |       const formElements = await page.locator('form, input, select, textarea, button').count();
+        at /workspace/e2e/production-critical-flows.spec.ts:96:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--b2c45-tion-to-nuevo-cliente-works-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--b2c45-tion-to-nuevo-cliente-works-chromium/error-context.md
+
+  22) [chromium] › e2e/production-critical-flows.spec.ts:105:9 › 🚀 Production Critical Flows - PWA Conductores › 🧮 Cotizador System › Cotizador main page loads successfully 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Cotizador.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      108 |
+      109 |       // Verify page loads
+    > 110 |       await expect(page).toHaveTitle(/Cotizador.*Conductores PWA/);
+          |                          ^
+      111 |
+      112 |       // Verify content is present
+      113 |       await expect(page.locator('main, .cotizador-container, body')).toBeVisible();
+        at /workspace/e2e/production-critical-flows.spec.ts:110:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--bd583-ain-page-loads-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--bd583-ain-page-loads-successfully-chromium/error-context.md
+
+  23) [chromium] › e2e/production-critical-flows.spec.ts:116:9 › 🚀 Production Critical Flows - PWA Conductores › 🧮 Cotizador System › AGS Individual cotizador loads 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/AGS Individual.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      119 |
+      120 |       // Verify page loads
+    > 121 |       await expect(page).toHaveTitle(/AGS Individual.*Conductores PWA/);
+          |                          ^
+      122 |
+      123 |       // Verify content loads
+      124 |       await expect(page.locator('body')).not.toHaveText('');
+        at /workspace/e2e/production-critical-flows.spec.ts:121:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--4defc--Individual-cotizador-loads-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--4defc--Individual-cotizador-loads-chromium/error-context.md
+
+  24) [chromium] › e2e/production-critical-flows.spec.ts:129:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › Simulador main page loads successfully 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Simulador.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    8 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      132 |
+      133 |       // Verify page loads
+    > 134 |       await expect(page).toHaveTitle(/Simulador.*Conductores PWA/);
+          |                          ^
+      135 |
+      136 |       // Verify content is present
+      137 |       await expect(page.locator('main, .simulador-container, body')).toBeVisible();
+        at /workspace/e2e/production-critical-flows.spec.ts:134:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--1c8c0-ain-page-loads-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--1c8c0-ain-page-loads-successfully-chromium/error-context.md
+
+  25) [chromium] › e2e/production-critical-flows.spec.ts:140:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › AGS Ahorro simulador loads 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/AGS Ahorro.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      143 |
+      144 |       // Verify page loads
+    > 145 |       await expect(page).toHaveTitle(/AGS Ahorro.*Conductores PWA/);
+          |                          ^
+      146 |
+      147 |       // Verify content loads
+      148 |       await expect(page.locator('body')).not.toHaveText('');
+        at /workspace/e2e/production-critical-flows.spec.ts:145:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--042f7--AGS-Ahorro-simulador-loads-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--042f7--AGS-Ahorro-simulador-loads-chromium/error-context.md
+
+  26) [chromium] › e2e/production-critical-flows.spec.ts:151:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › Tanda Colectiva simulador loads 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Tanda Colectiva.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      154 |
+      155 |       // Verify page loads
+    > 156 |       await expect(page).toHaveTitle(/Tanda Colectiva.*Conductores PWA/);
+          |                          ^
+      157 |
+      158 |       // Verify content loads
+      159 |       await expect(page.locator('body')).not.toHaveText('');
+        at /workspace/e2e/production-critical-flows.spec.ts:156:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--6c234-a-Colectiva-simulador-loads-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--6c234-a-Colectiva-simulador-loads-chromium/error-context.md
+
+  27) [chromium] › e2e/production-critical-flows.spec.ts:164:9 › 🚀 Production Critical Flows - PWA Conductores › ⚙️ Operations Dashboard › OPS deliveries page loads successfully 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Centro de Operaciones.*Entregas/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      167 |
+      168 |       // Verify page loads
+    > 169 |       await expect(page).toHaveTitle(/Centro de Operaciones.*Entregas/);
+          |                          ^
+      170 |
+      171 |       // Verify content is present
+      172 |       await expect(page.locator('main, .ops-container, body')).toBeVisible();
+        at /workspace/e2e/production-critical-flows.spec.ts:169:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--48539-ies-page-loads-successfully-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--48539-ies-page-loads-successfully-chromium/error-context.md
+
+  28) [chromium] › e2e/production-critical-flows.spec.ts:175:9 › 🚀 Production Critical Flows - PWA Conductores › ⚙️ Operations Dashboard › GNV Health monitoring loads 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/GNV.*Health/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      178 |
+      179 |       // Verify page loads
+    > 180 |       await expect(page).toHaveTitle(/GNV.*Health/);
+          |                          ^
+      181 |
+      182 |       // Verify content loads
+      183 |       await expect(page.locator('body')).not.toHaveText('');
+        at /workspace/e2e/production-critical-flows.spec.ts:180:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--c2ca8-GNV-Health-monitoring-loads-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--c2ca8-GNV-Health-monitoring-loads-chromium/error-context.md
+
+  29) [chromium] › e2e/production-critical-flows.spec.ts:274:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Complete onboarding flow navigation 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Onboarding.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      277 |
+      278 |       // Verify onboarding page loads
+    > 279 |       await expect(page).toHaveTitle(/Onboarding.*Conductores PWA/);
+          |                          ^
+      280 |
+      281 |       // Verify page has interactive elements
+      282 |       const interactiveElements = await page.locator('button, input, select, a[href]').count();
+        at /workspace/e2e/production-critical-flows.spec.ts:279:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--c86be--onboarding-flow-navigation-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--c86be--onboarding-flow-navigation-chromium/error-context.md
+
+  30) [chromium] › e2e/production-critical-flows.spec.ts:286:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Document upload flow is accessible 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Carga de Documentos.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      289 |
+      290 |       // Verify document upload page loads
+    > 291 |       await expect(page).toHaveTitle(/Carga de Documentos.*Conductores PWA/);
+          |                          ^
+      292 |
+      293 |       // Verify upload interface elements exist
+      294 |       const uploadElements = await page.locator('input[type="file"], .upload-area, .file-input, button').count();
+        at /workspace/e2e/production-critical-flows.spec.ts:291:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--168fc-t-upload-flow-is-accessible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--168fc-t-upload-flow-is-accessible-chromium/error-context.md
+
+  31) [chromium] › e2e/production-critical-flows.spec.ts:298:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Nueva oportunidad creation flow 
+
+    Error: [2mexpect([22m[31mpage[39m[2m).[22mtoHaveTitle[2m([22m[32mexpected[39m[2m)[22m failed
+
+    Expected pattern: [32m/Nueva Oportunidad.*Conductores PWA/[39m
+    Received string:  [31m"Iniciar Sesión - Conductores PWA"[39m
+    Timeout: 5000ms
+
+    Call log:
+    [2m  - Expect "toHaveTitle" with timeout 5000ms[22m
+    [2m    9 × unexpected value "Iniciar Sesión - Conductores PWA"[22m
+
+
+      301 |
+      302 |       // Verify nueva oportunidad page loads
+    > 303 |       await expect(page).toHaveTitle(/Nueva Oportunidad.*Conductores PWA/);
+          |                          ^
+      304 |
+      305 |       // Verify form elements exist
+      306 |       const formElements = await page.locator('form, input, button, select').count();
+        at /workspace/e2e/production-critical-flows.spec.ts:303:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-critical-flows--83a55-a-oportunidad-creation-flow-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-critical-flows--83a55-a-oportunidad-creation-flow-chromium/error-context.md
+
+  32) [chromium] › e2e/production-public-routes.spec.ts:117:9 › 🚀 Production Public Routes - PWA Conductores › 📱 Performance & PWA Features › No major console errors on page load 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m0[39m
+    Received: [31m3[39m
+
+      135 |       });
+      136 |
+    > 137 |       expect(criticalErrors.length).toBe(0);
+          |                                     ^
+      138 |     });
+      139 |   });
+      140 |
+        at /workspace/e2e/production-public-routes.spec.ts:137:37
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-public-routes-�-aa29d-console-errors-on-page-load-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-public-routes-�-aa29d-console-errors-on-page-load-chromium/error-context.md
+
+  33) [chromium] › e2e/production-public-routes.spec.ts:222:9 › 🚀 Production Public Routes - PWA Conductores › 💡 Progressive Web App Features › Basic responsive design works 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeLessThanOrEqual[2m([22m[32mexpected[39m[2m)[22m
+
+    Expected: <= [32m400[39m
+    Received:    [31m523[39m
+
+      227 |
+      228 |       const mobileBodyWidth = await page.evaluate(() => document.body.scrollWidth);
+    > 229 |       expect(mobileBodyWidth).toBeLessThanOrEqual(400); // Should fit in mobile viewport
+          |                               ^
+      230 |
+      231 |       // Test desktop viewport
+      232 |       await page.setViewportSize({ width: 1200, height: 800 });
+        at /workspace/e2e/production-public-routes.spec.ts:229:31
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/production-public-routes-�-e6323-sic-responsive-design-works-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/production-public-routes-�-e6323-sic-responsive-design-works-chromium/error-context.md
+
+  34) [chromium] › e2e/proteccion-dom-surgical.spec.ts:17:7 › P0.1 Surgical Fix - Protección DOM Rendering › TIR post is ALWAYS visible in DOM 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="tir-post"]') to be visible[22m
+
+
+      17 |   test('TIR post is ALWAYS visible in DOM', async ({ page }) => {
+      18 |     // Wait for scenarios to compute
+    > 19 |     await page.waitForSelector('[data-testid="tir-post"]', { timeout: 5000 });
+         |                ^
+      20 |     
+      21 |     // Verify TIR post element exists and is visible
+      22 |     const tirPost = page.getByTestId('tir-post');
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:19:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-a799f-st-is-ALWAYS-visible-in-DOM-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-a799f-st-is-ALWAYS-visible-in-DOM-chromium/error-context.md
+
+  35) [chromium] › e2e/proteccion-dom-surgical.spec.ts:34:7 › P0.1 Surgical Fix - Protección DOM Rendering › PMT′ is ALWAYS visible in DOM 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="pmt-prime"]') to be visible[22m
+
+
+      34 |   test('PMT′ is ALWAYS visible in DOM', async ({ page }) => {
+      35 |     // Wait for scenarios to compute
+    > 36 |     await page.waitForSelector('[data-testid="pmt-prime"]', { timeout: 5000 });
+         |                ^
+      37 |     
+      38 |     // Verify PMT′ element exists and is visible
+      39 |     const pmtPrime = page.getByTestId('pmt-prime');
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:36:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-bd7bb-T′-is-ALWAYS-visible-in-DOM-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-bd7bb-T′-is-ALWAYS-visible-in-DOM-chromium/error-context.md
+
+  36) [chromium] › e2e/proteccion-dom-surgical.spec.ts:48:7 › P0.1 Surgical Fix - Protección DOM Rendering › n′ is ALWAYS visible in DOM 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="n-prime"]') to be visible[22m
+
+
+      48 |   test('n′ is ALWAYS visible in DOM', async ({ page }) => {
+      49 |     // Wait for scenarios to compute
+    > 50 |     await page.waitForSelector('[data-testid="n-prime"]', { timeout: 5000 });
+         |                ^
+      51 |     
+      52 |     // Verify n′ element exists and is visible
+      53 |     const nPrime = page.getByTestId('n-prime');
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:50:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-11a78-n′-is-ALWAYS-visible-in-DOM-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-11a78-n′-is-ALWAYS-visible-in-DOM-chromium/error-context.md
+
+  37) [chromium] › e2e/proteccion-dom-surgical.spec.ts:80:7 › P0.1 Surgical Fix - Protección DOM Rendering › All TIR/PMT′/n′ elements survive form changes 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="tir-post"]') to be visible[22m
+
+
+      80 |   test('All TIR/PMT′/n′ elements survive form changes', async ({ page }) => {
+      81 |     // Wait for initial load
+    > 82 |     await page.waitForSelector('[data-testid="tir-post"]', { timeout: 5000 });
+         |                ^
+      83 |     
+      84 |     // Change form values to trigger recomputation
+      85 |     await page.fill('input[formControlName="currentBalance"]', '500000');
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:82:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-431ee-ements-survive-form-changes-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-431ee-ements-survive-form-changes-chromium/error-context.md
+
+  38) [chromium] › e2e/proteccion-dom-surgical.spec.ts:107:7 › P0.1 Surgical Fix - Protección DOM Rendering › Edge case: Invalid form data still renders elements 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[formControlName="currentBalance"]')[22m
+
+
+      107 |   test('Edge case: Invalid form data still renders elements', async ({ page }) => {
+      108 |     // Set invalid/extreme values
+    > 109 |     await page.fill('input[formControlName="currentBalance"]', '0');
+          |                ^
+      110 |     await page.fill('input[formControlName="originalPayment"]', '0');
+      111 |     await page.fill('input[formControlName="remainingTerm"]', '1');
+      112 |     
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:109:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-9ee14-data-still-renders-elements-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-9ee14-data-still-renders-elements-chromium/error-context.md
+
+  39) [chromium] › e2e/proteccion-dom-surgical.spec.ts:127:7 › P0.1 Surgical Fix - Protección DOM Rendering › Multiple scenarios all render TIR/PMT′/n′ 
+
+    TimeoutError: page.waitForSelector: Timeout 5000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('.scenario-card') to be visible[22m
+
+
+      127 |   test('Multiple scenarios all render TIR/PMT′/n′', async ({ page }) => {
+      128 |     // Wait for scenarios to load
+    > 129 |     await page.waitForSelector('.scenario-card', { timeout: 5000 });
+          |                ^
+      130 |     
+      131 |     // Count scenario cards
+      132 |     const scenarios = page.locator('.scenario-card');
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:129:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-41c3e-rios-all-render-TIR-PMT′-n′-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-41c3e-rios-all-render-TIR-PMT′-n′-chromium/error-context.md
+
+  40) [chromium] › e2e/proteccion-dom-surgical.spec.ts:151:7 › P0.1 Acceptance Criteria › ✅ AC1: TIR post renders in ALL scenarios 
+
+    TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="tir-post"]') to be visible[22m
+
+
+      151 |   test('✅ AC1: TIR post renders in ALL scenarios', async ({ page }) => {
+      152 |     await page.goto('/proteccion');
+    > 153 |     await page.waitForSelector('[data-testid="tir-post"]', { timeout: 10000 });
+          |                ^
+      154 |     
+      155 |     const tirElements = page.getByTestId('tir-post');
+      156 |     const count = await tirElements.count();
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:153:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-b8e5c-st-renders-in-ALL-scenarios-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-b8e5c-st-renders-in-ALL-scenarios-chromium/error-context.md
+
+  41) [chromium] › e2e/proteccion-dom-surgical.spec.ts:165:7 › P0.1 Acceptance Criteria › ✅ AC2: PMT′/n′ render in ALL scenarios 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m()[22m failed
+
+    Locator:  getByTestId('pmt-prime').first()
+    Expected: visible
+    Received: <element(s) not found>
+    Timeout:  5000ms
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByTestId('pmt-prime').first()[22m
+
+
+      169 |     
+      170 |     // Should have at least one PMT′ and n′
+    > 171 |     await expect(page.getByTestId('pmt-prime').first()).toBeVisible();
+          |                                                         ^
+      172 |     await expect(page.getByTestId('n-prime').first()).toBeVisible();
+      173 |   });
+      174 |
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:171:57
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-f5c0d--n′-render-in-ALL-scenarios-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-f5c0d--n′-render-in-ALL-scenarios-chromium/error-context.md
+
+  42) [chromium] › e2e/proteccion-dom-surgical.spec.ts:175:7 › P0.1 Acceptance Criteria › ✅ AC3: Rejection motivo visible when applicable 
+
+    [31mTest timeout of 60000ms exceeded.[39m
+
+    Error: page.fill: Test timeout of 60000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('input[formControlName="currentBalance"]')[22m
+
+
+      178 |     
+      179 |     // Set values that will likely trigger rejection
+    > 180 |     await page.fill('input[formControlName="currentBalance"]', '100000');
+          |                ^
+      181 |     await page.fill('input[formControlName="originalPayment"]', '20000');
+      182 |     await page.fill('input[formControlName="remainingTerm"]', '60');
+      183 |     
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:180:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-c3ad2-ivo-visible-when-applicable-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-c3ad2-ivo-visible-when-applicable-chromium/error-context.md
+
+  43) [chromium] › e2e/proteccion-dom-surgical.spec.ts:196:7 › P0.1 Acceptance Criteria › ✅ AC4: Playwright getByTestId works consistently 
+
+    TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="tir-post"]') to be visible[22m
+
+
+      196 |   test('✅ AC4: Playwright getByTestId works consistently', async ({ page }) => {
+      197 |     await page.goto('/proteccion');
+    > 198 |     await page.waitForSelector('[data-testid="tir-post"]', { timeout: 10000 });
+          |                ^
+      199 |     
+      200 |     // This is the critical test - Playwright must find elements consistently
+      201 |     const tirPost = page.getByTestId('tir-post');
+        at /workspace/e2e/proteccion-dom-surgical.spec.ts:198:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/proteccion-dom-surgical-P0-36ca6-ByTestId-works-consistently-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/e2e/proteccion-dom-surgical-P0-36ca6-ByTestId-works-consistently-chromium/error-context.md
+
+  44) [chromium] › e2e/staging-qa.spec.ts:17:9 › 🧪 Staging QA Suite - Conductores PWA › 📊 Dashboard Module › Dashboard loads with key components 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-be4da-d-loads-with-key-components-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  45) [chromium] › e2e/staging-qa.spec.ts:30:9 › 🧪 Staging QA Suite - Conductores PWA › 💰 Cotizador Module › PMT calculation with financial formula 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-05d05-tion-with-financial-formula-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  46) [chromium] › e2e/staging-qa.spec.ts:58:9 › 🧪 Staging QA Suite - Conductores PWA › 💰 Cotizador Module › Amortization table shows interest/capital breakdown 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-532fe--interest-capital-breakdown-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  47) [chromium] › e2e/staging-qa.spec.ts:77:9 › 🧪 Staging QA Suite - Conductores PWA › 🎤 AVI Module › AVI questions flow with decision pills 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-692ae-ns-flow-with-decision-pills-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  48) [chromium] › e2e/staging-qa.spec.ts:105:9 › 🧪 Staging QA Suite - Conductores PWA › 🎤 AVI Module › HIGH risk case for evasive nervous with admission 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-88276-sive-nervous-with-admission-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  49) [chromium] › e2e/staging-qa.spec.ts:121:9 › 🧪 Staging QA Suite - Conductores PWA › 👥 Tanda Module › Tanda timeline shows "Te toca en mes X" 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-31f77-ine-shows-Te-toca-en-mes-X--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  50) [chromium] › e2e/staging-qa.spec.ts:143:9 › 🧪 Staging QA Suite - Conductores PWA › 👥 Tanda Module › Inflow alert when inflow ≤ PMT 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-d4372-low-alert-when-inflow-≤-PMT-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  51) [chromium] › e2e/staging-qa.spec.ts:162:9 › 🧪 Staging QA Suite - Conductores PWA › 🛡️ Protección Module › Protection simulation with step-down 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-932b9-n-simulation-with-step-down-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  52) [chromium] › e2e/staging-qa.spec.ts:179:9 › 🧪 Staging QA Suite - Conductores PWA › 🛡️ Protección Module › Rejection shows motivo (IRR post < IRRmin) 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-1eb45-ows-motivo-IRR-post-IRRmin--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  53) [chromium] › e2e/staging-qa.spec.ts:192:9 › 🧪 Staging QA Suite - Conductores PWA › 🚚 Entregas Module › Timeline shows PO → Entregado hitos 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-dfea3--shows-PO-→-Entregado-hitos-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  54) [chromium] › e2e/staging-qa.spec.ts:206:9 › 🧪 Staging QA Suite - Conductores PWA › 🚚 Entregas Module › Delay shows timeline rojo + nuevo compromiso 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-58426-eline-rojo-nuevo-compromiso-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  55) [chromium] › e2e/staging-qa.spec.ts:227:9 › 🧪 Staging QA Suite - Conductores PWA › ⛽ GNV Module › Panel shows semáforo verde/amarillo/rojo 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-ab3c3-emáforo-verde-amarillo-rojo-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  56) [chromium] › e2e/staging-qa.spec.ts:239:9 › 🧪 Staging QA Suite - Conductores PWA › ⛽ GNV Module › CSV template download available 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-f665c-template-download-available-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  57) [chromium] › e2e/staging-qa.spec.ts:256:9 › 🧪 Staging QA Suite - Conductores PWA › 📋 Post-venta Module › Photo upload flow (4 fotos: Placa, VIN, Odómetro, Evidencia) 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-75e04-aca-VIN-Odómetro-Evidencia--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  58) [chromium] › e2e/staging-qa.spec.ts:273:9 › 🧪 Staging QA Suite - Conductores PWA › 📋 Post-venta Module › RAG diagnosis with refaccion chips 
+
+    Error: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:51071/browser
+    Call log:
+    [2m  - navigating to "http://localhost:51071/browser", waiting until "load"[22m
+
+
+       8 |   test.beforeEach(async ({ page }) => {
+       9 |     // Set staging URL for all tests
+    > 10 |     await page.goto(STAGING_BASE_URL);
+         |                ^
+      11 |     
+      12 |     // Wait for app to load
+      13 |     await page.waitForLoadState('networkidle');
+        at /workspace/e2e/staging-qa.spec.ts:10:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/e2e/staging-qa-🧪-Staging-QA-S-41c11-gnosis-with-refaccion-chips-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  58 failed
+    [chromium] › e2e/kiban-hase-integration.spec.ts:264:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟢 Low Risk Scenarios - GO Decision › Low risk client gets approved automatically 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:295:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟡 Medium Risk Scenarios - REVIEW Decision › Medium risk client requires review with suggestions 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:330:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🟡 Medium Risk Scenarios - REVIEW Decision › Review decision shows mitigation options 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:364:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔴 High Risk Scenarios - NO-GO Decision › High risk client gets rejected with hard stops 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:403:9 › 🎯 KIBAN/HASE Risk Evaluation System › ❓ Not Found Scenarios - Fallback to AVI+GNV › Not found in KIBAN falls back to AVI+GNV evaluation 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:436:9 › 🎯 KIBAN/HASE Risk Evaluation System › ⚡ Performance & UX › Risk evaluation completes within performance thresholds 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:461:9 › 🎯 KIBAN/HASE Risk Evaluation System › ⚡ Performance & UX › Premium UX components render correctly 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:487:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔄 Error Handling & Resilience › Handles BFF API errors gracefully 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:511:9 › 🎯 KIBAN/HASE Risk Evaluation System › 🔄 Error Handling & Resilience › Handles timeout scenarios 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:533:7 › 🔗 Integration with Existing Systems › KIBAN/HASE integrates with Webhook Retry System 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:556:7 › 🔗 Integration with Existing Systems › Risk evaluation integrates with Premium Icons 
+    [chromium] › e2e/kiban-hase-integration.spec.ts:572:7 › 🔗 Integration with Existing Systems › Human microcopy system provides contextual messages 
+    [chromium] › e2e/no-core-qa.spec.ts:36:7 › No-Core QA Suite (PR#14–PR#18) › Postventa (wizard) validations and screenshots 
+    [chromium] › e2e/no-core-qa.spec.ts:91:7 › No-Core QA Suite (PR#14–PR#18) › GNV panel shows table and statuses + screenshots 
+    [chromium] › e2e/no-core-qa.spec.ts:112:7 › No-Core QA Suite (PR#14–PR#18) › Integraciones Externas (Odoo/Neon/Callbacks) validations + screenshots 
+    [chromium] › e2e/no-core-qa.spec.ts:139:7 › No-Core QA Suite (PR#14–PR#18) › Administración/Usuarios table and columns + screenshot 
+    [chromium] › e2e/no-core-qa.spec.ts:155:7 › No-Core QA Suite (PR#14–PR#18) › Responsive (desktop/tablet/mobile) + Offline redirect + screenshots 
+    [chromium] › e2e/production-critical-flows.spec.ts:44:9 › 🚀 Production Critical Flows - PWA Conductores › 🏠 Dashboard & Navigation › Dashboard loads successfully with navigation elements 
+    [chromium] › e2e/production-critical-flows.spec.ts:59:9 › 🚀 Production Critical Flows - PWA Conductores › 🏠 Dashboard & Navigation › Premium icons demo page loads and renders icons 
+    [chromium] › e2e/production-critical-flows.spec.ts:76:9 › 🚀 Production Critical Flows - PWA Conductores › 📋 Client Management Flow › Clientes list page loads with proper structure 
+    [chromium] › e2e/production-critical-flows.spec.ts:91:9 › 🚀 Production Critical Flows - PWA Conductores › 📋 Client Management Flow › Navigation to nuevo cliente works 
+    [chromium] › e2e/production-critical-flows.spec.ts:105:9 › 🚀 Production Critical Flows - PWA Conductores › 🧮 Cotizador System › Cotizador main page loads successfully 
+    [chromium] › e2e/production-critical-flows.spec.ts:116:9 › 🚀 Production Critical Flows - PWA Conductores › 🧮 Cotizador System › AGS Individual cotizador loads 
+    [chromium] › e2e/production-critical-flows.spec.ts:129:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › Simulador main page loads successfully 
+    [chromium] › e2e/production-critical-flows.spec.ts:140:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › AGS Ahorro simulador loads 
+    [chromium] › e2e/production-critical-flows.spec.ts:151:9 › 🚀 Production Critical Flows - PWA Conductores › 📊 Simulador System › Tanda Colectiva simulador loads 
+    [chromium] › e2e/production-critical-flows.spec.ts:164:9 › 🚀 Production Critical Flows - PWA Conductores › ⚙️ Operations Dashboard › OPS deliveries page loads successfully 
+    [chromium] › e2e/production-critical-flows.spec.ts:175:9 › 🚀 Production Critical Flows - PWA Conductores › ⚙️ Operations Dashboard › GNV Health monitoring loads 
+    [chromium] › e2e/production-critical-flows.spec.ts:274:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Complete onboarding flow navigation 
+    [chromium] › e2e/production-critical-flows.spec.ts:286:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Document upload flow is accessible 
+    [chromium] › e2e/production-critical-flows.spec.ts:298:9 › 🚀 Production Critical Flows - PWA Conductores › 🎯 Business Critical User Journeys › Nueva oportunidad creation flow 
+    [chromium] › e2e/production-public-routes.spec.ts:117:9 › 🚀 Production Public Routes - PWA Conductores › 📱 Performance & PWA Features › No major console errors on page load 
+    [chromium] › e2e/production-public-routes.spec.ts:222:9 › 🚀 Production Public Routes - PWA Conductores › 💡 Progressive Web App Features › Basic responsive design works 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:17:7 › P0.1 Surgical Fix - Protección DOM Rendering › TIR post is ALWAYS visible in DOM 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:34:7 › P0.1 Surgical Fix - Protección DOM Rendering › PMT′ is ALWAYS visible in DOM 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:48:7 › P0.1 Surgical Fix - Protección DOM Rendering › n′ is ALWAYS visible in DOM 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:80:7 › P0.1 Surgical Fix - Protección DOM Rendering › All TIR/PMT′/n′ elements survive form changes 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:107:7 › P0.1 Surgical Fix - Protección DOM Rendering › Edge case: Invalid form data still renders elements 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:127:7 › P0.1 Surgical Fix - Protección DOM Rendering › Multiple scenarios all render TIR/PMT′/n′ 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:151:7 › P0.1 Acceptance Criteria › ✅ AC1: TIR post renders in ALL scenarios 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:165:7 › P0.1 Acceptance Criteria › ✅ AC2: PMT′/n′ render in ALL scenarios 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:175:7 › P0.1 Acceptance Criteria › ✅ AC3: Rejection motivo visible when applicable 
+    [chromium] › e2e/proteccion-dom-surgical.spec.ts:196:7 › P0.1 Acceptance Criteria › ✅ AC4: Playwright getByTestId works consistently 
+    [chromium] › e2e/staging-qa.spec.ts:17:9 › 🧪 Staging QA Suite - Conductores PWA › 📊 Dashboard Module › Dashboard loads with key components 
+    [chromium] › e2e/staging-qa.spec.ts:30:9 › 🧪 Staging QA Suite - Conductores PWA › 💰 Cotizador Module › PMT calculation with financial formula 
+    [chromium] › e2e/staging-qa.spec.ts:58:9 › 🧪 Staging QA Suite - Conductores PWA › 💰 Cotizador Module › Amortization table shows interest/capital breakdown 
+    [chromium] › e2e/staging-qa.spec.ts:77:9 › 🧪 Staging QA Suite - Conductores PWA › 🎤 AVI Module › AVI questions flow with decision pills 
+    [chromium] › e2e/staging-qa.spec.ts:105:9 › 🧪 Staging QA Suite - Conductores PWA › 🎤 AVI Module › HIGH risk case for evasive nervous with admission 
+    [chromium] › e2e/staging-qa.spec.ts:121:9 › 🧪 Staging QA Suite - Conductores PWA › 👥 Tanda Module › Tanda timeline shows "Te toca en mes X" 
+    [chromium] › e2e/staging-qa.spec.ts:143:9 › 🧪 Staging QA Suite - Conductores PWA › 👥 Tanda Module › Inflow alert when inflow ≤ PMT 
+    [chromium] › e2e/staging-qa.spec.ts:162:9 › 🧪 Staging QA Suite - Conductores PWA › 🛡️ Protección Module › Protection simulation with step-down 
+    [chromium] › e2e/staging-qa.spec.ts:179:9 › 🧪 Staging QA Suite - Conductores PWA › 🛡️ Protección Module › Rejection shows motivo (IRR post < IRRmin) 
+    [chromium] › e2e/staging-qa.spec.ts:192:9 › 🧪 Staging QA Suite - Conductores PWA › 🚚 Entregas Module › Timeline shows PO → Entregado hitos 
+    [chromium] › e2e/staging-qa.spec.ts:206:9 › 🧪 Staging QA Suite - Conductores PWA › 🚚 Entregas Module › Delay shows timeline rojo + nuevo compromiso 
+    [chromium] › e2e/staging-qa.spec.ts:227:9 › 🧪 Staging QA Suite - Conductores PWA › ⛽ GNV Module › Panel shows semáforo verde/amarillo/rojo 
+    [chromium] › e2e/staging-qa.spec.ts:239:9 › 🧪 Staging QA Suite - Conductores PWA › ⛽ GNV Module › CSV template download available 
+    [chromium] › e2e/staging-qa.spec.ts:256:9 › 🧪 Staging QA Suite - Conductores PWA › 📋 Post-venta Module › Photo upload flow (4 fotos: Placa, VIN, Odómetro, Evidencia) 
+    [chromium] › e2e/staging-qa.spec.ts:273:9 › 🧪 Staging QA Suite - Conductores PWA › 📋 Post-venta Module › RAG diagnosis with refaccion chips 
+  30 passed (10.9m)
+
+[36m  Serving HTML report at http://localhost:42077. Press Ctrl+C to quit.[39m
