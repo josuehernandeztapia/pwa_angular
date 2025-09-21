@@ -18,27 +18,29 @@
 
 <section class="ui-card mt-6">
 	<h2 class="text-sm font-semibold mb-3">Documentos cargados</h2>
-	<table class="w-full text-sm border-collapse doc-table" data-cy="doc-table">
-		<thead>
-			<tr>
-				<th class="text-left py-2">Nombre</th>
-				<th class="text-left py-2">Estado</th>
-				<th class="text-left py-2">Última actualización</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr *ngIf="loading" class="loader-row animate-pulse">
-				<td class="py-2">Procesando...</td>
-				<td class="py-2">Pendiente</td>
-				<td class="py-2">-</td>
-			</tr>
-			<tr *ngFor="let doc of documentos">
-				<td class="py-2">{{ doc.nombre }}</td>
-				<td class="py-2">{{ doc.estado }}</td>
-				<td class="py-2">{{ doc.fecha }}</td>
-			</tr>
-		</tbody>
-	</table>
+  <div class="overflow-x-auto">
+    <table class="w-full text-sm border-collapse doc-table" data-cy="doc-table">
+      <thead>
+        <tr>
+          <th class="text-left py-2">Nombre</th>
+          <th class="text-left py-2">Estado</th>
+          <th class="text-left py-2">Última actualización</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="loading" class="loader-row animate-pulse">
+          <td class="py-2">Procesando...</td>
+          <td class="py-2">Pendiente</td>
+          <td class="py-2">-</td>
+        </tr>
+        <tr *ngFor="let doc of documentos">
+          <td class="py-2">{{ doc.nombre }}</td>
+          <td class="py-2">{{ doc.estado }}</td>
+          <td class="py-2">{{ doc.fecha }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </section>
 

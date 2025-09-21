@@ -1,6 +1,11 @@
-<section class="ui-card p-8 flex flex-col items-center justify-center gap-4 text-center" data-cy="offline-page">
+<section class="ui-card p-8 flex flex-col items-center justify-center gap-3 text-center" data-cy="offline-page">
   <div class="text-4xl">📵</div>
-  <h1 class="text-xl font-semibold">Sin conexión. Intente de nuevo</h1>
+  <h1 class="text-base sm:text-lg font-semibold" style="color: var(--text-light)">Sin conexión</h1>
+  <p class="text-sm" style="color: var(--text-2)">Revisa tu red y vuelve a intentar.</p>
+  <div class="flex gap-2">
+    <span class="px-2 py-1 rounded border" style="background: var(--surface-dark); border-color: var(--yellow); color: var(--text-light)">Advertencia</span>
+    <span class="px-2 py-1 rounded border" style="background: var(--surface-dark); border-color: var(--red); color: var(--text-light)">Sin conexión</span>
+  </div>
   <button class="ui-btn ui-btn-secondary" (click)="retry()">Reintentar</button>
 </section>
 
