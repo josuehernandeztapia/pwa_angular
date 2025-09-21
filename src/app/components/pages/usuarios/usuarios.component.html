@@ -1,38 +1,43 @@
-<section class="ui-card p-4" data-cy="usuarios-table">
-  <div class="flex items-center justify-between mb-4">
-    <h2 class="text-lg font-semibold">Usuarios</h2>
-    <button class="ui-btn ui-btn-secondary">Nuevo usuario</button>
+<section class="ui-card" data-cy="usuarios-table">
+  <div class="ui-card-header">
+    <h2 class="ui-card-title">Usuarios</h2>
+    <div class="ui-card-actions">
+      <input class="ui-input" placeholder="Buscar usuarios..." />
+      <button class="ui-btn ui-btn-primary">Nuevo usuario</button>
+    </div>
   </div>
 
-  <div class="overflow-x-auto">
-    <table class="min-w-full text-sm">
-      <thead>
-        <tr class="text-left text-gray-600 dark:text-gray-300">
-          <th class="py-2 pr-4">Nombre</th>
-          <th class="py-2 pr-4">Rol</th>
-          <th class="py-2 pr-4">Estado</th>
-          <th class="py-2 pr-4 text-right">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let u of users" class="border-t border-gray-200 dark:border-gray-800">
-          <td class="py-3 pr-4">{{ u.name }}</td>
-          <td class="py-3 pr-4">{{ u.role }}</td>
-          <td class="py-3 pr-4">
-            <span class="inline-flex items-center gap-2">
-              <span class="h-2 w-2 rounded-full" [class.bg-success-500]="u.active" [class.bg-gray-400]="!u.active"></span>
-              {{ u.active ? 'Activo' : 'Inactivo' }}
-            </span>
-          </td>
-          <td class="py-3 pr-0">
-            <div class="flex gap-2 justify-end">
-              <button class="ui-btn ui-btn-secondary" (click)="edit(u)">Editar</button>
-              <button class="ui-btn ui-btn-secondary" (click)="toggle(u)">{{ u.active ? 'Desactivar' : 'Activar' }}</button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="ui-card-body">
+    <div class="overflow-x-auto">
+      <table class="ui-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let u of users" class="ui-table-row">
+            <td>{{ u.name }}</td>
+            <td>{{ u.role }}</td>
+            <td>
+              <span class="status-chip" [class.status-active]="u.active" [class.status-inactive]="!u.active">
+                <span class="status-dot"></span>
+                {{ u.active ? 'Activo' : 'Inactivo' }}
+              </span>
+            </td>
+            <td>
+              <div class="row-actions">
+                <button class="ui-btn ui-btn-secondary" (click)="edit(u)">Editar</button>
+                <button class="ui-btn ui-btn-secondary" (click)="toggle(u)">{{ u.active ? 'Desactivar' : 'Activar' }}</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </section>
 
