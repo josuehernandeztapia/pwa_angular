@@ -1,363 +1,5 @@
 [
   {
-    "module": "dashboard",
-    "route": "/dashboard",
-    "screenshots": [
-      "tests/screenshots/dashboard-light.png",
-      "tests/screenshots/dashboard-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "login",
-    "route": "/login",
-    "screenshots": [
-      "tests/screenshots/login-light.png",
-      "tests/screenshots/login-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "clientes",
-    "route": "/clientes",
-    "screenshots": [
-      "tests/screenshots/clientes-light.png",
-      "tests/screenshots/clientes-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "cotizador",
-    "route": "/cotizador",
-    "screenshots": [
-      "tests/screenshots/cotizador-light.png",
-      "tests/screenshots/cotizador-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "perfil",
-    "route": "/perfil",
-    "screenshots": [
-      "tests/screenshots/perfil-light.png",
-      "tests/screenshots/perfil-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "oportunidad",
-    "route": "/oportunidad",
-    "screenshots": [
-      "tests/screenshots/oportunidad-light.png",
-      "tests/screenshots/oportunidad-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "edomex-colectivo",
-    "route": "/edomex-colectivo",
-    "screenshots": [
-      "tests/screenshots/edomex-col-light.png",
-      "tests/screenshots/edomex-col-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "proteccion",
-    "route": "/proteccion",
-    "screenshots": [
-      "tests/screenshots/proteccion-light.png",
-      "tests/screenshots/proteccion-dark.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "avi-go",
-    "route": "/avi?state=go",
-    "screenshots": [
-      "tests/screenshots/avi-go.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "documentos-pendiente",
-    "route": "/documentos?status=pendiente",
-    "screenshots": [
-      "tests/screenshots/documentos-pendiente.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "avi-review",
-    "route": "/avi?state=review",
-    "screenshots": [
-      "tests/screenshots/avi-review.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 14
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "documentos-validado",
-    "route": "/documentos?status=validado",
-    "screenshots": [
-      "tests/screenshots/documentos-validado.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 14
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "avi-nogo",
-    "route": "/avi?state=nogo",
-    "screenshots": [
-      "tests/screenshots/avi-nogo.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 14
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "entregas",
-    "route": "/entregas",
-    "screenshots": [
-      "tests/screenshots/entregas.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "config-cotizador",
-    "route": "/configuracion?tab=cotizador",
-    "screenshots": [
-      "tests/screenshots/config-cotizador.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "usage",
-    "route": "/usage",
-    "screenshots": [
-      "tests/screenshots/usage.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "config-simulador",
-    "route": "/configuracion?tab=simulador",
-    "screenshots": [
-      "tests/screenshots/config-simulador.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 14
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "postventa-fotos",
-    "route": "/postventa?tab=fotos",
-    "screenshots": [
-      "tests/screenshots/postventa-fotos.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "gnv-salud",
-    "route": "/gnv?tab=salud",
-    "screenshots": [
-      "tests/screenshots/gnv-salud.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "postventa-ocr",
-    "route": "/postventa?tab=ocr",
-    "screenshots": [
-      "tests/screenshots/postventa-ocr.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "gnv-csv",
-    "route": "/gnv?tab=csv",
-    "screenshots": [
-      "tests/screenshots/gnv-csv.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "odoo",
-    "route": "/odoo",
-    "screenshots": [
-      "tests/screenshots/odoo.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "usuarios",
-    "route": "/usuarios",
-    "screenshots": [
-      "tests/screenshots/usuarios.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "neon",
-    "route": "/neon",
-    "screenshots": [
-      "tests/screenshots/neon.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
-    "module": "callbacks",
-    "route": "/callbacks",
-    "screenshots": [
-      "tests/screenshots/callbacks.png"
-    ],
-    "helpersPresent": true,
-    "accessibility": {
-      "violations": 1,
-      "passes": 13
-    },
-    "state": "FALLA",
-    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
-  },
-  {
     "module": "responsive",
     "route": "/dashboard",
     "screenshots": [
@@ -368,7 +10,7 @@
     "helpersPresent": true,
     "accessibility": {
       "violations": 1,
-      "passes": 18
+      "passes": 19
     },
     "state": "FALLA"
   },
@@ -384,5 +26,347 @@
       "passes": 0
     },
     "state": "PASA"
+  },
+  {
+    "module": "callbacks",
+    "route": "/callbacks",
+    "screenshots": [
+      "tests/screenshots/callbacks.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "login",
+    "route": "/login",
+    "screenshots": [
+      "tests/screenshots/login-light.png",
+      "tests/screenshots/login-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "dashboard",
+    "route": "/dashboard",
+    "screenshots": [
+      "tests/screenshots/dashboard-light.png",
+      "tests/screenshots/dashboard-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "clientes",
+    "route": "/clientes",
+    "screenshots": [
+      "tests/screenshots/clientes-light.png",
+      "tests/screenshots/clientes-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "cotizador",
+    "route": "/cotizador",
+    "screenshots": [
+      "tests/screenshots/cotizador-light.png",
+      "tests/screenshots/cotizador-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "perfil",
+    "route": "/perfil",
+    "screenshots": [
+      "tests/screenshots/perfil-light.png",
+      "tests/screenshots/perfil-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "oportunidad",
+    "route": "/oportunidad",
+    "screenshots": [
+      "tests/screenshots/oportunidad-light.png",
+      "tests/screenshots/oportunidad-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "edomex-colectivo",
+    "route": "/edomex-colectivo",
+    "screenshots": [
+      "tests/screenshots/edomex-col-light.png",
+      "tests/screenshots/edomex-col-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "proteccion",
+    "route": "/proteccion",
+    "screenshots": [
+      "tests/screenshots/proteccion-light.png",
+      "tests/screenshots/proteccion-dark.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "documentos-pendiente",
+    "route": "/documentos?status=pendiente",
+    "screenshots": [
+      "tests/screenshots/documentos-pendiente.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "avi-go",
+    "route": "/avi?state=go",
+    "screenshots": [
+      "tests/screenshots/avi-go.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "documentos-validado",
+    "route": "/documentos?status=validado",
+    "screenshots": [
+      "tests/screenshots/documentos-validado.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "avi-review",
+    "route": "/avi?state=review",
+    "screenshots": [
+      "tests/screenshots/avi-review.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "avi-nogo",
+    "route": "/avi?state=nogo",
+    "screenshots": [
+      "tests/screenshots/avi-nogo.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "entregas",
+    "route": "/entregas",
+    "screenshots": [
+      "tests/screenshots/entregas.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "config-cotizador",
+    "route": "/configuracion?tab=cotizador",
+    "screenshots": [
+      "tests/screenshots/config-cotizador.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "usage",
+    "route": "/usage",
+    "screenshots": [
+      "tests/screenshots/usage.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "config-simulador",
+    "route": "/configuracion?tab=simulador",
+    "screenshots": [
+      "tests/screenshots/config-simulador.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "postventa-fotos",
+    "route": "/postventa?tab=fotos",
+    "screenshots": [
+      "tests/screenshots/postventa-fotos.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "gnv-salud",
+    "route": "/gnv?tab=salud",
+    "screenshots": [
+      "tests/screenshots/gnv-salud.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "postventa-ocr",
+    "route": "/postventa?tab=ocr",
+    "screenshots": [
+      "tests/screenshots/postventa-ocr.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "gnv-csv",
+    "route": "/gnv?tab=csv",
+    "screenshots": [
+      "tests/screenshots/gnv-csv.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "odoo",
+    "route": "/odoo",
+    "screenshots": [
+      "tests/screenshots/odoo.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
+  },
+  {
+    "module": "usuarios",
+    "route": "/usuarios",
+    "screenshots": [
+      "tests/screenshots/usuarios.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 1,
+      "passes": 14
+    },
+    "state": "FALLA"
+  },
+  {
+    "module": "neon",
+    "route": "/neon",
+    "screenshots": [
+      "tests/screenshots/neon.png"
+    ],
+    "helpersPresent": true,
+    "accessibility": {
+      "violations": 0,
+      "passes": 13
+    },
+    "state": "FALLA",
+    "notes": "Se detectaron gradientes/shimmer/backdrop-filter"
   }
 ]
