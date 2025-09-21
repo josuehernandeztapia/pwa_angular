@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject, signal, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from '@angular/core';
 import { GnvHealthService, StationHealthRow } from '../../../services/gnv-health.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { GnvHealthService, StationHealthRow } from '../../../services/gnv-health
   imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="ui-card p-4 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
+    <div class="ui-card p-4">
       <div class="flex items-center justify-between">
         <div>
           <h2 class="text-lg font-semibold">⛽ GNV T+1 — Salud por estación</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400">Estado de la ingesta del día anterior por estación</p>
+          <p class="text-sm text-[var(--text-2)]">Estado de la ingesta del día anterior por estación</p>
         </div>
         <div class="flex gap-2">
           <a class="ui-btn ui-btn-secondary" href="assets/gnv/template.csv" download data-cy="dl-template">Plantilla CSV</a>
@@ -36,7 +36,7 @@ import { GnvHealthService, StationHealthRow } from '../../../services/gnv-health
 
       <div class="mt-4 overflow-x-auto" *ngIf="rows().length > 0">
         <table class="w-full text-sm" data-cy="gnv-table">
-          <thead class="text-slate-500">
+          <thead class="text-[var(--text-2)]">
             <tr>
               <th class="text-left py-2">Estación</th>
               <th class="text-left py-2">Archivo</th>
@@ -48,7 +48,7 @@ import { GnvHealthService, StationHealthRow } from '../../../services/gnv-health
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let r of rows(); trackBy: trackByStation" class="border-t border-[var(--border)]">
+            <tr *ngFor="let r of rows(); trackBy: trackByStation" class="border-t border-[var(--border-dark)]">
               <td class="py-2 whitespace-nowrap">{{ r.stationName }}</td>
               <td class="py-2">{{ r.fileName || '—' }}</td>
               <td class="py-2 text-right">{{ r.rowsTotal }}</td>
@@ -66,6 +66,10 @@ import { GnvHealthService, StationHealthRow } from '../../../services/gnv-health
   `,
   styles: [`
     :host { display:block; }
+    .status-green { color: var(--green); }
+    .status-yellow { color: var(--yellow); }
+    .status-red { color: var(--red); }
+    .status-pending { color: var(--text-2); }
   `]
 })
 export class GnvHealthComponent implements OnInit {
@@ -74,7 +78,7 @@ export class GnvHealthComponent implements OnInit {
   selectedCsv: File | null = null;
 
   ngOnInit(): void {
-    this.svc.getYesterdayHealth().subscribe(rows => this.rows.set(rows));
+    this.svc.getYesterdayHealth().subscribe((rows: StationHealthRow[]) => this.rows.set(rows));
   }
 
   trackByStation(_: number, r: StationHealthRow) { return r.stationId; }
@@ -90,10 +94,10 @@ export class GnvHealthComponent implements OnInit {
 
   getStatusClass(r: StationHealthRow): string {
     switch (r.status) {
-      case 'green': return 'text-green-600';
-      case 'yellow': return 'text-amber-600';
-      case 'red': return 'text-red-600';
-      default: return 'text-slate-500';
+      case 'green': return 'status-green';
+      case 'yellow': return 'status-yellow';
+      case 'red': return 'status-red';
+      default: return 'status-pending';
     }
   }
 
@@ -106,7 +110,7 @@ export class GnvHealthComponent implements OnInit {
     if (!this.selectedCsv) return;
     // Minimal stub: simulate ingestion and refresh rows
     setTimeout(() => {
-      this.svc.getYesterdayHealth().subscribe(rows => this.rows.set(rows));
+      this.svc.getYesterdayHealth().subscribe((rows: StationHealthRow[]) => this.rows.set(rows));
       this.selectedCsv = null;
     }, 500);
   }
