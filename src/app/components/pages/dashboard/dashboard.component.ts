@@ -12,7 +12,7 @@ import { DevKpiMiniComponent } from '../../shared/dev-kpi-mini.component';
 import { ActivityItem, HumanActivityFeedComponent } from '../../shared/human-activity-feed/human-activity-feed.component';
 import { ActionButton, NextBestActionData, NextBestActionHeroComponent } from '../../shared/next-best-action-hero/next-best-action-hero.component';
 import { RiskRadarClient, RiskRadarComponent } from '../../shared/risk-radar/risk-radar.component';
-import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.component';
+ 
 
 @Component({
   selector: 'app-dashboard',
@@ -25,22 +25,14 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     RiskRadarComponent,
     HumanActivityFeedComponent,
     ClientModeToggleComponent,
-    DevKpiMiniComponent,
-    PremiumIconComponent
+    DevKpiMiniComponent
   ],
   template: `
-    <div class="command-center-dashboard ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
-      <!-- Premium Header with Client Mode Toggle -->
-      <header class="command-header ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+    <div class="command-center-dashboard">
+      <!-- Dashboard Header with Client Mode Toggle -->
+      <header class="command-header ui-card">
         <div class="command-title-section">
           <h1 class="command-title">
-            <app-premium-icon
-              class="command-icon"
-              iconName="cotizador"
-              size="lg"
-              [showLabel]="false"
-              ariaLabel="Centro de Comando">
-            </app-premium-icon>
             Centro de Comando
           </h1>
           <p class="command-subtitle">Tu plan de acción para hoy, Ricardo.</p>
@@ -55,16 +47,9 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
           <div class="user-info">
             <span class="user-name">👤 {{ userName }} ⏷</span>
             <button
-              class="client-mode-badge"
-              [class.active]="currentViewMode === 'client'"
+              class="ui-btn ui-btn-secondary client-mode-badge"
               (click)="toggleProfileDropdown()"
             >
-              <app-premium-icon
-                iconName="entregas"
-                size="xs"
-                [showLabel]="false"
-                ariaLabel="Modo Cliente">
-              </app-premium-icon>
               Modo Cliente
             </button>
           </div>
@@ -73,17 +58,9 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
 
       <main class="command-dashboard-main">
         <!-- Tu Próxima Mejor Acción (The Brain) -->
-        <section class="next-best-action-hero ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
+        <section class="next-best-action-hero ui-card">
           <div class="hero-header">
-            <h2 class="hero-title">
-              <app-premium-icon
-                iconName="simulador"
-                size="md"
-                [showLabel]="false"
-                ariaLabel="Tu Próxima Mejor Acción">
-              </app-premium-icon>
-              TU PRÓXIMA MEJOR ACCIÓN
-            </h2>
+            <h2 class="hero-title">TU PRÓXIMA MEJOR ACCIÓN</h2>
           </div>
           
           <app-next-best-action-hero 
@@ -95,16 +72,8 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
 
         <!-- KPIs Contextuales & Radar de Riesgo -->
         <section class="intelligence-grid">
-          <div class="kpis-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
-            <h3 class="section-title">
-              <app-premium-icon
-                iconName="cotizador"
-                size="sm"
-                [showLabel]="false"
-                ariaLabel="KPIs Clave">
-              </app-premium-icon>
-              KPIs Clave (vs. Semana Pasada)
-            </h3>
+          <div class="kpis-section ui-card">
+            <h3 class="section-title">KPIs Clave (vs. Semana Pasada)</h3>
             <app-contextual-kpis 
               [kpis]="contextualKPIs"
               [showTrends]="true">
@@ -114,17 +83,8 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
             </div>
           </div>
           
-          <div class="risk-radar-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
-            <h3 class="section-title">
-              <app-premium-icon
-                iconName="proteccion"
-                size="sm"
-                [showLabel]="false"
-                variant="error"
-                ariaLabel="Radar de Riesgo">
-              </app-premium-icon>
-              Radar de Riesgo
-            </h3>
+          <div class="risk-radar-section ui-card">
+            <h3 class="section-title">Radar de Riesgo</h3>
             <p class="section-subtitle">(Visualización de clientes por Health Score)</p>
             <app-risk-radar 
               [clients]="riskRadarClients"
@@ -135,19 +95,11 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
         </section>
 
         <!-- Feed de Actividad Humano -->
-        <section class="human-activity-section ui-card bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] text-[var(--text-1)] dark:text-[var(--text-1)] border-[var(--border)] dark:border-slate-700">
-          <h2 class="section-title">
-            <app-premium-icon
-              iconName="avi"
-              size="sm"
-              [showLabel]="false"
-              ariaLabel="Feed de Actividad en Tiempo Real">
-            </app-premium-icon>
-            Feed de Actividad en Tiempo Real
-          </h2>
+        <section class="human-activity-section ui-card">
+          <h2 class="section-title">Feed de Actividad en Tiempo Real</h2>
           <div class="activity-feed-container">
             <app-human-activity-feed 
-              [activities]="premiumActivityFeed"
+              [activities]="activityFeed"
               [maxItems]="4"
               [showSuggestedActions]="true">
             </app-human-activity-feed>
@@ -158,27 +110,20 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     </div>
   `,
   styles: [`
-    /* ===== COMMAND CENTER DASHBOARD ===== */
+    /* ===== COMMAND CENTER DASHBOARD (Minimal Dark) ===== */
     .command-center-dashboard {
       min-height: 100vh;
-      background: var(--bg-gray-950);
-      background-image: 
-        radial-gradient(circle at 25% 25%, var(--primary-cyan-900) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, var(--accent-amber-900) 0%, transparent 50%);
+      background: var(--surface-dark);
+      color: var(--text-light);
     }
 
-    /* ===== PREMIUM HEADER ===== */
+    /* ===== HEADER ===== */
     .command-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 24px 32px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      border-radius: 0 0 24px 24px;
-      margin-bottom: 32px;
-      box-shadow: var(--shadow-premium);
+      border: 1px solid var(--border-dark);
     }
 
     .command-title-section {
@@ -193,34 +138,16 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       gap: 12px;
       margin: 0;
       font-size: 2rem;
-      font-weight: 800;
-      color: var(--primary-cyan-300);
-      letter-spacing: -0.025em;
-    }
-
-    .command-icon {
-      margin-right: 8px;
-    }
-
-    .command-icon app-premium-icon {
-      animation: glow-pulse 3s ease-in-out infinite;
-    }
-
-    @keyframes glow-pulse {
-      0%, 100% { 
-        filter: drop-shadow(0 0 10px var(--primary-cyan-400));
-      }
-      50% { 
-        filter: drop-shadow(0 0 20px var(--accent-amber-500));
-      }
+      font-weight: 700;
+      color: var(--text-light);
+      letter-spacing: -0.01em;
     }
 
     .command-subtitle {
       margin: 0;
-      color: var(--bg-gray-300);
-      font-size: 1.1rem;
+      color: var(--text-2);
+      font-size: 1rem;
       font-weight: 500;
-      opacity: 0.9;
     }
 
     .command-controls {
@@ -236,35 +163,15 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     }
 
     .user-name {
-      color: var(--bg-gray-200);
+      color: var(--text-2);
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     .client-mode-badge {
-      background: var(--accent-amber-500);
-      color: var(--bg-gray-950);
-      padding: 8px 16px;
-      border: none;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .client-mode-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
-    }
-
-    .client-mode-badge.active {
-      background: var(--accent-amber-400);
-      box-shadow: 0 0 20px var(--accent-amber-500);
     }
 
     /* ===== MAIN DASHBOARD LAYOUT ===== */
@@ -277,29 +184,13 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       gap: 32px;
     }
 
-    /* ===== NEXT BEST ACTION HERO ===== */
-    .next-best-action-hero {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      border-radius: 24px;
+    /* ===== CARDS ===== */
+    .next-best-action-hero,
+    .kpis-section,
+    .risk-radar-section,
+    .human-activity-section {
+      border: 1px solid var(--border-dark);
       padding: 32px;
-      box-shadow: var(--shadow-premium);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .next-best-action-hero::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(135deg, var(--primary-cyan-400), transparent, var(--accent-amber-500));
-      border-radius: 24px;
-      z-index: -1;
-      opacity: 0.5;
     }
 
     .hero-header {
@@ -308,71 +199,42 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
     }
 
     .hero-title {
-      font-size: 1.8rem;
-      font-weight: 800;
-      color: var(--primary-cyan-300);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-light);
       margin: 0;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
+      letter-spacing: 0.01em;
     }
 
-    /* ===== INTELLIGENCE GRID ===== */
+    /* ===== GRID ===== */
     .intelligence-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 32px;
     }
 
-    .kpis-section, .risk-radar-section {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: var(--shadow-premium);
-    }
-
     .section-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--primary-cyan-300);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-light);
       margin: 0 0 8px 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
     .section-subtitle {
       font-size: 0.95rem;
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       margin: 0 0 24px 0;
-      font-style: italic;
-    }
-
-    /* ===== HUMAN ACTIVITY FEED ===== */
-    .human-activity-section {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      border-radius: 24px;
-      padding: 32px;
-      box-shadow: var(--shadow-premium);
     }
 
     .activity-feed-container {
       margin-top: 16px;
     }
 
-    /* ===== RESPONSIVE DESIGN ===== */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 1200px) {
       .intelligence-grid {
         grid-template-columns: 1fr;
       }
-      
       .command-header {
         flex-direction: column;
         gap: 20px;
@@ -384,18 +246,14 @@ import { PremiumIconComponent } from '../../ui/premium-icon/premium-icon.compone
       .command-dashboard-main {
         padding: 0 16px 16px 16px;
       }
-      
       .command-header {
         padding: 20px 16px;
-        border-radius: 0;
       }
-      
       .command-title {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
-      
       .next-best-action-hero,
-      .kpis-section, 
+      .kpis-section,
       .risk-radar-section,
       .human-activity-section {
         padding: 24px;
@@ -421,12 +279,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
   actionableGroups: ActionableGroup[] = [];
   allClients: ActionableClient[] = [];
 
-  // Premium components data
+  // Dashboard features data
   currentViewMode: ViewMode = 'advisor';
   nextBestAction?: NextBestActionData;
   contextualKPIs: KPIData[] = [];
   riskRadarClients: RiskRadarClient[] = [];
-  premiumActivityFeed: ActivityItem[] = [];
 
   constructor(
     private router: Router,
@@ -536,8 +393,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
         this.actionableGroups = groups || [];
         this.allClients = clients || [];
 
-        // Initialize premium components with loaded data
-        this.initializePremiumComponents();
+        // Initialize dashboard features with loaded data
+        this.initializeDashboardFeatures();
 
         this.isLoading = false;
       },
@@ -547,8 +404,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
         // Fallback mock data for development
         this.loadMockData();
-        // Initialize premium components with mock data
-        this.initializePremiumComponents();
+        // Initialize dashboard features with mock data
+        this.initializeDashboardFeatures();
       }
     });
   }
@@ -680,11 +537,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
     console.log('Loading client view data');
   }
 
-  private initializePremiumComponents(): void {
+  private initializeDashboardFeatures(): void {
     this.loadNextBestAction();
     this.loadContextualKPIs();
     this.loadRiskRadarData();
-    this.loadPremiumActivityFeed();
   }
 
   private loadNextBestAction(): void {
@@ -948,58 +804,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     ];
   }
 
-  private loadPremiumActivityFeed(): void {
-    // Mock premium activity feed
-    this.premiumActivityFeed = [
-      {
-        id: 'activity-1',
-        type: 'system',
-        category: 'payment',
-        timestamp: new Date(Date.now() - 2 * 60000), // 2 minutes ago
-        client: {
-          id: 'client-1',
-          name: 'Juan Pérez'
-        },
-        title: 'Pago de $5,000 MXN recibido de Juan Pérez.',
-        description: 'Pago de $5,000 MXN recibido de Juan Pérez. ¡Felicítalo!',
-        metadata: {
-          amount: 5000
-        },
-        suggestedAction: {
-          label: '¡Felicítalo!',
-          action: 'congratulate_client',
-          params: { clientName: 'Juan Pérez' }
-        },
-        priority: 'medium'
-      },
-      {
-        id: 'activity-2',
-        type: 'advisor',
-        category: 'document',
-        timestamp: new Date(Date.now() - 15 * 60000), // 15 minutes ago
-        client: {
-          id: 'client-2',
-          name: 'Ana López'
-        },
-        title: 'Documento \'INE\' de Ana López marcado como \'En Revisión\'.',
-        description: 'El documento ha sido recibido y está siendo procesado por el equipo de validación.',
-        priority: 'low'
-      },
-      {
-        id: 'activity-3',
-        type: 'system',
-        category: 'opportunity',
-        timestamp: new Date(Date.now() - 60 * 60000), // 1 hour ago
-        client: {
-          id: 'client-3',
-          name: 'Carlos Sánchez'
-        },
-        title: 'Nueva oportunidad \'Carlos Sánchez\' asignada.',
-        description: 'Se ha creado una nueva oportunidad de negocio que requiere tu atención.',
-        priority: 'high'
-      }
-    ];
-  }
+  
 
   // Mock data loader for development
   private loadMockData(): void {
