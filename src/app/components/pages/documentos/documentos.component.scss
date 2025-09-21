@@ -1,4 +1,38 @@
 .loader-row {
-	@apply text-slate-500 dark:text-slate-100;
+	color: var(--text-2);
+}
+
+.ocr-status {
+	color: var(--text-2);
+	&[data-status="Pendiente"] {
+		color: var(--yellow);
+	}
+	&[data-status="Validado"] {
+		color: var(--green);
+	}
+	&[data-status="Error"] {
+		color: var(--red);
+	}
+}
+
+.doc-table {
+	width: 100%;
+	border-collapse: collapse;
+	color: var(--text-light);
+
+	thead tr {
+		color: var(--text-2);
+		border-bottom: 1px solid var(--border-dark);
+	}
+
+	th,
+	td {
+		padding: 0.5rem 0;
+		text-align: left;
+	}
+
+	tbody tr {
+		border-bottom: 1px solid var(--border-dark);
+	}
 }
 
