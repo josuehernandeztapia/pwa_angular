@@ -2,3 +2,25 @@
   display: block;
 }
 
+/* Minimal Dark tokens for Entregas */
+.ui-card {
+  background: var(--surface-dark);
+  color: var(--text-light);
+  border: 1px solid var(--border-dark);
+}
+
+.loading-skeleton .animate-pulse {
+  /* keep animation from utilities; ensure subtle surface */
+  background: var(--border-dark);
+}
+
+[data-cy="delivery-timeline"] {
+  li[data-cy="delivery-step"] {
+    border-bottom: 1px dashed var(--border-dark);
+    padding-bottom: 6px;
+  }
+  li[data-cy="delivery-step"]:last-child {
+    border-bottom: 0;
+  }
+}
+
