@@ -1,7 +1,7 @@
 .nueva-oportunidad-container {
   min-height: 100vh;
-  background: var(--bg-light);
-  color: var(--text-1);
+  background: var(--bg-dark);
+  color: var(--text-light);
   padding: 20px;
 }
 
@@ -16,31 +16,17 @@
   margin-bottom: 12px;
 }
 
-.back-btn {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e2e8f0;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  color: #4a5568;
-  transition: all 0.2s;
-}
-
-.back-btn:hover {
-  background: white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
+.back-btn {}
 
 .header-section h1 {
   margin: 0;
-  color: #2d3748;
+  color: var(--text-light);
   font-size: 2.5rem;
   font-weight: 700;
 }
 
 .subtitle {
-  color: #718096;
+  color: var(--text-2);
   font-size: 1.1rem;
   margin: 0;
 }
@@ -58,7 +44,7 @@
 .form-section {
   margin-bottom: 40px;
   padding-bottom: 32px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .form-section:last-of-type {
@@ -66,14 +52,14 @@
 }
 
 .form-section h2 {
-  color: #2d3748;
+  color: var(--text-light);
   font-size: 1.5rem;
   font-weight: 600;
   margin: 0 0 16px 0;
 }
 
 .section-description {
-  color: #718096;
+  color: var(--text-2);
   margin: 0 0 24px 0;
   font-size: 1rem;
 }
@@ -92,30 +78,30 @@
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-light);
   font-size: 0.95rem;
 }
 
 .form-input, .form-select, .form-textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.2s;
-  background: #f7fafc;
+  background: var(--surface-dark);
+  color: var(--text-light);
 }
 
 .form-input:focus, .form-select:focus, .form-textarea:focus {
   outline: none;
-  border-color: #4299e1;
-  background: white;
+  border-color: var(--brand);
+  background: var(--surface-dark);
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
 }
 
 .form-input.error, .form-select.error, .form-textarea.error {
-  border-color: #e53e3e;
-  background: #fed7d7;
+  border-color: var(--danger-500);
 }
 
 .form-textarea {
@@ -124,7 +110,7 @@
 }
 
 .error-message {
-  color: #e53e3e;
+  color: var(--danger-400);
   font-size: 0.85rem;
   margin-top: 6px;
   display: flex;
@@ -140,25 +126,25 @@
 }
 
 .opportunity-card {
-  border: 2px solid #e2e8f0;
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 24px;
   cursor: pointer;
   transition: all 0.3s;
-  background: white;
+  background: var(--surface-dark);
   position: relative;
   overflow: hidden;
 }
 
 .opportunity-card:hover {
-  border-color: #4299e1;
+  border-color: var(--border-dark);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(66, 153, 225, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .opportunity-card.selected {
   border-color: var(--brand);
-  background: var(--bg-light);
+  background: var(--surface-dark);
   box-shadow: none;
 }
 
@@ -169,20 +155,20 @@
 
 .card-content h3 {
   margin: 0 0 12px 0;
-  color: #2d3748;
+  color: var(--text-light);
   font-size: 1.3rem;
   font-weight: 600;
 }
 
 .card-content p {
   margin: 0 0 16px 0;
-  color: #718096;
+  color: var(--text-2);
   line-height: 1.5;
 }
 
 .card-tag {
-  background: #4299e1;
-  color: white;
+  background: var(--brand);
+  color: var(--text-on-brand);
   padding: 6px 12px;
   border-radius: 16px;
   font-size: 0.8rem;
@@ -193,8 +179,8 @@
 .info-card {
   display: flex;
   gap: 16px;
-  background: #f0f9ff;
-  border: 1px solid #bee3f8;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 20px;
   margin-top: 16px;
@@ -207,14 +193,14 @@
 
 .info-content h4 {
   margin: 0 0 8px 0;
-  color: #2b6cb0;
+  color: var(--text-light);
   font-size: 1rem;
   font-weight: 600;
 }
 
 .info-content p {
   margin: 0;
-  color: #2c5282;
+  color: var(--text-2);
   line-height: 1.5;
 }
 
@@ -224,7 +210,7 @@
   justify-content: flex-end;
   margin-top: 32px;
   padding-top: 24px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--border-dark);
 }
 
 .btn-primary, .btn-secondary {
@@ -250,16 +236,7 @@
   transform: none;
 }
 
-.btn-secondary {
-  background: #f7fafc;
-  color: #4a5568;
-  border: 2px solid #e2e8f0;
-}
-
-.btn-secondary:hover:not(:disabled) {
-  background: #edf2f7;
-  border-color: #cbd5e0;
-}
+.btn-secondary {}
 
 .loading {
   animation: pulse 1.5s infinite;
@@ -277,10 +254,11 @@
 }
 
 .helper-card {
-  background: white;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 .helper-card h3 {
@@ -345,21 +323,22 @@
   margin-top: 12px;
 }
 
-.context-tag { background: var(--brand); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+.context-tag { background: var(--brand); color: var(--text-on-brand); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
 
 /* Progress Indicator Styles */
 .progress-indicator {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 12px;
   padding: 16px;
   margin: 20px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: #e2e8f0;
+  background: var(--border-dark);
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 12px;
@@ -385,19 +364,20 @@
 }
 
 .step.completed {
-  color: #48bb78;
+  color: var(--success-400);
   font-weight: 600;
 }
 
 .step.active {
-  color: #4299e1;
+  color: var(--brand);
   font-weight: 600;
 }
 
 .next-step-pill {
   align-self: center;
-  background: #edf2f7;
-  color: #2d3748;
+  background: var(--surface-dark);
+  color: var(--text-2);
+  border: 1px solid var(--border-dark);
   padding: 6px 12px;
   border-radius: 999px;
   font-size: 0.85rem;
@@ -411,7 +391,7 @@
 }
 
 /* Draft Banner Styles */
-.draft-banner { background: var(--bg-light); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 16px 0; }
+.draft-banner { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; padding: 16px; margin: 16px 0; }
 
 .banner-content {
   display: flex;
@@ -529,8 +509,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: white;
-  border: 1px solid #fed7aa;
+  background: var(--surface-dark);
+  border: 1px solid var(--border-dark);
   border-radius: 8px;
   padding: 12px;
   cursor: pointer;
@@ -543,7 +523,7 @@
   box-shadow: 0 4px 12px rgba(246, 173, 85, 0.2);
 }
 
-.client-avatar { width: 40px; height: 40px; background: var(--brand); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
+.client-avatar { width: 40px; height: 40px; background: var(--brand); color: var(--text-on-brand); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14px; flex-shrink: 0; }
 
 .client-info {
   flex: 1;
@@ -551,35 +531,22 @@
 
 .client-name {
   font-weight: 600;
-  color: #2d3748;
+  color: var(--text-light);
   margin-bottom: 2px;
 }
 
 .client-details {
   font-size: 0.85rem;
-  color: #718096;
+  color: var(--text-2);
 }
 
-.btn-use-client {
-  background: #4299e1;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.btn-use-client:hover {
-  background: #3182ce;
-}
+.btn-use-client { @apply ui-btn ui-btn-secondary; }
+.btn-use-client:hover { opacity: .95; }
 
 .continue-anyway {
   text-align: center;
   padding-top: 12px;
-  border-top: 1px solid #fed7aa;
+  border-top: 1px solid var(--border-dark);
 }
 
 /* Enhanced Opportunity Cards */
@@ -590,8 +557,8 @@
   right: 16px;
   width: 24px;
   height: 24px;
-  background: #48bb78;
-  color: white;
+  background: var(--success-500);
+  color: var(--text-on-brand);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -607,7 +574,7 @@
   top: -8px;
   left: 16px;
   background: var(--brand);
-  color: white;
+  color: var(--text-on-brand);
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 0.75rem;

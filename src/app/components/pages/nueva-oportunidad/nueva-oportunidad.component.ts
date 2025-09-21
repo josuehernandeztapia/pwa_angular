@@ -27,7 +27,7 @@ interface WizardStep {
     <div class="nueva-oportunidad-container command-container">
       <div class="header-section">
         <div class="breadcrumb">
-          <button class="back-btn premium-button outline" (click)="goBack()" [attr.aria-label]="'Volver'">
+          <button class="ui-btn ui-btn-secondary back-btn" (click)="goBack()" [attr.aria-label]="'Volver'">
             ⬅️ Regresar
           </button>
           <h1 class="command-title">💎 Generador de Oportunidades Inteligente</h1>
@@ -70,7 +70,7 @@ interface WizardStep {
         </div>
         
         <!-- Draft Recovery Banner -->
-        <div class="draft-banner premium-card" *ngIf="hasDraftAvailable && !draftRecovered">
+        <div class="draft-banner ui-card" *ngIf="hasDraftAvailable && !draftRecovered">
           <div class="banner-content">
             <span class="banner-icon">💾</span>
             <div class="banner-text">
@@ -78,15 +78,15 @@ interface WizardStep {
               <p>Tienes una oportunidad sin terminar del {{ formatDraftDate(draftData.timestamp) }}</p>
             </div>
             <div class="banner-actions">
-              <button class="premium-button" (click)="recoverDraft()">Continuar</button>
-              <button class="premium-button secondary" (click)="discardDraft()">Descartar</button>
+              <button class="ui-btn ui-btn-primary" (click)="recoverDraft()">Continuar</button>
+              <button class="ui-btn ui-btn-secondary" (click)="discardDraft()">Descartar</button>
             </div>
           </div>
         </div>
       </div>
 
       <div class="form-container">
-        <form [formGroup]="opportunityForm" (ngSubmit)="onSubmit()" class="opportunity-form premium-card">
+        <form [formGroup]="opportunityForm" (ngSubmit)="onSubmit()" class="opportunity-form ui-card">
           
           <!-- Step 1: Client Information -->
           <div class="form-section">
@@ -99,7 +99,7 @@ interface WizardStep {
                   id="clientName"
                   type="text"
                   formControlName="clientName"
-                  class="premium-input"
+                  class="ui-input"
                   [class.error]="isFieldInvalid('clientName')"
                   [attr.aria-invalid]="isFieldInvalid('clientName')"
                   [attr.aria-describedby]="getErrorId('clientName')"
@@ -166,11 +166,11 @@ interface WizardStep {
                       <div class="client-name">{{ client.name }}</div>
                       <div class="client-details">{{ client.phone || 'Sin teléfono' }} • {{ client.market || 'Sin mercado' }}</div>
                     </div>
-                    <button type="button" class="btn-use-client">Usar este cliente</button>
+                    <button type="button" class="ui-btn ui-btn-secondary btn-use-client">Usar este cliente</button>
                   </div>
                 </div>
                 <div class="continue-anyway">
-                  <button type="button" class="premium-button outline" (click)="clearSimilarClients()">
+                <button type="button" class="ui-btn ui-btn-secondary" (click)="clearSimilarClients()">
                     Continuar con cliente nuevo
                   </button>
                 </div>
@@ -198,7 +198,7 @@ interface WizardStep {
                     id="phone"
                     type="tel"
                     formControlName="phone"
-                    class="form-input whatsapp-field"
+                    class="ui-input whatsapp-field"
                     [class.error]="isFieldInvalid('phone')"
                     [attr.aria-invalid]="isFieldInvalid('phone')"
                     [attr.aria-describedby]="getErrorId('phone')"
@@ -225,7 +225,7 @@ interface WizardStep {
                   id="email"
                   type="email"
                   formControlName="email"
-                  class="form-input email-field"
+                  class="ui-input email-field"
                   [class.error]="isFieldInvalid('email')"
                   [attr.aria-invalid]="isFieldInvalid('email')"
                   [attr.aria-describedby]="getErrorId('email')"
@@ -252,7 +252,7 @@ interface WizardStep {
                   id="rfc"
                   type="text"
                   formControlName="rfc"
-                  class="form-input"
+                    class="ui-input"
                   [class.error]="isFieldInvalid('rfc')"
                   [attr.aria-invalid]="isFieldInvalid('rfc')"
                   [attr.aria-describedby]="getErrorId('rfc')"
@@ -320,7 +320,7 @@ interface WizardStep {
                 <select
                   id="market"
                   formControlName="market"
-                  class="form-select"
+                  class="ui-input"
                   [class.error]="isFieldInvalid('market')"
                   (change)="onMarketChange()"
                 >
@@ -341,7 +341,7 @@ interface WizardStep {
                 <select
                   id="saleType"
                   formControlName="saleType"
-                  class="form-select"
+                  class="ui-input"
                   [class.error]="isFieldInvalid('saleType')"
                   (change)="onSaleTypeChange()"
                 >
@@ -362,7 +362,7 @@ interface WizardStep {
                 <select
                   id="municipality"
                   formControlName="municipality"
-                  class="form-select"
+                  class="ui-input"
                   [class.error]="isFieldInvalid('municipality')"
                 >
                   <option value="">Seleccionar municipio...</option>
@@ -425,7 +425,7 @@ interface WizardStep {
                 <select
                   id="clientType"
                   formControlName="clientType"
-                  class="form-select"
+                  class="ui-input"
                   [class.error]="isFieldInvalid('clientType')"
                 >
                   <option value="">Seleccionar tipo...</option>
@@ -483,7 +483,7 @@ interface WizardStep {
                 </div>
                 <div *ngIf="errorEcosystems" class="ecosystem-error">
                   <p>Ocurrió un error al cargar ecosistemas.</p>
-                  <button class="premium-button secondary" type="button" (click)="reloadEcosystems()">Reintentar</button>
+                  <button class="ui-btn ui-btn-secondary" type="button" (click)="reloadEcosystems()">Reintentar</button>
                 </div>
               </ng-template>
             </div>
@@ -499,7 +499,7 @@ interface WizardStep {
               <textarea
                 id="notes"
                 formControlName="notes"
-                class="form-textarea"
+                class="ui-input"
                 rows="4"
                 placeholder="Información adicional sobre el cliente o la oportunidad..."
               ></textarea>
@@ -510,7 +510,7 @@ interface WizardStep {
           <div class="form-actions" *ngIf="opportunityType">
             <button 
               type="button" 
-              class="premium-button secondary"
+              class="ui-btn ui-btn-secondary"
               (click)="saveDraft()"
               [disabled]="isLoading"
             >
@@ -519,7 +519,7 @@ interface WizardStep {
             
             <button 
               type="submit" 
-              class="premium-button"
+              class="ui-btn ui-btn-primary"
               [disabled]="opportunityForm.invalid || isLoading"
               [attr.aria-disabled]="opportunityForm.invalid || isLoading ? true : null"
             >
@@ -1611,7 +1611,7 @@ export class NuevaOportunidadComponent implements OnInit {
     if (this.smartContext.market === 'aguascalientes') {
       this.clientSuggestions.push(
         { name: 'María González Hernández', phone: '449-123-4567', market: 'AGS', type: '📊 Cotización recurrente' },
-        { name: 'Carlos López Torres', phone: '449-234-5678', market: 'AGS', type: '💰 Cliente premium' },
+        { name: 'Carlos López Torres', phone: '449-234-5678', market: 'AGS', type: '💰 Cliente preferente' },
         { name: 'Ana Patricia Morales', phone: '449-345-6789', market: 'AGS', type: '🎯 Simulación activa' }
       );
     } else if (this.smartContext.market === 'edomex') {
