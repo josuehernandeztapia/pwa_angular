@@ -70,7 +70,8 @@
         <div>Breadcrumbs</div>
       </div>
       <div class="flex gap-2 items-center">
-        <input type="text" class="ui-input w-64" placeholder="Buscar...">
+        <button class="ui-btn ui-btn-ghost md:hidden" aria-label="Buscar">🔍</button>
+        <input type="text" class="ui-input hidden sm:block w-40 md:w-64" placeholder="Buscar...">
         <button data-cy="dark-toggle" class="ui-btn ui-btn-secondary" (click)="toggleDarkMode()">🌓</button>
       </div>
     </header>
