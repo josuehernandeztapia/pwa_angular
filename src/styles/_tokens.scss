@@ -1,11 +1,21 @@
 :root {
   --brand: #06b6d4;
-  --bg-dark: #0b0f14;        /* fondo base */
-  --surface-dark: #1f2937;   /* cards, inputs */
-  --border-dark: #374151;    /* bordes */
-  --text-primary: #f3f4f6;   /* texto principal */
-  --text-secondary: #9ca3af; /* texto secundario */
-  --success: #10b981;
-  --warning: #f59e0b;
-  --error: #ef4444;
+  --bg-dark: #0b0f14;
+  --surface-dark: #1f2937;
+  --border-dark: #374151;
+  --text-light: #f3f4f6;
+  --text-1: #0f172a;
+  --text-2: #6b7280;
+  --green: #16a34a;
+  --yellow: #ca8a04;
+  --red: #dc2626;
+}
+
+/* Compat aliases – eliminar en PR#292-b */
+:root {
+  --text-primary: var(--text-light);
+  --text-secondary: var(--text-2);
+  --success: var(--green);
+  --warning: var(--yellow);
+  --error: var(--red);
 }
