@@ -3,14 +3,13 @@
  * Production-ready OCR with retry mechanism and manual fallback
  */
 
-import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { OCRService, OCRProgress } from '../../services/ocr.service';
-import { PremiumIconComponent } from '../premium-icon/premium-icon.component';
-import { HumanMessageComponent } from '../human-message/human-message.component';
 import { HumanMicrocopyService } from '../../services/human-microcopy.service';
+import { OCRProgress, OCRService } from '../../services/ocr.service';
+import { HumanMessageComponent } from '../human-message/human-message.component';
 
 export interface OCRScanResult {
   success: boolean;
@@ -25,18 +24,13 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
 @Component({
   selector: 'app-ocr-scanner-enhanced',
   standalone: true,
-  imports: [CommonModule, FormsModule, PremiumIconComponent, HumanMessageComponent],
+  imports: [CommonModule, FormsModule, HumanMessageComponent],
   template: `
-    <div class="ocr-scanner-enhanced" [attr.data-testid]="'ocr-scanner-' + mode">
+    <div class="ui-card ocr-scanner-enhanced" [attr.data-testid]="'ocr-scanner-' + mode">
       
       <!-- Scanner Header -->
       <div class="scanner-header">
         <div class="scanner-title">
-          <app-premium-icon 
-            [name]="getScannerIcon()" 
-            [size]="24"
-            class="scanner-icon">
-          </app-premium-icon>
           <h3>{{ getScannerTitle() }}</h3>
         </div>
         <div class="scanner-status" [class]="'status-' + currentStatus">
@@ -52,28 +46,22 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
           accept="image/*"
           capture="environment"
           (change)="onImageSelected($event)"
-          class="file-input"
+          class="ui-input"
           [attr.data-testid]="mode + '-camera-input'"
           hidden>
           
         <div class="camera-preview" *ngIf="selectedImage">
           <img [src]="selectedImage" alt="Imagen seleccionada" class="preview-image">
-          <button class="retake-btn" (click)="retakePhoto()">
-            <app-premium-icon name="camera" [size]="20"></app-premium-icon>
+          <button class="ui-btn ui-btn-secondary" (click)="retakePhoto()">
             Tomar otra foto
           </button>
         </div>
         
         <button 
-          class="camera-trigger"
+          class="ui-btn ui-btn-primary camera-trigger"
           (click)="triggerCamera()"
           [disabled]="isProcessing"
           [attr.data-testid]="mode + '-camera-trigger'">
-          <app-premium-icon 
-            [name]="selectedImage ? 'refresh' : 'camera'"
-            [size]="32"
-            [class.spinning]="isProcessing">
-          </app-premium-icon>
           <span>{{ selectedImage ? 'Procesar imagen' : 'Tomar foto del ' + getScannerLabel() }}</span>
         </button>
       </div>
@@ -98,11 +86,6 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
       <!-- OCR Results -->
       <div class="ocr-results" *ngIf="ocrResult && !showManualEntry">
         <div class="result-header">
-          <app-premium-icon 
-            [name]="ocrResult.needsManualEntry ? 'alert-triangle' : 'check-circle'"
-            [size]="20"
-            [class]="ocrResult.needsManualEntry ? 'text-warning' : 'text-success'">
-          </app-premium-icon>
           <span>{{ ocrResult.needsManualEntry ? 'Verificación necesaria' : 'Detectado automáticamente' }}</span>
         </div>
         
@@ -110,7 +93,7 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
           <input 
             type="text" 
             [(ngModel)]="detectedValue"
-            [class]="'result-input ' + (ocrResult.needsManualEntry ? 'needs-verification' : 'auto-detected')"
+            class="ui-input"
             [attr.data-testid]="mode + '-detected-value'"
             [placeholder]="getPlaceholderText()">
           <span class="confidence-badge" *ngIf="ocrResult.confidence > 0">
@@ -128,7 +111,6 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
       <!-- Manual Entry Mode -->
       <div class="manual-entry" *ngIf="showManualEntry">
         <div class="manual-header">
-          <app-premium-icon name="edit" [size]="20"></app-premium-icon>
           <span>Entrada manual</span>
         </div>
         
@@ -137,11 +119,10 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
             type="text"
             [(ngModel)]="manualValue"
             [placeholder]="getPlaceholderText()"
-            class="manual-input"
+            class="ui-input"
             [attr.data-testid]="mode + '-manual-input'"
             (input)="onManualValueChange()">
           <div class="input-validation" *ngIf="validationMessage">
-            <app-premium-icon name="info" [size]="16"></app-premium-icon>
             <span>{{ validationMessage }}</span>
           </div>
         </div>
@@ -155,23 +136,18 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
       <!-- Action Buttons -->
       <div class="action-buttons">
         <button 
-          class="btn btn-secondary"
+          class="ui-btn ui-btn-secondary"
           (click)="toggleManualEntry()"
           [disabled]="isProcessing"
           [attr.data-testid]="mode + '-toggle-manual'">
-          <app-premium-icon 
-            [name]="showManualEntry ? 'camera' : 'edit'"
-            [size]="20">
-          </app-premium-icon>
           {{ showManualEntry ? 'Usar cámara' : 'Entrada manual' }}
         </button>
 
         <button 
-          class="btn btn-primary"
+          class="ui-btn ui-btn-primary"
           (click)="confirmValue()"
           [disabled]="!canConfirm()"
           [attr.data-testid]="mode + '-confirm'">
-          <app-premium-icon name="check" [size]="20"></app-premium-icon>
           Confirmar {{ getScannerLabel() }}
         </button>
       </div>
@@ -182,8 +158,7 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
           context="ocr-error"
           [data]="{ error: errorMessage, canRetry: true }">
         </app-human-message>
-        <button class="btn btn-outline" (click)="retry()">
-          <app-premium-icon name="refresh" [size]="20"></app-premium-icon>
+        <button class="ui-btn ui-btn-secondary" (click)="retry()">
           Reintentar
         </button>
       </div>
@@ -191,355 +166,103 @@ export type ScanMode = 'vin' | 'odometer' | 'general';
   `,
   styles: [`
     .ocr-scanner-enhanced {
-      background: var(--bg-secondary, #1a2332);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 16px;
+      color: var(--text-light);
     }
 
     .scanner-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .scanner-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      margin-bottom: 16px;
     }
 
     .scanner-title h3 {
       margin: 0;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      color: var(--text-primary, #E6ECFF);
-    }
-
-    .scanner-icon {
-      color: var(--accent-primary, #3AA6FF);
+      color: var(--text-light);
     }
 
     .scanner-status {
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 12px;
+      padding: 2px 10px;
+      border-radius: 10px;
+      font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
+      background: var(--bg-dark);
+      color: var(--text-2);
+      border: 1px solid var(--border-dark);
     }
 
-    .status-idle { 
-      background: rgba(168, 179, 207, 0.1); 
-      color: var(--text-muted, #A8B3CF); 
-    }
-    
-    .status-processing { 
-      background: rgba(58, 166, 255, 0.1); 
-      color: var(--accent-primary, #3AA6FF); 
-    }
-    
-    .status-success { 
-      background: rgba(34, 197, 94, 0.1); 
-      color: var(--success, #22C55E); 
-    }
-    
-    .status-error { 
-      background: rgba(239, 68, 68, 0.1); 
-      color: var(--error, #EF4444); 
-    }
+    .status-success { color: var(--green); border-color: var(--green); }
+    .status-error { color: var(--red); border-color: var(--red); }
+    .status-processing { color: var(--yellow); border-color: var(--yellow); }
 
-    .camera-section {
-      margin-bottom: 24px;
-    }
+    .camera-section { margin-bottom: 16px; }
 
-    .camera-preview {
-      margin-bottom: 16px;
-      position: relative;
-    }
+    .camera-preview { position: relative; margin-bottom: 12px; }
 
     .preview-image {
       width: 100%;
       max-height: 300px;
       object-fit: contain;
-      border-radius: 12px;
-      border: 2px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .retake-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: rgba(11, 18, 32, 0.9);
-      color: var(--text-primary, #E6ECFF);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      padding: 8px 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .retake-btn:hover {
-      background: rgba(11, 18, 32, 1);
-      border-color: var(--accent-primary, #3AA6FF);
-    }
-
-    .camera-trigger {
-      width: 100%;
-      background: linear-gradient(135deg, #3AA6FF, #22D3EE);
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      min-height: 100px;
-    }
-
-    .camera-trigger:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(58, 166, 255, 0.3);
-    }
-
-    .camera-trigger:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .spinning {
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      border-radius: 10px;
+      border: 1px solid var(--border-dark);
+      background: var(--bg-dark);
     }
 
     .ocr-progress {
-      margin-bottom: 20px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 12px;
-      border-left: 3px solid var(--accent-primary, #3AA6FF);
-    }
-
-    .progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-
-    .progress-attempt {
-      color: var(--text-muted, #A8B3CF);
-      font-size: 12px;
-    }
-
-    .progress-bar {
-      height: 6px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      transition: width 0.3s ease;
-      border-radius: 3px;
-    }
-
-    .progress-recognizing { background: var(--accent-primary, #3AA6FF); }
-    .progress-retrying { background: var(--warning, #F59E0B); }
-    .progress-completed { background: var(--success, #22C55E); }
-    .progress-failed { background: var(--error, #EF4444); }
-
-    .ocr-results {
-      margin-bottom: 20px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 12px;
-    }
-
-    .result-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
       margin-bottom: 12px;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    .text-warning { color: var(--warning, #F59E0B); }
-    .text-success { color: var(--success, #22C55E); }
-
-    .result-value {
-      position: relative;
-    }
-
-    .result-input {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
       padding: 12px;
-      color: var(--text-primary, #E6ECFF);
-      font-size: 16px;
-      transition: all 0.2s ease;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
     }
 
-    .result-input:focus {
-      outline: none;
-      border-color: var(--accent-primary, #3AA6FF);
-      background: rgba(255, 255, 255, 0.08);
+    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 13px; }
+    .progress-attempt { color: var(--text-2); font-size: 11px; }
+
+    .progress-bar { height: 6px; background: var(--bg-dark); border: 1px solid var(--border-dark); border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; transition: width 0.3s ease; background: var(--green); }
+
+    .ocr-results, .manual-entry {
+      margin-bottom: 12px;
+      padding: 12px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
     }
 
-    .needs-verification {
-      border-color: var(--warning, #F59E0B);
-      background: rgba(245, 158, 11, 0.05);
-    }
-
-    .auto-detected {
-      border-color: var(--success, #22C55E);
-      background: rgba(34, 197, 94, 0.05);
-    }
+    .result-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; font-size: 14px; font-weight: 500; }
 
     .confidence-badge {
       position: absolute;
       top: -8px;
       right: 8px;
-      background: var(--bg-primary, #0B1220);
-      color: var(--text-muted, #A8B3CF);
+      background: var(--bg-dark);
+      color: var(--text-2);
       padding: 2px 8px;
       border-radius: 8px;
       font-size: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-dark);
     }
 
-    .manual-entry {
-      margin-bottom: 20px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 12px;
-      border-left: 3px solid var(--accent-primary, #3AA6FF);
-    }
+    .input-validation { display: flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 12px; color: var(--text-2); }
 
-    .manual-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 16px;
-      font-weight: 500;
-      color: var(--accent-primary, #3AA6FF);
-    }
-
-    .manual-input-group {
-      position: relative;
-    }
-
-    .manual-input {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.05);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: 8px;
-      padding: 12px;
-      color: var(--text-primary, #E6ECFF);
-      font-size: 16px;
-      transition: all 0.2s ease;
-    }
-
-    .manual-input:focus {
-      outline: none;
-      border-color: var(--accent-primary, #3AA6FF);
-      background: rgba(255, 255, 255, 0.08);
-    }
-
-    .input-validation {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--text-muted, #A8B3CF);
-    }
-
-    .action-buttons {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: none;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .btn-primary {
-      background: var(--accent-primary, #3AA6FF);
-      color: white;
-    }
-
-    .btn-primary:hover:not(:disabled) {
-      background: var(--accent-hover, #2563EB);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text-primary, #E6ECFF);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .btn-secondary:hover:not(:disabled) {
-      background: rgba(255, 255, 255, 0.15);
-      border-color: var(--accent-primary, #3AA6FF);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--accent-primary, #3AA6FF);
-      border: 1px solid var(--accent-primary, #3AA6FF);
-    }
-
-    .btn-outline:hover {
-      background: var(--accent-primary, #3AA6FF);
-      color: white;
-    }
-
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
+    .action-buttons { display: flex; gap: 12px; margin-bottom: 12px; }
 
     .error-display {
-      padding: 16px;
-      background: rgba(239, 68, 68, 0.05);
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      border-radius: 12px;
+      padding: 12px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 10px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
   `]
 })

@@ -1,15 +1,15 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ManualEntryComponent, ManualEntryData } from '../shared/manual-entry/manual-entry.component';
-import { ManualOCREntryComponent, ManualOCRData } from '../shared/manual-ocr-entry/manual-ocr-entry.component';
-import { VisionOCRRetryService, OCRResult } from '../../services/vision-ocr-retry.service';
-import { CasesService, CaseRecord } from '../../services/cases.service';
+import { of } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { PostSalesQuoteDraftService, PartSuggestion } from '../../services/post-sales-quote-draft.service';
+import { CasesService } from '../../services/cases.service';
 import { PostSalesQuoteApiService } from '../../services/post-sales-quote-api.service';
-import { timeout, catchError, retry, delayWhen, tap, switchMap } from 'rxjs/operators';
-import { of, timer, throwError } from 'rxjs';
+import { PartSuggestion, PostSalesQuoteDraftService } from '../../services/post-sales-quote-draft.service';
+import { VisionOCRRetryService } from '../../services/vision-ocr-retry.service';
+import { ManualEntryComponent } from '../shared/manual-entry/manual-entry.component';
+import { ManualOCRData, ManualOCREntryComponent } from '../shared/manual-ocr-entry/manual-ocr-entry.component';
 
 type StepId = 'plate' | 'vin' | 'odometer' | 'evidence';
 
@@ -32,15 +32,15 @@ interface StepState {
   imports: [CommonModule, FormsModule, NgOptimizedImage, ManualEntryComponent, ManualOCREntryComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div class="ui-card p-4 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700" *ngIf="enabled; else disabledTpl">
-      <h1 class="text-lg font-semibold">Postventa — Fotos</h1>
-      <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Sube 4 fotos básicas para validar el expediente.</p>
+    <div class="ui-card p-4" *ngIf="enabled; else disabledTpl">
+      <h1 class="text-lg font-semibold text-[var(--text-light)]">Postventa — Fotos</h1>
+      <p class="text-sm text-[var(--text-2)] mt-1">Sube 4 fotos básicas para validar el expediente.</p>
 
       <div class="mt-3" *ngIf="!caseId">
         <button class="ui-btn ui-btn-primary" (click)="next()">Iniciar</button>
       </div>
 
-      <div class="mt-3 divide-y divide-[var(--border)]">
+      <div class="mt-3 divide-y divide-[var(--border-dark)]">
         <div class="py-3" *ngFor="let step of steps">
           <div class="flex items-center justify-between">
             <div class="font-medium">{{ step.title }}</div>
@@ -51,28 +51,28 @@ interface StepState {
             <button class="ui-btn ui-btn-secondary" (click)="retake(step.id)" *ngIf="step.done">Repetir</button>
           </div>
           <div class="mt-2" *ngIf="step.uploading">
-            <div class="h-3 rounded bg-slate-200 dark:bg-slate-800 animate-pulse"></div>
+            <div class="h-3 rounded bg-[var(--bg-dark)] animate-pulse border border-[var(--border-dark)]"></div>
             <div class="text-xs text-slate-500 mt-1" *ngIf="step.id === 'vin' && vinRetryAttempt > 0" data-cy="postventa-ocr">Intento VIN {{ vinRetryAttempt }}/3</div>
           </div>
         </div>
       </div>
 
       <div class="mt-4" *ngIf="caseId">
-        <div class="text-xs text-slate-500" data-cy="postventa-ocr">
+        <div class="text-xs text-[var(--text-2)]" data-cy="postventa-ocr">
           OCR: {{ isAllGood ? 'Validado' : (summaryIssues.length ? 'Pendiente' : 'Pendiente') }}
         </div>
         <div class="mt-2" *ngIf="!isAllGood && summaryIssues.length">
-          <ul class="text-xs text-slate-500 list-disc pl-5">
+          <ul class="text-xs text-[var(--text-2)] list-disc pl-5">
             <li *ngFor="let msg of summaryIssues">{{ msg }}</li>
           </ul>
         </div>
       </div>
 
       <div class="mt-4" *ngIf="enableAddToQuote && recommendedParts.length > 0" data-cy="postventa-refacciones">
-        <div class="text-sm font-semibold mb-2">Piezas sugeridas</div>
+        <div class="text-sm font-semibold mb-2 text-[var(--text-light)]">Piezas sugeridas</div>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
-            <thead class="text-slate-500">
+            <thead class="text-[var(--text-2)]">
               <tr>
                 <th class="text-left py-2">Pieza</th>
                 <th class="text-left py-2">OEM</th>
@@ -96,7 +96,7 @@ interface StepState {
             </tbody>
           </table>
         </div>
-        <div class="text-sm mt-2">En cotización provisional: <strong>{{ draftCount }}</strong></div>
+        <div class="text-sm mt-2 text-[var(--text-2)]">En cotización provisional: <strong class="text-[var(--text-light)]">{{ draftCount }}</strong></div>
       </div>
 
       <div class="mt-4 flex justify-end">
@@ -113,62 +113,53 @@ interface StepState {
     </app-manual-ocr-entry>
 
     <ng-template #disabledTpl>
-      <div class="ui-card p-4 dark:bg-slate-900 dark:text-slate-100 dark:border-slate-700">
-        <div class="text-sm text-slate-500">El Wizard de Postventa está desactivado. Actívalo con el flag environment.features.enablePostSalesWizard.</div>
+      <div class="ui-card p-4">
+        <div class="text-sm text-[var(--text-2)]">El Wizard de Postventa está desactivado. Actívalo con el flag environment.features.enablePostSalesWizard.</div>
       </div>
     </ng-template>
   `,
   styles: [`
-    .wizard-container { padding: 20px; color: #e5e7eb; background: #0f1419; min-height: 100vh; }
-    .title { font-size: 22px; font-weight: 700; color: #06d6a0; margin-bottom: 12px; }
+    .wizard-container { padding: 20px; color: var(--text-light); background: var(--bg-dark); min-height: 100vh; }
     .steps { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    .step-card { border: 1px solid #2d3748; border-radius: 10px; background: #1a1f2e; }
-    .step-card.active { border-color: #06d6a0; }
+    .step-card { border: 1px solid var(--border-dark); border-radius: 10px; background: var(--surface-dark); }
+    .step-card.active { border-color: var(--green); }
     .step-card.done { opacity: 0.95; }
-    .step-header { display: flex; align-items: center; gap: 10px; padding: 12px; border-bottom: 1px solid #2d3748; }
-    .badge { width: 24px; height: 24px; border-radius: 999px; background: #06d6a0; color: #0b1411; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .step-header { display: flex; align-items: center; gap: 10px; padding: 12px; border-bottom: 1px solid var(--border-dark); }
     .step-title { font-weight: 600; }
-    .status .ok { color: #10b981; font-weight: 700; }
-    .status .warn { color: #f59e0b; font-weight: 700; }
+    .status .ok { color: var(--green); font-weight: 700; }
+    .status .warn { color: var(--yellow); font-weight: 700; }
     .step-body { padding: 12px; display: grid; grid-template-columns: 1fr; gap: 10px; }
-    .hint { color: #a0aec0; font-size: 14px; }
-    .example { border: 1px dashed #374151; border-radius: 8px; padding: 8px; }
-    .example-label { font-size: 12px; color: #9ca3af; margin-bottom: 6px; }
+    .hint { color: var(--text-2); font-size: 14px; }
+    .example { border: 1px dashed var(--border-dark); border-radius: 8px; padding: 8px; }
+    .example-label { font-size: 12px; color: var(--text-2); margin-bottom: 6px; }
     .example img { max-width: 100%; border-radius: 6px; }
     .actions { display:flex; align-items:center; gap: 10px; }
-    .upload { color: #93c5fd; font-size: 14px; }
-    .qa .ok { color:#10b981; }
-    .qa .warn { color:#f59e0b; }
-    .qa .missing { margin: 6px 0 0 16px; color:#fbbf24; }
+    .upload { color: var(--text-2); font-size: 14px; }
+    .qa .ok { color: var(--green); }
+    .qa .warn { color: var(--yellow); }
+    .qa .missing { margin: 6px 0 0 16px; color: var(--yellow); }
     .banner { padding: 10px 12px; border-radius: 8px; margin: 10px 0; font-size: 14px; }
-    .banner.info { background: #1f2937; border: 1px solid #374151; }
-    .banner.warn { background: #5b3a0a; border: 1px solid #b45309; color: #fde68a; }
-    .banner.success { background: #0f5132; border: 1px solid #14532d; color: #bbf7d0; }
-    .btn { padding: 8px 12px; border-radius: 8px; border: 1px solid #374151; background:#111827; color: #e5e7eb; cursor: pointer; }
-    .btn:hover { background:#0b1220; }
-    .btn.primary { background:#059669; border-color:#059669; }
-    .btn.retry { background:#4b5563; }
+    .banner.info { background: var(--bg-dark); border: 1px solid var(--border-dark); }
+    .banner.warn { background: var(--bg-dark); border: 1px solid var(--border-dark); color: var(--yellow); }
+    .banner.success { background: var(--bg-dark); border: 1px solid var(--border-dark); color: var(--green); }
     .summary { margin-top: 12px; }
     .cta-row { display:flex; gap: 8px; margin-top:8px; }
     .footer { margin-top: 16px; display:flex; justify-content: flex-end; }
-    .badge-time { margin-top: 6px; font-size: 12px; color: #93c5fd; }
+    .badge-time { margin-top: 6px; font-size: 12px; color: var(--text-2); }
 
     /* Parts chips */
-    .parts-suggested { margin-top: 16px; border-top: 1px dashed #374151; padding-top: 12px; }
-    .parts-title { color:#fbbf24; font-size:16px; margin: 0 0 8px 0; }
+    .parts-suggested { margin-top: 16px; border-top: 1px dashed var(--border-dark); padding-top: 12px; }
     .chips { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
-    .chip { border:1px solid #374151; background:#0b1220; border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; }
+    .chip { border:1px solid var(--border-dark); background: var(--bg-dark); border-radius:10px; padding:10px; display:flex; flex-direction:column; gap:6px; }
     .chip-main { display:flex; justify-content:space-between; align-items:center; }
-    .chip-name { font-weight:700; color:#e5e7eb; }
-    .chip-price { color:#06d6a0; font-weight:700; }
-    .chip-meta { display:flex; gap:8px; color:#9ca3af; font-size:12px; }
-    .chip-meta .meta.low { color:#f87171; }
+    .chip-name { font-weight:700; color: var(--text-light); }
+    .chip-price { color: var(--green); font-weight:700; }
+    .chip-meta { display:flex; gap:8px; color: var(--text-2); font-size:12px; }
+    .chip-meta .meta.low { color: var(--red); }
     .btn.add { align-self:flex-start; font-size:12px; padding:6px 8px; }
-    .draft-summary { margin-top:8px; font-size:13px; color:#e5e7eb; display:flex; align-items:center; gap:8px; }
-    .btn.clear { background:#374151; }
+    .draft-summary { margin-top:8px; font-size:13px; color: var(--text-light); display:flex; align-items:center; gap:8px; }
     .banner-actions { margin-top: 8px; }
-    .btn.retry-vin { background: #b45309; border-color: #b45309; color: #fde68a; font-size: 12px; padding: 6px 10px; }
-    .upload-progress { margin-top: 4px; color: #93c5fd; font-size: 12px; }
+    .upload-progress { margin-top: 4px; color: var(--text-2); font-size: 12px; }
   `]
 })
 export class PhotoWizardComponent {
