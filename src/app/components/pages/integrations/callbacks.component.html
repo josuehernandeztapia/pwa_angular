@@ -2,7 +2,11 @@
   <div class="ui-card" data-cy="callbacks-card">
     <div class="ui-card-header flex items-center justify-between">
       <h2 class="text-base font-semibold text-[var(--text-1)]">Integración {{ title }}</h2>
-      <span class="text-xs px-2 py-1 rounded border border-[var(--border)] text-[var(--text-2)]" data-cy="callbacks-status">
+      <span class="text-xs px-2 py-1 rounded border border-[var(--border)]" [ngClass]="{
+        'text-[var(--green)]': status() === 'Completado',
+        'text-[var(--red)]': status() === 'Error',
+        'text-[var(--yellow)]': status() === 'Pendiente'
+      }" data-cy="callbacks-status">
         {{ status() }}
       </span>
     </div>
@@ -22,7 +26,7 @@
     <div class="ui-card" data-cy="callbacks-request">
       <div class="ui-card-header"><h3 class="text-sm font-medium">Request</h3></div>
       <div class="ui-card-body">
-        <pre class="text-xs font-mono whitespace-pre-wrap">{{ requestText }}</pre>
+        <pre class="text-xs font-mono overflow-x-auto">{{ requestText }}</pre>
       </div>
     </div>
 
@@ -30,7 +34,7 @@
       <div class="ui-card-header"><h3 class="text-sm font-medium">Response</h3></div>
       <div class="ui-card-body">
         <ng-container *ngIf="!loading(); else loadingTpl">
-          <pre class="text-xs font-mono whitespace-pre-wrap">{{ responsePayload | json }}</pre>
+          <pre class="text-xs font-mono overflow-x-auto">{{ responsePayload | json }}</pre>
         </ng-container>
         <ng-template #loadingTpl>
           <div class="space-y-2 animate-pulse">
