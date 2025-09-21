@@ -11,7 +11,6 @@ interface SimulatorScenario {
   market: 'aguascalientes' | 'edomex';
   clientType: 'Individual' | 'Colectivo';
   route: string;
-  gradient: string;
 }
 
 interface SavedSimulation {
@@ -50,8 +49,7 @@ interface SavedSimulation {
       <div class="scenarios-grid">
         <div 
           *ngFor="let scenario of availableScenarios" 
-          class="scenario-card"
-          [class]="scenario.gradient"
+          class="scenario-card ui-card"
           (click)="selectScenario(scenario)"
         >
           <div class="scenario-icon">{{ scenario.icon }}</div>
@@ -349,8 +347,7 @@ export class SimuladorMainComponent implements OnInit, AfterViewChecked {
       description: 'Modela un plan de ahorro con aportación fuerte y recaudación para clientes de Aguascalientes.',
       market: 'aguascalientes',
       clientType: 'Individual',
-      route: '/simulador/ags-ahorro',
-      gradient: 'ags-gradient'
+      route: '/simulador/ags-ahorro'
     },
     {
       id: 'edomex-individual',
@@ -360,8 +357,7 @@ export class SimuladorMainComponent implements OnInit, AfterViewChecked {
       description: 'Proyecta el tiempo para alcanzar la meta de enganche para un cliente individual en EdoMex.',
       market: 'edomex',
       clientType: 'Individual',
-      route: '/simulador/edomex-individual',
-      gradient: 'edomex-individual-gradient'
+      route: '/simulador/edomex-individual'
     },
     {
       id: 'tanda-colectiva',
@@ -371,8 +367,7 @@ export class SimuladorMainComponent implements OnInit, AfterViewChecked {
       description: 'Modela el "efecto bola de nieve" para un grupo de crédito colectivo.',
       market: 'edomex',
       clientType: 'Colectivo',
-      route: '/simulador/tanda-colectiva',
-      gradient: 'edomex-collective-gradient'
+      route: '/simulador/tanda-colectiva'
     }
   ];
 
