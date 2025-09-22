@@ -145,7 +145,7 @@ import { Router } from '@angular/router';
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-gray-950);
+      background: var(--bg-dark);
       position: relative;
       overflow: hidden;
     }
@@ -194,14 +194,8 @@ import { Router } from '@angular/router';
       left: 0;
       right: 0;
       bottom: 0;
-      background: linear-gradient(
-        45deg, 
-        transparent 45%, 
-        var(--primary-cyan-800) 46%, 
-        var(--primary-cyan-800) 47%, 
-        transparent 48%
-      );
-      animation: slide-lines 8s linear infinite;
+      background: repeating-linear-gradient(45deg, transparent, transparent 20px, var(--border-dark) 20px, var(--border-dark) 22px);
+      animation: slide-lines 12s linear infinite;
     }
 
     @keyframes slide-lines {
@@ -211,10 +205,10 @@ import { Router } from '@angular/router';
 
     /* ===== COMMAND CENTER CARD ===== */
     .command-center-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       border-radius: 24px;
       padding: 48px;
       width: 100%;
@@ -232,7 +226,7 @@ import { Router } from '@angular/router';
       left: -1px;
       right: -1px;
       bottom: -1px;
-      background: linear-gradient(135deg, var(--primary-cyan-400), transparent, var(--accent-amber-500));
+      background: var(--border-dark);
       border-radius: 24px;
       z-index: -1;
       opacity: 0.3;
@@ -275,7 +269,7 @@ import { Router } from '@angular/router';
     }
 
     .brand-subtitle {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 1.1rem;
       font-weight: 500;
       margin: 0;
@@ -317,7 +311,7 @@ import { Router } from '@angular/router';
       transform: translateY(-50%);
       background: none;
       border: none;
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 1.2rem;
       cursor: pointer;
       padding: 8px;
@@ -358,7 +352,7 @@ import { Router } from '@angular/router';
       gap: 10px;
       cursor: pointer;
       font-size: 0.9rem;
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       user-select: none;
     }
 
@@ -460,7 +454,7 @@ import { Router } from '@angular/router';
 
     .register-text {
       margin: 0;
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 0.95rem;
     }
 
@@ -528,7 +522,7 @@ import { Router } from '@angular/router';
     }
 
     .credential-label {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.9rem;
       font-weight: 500;
     }

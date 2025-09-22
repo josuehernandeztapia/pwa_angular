@@ -141,10 +141,10 @@ export interface ActivityItem {
   `,
   styles: [`
     .activity-feed-container {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       border-radius: 20px;
       padding: 28px;
       margin-bottom: 32px;
@@ -158,7 +158,7 @@ export interface ActivityItem {
     }
 
     .feed-title {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-size: 1.5rem;
       font-weight: 700;
       margin: 0;
@@ -172,7 +172,7 @@ export interface ActivityItem {
     .filter-btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       padding: 8px 16px;
       border-radius: 20px;
       font-size: 0.85rem;
@@ -242,44 +242,21 @@ export interface ActivityItem {
       align-items: center;
       justify-content: center;
       font-size: 1.1rem;
-      border: 2px solid var(--glass-border);
+      border: 2px solid var(--border-dark);
       z-index: 2;
     }
 
-    .category-payment {
-      background: linear-gradient(135deg, var(--success-500), var(--success-600));
-      color: white;
-    }
-
-    .category-document {
-      background: linear-gradient(135deg, var(--info-500), var(--info-600));
-      color: white;
-    }
-
-    .category-communication {
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-600));
-      color: white;
-    }
-
-    .category-opportunity {
-      background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
-      color: var(--bg-gray-950);
-    }
-
-    .category-renewal {
-      background: linear-gradient(135deg, var(--warning-500), var(--warning-600));
-      color: white;
-    }
-
-    .category-achievement {
-      background: linear-gradient(135deg, var(--success-400), var(--success-500));
-      color: white;
-    }
+    .category-payment { background: var(--success-600); color: white; }
+    .category-document { background: var(--info-600); color: white; }
+    .category-communication { background: var(--primary-cyan-600); color: white; }
+    .category-opportunity { background: var(--accent-amber-600); color: white; }
+    .category-renewal { background: var(--warning-600); color: white; }
+    .category-achievement { background: var(--success-500); color: white; }
 
     .timeline-line {
       width: 2px;
       height: 40px;
-      background: linear-gradient(to bottom, var(--glass-border), transparent);
+      background: var(--border-dark);
       margin-top: 8px;
     }
 
@@ -327,11 +304,11 @@ export interface ActivityItem {
 
     .type-automated {
       background: rgba(156, 163, 175, 0.2);
-      color: var(--bg-gray-400);
+      color: var(--text-2);
     }
 
     .activity-time {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.8rem;
     }
 
@@ -340,7 +317,7 @@ export interface ActivityItem {
     }
 
     .activity-title {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-size: 1rem;
       font-weight: 600;
       margin: 0 0 6px 0;
@@ -348,7 +325,7 @@ export interface ActivityItem {
     }
 
     .activity-description {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 0.9rem;
       line-height: 1.5;
       margin: 0 0 12px 0;
@@ -376,14 +353,14 @@ export interface ActivityItem {
     }
 
     .metadata-text {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-weight: 500;
     }
 
     .suggested-action-btn {
-      background: linear-gradient(135deg, var(--accent-amber-500), var(--accent-amber-600));
-      color: var(--bg-gray-950);
-      border: none;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      border: 1px solid var(--border-dark);
       padding: 8px 16px;
       border-radius: 10px;
       font-size: 0.85rem;
@@ -397,7 +374,6 @@ export interface ActivityItem {
 
     .suggested-action-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
     }
 
     .action-icon {
@@ -415,14 +391,14 @@ export interface ActivityItem {
     }
 
     .empty-title {
-      color: var(--bg-gray-200);
+      color: var(--text-2);
       font-size: 1.2rem;
       font-weight: 600;
       margin: 0 0 8px 0;
     }
 
     .empty-description {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.9rem;
       margin: 0;
     }
@@ -437,7 +413,7 @@ export interface ActivityItem {
     .load-more-btn {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       padding: 12px 24px;
       border-radius: 12px;
       font-size: 0.9rem;

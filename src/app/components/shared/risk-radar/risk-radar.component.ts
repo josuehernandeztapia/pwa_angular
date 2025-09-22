@@ -412,7 +412,7 @@ export interface RiskRadarClient {
     }
 
     .issues-list li {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 0.85rem;
       padding: 4px 0;
       padding-left: 16px;
