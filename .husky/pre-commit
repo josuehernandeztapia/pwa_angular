@@ -1,1 +1,2 @@
+npm run -s clean:audit
 npx lint-staged

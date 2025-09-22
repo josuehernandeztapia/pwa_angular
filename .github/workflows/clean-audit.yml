@@ -1,0 +1,38 @@
+name: Clean Audit
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'scripts/clean-audit.js'
+      - '.github/workflows/clean-audit.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run clean audit
+        run: npm run clean:audit
+
+      - name: Upload audit report (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clean-audit-report
+          path: |
+            clean-audit-report.md
+          if-no-files-found: ignore
