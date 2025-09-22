@@ -207,8 +207,6 @@ import { Router } from '@angular/router';
     .command-center-card {
       background: var(--surface-dark);
       border: 1px solid var(--border-dark);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
       border-radius: 24px;
       padding: 48px;
       width: 100%;

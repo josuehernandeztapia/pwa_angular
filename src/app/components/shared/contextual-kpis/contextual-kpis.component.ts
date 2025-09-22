@@ -91,8 +91,6 @@ export interface KPIData {
     .kpi-card {
       background: var(--surface-dark);
       border: 1px solid var(--border-dark);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
       border-radius: 16px;
       padding: 24px;
       position: relative;
@@ -175,6 +173,7 @@ export interface KPIData {
       line-height: 1;
       margin-bottom: 8px;
       color: var(--text-light);
+      background: none;
     }
 
     .kpi-primary .kpi-value { color: var(--text-light); }
