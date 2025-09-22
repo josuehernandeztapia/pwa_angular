@@ -8,15 +8,15 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
   standalone: true,
   imports: [CommonModule, LucideAngularModule],
   template: `
-    <div class="min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div class="min-h-screen" style="background: var(--bg-dark); color: var(--text-light)">
       <!-- Top Bar -->
-      <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
+      <header class="border-b" style="background: var(--surface-dark); border-color: var(--border-dark)">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex justify-between items-center h-16">
             <!-- Logo -->
             <div class="flex items-center gap-3">
               <lucide-angular [img]="homeIcon" class="w-6 h-6 text-primary-600"></lucide-angular>
-              <h1 class="text-lg font-semibold text-gray-900 dark:text-gray-50">
+              <h1 class="text-lg font-semibold" style="color: var(--text-light)">
                 Conductores PWA
               </h1>
             </div>
@@ -59,10 +59,10 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
       <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Welcome Section -->
         <div class="mb-8">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-50 mb-2">
+          <h2 class="text-2xl font-bold mb-2" style="color: var(--text-light)">
             Bienvenido a Conductores PWA
           </h2>
-          <p class="text-gray-600 dark:text-gray-400">
+          <p style="color: var(--text-2)">
             Plataforma fintech para movilidad - OpenAI Style Dashboard
           </p>
         </div>
@@ -71,10 +71,10 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
         <div class="ui-grid-cols-3 mb-8">
           <div class="ui-card-hover">
             <div class="ui-card-body">
-              <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+              <h3 class="text-sm font-medium mb-2" style="color: var(--text-2)">
                 Total Clientes
               </h3>
-              <p class="text-2xl font-bold text-gray-900 dark:text-gray-50">
+              <p class="text-2xl font-bold" style="color: var(--text-light)">
                 1,247
               </p>
               <p class="text-sm text-success-600 dark:text-success-400 mt-1">
@@ -85,10 +85,10 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
 
           <div class="ui-card-hover">
             <div class="ui-card-body">
-              <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+              <h3 class="text-sm font-medium mb-2" style="color: var(--text-2)">
                 Cotizaciones
               </h3>
-              <p class="text-2xl font-bold text-gray-900 dark:text-gray-50">
+              <p class="text-2xl font-bold" style="color: var(--text-light)">
                 342
               </p>
               <p class="text-sm text-primary-600 dark:text-primary-400 mt-1">
@@ -99,10 +99,10 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
 
           <div class="ui-card-hover">
             <div class="ui-card-body">
-              <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
+              <h3 class="text-sm font-medium mb-2" style="color: var(--text-2)">
                 Entregas Activas
               </h3>
-              <p class="text-2xl font-bold text-gray-900 dark:text-gray-50">
+              <p class="text-2xl font-bold" style="color: var(--text-light)">
                 89
               </p>
               <p class="text-sm text-warning-600 dark:text-warning-400 mt-1">
@@ -115,7 +115,7 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
         <!-- Demo Content -->
         <div class="ui-card">
           <div class="ui-card-header">
-            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-50">
+            <h3 class="text-lg font-semibold" style="color: var(--text-light)">
               PR#1 - Infraestructura Completada
             </h3>
           </div>
@@ -123,38 +123,38 @@ import { LucideAngularModule, Home, Settings, LogOut, Sun, Moon } from 'lucide-a
             <div class="space-y-4">
               <div class="flex items-center gap-3">
                 <div class="w-2 h-2 bg-success-500 rounded-full"></div>
-                <span class="text-sm text-gray-700 dark:text-gray-300">
+                <span class="text-sm" style="color: var(--text-2)">
                   ✅ TailwindCSS configurado con diseño OpenAI-style
                 </span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="w-2 h-2 bg-success-500 rounded-full"></div>
-                <span class="text-sm text-gray-700 dark:text-gray-300">
+                <span class="text-sm" style="color: var(--text-2)">
                   ✅ Design tokens implementados (colores, espaciado, tipografía)
                 </span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="w-2 h-2 bg-success-500 rounded-full"></div>
-                <span class="text-sm text-gray-700 dark:text-gray-300">
+                <span class="text-sm" style="color: var(--text-2)">
                   ✅ Componentes UI reutilizables (.ui-btn, .ui-card, etc.)
                 </span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="w-2 h-2 bg-success-500 rounded-full"></div>
-                <span class="text-sm text-gray-700 dark:text-gray-300">
+                <span class="text-sm" style="color: var(--text-2)">
                   ✅ Dark mode funcional
                 </span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="w-2 h-2 bg-success-500 rounded-full"></div>
-                <span class="text-sm text-gray-700 dark:text-gray-300">
+                <span class="text-sm" style="color: var(--text-2)">
                   ✅ Lucide icons integrados
                 </span>
               </div>
             </div>
 
-            <div class="mt-6 p-4 bg-primary-50 dark:bg-primary-900/10 rounded-lg">
-              <p class="text-sm text-primary-700 dark:text-primary-300">
+            <div class="mt-6 p-4 rounded-lg" style="background: var(--surface-dark); border: 1px solid var(--border-dark); color: var(--text-2)">
+              <p class="text-sm">
                 <strong>Próximos pasos:</strong> PR#2 implementará el shell (sidebar + topbar minimalistas)
                 y PR#3 completará el sistema de login minimalista.
               </p>
