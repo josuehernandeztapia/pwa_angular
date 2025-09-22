@@ -19,7 +19,7 @@ interface ImportMilestone {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="import-tracker bg-gray-900 rounded-xl border border-gray-800 p-6">
+    <div class="import-tracker rounded-xl border p-6" style="background: var(--bg-dark); border-color: var(--border-dark);">
       <!-- Header -->
       <div class="tracker-header mb-6">
         <div class="flex items-center justify-between">
@@ -28,8 +28,8 @@ interface ImportMilestone {
               🚢
             </div>
             <div>
-              <h3 class="text-xl font-bold text-white">Seguimiento de Importación</h3>
-              <p class="text-sm text-gray-400">Unidad: {{ client?.vehicleInfo?.model || 'N/A' }}</p>
+              <h3 class="text-xl font-bold" style="color: var(--text-light)">Seguimiento de Importación</h3>
+              <p class="text-sm" style="color: var(--text-2)">Unidad: {{ client?.vehicleInfo?.model || 'N/A' }}</p>
               <p *ngIf="integratedStatus()?.deliveryOrderId" class="text-xs text-blue-400">
                 Orden: {{ integratedStatus()?.deliveryOrderId }}
               </p>
@@ -47,7 +47,7 @@ interface ImportMilestone {
       <!-- Progress Timeline -->
       <div class="timeline-container">
         <div class="timeline-progress-bar mb-8">
-          <div class="progress-track w-full h-2 bg-gray-700 rounded-full relative">
+          <div class="progress-track w-full h-2 rounded-full relative" style="background: var(--surface-dark)">
             <div 
               class="progress-fill h-2 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full transition-all duration-500"
               [style.width.%]="getOverallProgress()"
@@ -101,13 +101,13 @@ interface ImportMilestone {
                   </div>
                 </div>
                 
-                <p class="text-sm text-gray-400 mb-3">{{ milestone.description }}</p>
+                <p class="text-sm mb-3" style="color: var(--text-2)">{{ milestone.description }}</p>
                 
                 <!-- Estimated Timeline -->
                 <div class="timeline-estimate flex items-center gap-4">
-                  <div class="estimated-time flex items-center gap-2 text-sm">
+                  <div class="estimated-time flex items-center gap-2 text-sm" style="color: var(--text-2)">
                     <span class="time-icon">⏱️</span>
-                    <span class="text-gray-300">{{ milestone.estimatedDays }} días estimados</span>
+                    <span>{{ milestone.estimatedDays }} días estimados</span>
                   </div>
                   
                   <div *ngIf="getMilestoneStatus(milestone) === 'completed'" 
@@ -134,18 +134,18 @@ interface ImportMilestone {
             </div>
 
             <!-- Additional Details (expandable) -->
-            <div *ngIf="selectedMilestone === milestone.key" class="milestone-details mt-4 pt-4 border-t border-gray-700">
+            <div *ngIf="selectedMilestone === milestone.key" class="milestone-details mt-4 pt-4 border-t" style="border-color: var(--border-dark)">
               <div class="details-grid grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="detail-card p-3 bg-gray-800/50 rounded-lg">
+                <div class="detail-card p-3 rounded-lg" style="background: var(--surface-dark)">
                   <h5 class="font-medium text-white text-sm mb-2">Documentos Requeridos</h5>
-                  <ul class="text-sm text-gray-400 space-y-1">
+                  <ul class="text-sm space-y-1" style="color: var(--text-2)">
                     <li *ngFor="let doc of getMilestoneDocuments(milestone.key)">{{ doc }}</li>
                   </ul>
                 </div>
                 
-                <div class="detail-card p-3 bg-gray-800/50 rounded-lg">
+                <div class="detail-card p-3 rounded-lg" style="background: var(--surface-dark)">
                   <h5 class="font-medium text-white text-sm mb-2">Contactos Relevantes</h5>
-                  <div class="contacts-list text-sm text-gray-400 space-y-1">
+                  <div class="contacts-list text-sm space-y-1" style="color: var(--text-2)">
                     <div *ngFor="let contact of getMilestoneContacts(milestone.key)" class="contact-item">
                       <span class="contact-role font-medium">{{ contact.role }}:</span>
                       <span class="contact-info">{{ contact.name }} - {{ contact.phone }}</span>
@@ -159,10 +159,10 @@ interface ImportMilestone {
                 <h5 class="font-medium text-white text-sm mb-2">Historial de Acciones</h5>
                 <div class="actions-list space-y-2">
                   <div *ngFor="let action of getMilestoneActions(milestone.key)" 
-                       class="action-item p-2 bg-gray-800/30 rounded-lg text-sm">
+                       class="action-item p-2 rounded-lg text-sm" style="background: var(--surface-dark)">
                     <div class="flex items-center justify-between">
-                      <span class="text-gray-300">{{ action.description }}</span>
-                      <span class="text-gray-500 text-xs">{{ action.timestamp | date:'short' }}</span>
+                      <span style="color: var(--text-2)">{{ action.description }}</span>
+                      <span class="text-xs" style="color: var(--text-2)">{{ action.timestamp | date:'short' }}</span>
                     </div>
                   </div>
                 </div>
@@ -174,32 +174,32 @@ interface ImportMilestone {
 
       <!-- Summary Stats -->
       <div class="summary-stats mt-6 grid grid-cols-3 gap-4">
-        <div class="stat-card p-4 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-lg border border-blue-500/20">
+        <div class="stat-card p-4 rounded-lg border" style="background: var(--surface-dark); border-color: var(--border-dark)">
           <div class="flex items-center gap-3">
             <div class="stat-icon text-2xl">✅</div>
             <div>
-              <div class="stat-value text-xl font-bold text-blue-400">{{ getCompletedMilestones() }}</div>
-              <div class="stat-label text-sm text-gray-400">Etapas Completadas</div>
+              <div class="stat-value text-xl font-bold" style="color: var(--text-light)">{{ getCompletedMilestones() }}</div>
+              <div class="stat-label text-sm" style="color: var(--text-2)">Etapas Completadas</div>
             </div>
           </div>
         </div>
         
-        <div class="stat-card p-4 bg-gradient-to-br from-amber-500/10 to-amber-600/10 rounded-lg border border-amber-500/20">
+        <div class="stat-card p-4 rounded-lg border" style="background: var(--surface-dark); border-color: var(--border-dark)">
           <div class="flex items-center gap-3">
             <div class="stat-icon text-2xl">⏳</div>
             <div>
-              <div class="stat-value text-xl font-bold text-amber-400">{{ getEstimatedDaysRemaining() }}</div>
-              <div class="stat-label text-sm text-gray-400">Días Restantes</div>
+              <div class="stat-value text-xl font-bold" style="color: var(--text-light)">{{ getEstimatedDaysRemaining() }}</div>
+              <div class="stat-label text-sm" style="color: var(--text-2)">Días Restantes</div>
             </div>
           </div>
         </div>
         
-        <div class="stat-card p-4 bg-gradient-to-br from-emerald-500/10 to-emerald-600/10 rounded-lg border border-emerald-500/20">
+        <div class="stat-card p-4 rounded-lg border" style="background: var(--surface-dark); border-color: var(--border-dark)">
           <div class="flex items-center gap-3">
             <div class="stat-icon text-2xl">📅</div>
             <div>
-              <div class="stat-value text-xl font-bold text-emerald-400">{{ getExpectedDeliveryDate() }}</div>
-              <div class="stat-label text-sm text-gray-400">Entrega Estimada</div>
+              <div class="stat-value text-xl font-bold" style="color: var(--text-light)">{{ getExpectedDeliveryDate() }}</div>
+              <div class="stat-label text-sm" style="color: var(--text-2)">Entrega Estimada</div>
             </div>
           </div>
         </div>

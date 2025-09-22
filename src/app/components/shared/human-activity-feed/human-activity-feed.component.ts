@@ -143,8 +143,6 @@ export interface ActivityItem {
     .activity-feed-container {
       background: var(--surface-dark);
       border: 1px solid var(--border-dark);
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
       border-radius: 20px;
       padding: 28px;
       margin-bottom: 32px;
@@ -170,8 +168,8 @@ export interface ActivityItem {
     }
 
     .filter-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
       color: var(--text-2);
       padding: 8px 16px;
       border-radius: 20px;
@@ -182,7 +180,7 @@ export interface ActivityItem {
     }
 
     .filter-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--border-dark);
     }
 
     .filter-btn.active {

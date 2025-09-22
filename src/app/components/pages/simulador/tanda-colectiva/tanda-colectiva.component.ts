@@ -171,7 +171,7 @@ interface KpiData {
                   step="0.1"
                 />
               </div>
-              <p class="text-xs text-gray-500">Sobreprecio que cada miembro pagará por litro</p>
+              <p class="text-xs" style="color: var(--text-2)">Sobreprecio que cada miembro pagará por litro</p>
               <div *ngIf="configForm.get('overpricePerLiter')?.errors?.['required']" 
                    class="text-red-500 text-sm">El sobreprecio por litro es obligatorio</div>
               <div *ngIf="configForm.get('overpricePerLiter')?.errors?.['min']" 
@@ -180,11 +180,11 @@ interface KpiData {
 
             <!-- Voluntary Monthly -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-gray-700">
+              <label class="block text-sm font-medium" style="color: var(--text-2)">
                 Aportación Voluntaria por Miembro *
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2" style="color: var(--text-2)">$</span>
                 <input
                   type="number"
                   formControlName="voluntaryMonthly"
@@ -205,11 +205,11 @@ interface KpiData {
                 <span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-2">?</span>
                 What-If Events Builder
               </h3>
-              <p class="text-sm text-gray-600">Simula eventos especiales como aportes extra o atrasos</p>
+              <p class="text-sm" style="color: var(--text-2)">Simula eventos especiales como aportes extra o atrasos</p>
 
               <!-- Add New Event Form -->
               <div class="ui-card space-y-3">
-                <h4 class="font-medium text-gray-700">Agregar Evento</h4>
+                <h4 class="font-medium" style="color: var(--text-2)">Agregar Evento</h4>
                 
                 <div class="grid grid-cols-2 gap-3">
                   <div>
@@ -330,45 +330,44 @@ interface KpiData {
 
         <!-- Results Panel -->
         <div class="ui-card" *ngIf="simulationResult">
-          <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+          <h2 class="text-xl font-semibold mb-6 flex items-center" style="color: var(--text-light)">
             <span class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">2</span>
             Finanzas
           </h2>
 
           <!-- Te toca en mes X -->
-          <div class="mb-4 p-4 rounded-lg border flex items-center justify-between"
-               [class]="(inflowVsPMT.ok ? 'bg-green-50 border-green-200' : 'bg-amber-50 border-amber-200')">
+          <div class="mb-4 p-4 rounded-lg border flex items-center justify-between" style="background: var(--surface-dark); border-color: var(--border-dark)">
             <div class="text-sm">
-              <div class="font-semibold text-gray-800" title="Cálculo T1 = ceil(Meta / Σ aportes)">Te toca en mes {{ nextAwardMonth }}</div>
-              <div class="text-gray-600" *ngIf="!inflowVsPMT.ok" title="Bloqueado si Σ aportes ≤ PMT estimada; se recomienda aumentar el recaudo mensual">
+              <div class="font-semibold" style="color: var(--text-light)" title="Cálculo T1 = ceil(Meta / Σ aportes)">Te toca en mes {{ nextAwardMonth }}</div>
+              <div *ngIf="!inflowVsPMT.ok" style="color: var(--text-2)" title="Bloqueado si Σ aportes ≤ PMT estimada; se recomienda aumentar el recaudo mensual">
                 Estado: <strong class="text-orange-700">Bloqueado</strong> (sin leftover). Recaudo recomendado: {{ formatCurrency(inflowVsPMT.recommended) }} mensuales.
               </div>
             </div>
             <div class="text-right">
-              <div class="text-xs text-gray-500">PMT estimada</div>
-              <div class="text-lg font-bold text-gray-800" title="Pago mensual de referencia para el remanente">{{ formatCurrency(inflowVsPMT.pmt) }}</div>
+              <div class="text-xs" style="color: var(--text-2)">PMT estimada</div>
+              <div class="text-lg font-bold" style="color: var(--text-light)" title="Pago mensual de referencia para el remanente">{{ formatCurrency(inflowVsPMT.pmt) }}</div>
             </div>
           </div>
 
           <!-- Doble barra: Deuda activa vs Ahorro meta -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
             <div class="ui-card">
-              <div class="text-sm text-gray-600 mb-2" title="Porcentaje del inflow grupal que cubre la PMT estimada">Cobertura de Deuda (PMT) con Inflow</div>
-              <div class="w-full h-6 bg-gray-100 rounded overflow-hidden">
+              <div class="text-sm mb-2" style="color: var(--text-2)" title="Porcentaje del inflow grupal que cubre la PMT estimada">Cobertura de Deuda (PMT) con Inflow</div>
+              <div class="w-full h-6 rounded overflow-hidden" style="background: var(--surface-dark)">
                 <div class="h-6 bg-emerald-500" [style.width.%]="inflowVsPMT.coveragePct"></div>
               </div>
-              <div class="mt-2 text-xs text-gray-600 flex justify-between">
+              <div class="mt-2 text-xs flex justify-between" style="color: var(--text-2)">
                 <span>Inflow: {{ formatCurrency(inflowVsPMT.inflow) }}</span>
                 <span>PMT: {{ formatCurrency(inflowVsPMT.pmt) }} ({{ inflowVsPMT.coveragePct | number:'1.0-0' }}%)</span>
               </div>
             </div>
 
             <div class="ui-card">
-              <div class="text-sm text-gray-600 mb-2">Ahorro hacia Meta por Miembro</div>
-              <div class="w-full h-6 bg-gray-100 rounded overflow-hidden">
+              <div class="text-sm mb-2" style="color: var(--text-2)">Ahorro hacia Meta por Miembro</div>
+              <div class="w-full h-6 rounded overflow-hidden" style="background: var(--surface-dark)">
                 <div class="h-6 bg-blue-500" [style.width.%]="savingProgressPct"></div>
               </div>
-              <div class="mt-2 text-xs text-gray-600 flex justify-between">
+              <div class="mt-2 text-xs flex justify-between" style="color: var(--text-2)">
                 <span>Meta: {{ formatCurrency(targetPerMember || 0) }}</span>
                 <span>Tiempo estimado: {{ simulationResult.scenario.monthsToTarget || 0 }} meses</span>
               </div>
@@ -377,7 +376,7 @@ interface KpiData {
 
           <!-- KPI Dashboard (Advanced Mode) -->
           <div *ngIf="currentViewMode === 'advanced' && kpiDashboard.length > 0" class="mb-6">
-            <h3 class="text-lg font-semibold text-gray-700 mb-4 flex items-center">
+            <h3 class="text-lg font-semibold mb-4 flex items-center" style="color: var(--text-2)">
               📊 Dashboard de KPIs
             </h3>
             
@@ -386,12 +385,11 @@ interface KpiData {
                    class="ui-card">
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-2xl">{{ kpi.icon }}</span>
-                  <div *ngIf="kpi.trend" 
-                       [class]="'text-xs px-2 py-1 rounded-full ' + (kpi.trend === 'up' ? 'bg-green-100 text-green-600' : kpi.trend === 'down' ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600')">
+                  <div *ngIf="kpi.trend" class="text-xs px-2 py-1 rounded-full" style="background: var(--surface-dark); color: var(--text-2)">
                     {{ kpi.trend === 'up' ? '↗️' : kpi.trend === 'down' ? '↘️' : '➡️' }}
                   </div>
                 </div>
-                <div class="text-xs text-gray-500 mb-1">{{ kpi.title }}</div>
+                <div class="text-xs mb-1" style="color: var(--text-2)">{{ kpi.title }}</div>
                 <div [class]="'text-lg font-bold ' + kpi.color">{{ kpi.value }}</div>
               </div>
             </div>
@@ -413,14 +411,14 @@ interface KpiData {
 
           <!-- Breakdown by Member -->
           <div class="ui-card mb-6">
-            <h3 class="font-semibold text-gray-800 mb-3">Aportación Individual por Miembro:</h3>
+            <h3 class="font-semibold mb-3" style="color: var(--text-light)">Aportación Individual por Miembro:</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
               <div class="flex justify-between">
-                <span class="text-gray-600">Por combustible:</span>
+                <span style="color: var(--text-2)">Por combustible:</span>
                 <span class="font-medium">{{ formatCurrency((simulationResult.scenario.collectionContribution || 0) / configForm.value.memberCount) }}</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-gray-600">Aportación voluntaria:</span>
+                <span style="color: var(--text-2)">Aportación voluntaria:</span>
                 <span class="font-medium">{{ formatCurrency((simulationResult.scenario.voluntaryContribution || 0) / configForm.value.memberCount) }}</span>
               </div>
             </div>
@@ -433,21 +431,21 @@ interface KpiData {
 
           <!-- Tanda Results -->
           <div class="ui-card mb-6" *ngIf="simulationResult.tandaResult">
-            <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
+            <h3 class="font-semibold mb-3 flex items-center" style="color: var(--text-light)">
               <span class="text-blue-600 mr-2">🎯</span>
               Resultados de la Tanda:
             </h3>
             <div class="space-y-2 text-sm">
               <div class="flex justify-between">
-                <span class="text-gray-600">Primer premio en mes:</span>
+                <span style="color: var(--text-2)">Primer premio en mes:</span>
                 <span class="font-medium text-blue-600">{{ simulationResult.tandaResult.firstAwardT || 'TBD' }}</span>
               </div>
               <div class="flex justify-between" *ngIf="simulationResult.tandaResult.totalRounds">
-                <span class="text-gray-600">Rondas totales:</span>
+                <span style="color: var(--text-2)">Rondas totales:</span>
                 <span class="font-medium">{{ simulationResult.tandaResult.totalRounds }}</span>
               </div>
               <div class="flex justify-between" *ngIf="simulationResult.tandaResult.effectiveReturn">
-                <span class="text-gray-600">Retorno efectivo:</span>
+                <span style="color: var(--text-2)">Retorno efectivo:</span>
                 <span class="font-medium text-green-600">{{ (simulationResult.tandaResult.effectiveReturn * 100).toFixed(2) }}%</span>
               </div>
             </div>
@@ -455,24 +453,24 @@ interface KpiData {
 
           <!-- Snowball Effect -->
           <div class="ui-card mb-6" *ngIf="simulationResult.snowballEffect">
-            <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
+            <h3 class="font-semibold mb-3 flex items-center" style="color: var(--text-light)">
               <span class="text-amber-600 mr-2">⚡</span>
               Efecto Bola de Nieve:
             </h3>
             <div class="space-y-2 text-sm">
               <div class="flex justify-between">
-                <span class="text-gray-600">Ahorro acumulado total:</span>
+                <span style="color: var(--text-2)">Ahorro acumulado total:</span>
                 <span class="font-medium text-amber-600">
                   {{ formatCurrency((simulationResult.snowballEffect.totalSavings && simulationResult.snowballEffect.totalSavings.length > 0) ? 
                       simulationResult.snowballEffect.totalSavings[simulationResult.snowballEffect.totalSavings.length - 1] : 0) }}
                 </span>
               </div>
               <div class="flex justify-between" *ngIf="simulationResult.snowballEffect.accelerationFactor">
-                <span class="text-gray-600">Factor de aceleración:</span>
+                <span style="color: var(--text-2)">Factor de aceleración:</span>
                 <span class="font-medium">{{ simulationResult.snowballEffect.accelerationFactor.toFixed(2) }}x</span>
               </div>
               <div class="flex justify-between" *ngIf="simulationResult.snowballEffect.compoundingBenefit">
-                <span class="text-gray-600">Beneficio compuesto:</span>
+                <span style="color: var(--text-2)">Beneficio compuesto:</span>
                 <span class="font-medium text-green-600">{{ formatCurrency(simulationResult.snowballEffect.compoundingBenefit) }}</span>
               </div>
             </div>
@@ -480,18 +478,18 @@ interface KpiData {
 
           <!-- Enhanced Timeline (Advanced Mode) -->
           <div *ngIf="currentViewMode === 'advanced'" class="mb-6">
-            <h3 class="font-semibold text-gray-800 mb-4 flex items-center">
+            <h3 class="font-semibold mb-4 flex items-center" style="color: var(--text-light)">
               📅 Timeline Mensual Detallado
             </h3>
             
             <div class="space-y-3 max-h-96 overflow-y-auto ui-card">
               <div *ngFor="let month of generateMonthlyTimeline()" 
-                   class="p-4 rounded-lg bg-white border border-gray-200 hover:shadow-sm transition-shadow">
+                   class="p-4 rounded-lg transition-shadow" style="background: var(--surface-dark); border: 1px solid var(--border-dark)">
                 <div class="flex justify-between items-center mb-2">
-                  <h5 class="font-bold text-gray-800 flex items-center">
+                  <h5 class="font-bold flex items-center" style="color: var(--text-light)">
                     🗓️ Mes {{ month.t }}
                     <span *ngIf="month.riskBadge === 'debtDeficit'" 
-                          class="ml-2 px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-600">
+                          class="ml-2 px-2 py-1 text-xs font-semibold rounded-full" style="background: var(--surface-dark); color: var(--text-2)">
                       ⚠️ Déficit de Deuda
                     </span>
                   </h5>
@@ -499,22 +497,22 @@ interface KpiData {
                 
                 <div class="grid grid-cols-3 gap-4 text-sm">
                   <div class="flex justify-between">
-                    <span class="text-gray-600">Aportaciones:</span>
+                    <span style="color: var(--text-2)">Aportaciones:</span>
                     <span class="font-semibold text-green-600">{{ formatCurrency(month.inflow) }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-gray-600">Deuda del Mes:</span>
+                    <span style="color: var(--text-2)">Deuda del Mes:</span>
                     <span class="font-semibold text-orange-600">{{ formatCurrency(month.debtDue) }}</span>
                   </div>
                   <div class="flex justify-between">
-                    <span class="text-gray-700 font-medium">Ahorro Neto:</span>
-                    <span class="font-bold text-gray-800">{{ formatCurrency(month.savings) }}</span>
+                    <span class="font-medium" style="color: var(--text-2)">Ahorro Neto:</span>
+                    <span class="font-bold" style="color: var(--text-light)">{{ formatCurrency(month.savings) }}</span>
                   </div>
                 </div>
                 
                 <!-- Awards Section -->
                 <div *ngIf="month.awards.length > 0" 
-                     class="mt-3 pt-2 border-t border-dashed border-gray-300">
+                     class="mt-3 pt-2 border-t border-dashed" style="border-color: var(--border-dark)">
                   <div *ngFor="let award of month.awards" 
                        class="flex items-center gap-2 text-sm text-green-600 font-medium">
                     ✨ ¡Unidad entregada a {{ award.name }}!
@@ -526,9 +524,9 @@ interface KpiData {
 
           <!-- Simple Progress Chart (Always visible) -->
           <div class="mb-6" *ngIf="simulationResult.snowballEffect?.totalSavings && currentViewMode === 'simple'">
-            <h3 class="font-semibold text-gray-800 mb-3">Proyección de Ahorro Colectivo:</h3>
+            <h3 class="font-semibold mb-3" style="color: var(--text-light)">Proyección de Ahorro Colectivo:</h3>
             <div class="ui-card">
-              <div class="grid grid-cols-4 gap-2 text-xs text-gray-600 mb-2">
+              <div class="grid grid-cols-4 gap-2 text-xs mb-2" style="color: var(--text-2)">
                 <span>Mes</span>
                 <span>Ahorro Total</span>
                 <span>Progreso</span>
@@ -537,14 +535,14 @@ interface KpiData {
               <div class="space-y-2 max-h-48 overflow-y-auto">
                 <div *ngFor="let savings of simulationResult.snowballEffect.totalSavings.slice(0, 12); let i = index" 
                      class="grid grid-cols-4 gap-2 text-sm">
-                  <span class="text-gray-800 num">{{ i + 1 }}</span>
+                  <span class="num" style="color: var(--text-light)">{{ i + 1 }}</span>
                   <span class="font-medium num">{{ formatCurrency(savings) }}</span>
                   <div class="flex items-center">
-                    <div class="w-16 bg-gray-200 rounded-full h-2">
+                    <div class="w-16 rounded-full h-2" style="background: var(--surface-dark)">
                       <div class="bg-purple-500 h-2 rounded-full" [style.width.%]="(savings / simulationResult.scenario.targetAmount) * 100"></div>
                     </div>
                   </div>
-                  <span class="text-xs text-gray-600 num">{{ ((savings / simulationResult.scenario.targetAmount) * 100).toFixed(1) }}%</span>
+                  <span class="text-xs num" style="color: var(--text-2)">{{ ((savings / simulationResult.scenario.targetAmount) * 100).toFixed(1) }}%</span>
                 </div>
               </div>
             </div>
