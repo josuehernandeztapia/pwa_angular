@@ -1,10 +1,10 @@
 @layer components {
   .ui-card {
-    @apply bg-[var(--bg-light)] dark:bg-[var(--bg-dark)] border border-[var(--border)] rounded-lg p-4;
+    @apply rounded-lg p-4;
   }
 
   .ui-input {
-    @apply border border-[var(--border)] rounded px-3 py-2 w-full focus:ring-1;
+    @apply rounded px-3 py-2 w-full focus:ring-1;
   }
   .ui-input:focus {
     outline: none;
@@ -18,19 +18,18 @@
   .ui-btn-primary { @apply text-white; background: var(--brand); }
   .ui-btn-primary:hover { opacity: .9; }
 
-  .ui-btn-secondary { @apply border; border-color: var(--border); }
-  .ui-btn-secondary:hover { background: var(--border); }
+  .ui-btn-secondary { @apply border; border-color: var(--border-dark); }
+  .ui-btn-secondary:hover { background: var(--border-dark); }
 
-  .ui-btn-ghost { color: var(--text-1); }
-  .dark .ui-btn-ghost { color: var(--text-1); }
-  .ui-btn-ghost:hover { background: color-mix(in oklab, var(--border) 30%, transparent); }
+  .ui-btn-ghost { color: var(--text-light); }
+  .ui-btn-ghost:hover { background: color-mix(in oklab, var(--border-dark) 30%, transparent); }
   .ui-btn-ghost { @apply rounded px-2 py-2; }
 
   .ui-card-hover { @apply transition; }
   .ui-card-hover:hover { @apply shadow-md; }
 
-  .ui-card-header { @apply border-b pb-2 mb-2; border-color: var(--border); }
-  .ui-card-body { color: var(--text-1); }
+  .ui-card-header { @apply border-b pb-2 mb-2; border-color: var(--border-dark); }
+  .ui-card-body { color: var(--text-light); }
 
   .ui-grid-cols-3 { @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4; }
 }

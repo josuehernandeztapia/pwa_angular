@@ -10,6 +10,7 @@
     "qa:visual": "bash -lc \"trap 'kill %1' EXIT; npx ng serve --configuration=development --port=4200 & npx wait-on http://localhost:4200 && npx playwright test tests/ui/minimal-dark.spec.ts --config=playwright.config.ts --project=chromium\"",
     "qa:lighthouse": "lhci autorun",
     "lint:ui": "bash -lc 'grep -RInE \"linear-gradient|backdrop-filter|primary-cyan|accent-amber\" src/ && exit 1 || echo \"✅ No gradientes ni glass\"'",
+    "audit:mdark": "bash scripts/audit-minimal-dark.sh",
     "bff:install": "cd bff && npm install",
     "bff:dev": "cd bff && npm run start:dev",
     "bff:build": "cd bff && npm run build",

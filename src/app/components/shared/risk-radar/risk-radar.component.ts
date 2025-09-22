@@ -121,11 +121,9 @@ export interface RiskRadarClient {
   `,
   styles: [`
     .risk-radar-container {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
-      border-radius: 20px;
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 16px;
       padding: 28px;
       margin-bottom: 32px;
       position: relative;
@@ -140,14 +138,14 @@ export interface RiskRadarClient {
     }
 
     .radar-title {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-size: 1.5rem;
       font-weight: 700;
       margin: 0 0 4px 0;
     }
 
     .radar-subtitle {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.9rem;
       margin: 0;
     }
@@ -171,15 +169,15 @@ export interface RiskRadarClient {
     }
 
     .legend-text {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 0.85rem;
       font-weight: 500;
     }
 
-    .risk-low { background: var(--success-500); }
-    .risk-medium { background: var(--accent-amber-500); }
-    .risk-high { background: var(--warning-500); }
-    .risk-critical { background: var(--error-500); }
+    .risk-low { background: var(--green); }
+    .risk-medium { background: var(--yellow); }
+    .risk-high { background: var(--yellow); }
+    .risk-critical { background: var(--red); }
 
     .radar-visualization {
       position: relative;
@@ -192,15 +190,9 @@ export interface RiskRadarClient {
     .radar-grid {
       position: relative;
       aspect-ratio: 1;
-      background: radial-gradient(
-        circle,
-        rgba(16, 185, 129, 0.1) 0%,
-        rgba(245, 158, 11, 0.1) 40%,
-        rgba(249, 115, 22, 0.1) 70%,
-        rgba(239, 68, 68, 0.1) 100%
-      );
+      background: var(--bg-dark);
       border-radius: 50%;
-      border: 1px solid var(--glass-border);
+      border: 1px solid var(--border-dark);
       overflow: visible;
     }
 
@@ -294,21 +286,13 @@ export interface RiskRadarClient {
       animation: pulse-radar 2s infinite;
     }
 
-    .pulse-critical {
-      background: radial-gradient(circle, var(--error-500) 0%, transparent 70%);
-    }
+    .pulse-critical { background: color-mix(in oklab, var(--red) 25%, transparent); }
 
-    .pulse-high {
-      background: radial-gradient(circle, var(--warning-500) 0%, transparent 70%);
-    }
+    .pulse-high { background: color-mix(in oklab, var(--yellow) 25%, transparent); }
 
-    .pulse-medium {
-      background: radial-gradient(circle, var(--accent-amber-500) 0%, transparent 70%);
-    }
+    .pulse-medium { background: color-mix(in oklab, var(--yellow) 20%, transparent); }
 
-    .pulse-low {
-      background: radial-gradient(circle, var(--success-500) 0%, transparent 70%);
-    }
+    .pulse-low { background: color-mix(in oklab, var(--green) 20%, transparent); }
 
     @keyframes pulse-radar {
       0% { opacity: 1; transform: scale(1); }
@@ -324,9 +308,9 @@ export interface RiskRadarClient {
     }
 
     .client-info-panel {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 12px;
       padding: 20px;
       max-height: 400px;
       overflow-y: auto;
@@ -342,7 +326,7 @@ export interface RiskRadarClient {
     }
 
     .client-info-name {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-size: 1.2rem;
       font-weight: 700;
       margin: 0;
@@ -351,7 +335,7 @@ export interface RiskRadarClient {
     .close-info {
       background: none;
       border: none;
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 1.5rem;
       cursor: pointer;
       padding: 4px;
@@ -360,8 +344,8 @@ export interface RiskRadarClient {
     }
 
     .close-info:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--bg-gray-200);
+      background: color-mix(in oklab, var(--border-dark) 30%, transparent);
+      color: var(--text-light);
     }
 
     .health-score-display {
@@ -375,7 +359,7 @@ export interface RiskRadarClient {
     }
 
     .health-label {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-weight: 600;
     }
 
@@ -384,10 +368,10 @@ export interface RiskRadarClient {
       font-weight: 800;
     }
 
-    .health-excellent { color: var(--success-500); }
-    .health-good { color: var(--primary-cyan-400); }
-    .health-warning { color: var(--accent-amber-500); }
-    .health-critical { color: var(--error-500); }
+    .health-excellent { color: var(--green); }
+    .health-good { color: var(--brand); }
+    .health-warning { color: var(--yellow); }
+    .health-critical { color: var(--red); }
 
     .client-metrics {
       display: flex;
@@ -400,7 +384,7 @@ export interface RiskRadarClient {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 0.9rem;
     }
 
@@ -413,7 +397,7 @@ export interface RiskRadarClient {
     }
 
     .issues-title {
-      color: var(--accent-amber-400);
+      color: var(--yellow);
       font-size: 0.9rem;
       font-weight: 600;
       margin: 0 0 8px 0;
@@ -473,7 +457,7 @@ export interface RiskRadarClient {
     }
 
     .stat-label {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;

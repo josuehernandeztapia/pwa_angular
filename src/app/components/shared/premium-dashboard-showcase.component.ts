@@ -272,11 +272,9 @@ interface SystemStatus {
     }
 
     .dashboard-header {
-      background: var(--glass-bg);
-      border-bottom: 1px solid var(--glass-border);
+      background: var(--surface-dark);
+      border-bottom: 1px solid var(--border-dark);
       padding: 2rem 0;
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
     }
 
     .header-content {
@@ -353,7 +351,7 @@ interface SystemStatus {
     .value {
       font-size: 2.5rem;
       font-weight: 700;
-      color: var(--primary-cyan-300);
+      color: var(--text-light);
       display: block;
       margin-bottom: 0.5rem;
     }
@@ -374,7 +372,7 @@ interface SystemStatus {
     .metric-label {
       font-size: 1rem;
       font-weight: 600;
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       opacity: 0.9;
     }
 
@@ -400,7 +398,7 @@ interface SystemStatus {
       margin-bottom: 1.5rem;
       font-size: 1.25rem;
       font-weight: 600;
-      color: var(--bg-gray-100);
+      color: var(--text-light);
     }
 
     .demo-button {
