@@ -294,7 +294,7 @@ export interface ActionButton {
 
     .health-excellent { background: var(--success-500); color: white; }
     .health-good { background: var(--primary-cyan-400); color: white; }
-    .health-warning { background: var(--accent-amber-500); color: var(--bg-gray-950); }
+    .health-warning { background: var(--accent-amber-500); color: var(--bg-dark); }
     .health-critical { background: var(--error-500); color: white; }
 
     .client-details {

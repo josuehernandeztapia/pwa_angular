@@ -194,8 +194,8 @@ import { Router } from '@angular/router';
       left: 0;
       right: 0;
       bottom: 0;
-      background: repeating-linear-gradient(45deg, transparent, transparent 20px, var(--border-dark) 20px, var(--border-dark) 22px);
-      animation: slide-lines 12s linear infinite;
+      background: var(--border-dark);
+      animation: none;
     }
 
     @keyframes slide-lines {
