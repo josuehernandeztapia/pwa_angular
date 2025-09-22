@@ -1,0 +1,41 @@
+
+> conductores-pwa@0.0.0 test:visual
+> playwright test --config=playwright.config.ts --update-snapshots --project=chromium
+
+[2m[WebServer] [22m- Building...
+[2m[WebServer] [22m
+
+Running 50 tests using 2 workers
+
+  ✓   1 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @dashboard should render premium container and take snapshot (1.4s)
+  ✓   2 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @nueva-oportunidad should render premium container and take snapshot (1.7s)
+  ✓   3 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @clientes-list should render premium container and take snapshot (1.4s)
+  ✓   4 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @cliente-form should render premium container and take snapshot (1.2s)
+  ✓   5 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @cotizador-main should render premium container and take snapshot (1.2s)
+  ✓   7 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @edomex-colectivo should render premium container and take snapshot (1.3s)
+  ✓   6 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @ags-individual should render premium container and take snapshot (3.3s)
+  ✓   9 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @ags-ahorro should render premium container and take snapshot (1.2s)
+  ✓  10 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @edomex-individual should render premium container and take snapshot (1.3s)
+  ✓  11 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @tanda-colectiva should render premium container and take snapshot (1.2s)
+  ✓  12 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @onboarding should render premium container and take snapshot (1.4s)
+  ✘   8 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @simulador-main should render premium container and take snapshot (15.9s)
+  ✓  14 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @opportunities should render premium container and take snapshot (1.6s)
+  ✓  15 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @expedientes should render premium container and take snapshot (1.2s)
+  ✓  16 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @ops-deliveries should render premium container and take snapshot (1.3s)
+  ✘  13 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @document-upload should render premium container and take snapshot (16.0s)
+  ✓  17 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @triggers should render premium container and take snapshot (1.5s)
+  ✓  18 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @productos should render premium container and take snapshot (1.8s)
+  ✓  19 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @reportes should render premium container and take snapshot (1.3s)
+  ✓  21 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @perfil should render premium container and take snapshot (1.4s)
+  ✘  22 [chromium] › tests/visual/catalogo.spec.ts:75:7 › @productos Catálogo de Productos visual states › loading state snapshot (placeholder, sin CLS) (5.6s)
+  ✓  23 [chromium] › tests/visual/catalogo.spec.ts:94:7 › @productos Catálogo de Productos visual states › data state snapshot (con resultados) (1.9s)
+  ✓  24 [chromium] › tests/visual/catalogo.spec.ts:110:7 › @productos Catálogo de Productos visual states › empty state snapshot (sin resultados) y limpiar filtros (1.5s)
+  ✓  25 [chromium] › tests/visual/final-qa.spec.ts:125:7 › QA Final E2E (Core + No-Core) › login (2.0s)
+  ✓  26 [chromium] › tests/visual/final-qa.spec.ts:128:7 › QA Final E2E (Core + No-Core) › dashboard (2.0s)
+  ✘  20 [chromium] › tests/visual/all-modules.spec.ts:104:9 › Premium visual across modules › @proteccion should render premium container and take snapshot (16.0s)
+  ✓  27 [chromium] › tests/visual/final-qa.spec.ts:131:7 › QA Final E2E (Core + No-Core) › clientes (2.1s)
+  ✓  28 [chromium] › tests/visual/final-qa.spec.ts:134:7 › QA Final E2E (Core + No-Core) › cotizador (2.1s)
+  ✓  29 [chromium] › tests/visual/final-qa.spec.ts:137:7 › QA Final E2E (Core + No-Core) › perfil (2.1s)
+  ✓  30 [chromium] › tests/visual/final-qa.spec.ts:140:7 › QA Final E2E (Core + No-Core) › oportunidad (2.6s)
+  ✓  31 [chromium] › tests/visual/final-qa.spec.ts:143:7 › QA Final E2E (Core + No-Core) › edomex-colectivo (2.4s)
+  ✓  32 [chromium] › tests/visual/final-qa.spec.ts:146:7 › QA Final E2E (Core + No-Core) › proteccion (2.1s)

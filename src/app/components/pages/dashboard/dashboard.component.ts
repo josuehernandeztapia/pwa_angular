@@ -98,8 +98,8 @@ import { RiskRadarClient, RiskRadarComponent } from '../../shared/risk-radar/ris
         <section class="human-activity-section ui-card">
           <h2 class="section-title">Feed de Actividad en Tiempo Real</h2>
           <div class="activity-feed-container">
-            <app-human-activity-feed 
-              [activities]="activityFeed"
+          <app-human-activity-feed 
+            [activities]="activityItems"
               [maxItems]="4"
               [showSuggestedActions]="true">
             </app-human-activity-feed>
@@ -275,6 +275,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   // Back-compat for specs
   dashboardStats!: DashboardStats;
   activityFeed: ActivityFeedItem[] = [];
+  activityItems: ActivityItem[] = [];
   funnelData: OpportunityStage[] = [];
   actionableGroups: ActionableGroup[] = [];
   allClients: ActionableClient[] = [];
@@ -421,7 +422,20 @@ export class DashboardComponent implements OnInit, OnDestroy {
     source
       .pipe(takeUntil(this.destroy$))
       .subscribe((activities: ActivityItem[] | ActivityFeedItem[]) => {
-        this.activityFeed = activities as ActivityFeedItem[];
+        const list = Array.isArray(activities) ? activities : [];
+        // Keep raw feed for other consumers if needed
+        this.activityFeed = list as ActivityFeedItem[];
+        // Map to UI ActivityItem shape when necessary
+        if (list.length > 0) {
+          const first: any = list[0];
+          if ('message' in first && !('title' in first)) {
+            this.activityItems = this.mapActivityFeedToActivityItems(list as ActivityFeedItem[]);
+          } else {
+            this.activityItems = list as ActivityItem[];
+          }
+        } else {
+          this.activityItems = [];
+        }
       });
   }
 
@@ -435,6 +449,56 @@ export class DashboardComponent implements OnInit, OnDestroy {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0
     }).format(amount);
+  }
+
+  private mapActivityFeedToActivityItems(feed: ActivityFeedItem[]): ActivityItem[] {
+    return (feed || []).map((item) => {
+      const category = (() => {
+        switch (item.type) {
+          case 'payment_received':
+            return 'payment';
+          case 'doc_approved':
+            return 'document';
+          case 'goal_reached':
+            return 'achievement';
+          case 'contract_signed':
+            return 'opportunity';
+          case 'new_client':
+            return 'communication';
+          default:
+            return 'communication';
+        }
+      })() as ActivityItem['category'];
+
+      const type = (() => {
+        switch (item.type) {
+          case 'payment_received':
+          case 'doc_approved':
+          case 'new_client':
+            return 'system';
+          case 'contract_signed':
+            return 'advisor';
+          case 'goal_reached':
+            return 'client';
+          default:
+            return 'system';
+        }
+      })() as ActivityItem['type'];
+
+      const priority: ActivityItem['priority'] =
+        item.type === 'payment_received' || item.type === 'contract_signed' ? 'high' : 'medium';
+
+      return {
+        id: item.id,
+        type,
+        category,
+        timestamp: new Date(item.timestamp),
+        title: item.message,
+        description: item.clientName ? `${item.message} ${item.clientName}` : item.message,
+        metadata: item.amount ? { amount: item.amount } : undefined,
+        priority,
+      };
+    });
   }
 
   /**

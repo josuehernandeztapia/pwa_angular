@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e4]:
+  - complementary [ref=e5]:
+    - navigation [ref=e6]:
+      - link "Dashboard" [ref=e7] [cursor=pointer]:
+        - /url: /dashboard
+        - img [ref=e9] [cursor=pointer]
+        - text: Dashboard
+      - link "Usuarios" [ref=e10] [cursor=pointer]:
+        - /url: /usuarios
+        - text: Usuarios
+      - link "Clientes" [ref=e12] [cursor=pointer]:
+        - /url: /clientes
+        - img [ref=e14] [cursor=pointer]
+        - text: Clientes
+      - link "Cotizador" [ref=e19] [cursor=pointer]:
+        - /url: /cotizador
+        - img [ref=e21] [cursor=pointer]
+        - text: Cotizador
+      - link "Configuración" [ref=e23] [cursor=pointer]:
+        - /url: /configuracion
+        - img [ref=e25] [cursor=pointer]
+        - text: Configuración
+      - link "AVI" [ref=e28] [cursor=pointer]:
+        - /url: /avi
+        - img [ref=e30] [cursor=pointer]
+        - text: AVI
+  - generic [ref=e33]:
+    - banner [ref=e34]:
+      - generic [ref=e36]: Breadcrumbs
+      - generic [ref=e37]:
+        - textbox "Buscar..." [ref=e38]
+        - button "🌓" [ref=e39] [cursor=pointer]
+    - main [ref=e40]:
+      - generic [ref=e42]:
+        - heading "Protección" [level=2] [ref=e43]
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e46]: Health Score
+            - generic [ref=e47]: "82"
+          - generic [ref=e48]:
+            - generic [ref=e49]: Cobertura
+            - generic [ref=e50]: Estándar
+          - button "Aplicar" [ref=e52] [cursor=pointer]
+```
