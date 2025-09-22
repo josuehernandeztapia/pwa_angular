@@ -228,8 +228,7 @@ describe('LoginComponent Accessibility Tests', () => {
         ]
       }).compileComponents();
 
-      const loginFixture = TestBed.createComponent(LoginComponent);
-      return loginFixture.componentInstance;
+      return TestBed.createComponent(LoginComponent);
     }
   });
 });
