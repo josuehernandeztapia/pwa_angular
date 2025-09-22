@@ -4,8 +4,8 @@
 
 .ui-card {
   border-radius: 0.5rem;
-  border: 1px solid #e2e8f0;
-  background: #ffffff;
+  border: 1px solid var(--border-dark);
+  background: var(--surface-dark);
   padding: 1rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
@@ -13,17 +13,17 @@
 .ui-input {
   width: 100%;
   border-radius: 0.375rem;
-  border: 1px solid #cbd5e1;
-  background: #ffffff;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-dark);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  color: #0f172a;
+  color: var(--text-light);
   outline: none;
 }
 
 .ui-input:focus {
-  border-color: #94a3b8;
-  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.4);
+  border-color: var(--border-dark);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--border-dark) 40%, transparent);
 }
 
 .ui-btn {
@@ -31,9 +31,9 @@
   align-items: center;
   justify-content: center;
   border-radius: 0.375rem;
-  border: 1px solid #cbd5e1;
-  background: #f1f5f9;
-  color: #0f172a;
+  border: 1px solid var(--border-dark);
+  background: var(--bg-dark);
+  color: var(--text-light);
   padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
@@ -41,11 +41,11 @@
 }
 
 .ui-btn:hover {
-  background: #e2e8f0;
+  background: color-mix(in oklab, var(--surface-dark) 70%, transparent);
 }
 
 .ui-btn-primary {
   background: var(--brand);
-  color: #ffffff;
+  color: var(--text-light);
   border-color: transparent;
 }

@@ -69,14 +69,14 @@ export interface KPIData {
     }
 
     .kpis-title {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-size: 1.5rem;
       font-weight: 700;
       margin: 0;
     }
 
     .kpis-subtitle {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.9rem;
       margin: 0;
       font-weight: 500;
@@ -89,10 +89,10 @@ export interface KPIData {
     }
 
     .kpi-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       border-radius: 16px;
       padding: 24px;
       position: relative;
@@ -157,8 +157,8 @@ export interface KPIData {
 
     .trend-stable {
       background: rgba(156, 163, 175, 0.1);
-      border: 1px solid var(--bg-gray-500);
-      color: var(--bg-gray-400);
+      border: 1px solid var(--border-dark);
+      color: var(--text-2);
     }
 
     .trend-icon {
@@ -174,35 +174,22 @@ export interface KPIData {
       font-weight: 800;
       line-height: 1;
       margin-bottom: 8px;
-      background: linear-gradient(135deg, var(--bg-gray-100), var(--bg-gray-300));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--text-light);
     }
 
-    .kpi-primary .kpi-value {
-      background: linear-gradient(135deg, var(--primary-cyan-300), var(--primary-cyan-500));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .kpi-primary .kpi-value { color: var(--text-light); }
 
-    .kpi-accent .kpi-value {
-      background: linear-gradient(135deg, var(--accent-amber-400), var(--accent-amber-600));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .kpi-accent .kpi-value { color: var(--text-light); }
 
     .kpi-title-text {
-      color: var(--bg-gray-200);
+      color: var(--text-2);
       font-size: 1rem;
       font-weight: 600;
       margin-bottom: 4px;
     }
 
     .kpi-subtitle {
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.85rem;
     }
 
@@ -222,17 +209,11 @@ export interface KPIData {
       border-radius: 0 4px 4px 0;
     }
 
-    .trend-fill-up {
-      background: linear-gradient(90deg, var(--success-500), var(--success-400));
-    }
+    .trend-fill-up { background: var(--success-500); }
 
-    .trend-fill-down {
-      background: linear-gradient(90deg, var(--error-500), var(--error-400));
-    }
+    .trend-fill-down { background: var(--error-500); }
 
-    .trend-fill-stable {
-      background: linear-gradient(90deg, var(--bg-gray-500), var(--bg-gray-400));
-    }
+    .trend-fill-stable { background: var(--border-dark); }
 
     @media (max-width: 768px) {
       .kpis-grid {

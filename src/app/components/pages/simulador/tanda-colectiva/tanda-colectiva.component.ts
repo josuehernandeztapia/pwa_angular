@@ -57,7 +57,7 @@ interface KpiData {
 
       <!-- Resumen KPIs -->
       <div class="ui-card">
-        <h2 class="text-lg font-semibold text-gray-800 mb-3">Resumen</h2>
+        <h2 class="text-lg font-semibold text-[var(--text-light)] mb-3">Resumen</h2>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div class="ui-card">
             <div class="text-purple-600 text-xs">Mensualidad Grupo</div>
@@ -77,7 +77,7 @@ interface KpiData {
       <div class="grid-aside">
         <!-- Configuration Panel -->
         <div class="ui-card">
-          <h2 class="text-xl font-semibold text-gray-800 mb-6 flex items-center">
+          <h2 class="text-xl font-semibold text-[var(--text-light)] mb-6 flex items-center">
             <span class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold mr-3">1</span>
             Unidad
           </h2>
@@ -85,7 +85,7 @@ interface KpiData {
           <form [formGroup]="configForm" class="space-y-6">
             <!-- Member Count -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-gray-700">
+              <label class="block text-sm font-medium text-[var(--text-2)]">
                 Número de Miembros del Grupo *
               </label>
               <input
@@ -97,7 +97,7 @@ interface KpiData {
                 max="50"
                 step="1"
               />
-              <div class="flex justify-between text-xs text-gray-500">
+              <div class="flex justify-between text-xs text-[var(--text-2)]">
                 <span>Mínimo: 5 miembros</span>
                 <span>Máximo: 50 miembros</span>
               </div>
@@ -111,11 +111,11 @@ interface KpiData {
 
             <!-- Unit Price -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-gray-700">
+              <label class="block text-sm font-medium text-[var(--text-2)]">
                 Precio de la Unidad *
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--text-2)]">$</span>
                 <input
                   type="number"
                   formControlName="unitPrice"
@@ -125,7 +125,7 @@ interface KpiData {
                   step="1000"
                 />
               </div>
-              <p class="text-xs text-gray-500">Precio base de la vagoneta Estado de México</p>
+              <p class="text-xs text-[var(--text-2)]">Precio base de la vagoneta Estado de México</p>
               <div *ngIf="configForm.get('unitPrice')?.errors?.['required']" 
                    class="text-red-500 text-sm">El precio de la unidad es obligatorio</div>
               <div *ngIf="configForm.get('unitPrice')?.errors?.['min']" 
@@ -134,7 +134,7 @@ interface KpiData {
 
             <!-- Average Consumption -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-gray-700">
+              <label class="block text-sm font-medium text-[var(--text-2)]">
                 Consumo Promedio por Miembro *
               </label>
               <div class="relative">
@@ -146,9 +146,9 @@ interface KpiData {
                   min="200"
                   step="50"
                 />
-                <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">litros/mes</span>
+                <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--text-2)]">litros/mes</span>
               </div>
-              <p class="text-xs text-gray-500">Consumo mensual promedio esperado por cada miembro</p>
+              <p class="text-xs text-[var(--text-2)]">Consumo mensual promedio esperado por cada miembro</p>
               <div *ngIf="configForm.get('avgConsumption')?.errors?.['required']" 
                    class="text-red-500 text-sm">El consumo promedio es obligatorio</div>
               <div *ngIf="configForm.get('avgConsumption')?.errors?.['min']" 
@@ -157,11 +157,11 @@ interface KpiData {
 
             <!-- Overprice Per Liter -->
             <div class="space-y-2">
-              <label class="block text-sm font-medium text-gray-700">
+              <label class="block text-sm font-medium text-[var(--text-2)]">
                 Sobreprecio por Litro *
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-[var(--text-2)]">$</span>
                 <input
                   type="number"
                   formControlName="overpricePerLiter"
@@ -194,14 +194,14 @@ interface KpiData {
                   step="100"
                 />
               </div>
-              <p class="text-xs text-gray-500">Aportación mensual adicional que cada miembro puede hacer</p>
+              <p class="text-xs text-[var(--text-2)]">Aportación mensual adicional que cada miembro puede hacer</p>
               <div *ngIf="configForm.get('voluntaryMonthly')?.errors?.['min']" 
                    class="text-red-500 text-sm">No puede ser negativo</div>
             </div>
 
             <!-- What-If Events Builder (Advanced Mode Only) -->
             <div *ngIf="currentViewMode === 'advanced'" class="space-y-4 pt-6 border-t border-[var(--border-dark)]">
-              <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+              <h3 class="text-lg font-semibold text-[var(--text-light)] flex items-center">
                 <span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-2">?</span>
                 What-If Events Builder
               </h3>
@@ -213,7 +213,7 @@ interface KpiData {
                 
                 <div class="grid grid-cols-2 gap-3">
                   <div>
-                    <label class="block text-xs font-medium text-gray-600 mb-1">Mes</label>
+                    <label class="block text-xs font-medium text-[var(--text-2)] mb-1">Mes</label>
                     <input
                       type="number"
                       [(ngModel)]="newEvent.month"
@@ -225,7 +225,7 @@ interface KpiData {
                   </div>
                   
                   <div>
-                    <label class="block text-xs font-medium text-gray-600 mb-1">Tipo</label>
+                    <label class="block text-xs font-medium text-[var(--text-2)] mb-1">Tipo</label>
                     <select
                       [(ngModel)]="newEvent.type"
                       class="ui-input text-sm"
@@ -236,7 +236,7 @@ interface KpiData {
                   </div>
                   
                   <div>
-                    <label class="block text-xs font-medium text-gray-600 mb-1">Miembro</label>
+                    <label class="block text-xs font-medium text-[var(--text-2)] mb-1">Miembro</label>
                     <select
                       [(ngModel)]="newEvent.memberId"
                       class="ui-input text-sm"
@@ -248,9 +248,9 @@ interface KpiData {
                   </div>
                   
                   <div>
-                    <label class="block text-xs font-medium text-gray-600 mb-1">Monto</label>
+                    <label class="block text-xs font-medium text-[var(--text-2)] mb-1">Monto</label>
                     <div class="relative">
-                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm">$</span>
+                      <span class="absolute left-2 top-1/2 transform -translate-y-1/2 text-[var(--text-2)] text-sm">$</span>
                       <input
                         type="number"
                         [(ngModel)]="newEvent.amount"
@@ -273,7 +273,7 @@ interface KpiData {
 
               <!-- Events List -->
               <div *ngIf="whatIfEvents.length > 0" class="space-y-2">
-                <h4 class="font-medium text-gray-700">Eventos Programados ({{ whatIfEvents.length }})</h4>
+              <h4 class="font-medium text-[var(--text-light)]">Eventos Programados ({{ whatIfEvents.length }})</h4>
                 
               <div class="max-h-32 overflow-y-auto space-y-2">
                   <div 

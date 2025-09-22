@@ -63,10 +63,10 @@ export type ViewMode = 'advisor' | 'client';
       display: flex;
       align-items: center;
       gap: 16px;
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: var(--glass-backdrop);
-      -webkit-backdrop-filter: var(--glass-backdrop);
+      background: var(--surface-dark);
+      border: 1px solid var(--border-dark);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       padding: 12px 20px;
       border-radius: 16px;
       transition: all 0.3s ease;
@@ -105,7 +105,7 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .mode-text {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-weight: 600;
       font-size: 1rem;
     }
@@ -132,17 +132,17 @@ export type ViewMode = 'advisor' | 'client';
     .toggle-slider {
       width: 60px;
       height: 32px;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--glass-border);
+      background: var(--bg-dark);
+      border: 1px solid var(--border-dark);
       border-radius: 20px;
       position: relative;
       transition: all 0.3s ease;
     }
 
     .toggle-slider.slider-client {
-      background: linear-gradient(135deg, var(--accent-amber-500), var(--accent-amber-600));
-      border-color: var(--accent-amber-400);
-      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+      background: var(--bg-dark);
+      border-color: var(--border-dark);
+      box-shadow: none;
     }
 
     .slider-handle {
@@ -151,7 +151,7 @@ export type ViewMode = 'advisor' | 'client';
       left: 2px;
       width: 26px;
       height: 26px;
-      background: linear-gradient(135deg, var(--primary-cyan-400), var(--primary-cyan-500));
+      background: var(--surface-dark);
       border-radius: 50%;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       display: flex;
@@ -162,8 +162,8 @@ export type ViewMode = 'advisor' | 'client';
 
     .slider-client .slider-handle {
       transform: translateX(28px);
-      background: linear-gradient(135deg, var(--bg-gray-950), var(--bg-gray-800));
-      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+      background: var(--bg-dark);
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
     }
 
     .handle-icon {
@@ -172,7 +172,7 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .toggle-text {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 0.9rem;
       font-weight: 500;
       transition: all 0.3s ease;
@@ -193,7 +193,7 @@ export type ViewMode = 'advisor' | 'client';
 
     .mode-description p {
       margin: 0;
-      color: var(--bg-gray-400);
+      color: var(--text-2);
       font-size: 0.85rem;
       line-height: 1.4;
       transition: all 0.3s ease;
@@ -211,8 +211,8 @@ export type ViewMode = 'advisor' | 'client';
       right: 0;
       bottom: 0;
       background: rgba(3, 7, 18, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -246,14 +246,14 @@ export type ViewMode = 'advisor' | 'client';
     }
 
     .transition-title {
-      color: var(--bg-gray-100);
+      color: var(--text-light);
       font-size: 1.8rem;
       font-weight: 700;
       margin: 0 0 12px 0;
     }
 
     .transition-description {
-      color: var(--bg-gray-300);
+      color: var(--text-2);
       font-size: 1rem;
       line-height: 1.5;
       margin: 0 0 32px 0;
