@@ -26,7 +26,7 @@ PATTERNS=(
   "text-gray-"
 )
 
-INCLUDE_PATHS=("src")
+INCLUDE_PATHS=("src" "styles" "apps" "libs" "cypress")
 EXCLUDE_DIRS=("node_modules" "dist" "coverage" "reports" ".git" "playwright-report")
 
 EXIT_CODE=0
