@@ -1,0 +1,29 @@
+name: Verify UX
+
+on:
+  pull_request:
+    branches:
+      - '**'
+  push:
+    branches:
+      - cursor/**
+
+jobs:
+  verify-ux:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies (root)
+        run: npm ci
+
+      - name: Verify Minimal Dark UX rules
+        run: npm run verify:ux
