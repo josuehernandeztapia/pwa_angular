@@ -170,7 +170,8 @@
     "upgrade:ops:triggers-monitor": "node scripts/upgrade-component.js triggers-monitor",
     "upgrade:post-sales:client-tracking": "node scripts/upgrade-component.js client-tracking",
     "clean:audit": "node scripts/clean-audit.js",
-    "clean:audit:fix": "node scripts/clean-audit.js --fix"
+    "clean:audit:fix": "node scripts/clean-audit.js --fix",
+    "verify:ux": "bash scripts/verify-ux.sh"
   },
   "lint-staged": {
     "*.{ts,js}": [
