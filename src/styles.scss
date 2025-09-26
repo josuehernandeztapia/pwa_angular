@@ -12,6 +12,10 @@
 /* Performance-Critical Styles */
 @import 'styles/performance.scss';
 
+/* OpenAI-like Design System */
+@import 'styles/design-system-openai.scss';
+@import 'styles/components-openai.scss';
+
 /* Removed Premium FinTech Theme imports (migrated to Minimal Dark) */
 
 /* ===== CSS VARIABLES (Common tokens) ===== */
