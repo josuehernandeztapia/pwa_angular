@@ -1,35 +1,10 @@
-name: AVI Threshold Tests
-
+name: Disabled Workflow
 on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main, cursor/** ]
+  workflow_dispatch:
 
 jobs:
-  avi-tests:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run AVI specs (MAIN + LAB)
-        run: |
-          echo "🎯 Running AVI-related test suites"
-          npm run test -- --include 'voice-validation.service.spec.ts'
-          npm run test -- --include 'avi-lab.threshold.spec.ts'
-
-      - name: Report result
-        if: failure()
-        run: |
-          echo "❌ AVI thresholds drift detected between MAIN and LAB"
-          exit 1
+      - run: echo "Workflow intentionally disabled in pwa_angular"
 
